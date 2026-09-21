@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+mewat_saathi.db
+media_uploads/
+uploads/
+.env
+.venv/

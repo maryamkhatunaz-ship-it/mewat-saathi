@@ -1,293 +1,157 @@
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import sqlite3
 import os
 import uuid
 
-
 app = Flask(__name__)
-
 CORS(app)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "mewat_saathi.db")
+UPLOAD_FOLDER = os.path.join(BASE_DIR, "media_uploads")
 
-UPLOAD_FOLDER = "media_uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-os.makedirs(
-    UPLOAD_FOLDER,
-    exist_ok=True
-)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
 # =========================
 # DATABASE
 # =========================
 
-def create_database():
-
-    connection = sqlite3.connect(
-        "mewat_saathi.db"
-    )
-
-    cursor = connection.cursor()
+def get_db():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
-    cursor.execute("""
+def init_db():
+    conn = get_db()
+
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS complaints (
-
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-
             name TEXT NOT NULL,
-
             mobile TEXT NOT NULL,
-
             village TEXT NOT NULL,
-
             category TEXT NOT NULL,
-
             complaint TEXT NOT NULL,
-
             photo TEXT,
-
             video TEXT,
-
             status TEXT DEFAULT 'Pending'
-
         )
     """)
 
-
-    cursor.execute(
-        "PRAGMA table_info(complaints)"
-    )
+    conn.commit()
+    conn.close()
 
 
-    columns = [
-        row[1]
-        for row in cursor.fetchall()
-    ]
-
-
-    if "photo" not in columns:
-
-        cursor.execute("""
-            ALTER TABLE complaints
-            ADD COLUMN photo TEXT
-        """)
-
-
-    if "video" not in columns:
-
-        cursor.execute("""
-            ALTER TABLE complaints
-            ADD COLUMN video TEXT DEFAULT NULL
-        """)
-
-
-    if "status" not in columns:
-
-        cursor.execute("""
-            ALTER TABLE complaints
-            ADD COLUMN status TEXT DEFAULT 'Pending'
-        """)
-
-
-    connection.commit()
-
-    connection.close()
-
-
-create_database()
+init_db()
 
 
 # =========================
-# HOME
+# HOME / WEBSITE
 # =========================
 
 @app.route("/")
 def home():
+    return send_from_directory(BASE_DIR, "index.html")
 
-    return "Mewat Saathi Backend Chalu Hai!"
+
+@app.route("/<path:path>")
+def serve_frontend(path):
+    file_path = os.path.join(BASE_DIR, path)
+
+    if os.path.isfile(file_path):
+        return send_from_directory(BASE_DIR, path)
+
+    return send_from_directory(BASE_DIR, "index.html")
 
 
 # =========================
-# SUBMIT COMPLAINT
+# BACKEND TEST
 # =========================
 
-@app.route(
-    "/complaint",
-    methods=["POST"]
-)
-def submit_complaint():
+@app.route("/api")
+def api_home():
+    return jsonify({
+        "success": True,
+        "message": "Mewat Saathi Backend Chalu Hai!"
+    })
+
+
+@app.route("/health")
+def health():
+    return jsonify({
+        "status": "ok",
+        "message": "Mewat Saathi is running"
+    })
+
+
+# =========================
+# SAVE COMPLAINT
+# =========================
+
+@app.route("/complaint", methods=["POST"])
+def save_complaint():
 
     try:
+        name = request.form.get("name", "").strip()
+        mobile = request.form.get("mobile", "").strip()
+        village = request.form.get("village", "").strip()
+        category = request.form.get("category", "").strip()
+        complaint = request.form.get("complaint", "").strip()
 
-        name = request.form.get(
-            "name",
-            ""
-        ).strip()
-
-
-        mobile = request.form.get(
-            "mobile",
-            ""
-        ).strip()
-
-
-        village = request.form.get(
-            "village",
-            ""
-        ).strip()
-
-
-        category = request.form.get(
-            "category",
-            ""
-        ).strip()
-
-
-        complaint_text = request.form.get(
-            "complaint",
-            ""
-        ).strip()
-
-
-        # -------------------------
-        # VALIDATION
-        # -------------------------
-
-        if not name:
-
-            return {
+        if not all([name, mobile, village, category, complaint]):
+            return jsonify({
                 "success": False,
-                "error":
-                    "Naam nahi diya gaya."
-            }, 400
+                "message": "Please saari information fill karein."
+            }), 400
 
+        photo = request.files.get("photo")
+        video = request.files.get("video")
 
-        if not mobile:
-
-            return {
-                "success": False,
-                "error":
-                    "Mobile number nahi diya gaya."
-            }, 400
-
-
-        if not village:
-
-            return {
-                "success": False,
-                "error":
-                    "Village / Area nahi diya gaya."
-            }, 400
-
-
-        if not category:
-
-            return {
-                "success": False,
-                "error":
-                    "Problem category select karein."
-            }, 400
-
-
-        if not complaint_text:
-
-            return {
-                "success": False,
-                "error":
-                    "Problem details likhein."
-            }, 400
-
-
-        if (
-            not mobile.isdigit()
-            or len(mobile) != 10
-        ):
-
-            return {
-                "success": False,
-                "error":
-                    "Mobile number 10 digit ka hona chahiye."
-            }, 400
-
+        photo_filename = None
+        video_filename = None
 
         # -------------------------
         # PHOTO
         # -------------------------
 
-        photo = request.files.get(
-            "photo"
-        )
-
-        photo_name = None
-
-
         if photo and photo.filename:
-
-            extension = os.path.splitext(
-                photo.filename
-            )[1]
-
-
-            photo_name = (
-                str(uuid.uuid4())
-                + extension
-            )
-
+            extension = os.path.splitext(photo.filename)[1].lower()
+            photo_filename = f"{uuid.uuid4().hex}{extension}"
 
             photo.save(
                 os.path.join(
-                    UPLOAD_FOLDER,
-                    photo_name
+                    app.config["UPLOAD_FOLDER"],
+                    photo_filename
                 )
             )
-
 
         # -------------------------
         # VIDEO
         # -------------------------
 
-        video = request.files.get(
-            "video"
-        )
-
-        video_name = None
-
-
         if video and video.filename:
-
-            extension = os.path.splitext(
-                video.filename
-            )[1]
-
-
-            video_name = (
-                str(uuid.uuid4())
-                + extension
-            )
-
+            extension = os.path.splitext(video.filename)[1].lower()
+            video_filename = f"{uuid.uuid4().hex}{extension}"
 
             video.save(
                 os.path.join(
-                    UPLOAD_FOLDER,
-                    video_name
+                    app.config["UPLOAD_FOLDER"],
+                    video_filename
                 )
             )
 
-
         # -------------------------
-        # DATABASE INSERT
+        # DATABASE
         # -------------------------
 
-        connection = sqlite3.connect(
-            "mewat_saathi.db"
-        )
+        conn = get_db()
 
-        cursor = connection.cursor()
-
-
-        cursor.execute("""
+        cursor = conn.execute("""
             INSERT INTO complaints
             (
                 name,
@@ -299,501 +163,257 @@ def submit_complaint():
                 video,
                 status
             )
-
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-
         """, (
             name,
             mobile,
             village,
             category,
-            complaint_text,
-            photo_name,
-            video_name,
+            complaint,
+            photo_filename,
+            video_filename,
             "Pending"
         ))
 
+        complaint_id = cursor.lastrowid
 
-        complaint_id =
-            cursor.lastrowid
+        conn.commit()
+        conn.close()
 
-
-        connection.commit()
-
-        connection.close()
-
-
-        # -------------------------
-        # RESPONSE
-        # -------------------------
-
-        return {
-
+        return jsonify({
             "success": True,
+            "message": "Complaint Successfully Saved!",
+            "id": complaint_id
+        })
 
-            "message":
-                "Complaint Successfully Saved!",
+    except Exception as e:
 
-            "complaint_id":
-                complaint_id,
+        print("Complaint Error:", e)
 
-            "status":
-                "Pending"
-
-        }
-
-
-    except Exception as error:
-
-        print(
-            "COMPLAINT ERROR:",
-            error
-        )
-
-
-        return {
-
+        return jsonify({
             "success": False,
-
-            "error":
-                "Server mein problem aayi: "
-                + str(error)
-
-        }, 500
+            "message": "Complaint save nahi ho payi."
+        }), 500
 
 
 # =========================
 # CHECK COMPLAINT STATUS
 # =========================
 
-@app.route(
-    "/complaint/<int:complaint_id>",
-    methods=["POST"]
-)
-def complaint_status(
-    complaint_id
-):
+@app.route("/complaint/<int:complaint_id>", methods=["POST"])
+def check_complaint(complaint_id):
 
     try:
 
-        mobile = request.form.get(
-            "mobile",
-            ""
-        ).strip()
+        data = request.get_json(silent=True) or {}
 
+        mobile = str(data.get("mobile", "")).strip()
 
         if not mobile:
-
-            return {
-
+            return jsonify({
                 "success": False,
+                "message": "Mobile number required hai."
+            }), 400
 
-                "error":
-                    "Mobile number required hai."
+        conn = get_db()
 
-            }, 400
-
-
-        if (
-            not mobile.isdigit()
-            or len(mobile) != 10
-        ):
-
-            return {
-
-                "success": False,
-
-                "error":
-                    "Mobile number 10 digit ka hona chahiye."
-
-            }, 400
-
-
-        connection = sqlite3.connect(
-            "mewat_saathi.db"
-        )
-
-        cursor = connection.cursor()
-
-
-        # IMPORTANT:
-        # Complaint ID + same mobile
-        # dono match hone chahiye.
-
-        cursor.execute("""
+        cursor = conn.execute("""
             SELECT
-
                 id,
-
                 name,
-
                 mobile,
-
                 village,
-
                 category,
-
                 complaint,
-
                 status
-
             FROM complaints
-
             WHERE id = ?
-
             AND mobile = ?
-
         """, (
             complaint_id,
             mobile
         ))
 
+        row = cursor.fetchone()
 
-        data = cursor.fetchone()
+        conn.close()
 
-
-        connection.close()
-
-
-        # -------------------------
-        # NOT FOUND
-        # -------------------------
-
-        if data is None:
-
-            return {
-
+        if not row:
+            return jsonify({
                 "success": False,
+                "message": "Complaint ID ya mobile number galat hai."
+            }), 404
 
-                "error":
-                    "Complaint ID ya Mobile Number galat hai."
-
-            }, 404
-
-
-        # -------------------------
-        # FULL DETAILS RETURN
-        # -------------------------
-
-        return {
-
+        return jsonify({
             "success": True,
+            "id": row["id"],
+            "name": row["name"],
+            "mobile": row["mobile"],
+            "village": row["village"],
+            "category": row["category"],
+            "complaint": row["complaint"],
+            "status": row["status"]
+        })
 
-            "id":
-                data[0],
+    except Exception as e:
 
-            "name":
-                data[1],
+        print("Status Error:", e)
 
-            "mobile":
-                data[2],
-
-            "village":
-                data[3],
-
-            "category":
-                data[4],
-
-            "complaint":
-                data[5],
-
-            "status":
-                data[6]
-
-        }
-
-
-    except Exception as error:
-
-        print(
-            "STATUS ERROR:",
-            error
-        )
-
-
-        return {
-
+        return jsonify({
             "success": False,
-
-            "error":
-                "Server error: "
-                + str(error)
-
-        }, 500
+            "message": "Status check nahi ho paya."
+        }), 500
 
 
 # =========================
-# ALL COMPLAINTS
-# ADMIN PANEL
+# ADMIN - ALL COMPLAINTS
 # =========================
 
-@app.route(
-    "/complaints",
-    methods=["GET"]
-)
-def all_complaints():
+@app.route("/complaints", methods=["GET"])
+def get_complaints():
 
     try:
 
-        connection = sqlite3.connect(
-            "mewat_saathi.db"
-        )
+        conn = get_db()
 
-        cursor = connection.cursor()
-
-
-        cursor.execute("""
+        cursor = conn.execute("""
             SELECT
-
                 id,
-
                 name,
-
                 mobile,
-
                 village,
-
                 category,
-
                 complaint,
-
                 photo,
-
                 video,
-
                 status
-
             FROM complaints
-
             ORDER BY id DESC
-
         """)
-
 
         rows = cursor.fetchall()
 
+        conn.close()
 
-        connection.close()
-
-
-        result = []
-
+        complaints = []
 
         for row in rows:
 
-            result.append({
-
-                "id":
-                    row[0],
-
-                "name":
-                    row[1],
-
-                "mobile":
-                    row[2],
-
-                "village":
-                    row[3],
-
-                "category":
-                    row[4],
-
-                "complaint":
-                    row[5],
-
-                "photo":
-                    row[6],
-
-                "video":
-                    row[7],
-
-                "status":
-                    row[8]
-
+            complaints.append({
+                "id": row["id"],
+                "name": row["name"],
+                "mobile": row["mobile"],
+                "village": row["village"],
+                "category": row["category"],
+                "complaint": row["complaint"],
+                "photo": row["photo"],
+                "video": row["video"],
+                "status": row["status"]
             })
 
+        return jsonify({
+            "success": True,
+            "complaints": complaints
+        })
 
-        return result
+    except Exception as e:
 
+        print("Admin Error:", e)
 
-    except Exception as error:
-
-        print(
-            "ADMIN ERROR:",
-            error
-        )
-
-
-        return {
-
-            "error":
-                "Complaints load nahi hui: "
-                + str(error)
-
-        }, 500
+        return jsonify({
+            "success": False,
+            "message": "Complaints load nahi ho payi."
+        }), 500
 
 
 # =========================
-# UPDATE STATUS
-# ADMIN PANEL
+# UPDATE COMPLAINT STATUS
 # =========================
 
-@app.route(
-    "/complaint/<int:complaint_id>/status",
-    methods=["POST"]
-)
-def update_status(
-    complaint_id
-):
+@app.route("/complaint/<int:complaint_id>/status", methods=["POST"])
+def update_status(complaint_id):
 
     try:
 
-        new_status = request.form.get(
-            "status",
-            ""
-        ).strip()
+        data = request.get_json(silent=True) or {}
 
+        status = str(data.get("status", "")).strip()
 
         allowed_statuses = [
-
             "Pending",
-
             "In Progress",
-
             "Resolved"
-
         ]
 
-
-        if new_status not in allowed_statuses:
-
-            return {
-
+        if status not in allowed_statuses:
+            return jsonify({
                 "success": False,
+                "message": "Invalid status."
+            }), 400
 
-                "error":
-                    "Invalid status."
+        conn = get_db()
 
-            }, 400
-
-
-        connection = sqlite3.connect(
-            "mewat_saathi.db"
-        )
-
-        cursor = connection.cursor()
-
-
-        cursor.execute("""
+        cursor = conn.execute("""
             UPDATE complaints
-
             SET status = ?
-
             WHERE id = ?
-
         """, (
-            new_status,
+            status,
             complaint_id
         ))
 
+        conn.commit()
 
-        if cursor.rowcount == 0:
+        changed = cursor.rowcount
 
-            connection.close()
+        conn.close()
 
-
-            return {
-
+        if changed == 0:
+            return jsonify({
                 "success": False,
+                "message": "Complaint nahi mili."
+            }), 404
 
-                "error":
-                    "Complaint nahi mili."
-
-            }, 404
-
-
-        connection.commit()
-
-        connection.close()
-
-
-        return {
-
+        return jsonify({
             "success": True,
+            "message": "Status updated successfully.",
+            "id": complaint_id,
+            "status": status
+        })
 
-            "message":
-                "Status Updated!",
+    except Exception as e:
 
-            "id":
-                complaint_id,
+        print("Update Status Error:", e)
 
-            "status":
-                new_status
-
-        }
-
-
-    except Exception as error:
-
-        print(
-            "UPDATE ERROR:",
-            error
-        )
-
-
-        return {
-
+        return jsonify({
             "success": False,
-
-            "error":
-                "Status update error: "
-                + str(error)
-
-        }, 500
+            "message": "Status update nahi ho paya."
+        }), 500
 
 
 # =========================
-# MEDIA
+# MEDIA FILES
 # =========================
 
-@app.route(
-    "/media/<filename>"
-)
+@app.route("/media/<filename>")
 def media(filename):
 
     return send_from_directory(
-        UPLOAD_FOLDER,
+        app.config["UPLOAD_FOLDER"],
         filename
     )
 
 
 # =========================
-# START SERVER
+# RUN
 # =========================
 
 if __name__ == "__main__":
 
-    print("")
-
-    print("==============================")
-
-    print(
-        " Mewat Saathi Backend"
-    )
-
-    print("==============================")
-
-    print(
-        "Backend: http://127.0.0.1:5000"
-    )
-
-    print("==============================")
-
-    print("")
-
+    port = int(os.environ.get("PORT", 5000))
 
     app.run(
-        host="127.0.0.1",
-        port=5000,
+        host="0.0.0.0",
+        port=port,
         debug=True
     )

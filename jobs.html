@@ -1,0 +1,2555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jobs & Rozgar | Mewat Saathi</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at 10% 10%,rgba(59,130,246,.13),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(14,165,233,.12),transparent 30%),
+    linear-gradient(135deg,#f8fbff,#eef5ff);
+
+    color:#172033;
+    min-height:100vh;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,.86);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    padding:15px 6%;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    color:#173b8f;
+}
+
+.logo span{
+    color:#0ea5e9;
+}
+
+.back{
+    text-decoration:none;
+    color:#173b8f;
+    font-weight:700;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:90%;
+    max-width:1180px;
+    margin:auto;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:48px 0 30px;
+}
+
+.hero-box{
+    background:linear-gradient(135deg,#1d4ed8,#0ea5e9);
+
+    border-radius:30px;
+
+    padding:42px;
+
+    color:white;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:0 25px 60px rgba(30,64,175,.22);
+}
+
+.hero-box:before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    right:-100px;
+    top:-130px;
+}
+
+.hero-box:after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    left:-70px;
+    bottom:-90px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.15);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(32px,5vw,57px);
+
+    line-height:1.05;
+
+    max-width:780px;
+
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:750px;
+
+    color:#eaf6ff;
+
+    line-height:1.7;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+    margin-top:25px;
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.search-box input{
+    flex:1;
+
+    min-width:230px;
+
+    padding:16px 18px;
+
+    border:0;
+
+    outline:0;
+
+    border-radius:15px;
+
+    font-size:15px;
+}
+
+.search-box input:focus{
+    box-shadow:0 0 0 4px rgba(255,255,255,.25);
+}
+
+.search-box button{
+    border:0;
+
+    padding:15px 22px;
+
+    border-radius:15px;
+
+    background:white;
+
+    color:#1744a5;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.search-box button:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title{
+    margin:35px 0 18px;
+}
+
+.section-title h2{
+    font-size:29px;
+
+    margin-bottom:7px;
+}
+
+.section-title p{
+    color:#64748b;
+
+    line-height:1.6;
+}
+
+/* ================= QUALIFICATION ================= */
+
+.qualification-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+}
+
+.qualification-btn{
+    border:1px solid #dbe4f0;
+
+    background:white;
+
+    border-radius:21px;
+
+    padding:20px 14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 9px 25px rgba(15,23,42,.06);
+}
+
+.qualification-btn:hover{
+    transform:translateY(-5px);
+
+    border-color:#93c5fd;
+}
+
+.qualification-btn.active{
+    background:linear-gradient(135deg,#1d4ed8,#0ea5e9);
+
+    color:white;
+
+    border-color:transparent;
+
+    box-shadow:0 15px 30px rgba(37,99,235,.22);
+}
+
+.q-icon{
+    font-size:30px;
+
+    margin-bottom:10px;
+}
+
+.qualification-btn strong{
+    display:block;
+
+    font-size:17px;
+}
+
+.qualification-btn small{
+    display:block;
+
+    margin-top:5px;
+
+    opacity:.75;
+}
+
+/* ================= RESULT ================= */
+
+.result-area{
+    margin-top:30px;
+}
+
+.result-head{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:18px;
+}
+
+.result-head h2{
+    font-size:27px;
+}
+
+.result-count{
+    background:#e0f2fe;
+
+    color:#0369a1;
+
+    padding:8px 13px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+.job-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+}
+
+.job-card{
+    background:rgba(255,255,255,.94);
+
+    border:1px solid rgba(148,163,184,.18);
+
+    border-radius:24px;
+
+    padding:24px;
+
+    box-shadow:0 14px 34px rgba(15,23,42,.07);
+
+    transition:.25s;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.job-card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 22px 45px rgba(15,23,42,.12);
+}
+
+.job-icon{
+    width:55px;
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:17px;
+
+    background:#eff6ff;
+
+    font-size:27px;
+
+    margin-bottom:15px;
+}
+
+.job-card h3{
+    font-size:20px;
+
+    margin-bottom:9px;
+}
+
+.job-card p{
+    color:#64748b;
+
+    font-size:14px;
+
+    line-height:1.65;
+}
+
+.job-tags{
+    margin:13px 0;
+}
+
+.tag{
+    display:inline-block;
+
+    background:#f1f5f9;
+
+    color:#475569;
+
+    padding:6px 9px;
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    margin:3px;
+}
+
+.requirement{
+    background:#f8fafc;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-top:8px;
+}
+
+.requirement strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:13px;
+}
+
+.requirement span{
+    color:#64748b;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+.search-job-btn{
+    display:block;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    background:linear-gradient(135deg,#1d4ed8,#0ea5e9);
+
+    color:white;
+
+    padding:12px;
+
+    border-radius:13px;
+
+    margin-top:16px;
+
+    font-weight:800;
+
+    font-size:13px;
+}
+
+.search-job-btn:hover{
+    opacity:.9;
+}
+
+.note{
+    margin-top:9px;
+
+    font-size:11px;
+
+    color:#64748b;
+
+    line-height:1.5;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    display:none;
+
+    background:white;
+
+    padding:35px;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    color:#64748b;
+
+    margin-top:20px;
+}
+
+/* ================= LOCATION ================= */
+
+.location-box{
+    margin-top:42px;
+
+    background:white;
+
+    border-radius:27px;
+
+    padding:30px;
+
+    box-shadow:0 14px 35px rgba(15,23,42,.07);
+}
+
+.location-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.location-card{
+    border-radius:19px;
+
+    background:#f8fafc;
+
+    padding:20px;
+}
+
+.location-card h3{
+    margin-bottom:7px;
+}
+
+.location-card p{
+    color:#64748b;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+.location-card a{
+    display:inline-block;
+
+    margin-top:12px;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#1d4ed8;
+}
+
+/* ================= GUIDE ================= */
+
+.guide{
+    margin-top:42px;
+
+    background:white;
+
+    border-radius:27px;
+
+    padding:30px;
+
+    box-shadow:0 14px 35px rgba(15,23,42,.07);
+}
+
+.steps{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.step{
+    background:#f8fafc;
+
+    padding:19px;
+
+    border-radius:18px;
+}
+
+.step-number{
+    width:36px;
+    height:36px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:#dbeafe;
+
+    color:#1d4ed8;
+
+    border-radius:50%;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.step h3{
+    font-size:15px;
+
+    margin-bottom:5px;
+}
+
+.step p{
+    font-size:12px;
+
+    line-height:1.6;
+
+    color:#64748b;
+}
+
+/* ================= HELP ================= */
+
+.help{
+    margin-top:42px;
+
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+
+    color:white;
+
+    border-radius:27px;
+
+    padding:30px;
+}
+
+.help p{
+    color:#cbd5e1;
+
+    line-height:1.7;
+
+    max-width:800px;
+
+    margin-top:8px;
+}
+
+.help-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.help-card{
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:17px;
+
+    padding:18px;
+}
+
+.help-card strong{
+    display:block;
+
+    margin-bottom:6px;
+}
+
+.help-card span{
+    color:#cbd5e1;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+/* ================= SAFETY ================= */
+
+.safety{
+    margin-top:42px;
+
+    background:#fff7ed;
+
+    border:1px solid #fed7aa;
+
+    border-radius:25px;
+
+    padding:27px;
+}
+
+.safety h2{
+    margin-bottom:8px;
+}
+
+.safety p{
+    color:#64748b;
+
+    line-height:1.7;
+}
+
+.safety ul{
+    margin-top:10px;
+
+    padding-left:20px;
+
+    color:#475569;
+
+    line-height:1.9;
+
+    font-size:13px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    margin-top:55px;
+
+    background:#0f172a;
+
+    color:#cbd5e1;
+
+    text-align:center;
+
+    padding:35px 6%;
+}
+
+footer strong{
+    color:white;
+}
+
+footer p{
+    margin-top:8px;
+
+    font-size:13px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .qualification-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .job-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .location-grid,
+    .help-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero-box{
+        padding:28px 22px;
+
+        border-radius:23px;
+    }
+
+    .qualification-grid,
+    .job-grid,
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        width:92%;
+    }
+
+    .section-title h2{
+        font-size:24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+Mewat <span>Saathi</span>
+</div>
+
+<a href="index.html" class="back">
+← Home
+</a>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-box">
+
+<span class="badge">
+💼 Jobs • Rozgar • Career
+</span>
+
+<h1>
+Pehle apni qualification batao.<br>
+Jobs hum dikhayenge.
+</h1>
+
+<p>
+Aapne kitni padhai ki hai uske hisaab se
+possible job categories dekho. Job samjho,
+basic requirement dekho aur phir official portal par search karo.
+</p>
+
+<div class="search-box">
+
+<input
+id="jobSearch"
+type="text"
+placeholder="Job search: electrician, data entry, teacher..."
+autocomplete="off"
+>
+
+<button type="button" id="searchButton">
+🔎 Search
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= QUALIFICATION ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>
+🎯 Aapki Qualification Kya Hai?
+</h2>
+
+<p>
+Apni highest qualification select karo.
+Uske according common job opportunities dekho.
+</p>
+
+</div>
+
+
+<div class="qualification-grid">
+
+
+<button class="qualification-btn" data-qualification="8th">
+
+<div class="q-icon">📚</div>
+
+<strong>8th Pass</strong>
+
+<small>Basic level opportunities</small>
+
+</button>
+
+
+<button class="qualification-btn" data-qualification="10th">
+
+<div class="q-icon">📘</div>
+
+<strong>10th Pass</strong>
+
+<small>Entry-level opportunities</small>
+
+</button>
+
+
+<button class="qualification-btn" data-qualification="12th">
+
+<div class="q-icon">🎒</div>
+
+<strong>12th Pass</strong>
+
+<small>More job categories</small>
+
+</button>
+
+
+<button class="qualification-btn" data-qualification="ITI">
+
+<div class="q-icon">🔧</div>
+
+<strong>ITI</strong>
+
+<small>Technical & trade jobs</small>
+
+</button>
+
+
+<button class="qualification-btn" data-qualification="Diploma">
+
+<div class="q-icon">⚙️</div>
+
+<strong>Diploma</strong>
+
+<small>Technical roles</small>
+
+</button>
+
+
+<button class="qualification-btn" data-qualification="Graduate">
+
+<div class="q-icon">🎓</div>
+
+<strong>Graduate</strong>
+
+<small>Graduate-level jobs</small>
+
+</button>
+
+
+<button class="qualification-btn" data-qualification="PG">
+
+<div class="q-icon">🏆</div>
+
+<strong>Post Graduate</strong>
+
+<small>Specialist opportunities</small>
+
+</button>
+
+
+<button class="qualification-btn" data-qualification="PhD">
+
+<div class="q-icon">🔬</div>
+
+<strong>PhD</strong>
+
+<small>Research & academic roles</small>
+
+</button>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= RESULTS ================= -->
+
+<section class="result-area">
+
+<div class="result-head">
+
+<div>
+
+<h2 id="resultTitle">
+👇 Qualification select karo
+</h2>
+
+</div>
+
+<div class="result-count" id="resultCount">
+0 Jobs
+</div>
+
+</div>
+
+
+<div class="job-grid" id="jobGrid">
+
+
+<!-- ================= 8TH ================= -->
+
+<div class="job-card job-item" data-qualification="8th">
+
+<div class="job-icon">🧹</div>
+
+<h3>Helper / Support Roles</h3>
+
+<p>
+Different organisations mein basic support,
+helper aur field-support type opportunities
+qualification aur vacancy ke according mil sakti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">8th+</span>
+<span class="tag">Entry Level</span>
+</div>
+
+<div class="requirement">
+
+<strong>Basic requirement</strong>
+
+<span>
+Har vacancy ki age, physical requirements,
+location aur qualification alag ho sakti hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Official Jobs Search
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="8th">
+
+<div class="job-icon">🌾</div>
+
+<h3>Farm / Field Support</h3>
+
+<p>
+Agriculture aur field-based organisations mein
+support-type work opportunities ho sakti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">Field Work</span>
+<span class="tag">Local</span>
+</div>
+
+<div class="requirement">
+
+<strong>Dhyan rahe</strong>
+
+<span>
+Actual eligibility har vacancy ke notice mein check karo.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<!-- ================= 10TH ================= -->
+
+<div class="job-card job-item" data-qualification="10th">
+
+<div class="job-icon">🏢</div>
+
+<h3>Office / Support Assistant</h3>
+
+<p>
+Offices aur organisations mein basic support,
+document handling aur general assistance type roles.
+</p>
+
+<div class="job-tags">
+<span class="tag">10th</span>
+<span class="tag">Office</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful skills</strong>
+
+<span>
+Basic communication aur computer knowledge
+kuch jobs mein useful ho sakta hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="10th">
+
+<div class="job-icon">🚚</div>
+
+<h3>Field / Delivery Roles</h3>
+
+<p>
+Field visits, delivery aur customer-facing
+work ke different opportunities mil sakte hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">10th+</span>
+<span class="tag">Field</span>
+</div>
+
+<div class="requirement">
+
+<strong>Possible requirements</strong>
+
+<span>
+Job ke according driving licence, vehicle,
+age ya other requirements ho sakti hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="10th">
+
+<div class="job-icon">🏭</div>
+
+<h3>Factory / Production Roles</h3>
+
+<p>
+Manufacturing aur production units mein
+operator, helper aur support-type opportunities ho sakti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">Production</span>
+<span class="tag">10th+</span>
+</div>
+
+<div class="requirement">
+
+<strong>Important</strong>
+
+<span>
+Shift, location, age aur experience vacancy ke
+according change ho sakte hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<!-- ================= 12TH ================= -->
+
+<div class="job-card job-item" data-qualification="12th">
+
+<div class="job-icon">💻</div>
+
+<h3>Data Entry Operator</h3>
+
+<p>
+Computer par information enter aur manage karne
+wali jobs. Basic computer skills useful hoti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">12th+</span>
+<span class="tag">Computer</span>
+<span class="tag">Data Entry</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful skills</strong>
+
+<span>
+Typing, basic computer aur document handling.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="12th">
+
+<div class="job-icon">📞</div>
+
+<h3>Customer Support</h3>
+
+<p>
+Customers se phone ya other communication channels
+ke through baat karke unki queries solve karna.
+</p>
+
+<div class="job-tags">
+<span class="tag">12th+</span>
+<span class="tag">Communication</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful skills</strong>
+
+<span>
+Communication, basic computer knowledge
+aur language skills useful ho sakti hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="12th">
+
+<div class="job-icon">🧑‍💼</div>
+
+<h3>Sales Executive</h3>
+
+<p>
+Customers ko products/services ke baare mein
+samjhana aur sales-related work karna.
+</p>
+
+<div class="job-tags">
+<span class="tag">12th+</span>
+<span class="tag">Sales</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful skills</strong>
+
+<span>
+Communication aur customer dealing skills.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="12th">
+
+<div class="job-icon">🏛️</div>
+
+<h3>Government Job Opportunities</h3>
+
+<p>
+12th qualification wali government vacancies
+different departments mein time-to-time aa sakti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">12th</span>
+<span class="tag">Government</span>
+</div>
+
+<div class="requirement">
+
+<strong>Important</strong>
+
+<span>
+Age, exam, subjects aur other eligibility
+har recruitment mein alag hoti hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🏛️ Search Government Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="12th">
+
+<div class="job-icon">🔧</div>
+
+<h3>Apprenticeship</h3>
+
+<p>
+Apprenticeship mein organisation ke saath practical
+work aur training ka experience mil sakta hai.
+</p>
+
+<div class="job-tags">
+<span class="tag">12th</span>
+<span class="tag">Training</span>
+</div>
+
+<div class="requirement">
+
+<strong>Check before applying</strong>
+
+<span>
+Trade, age, qualification aur other requirements
+programme ke according hoti hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Find Opportunities
+</a>
+
+</div>
+
+
+<!-- ================= ITI ================= -->
+
+<div class="job-card job-item" data-qualification="ITI">
+
+<div class="job-icon">⚡</div>
+
+<h3>Electrician</h3>
+
+<p>
+Electrical installation, maintenance aur repair
+se related technical work.
+</p>
+
+<div class="job-tags">
+<span class="tag">ITI</span>
+<span class="tag">Technical</span>
+<span class="tag">Electrician</span>
+</div>
+
+<div class="requirement">
+
+<strong>Common requirement</strong>
+
+<span>
+Relevant ITI trade ya vacancy-specific qualification.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Electrician Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="ITI">
+
+<div class="job-icon">🔩</div>
+
+<h3>Fitter</h3>
+
+<p>
+Machines aur mechanical components ki fitting,
+maintenance aur assembly se related work.
+</p>
+
+<div class="job-tags">
+<span class="tag">ITI</span>
+<span class="tag">Mechanical</span>
+<span class="tag">Fitter</span>
+</div>
+
+<div class="requirement">
+
+<strong>Common requirement</strong>
+
+<span>
+Fitter ya related trade ki qualification vacancy
+ke according required ho sakti hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Fitter Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="ITI">
+
+<div class="job-icon">🏭</div>
+
+<h3>Machine Operator</h3>
+
+<p>
+Manufacturing units mein machines ko operate
+aur basic production tasks handle karna.
+</p>
+
+<div class="job-tags">
+<span class="tag">ITI</span>
+<span class="tag">Production</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful</strong>
+
+<span>
+Relevant technical trade aur practical knowledge.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="ITI">
+
+<div class="job-icon">🛠️</div>
+
+<h3>Technician</h3>
+
+<p>
+Technical equipment, machines ya systems ki
+installation aur maintenance se related roles.
+</p>
+
+<div class="job-tags">
+<span class="tag">ITI</span>
+<span class="tag">Technical</span>
+<span class="tag">Technician</span>
+</div>
+
+<div class="requirement">
+
+<strong>Important</strong>
+
+<span>
+Technician kis field ka hai uske according
+specific trade required ho sakti hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Technician Jobs
+</a>
+
+</div>
+
+
+<!-- ================= DIPLOMA ================= -->
+
+<div class="job-card job-item" data-qualification="Diploma">
+
+<div class="job-icon">⚙️</div>
+
+<h3>Junior Technician</h3>
+
+<p>
+Technical departments mein equipment,
+maintenance aur operations se related role.
+</p>
+
+<div class="job-tags">
+<span class="tag">Diploma</span>
+<span class="tag">Technical</span>
+</div>
+
+<div class="requirement">
+
+<strong>Requirement</strong>
+
+<span>
+Relevant diploma branch aur vacancy-specific eligibility.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="Diploma">
+
+<div class="job-icon">📐</div>
+
+<h3>CAD / Technical Assistant</h3>
+
+<p>
+Engineering drawings, technical documentation
+aur computer-based design support se related work.
+</p>
+
+<div class="job-tags">
+<span class="tag">Diploma</span>
+<span class="tag">Technical</span>
+<span class="tag">CAD</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful skill</strong>
+
+<span>
+Relevant technical education aur CAD/software skills
+kuch jobs mein required ho sakti hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="Diploma">
+
+<div class="job-icon">🏗️</div>
+
+<h3>Site / Production Roles</h3>
+
+<p>
+Construction, manufacturing aur technical operations
+mein diploma-level opportunities ho sakti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">Diploma</span>
+<span class="tag">Operations</span>
+</div>
+
+<div class="requirement">
+
+<strong>Important</strong>
+
+<span>
+Branch, experience aur location vacancy ke
+according change hoti hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<!-- ================= GRADUATE ================= -->
+
+<div class="job-card job-item" data-qualification="Graduate">
+
+<div class="job-icon">💼</div>
+
+<h3>Management / Office Executive</h3>
+
+<p>
+Office operations, documentation, coordination
+aur administrative work se related opportunities.
+</p>
+
+<div class="job-tags">
+<span class="tag">Graduate</span>
+<span class="tag">Office</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful skills</strong>
+
+<span>
+Computer, communication, documentation aur organisation skills.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="Graduate">
+
+<div class="job-icon">📊</div>
+
+<h3>Account / Finance Roles</h3>
+
+<p>
+Accounts, billing, finance support aur bookkeeping
+type roles qualification aur skills ke according.
+</p>
+
+<div class="job-tags">
+<span class="tag">Graduate</span>
+<span class="tag">Finance</span>
+</div>
+
+<div class="requirement">
+
+<strong>Useful</strong>
+
+<span>
+Commerce/finance background ya relevant accounting skills
+kuch vacancies mein required ho sakti hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="Graduate">
+
+<div class="job-icon">👨‍💻</div>
+
+<h3>IT / Computer Roles</h3>
+
+<p>
+Software, support, data, web aur other IT-related
+roles qualification aur technical skills ke according.
+</p>
+
+<div class="job-tags">
+<span class="tag">Graduate</span>
+<span class="tag">IT</span>
+<span class="tag">Computer</span>
+</div>
+
+<div class="requirement">
+
+<strong>Important</strong>
+
+<span>
+Degree ke saath actual technical skills bhi important
+ho sakti hain.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search IT Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="Graduate">
+
+<div class="job-icon">🏦</div>
+
+<h3>Banking / Insurance Roles</h3>
+
+<p>
+Banking, finance aur insurance sector mein different
+entry-level aur graduate-level opportunities hoti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">Graduate</span>
+<span class="tag">Finance</span>
+</div>
+
+<div class="requirement">
+
+<strong>Check first</strong>
+
+<span>
+Private aur government recruitment ki eligibility
+alag ho sakti hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Jobs
+</a>
+
+</div>
+
+
+<!-- ================= PG ================= -->
+
+<div class="job-card job-item" data-qualification="PG">
+
+<div class="job-icon">🎓</div>
+
+<h3>Specialist Roles</h3>
+
+<p>
+Post-graduation ke baad subject aur professional
+specialisation ke according specialist roles search kiye ja sakte hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">PG</span>
+<span class="tag">Specialist</span>
+</div>
+
+<div class="requirement">
+
+<strong>Important</strong>
+
+<span>
+Exact PG degree aur specialisation vacancy ke according required hoti hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Specialist Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="PG">
+
+<div class="job-icon">🔬</div>
+
+<h3>Research / Project Roles</h3>
+
+<p>
+Universities, research organisations aur projects mein
+subject-specific research opportunities ho sakti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">PG</span>
+<span class="tag">Research</span>
+</div>
+
+<div class="requirement">
+
+<strong>Check</strong>
+
+<span>
+Subject, experience aur project-specific eligibility dekho.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Research Jobs
+</a>
+
+</div>
+
+
+<!-- ================= PHD ================= -->
+
+<div class="job-card job-item" data-qualification="PhD">
+
+<div class="job-icon">🧪</div>
+
+<h3>Researcher / Research Associate</h3>
+
+<p>
+Research projects mein subject-specific investigation,
+analysis aur research work se related roles.
+</p>
+
+<div class="job-tags">
+<span class="tag">PhD</span>
+<span class="tag">Research</span>
+</div>
+
+<div class="requirement">
+
+<strong>Important</strong>
+
+<span>
+Field, project aur institution ke according
+specific eligibility alag ho sakti hai.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Research Jobs
+</a>
+
+</div>
+
+
+<div class="job-card job-item" data-qualification="PhD">
+
+<div class="job-icon">👨‍🏫</div>
+
+<h3>Academic / Teaching Roles</h3>
+
+<p>
+Higher education aur academic institutions mein
+teaching, research aur academic opportunities ho sakti hain.
+</p>
+
+<div class="job-tags">
+<span class="tag">PhD</span>
+<span class="tag">Academic</span>
+<span class="tag">Teaching</span>
+</div>
+
+<div class="requirement">
+
+<strong>Check carefully</strong>
+
+<span>
+Institution, subject aur applicable recruitment rules
+zaroor check karo.
+</span>
+
+</div>
+
+<a
+class="search-job-btn"
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+🔎 Search Academic Jobs
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="empty" id="empty">
+😕 No jobs found.
+</div>
+
+</section>
+
+
+<!-- ================= MEWAT ================= -->
+
+<section class="location-box">
+
+<div class="section-title" style="margin-top:0;">
+
+<h2>
+📍 Mewat Se Job Search
+</h2>
+
+<p>
+Mewat ke users ke liye local opportunities ke saath
+nearby aur India-wide jobs bhi search karna useful rahega.
+</p>
+
+</div>
+
+
+<div class="location-grid">
+
+
+<div class="location-card">
+
+<h3>🟢 Mewat / Nearby</h3>
+
+<p>
+NCS par location aur keyword ke through
+nearby job opportunities search karo.
+</p>
+
+<a
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+Search Nearby Jobs →
+</a>
+
+</div>
+
+
+<div class="location-card">
+
+<h3>🇮🇳 India Wide</h3>
+
+<p>
+Agar Mewat mein suitable opportunity na mile,
+India ke other locations bhi search kar sakte ho.
+</p>
+
+<a
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+Search India Jobs →
+</a>
+
+</div>
+
+
+<div class="location-card">
+
+<h3>🏛️ Government Jobs</h3>
+
+<p>
+Government sector ki available opportunities
+official NCS search mein check karo.
+</p>
+
+<a
+href="https://www.ncs.gov.in/job-listing"
+target="_blank"
+rel="noopener">
+Search Government Jobs →
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= GUIDE ================= -->
+
+<section class="guide">
+
+<div class="section-title" style="margin-top:0;">
+
+<h2>
+🧭 Job Search Kaise Karein?
+</h2>
+
+<p>
+Bilkul simple — pehle qualification, phir job,
+phir official vacancy.
+</p>
+
+</div>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<h3>Qualification Select</h3>
+
+<p>
+8th, 10th, 12th, ITI, Diploma, Graduate,
+PG ya PhD choose karo.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">2</div>
+
+<h3>Job Samjho</h3>
+
+<p>
+Job mein kya kaam hota hai aur basic requirements
+kya ho sakti hain, pehle samjho.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">3</div>
+
+<h3>Location Search</h3>
+
+<p>
+Mewat/nearby ya India-wide location ke according
+vacancy search karo.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">4</div>
+
+<h3>Official Apply</h3>
+
+<p>
+Vacancy ki exact eligibility check karke
+official portal par application karo.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= HELP ================= -->
+
+<section class="help">
+
+<h2>
+🤝 Form Bharne Mein Help Chahiye?
+</h2>
+
+<p>
+Agar aap online form khud bhar sakte ho to official website
+par khud apply karo. Agar online process samajhne mein
+dikkat ho to authorised CSC ya applicable service centre
+se assistance li ja sakti hai.
+</p>
+
+
+<div class="help-grid">
+
+
+<div class="help-card">
+
+<strong>💻 Khud Bhar Sakte Ho</strong>
+
+<span>
+Official portal par directly registration aur application karo.
+</span>
+
+</div>
+
+
+<div class="help-card">
+
+<strong>🏪 Help Ki Zaroorat Hai</strong>
+
+<span>
+Authorised service centre se online process mein assistance lo.
+</span>
+
+</div>
+
+
+<div class="help-card">
+
+<strong>🔐 OTP Safe Rakho</strong>
+
+<span>
+OTP, password, PIN ya banking details kisi ko mat do.
+OTP ho to khud enter karo.
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= SAFETY ================= -->
+
+<section class="safety">
+
+<h2>
+⚠️ Job Fraud Se Bachna
+</h2>
+
+<p>
+Kisi bhi job ko apply karne se pehle vacancy ki details
+aur official source verify karo.
+</p>
+
+<ul>
+
+<li>
+Job ke naam par unnecessary payment mat karo.
+</li>
+
+<li>
+Unknown WhatsApp/Telegram links par documents upload mat karo.
+</li>
+
+<li>
+OTP, UPI PIN, ATM PIN aur password kisi ko mat do.
+</li>
+
+<li>
+Company/recruiter ko verify karo.
+</li>
+
+<li>
+Age, qualification aur last date khud check karo.
+</li>
+
+</ul>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<strong>Mewat Saathi</strong>
+
+<p>
+Mewat ki awaaz, Mewat ke logon ke saath.
+</p>
+
+<p>
+Jobs & Rozgar • Qualification-first job guidance
+</p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   MEWAT SAATHI JOB SEARCH SYSTEM
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    let selectedQualification = "";
+
+    const searchInput =
+        document.getElementById("jobSearch");
+
+    const searchButton =
+        document.getElementById("searchButton");
+
+    const resultTitle =
+        document.getElementById("resultTitle");
+
+    const resultCount =
+        document.getElementById("resultCount");
+
+    const emptyBox =
+        document.getElementById("empty");
+
+    const jobCards =
+        document.querySelectorAll(".job-item");
+
+    const qualificationButtons =
+        document.querySelectorAll(".qualification-btn");
+
+
+    /* =================================================
+       TEXT NORMALIZER
+    ================================================= */
+
+    function normalizeText(text){
+
+        return text
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g," ");
+
+    }
+
+
+    /* =================================================
+       FILTER JOBS
+    ================================================= */
+
+    function filterJobs(){
+
+        const query =
+            normalizeText(searchInput.value);
+
+        let count = 0;
+
+
+        jobCards.forEach(function(card){
+
+            const cardText =
+                normalizeText(card.textContent);
+
+            const cardQualification =
+                normalizeText(
+                    card.dataset.qualification || ""
+                );
+
+
+            /* -------------------------------
+               SEARCH MATCH
+            -------------------------------- */
+
+            const searchMatch =
+                query === "" ||
+                cardText.includes(query) ||
+                cardQualification.includes(query);
+
+
+            /* -------------------------------
+               QUALIFICATION MATCH
+            -------------------------------- */
+
+            const qualificationMatch =
+                selectedQualification === "" ||
+                cardQualification ===
+                normalizeText(selectedQualification);
+
+
+            /* -------------------------------
+               FINAL MATCH
+            -------------------------------- */
+
+            if(searchMatch && qualificationMatch){
+
+                card.style.display = "flex";
+
+                count++;
+
+            }
+
+            else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        /* =================================================
+           RESULT TITLE
+        ================================================= */
+
+        if(query !== ""){
+
+            resultTitle.textContent =
+                "🔎 Search Results";
+
+            resultCount.textContent =
+                count + " Results";
+
+        }
+
+        else if(selectedQualification !== ""){
+
+            resultTitle.textContent =
+                "💼 " +
+                selectedQualification +
+                " ke liye job opportunities";
+
+            resultCount.textContent =
+                count + " Jobs";
+
+        }
+
+        else{
+
+            resultTitle.textContent =
+                "👇 Qualification select karo";
+
+            resultCount.textContent =
+                "0 Jobs";
+
+        }
+
+
+        /* =================================================
+           EMPTY MESSAGE
+        ================================================= */
+
+        if(count === 0){
+
+            emptyBox.style.display = "block";
+
+
+            if(query !== ""){
+
+                emptyBox.innerHTML =
+                    "😕 <strong>No jobs found</strong><br>" +
+                    "Dusra job name ya keyword search karke dekho.";
+
+            }
+
+            else if(selectedQualification !== ""){
+
+                emptyBox.innerHTML =
+                    "😕 Is qualification ke liye abhi result nahi mila.";
+
+            }
+
+            else{
+
+                emptyBox.innerHTML =
+                    "👇 Pehle qualification select karo ya upar job search karo.";
+
+            }
+
+        }
+
+        else{
+
+            emptyBox.style.display = "none";
+
+        }
+
+    }
+
+
+    /* =================================================
+       QUALIFICATION BUTTONS
+    ================================================= */
+
+    qualificationButtons.forEach(function(button){
+
+        button.addEventListener("click", function(){
+
+            selectedQualification =
+                button.dataset.qualification;
+
+
+            /* active button */
+
+            qualificationButtons.forEach(function(btn){
+
+                btn.classList.remove("active");
+
+            });
+
+            button.classList.add("active");
+
+
+            /* search clear */
+
+            searchInput.value = "";
+
+
+            /* filter */
+
+            filterJobs();
+
+        });
+
+    });
+
+
+    /* =================================================
+       LIVE SEARCH
+    ================================================= */
+
+    searchInput.addEventListener("input", function(){
+
+        filterJobs();
+
+    });
+
+
+    /* =================================================
+       SEARCH BUTTON
+    ================================================= */
+
+    searchButton.addEventListener("click", function(){
+
+        filterJobs();
+
+        searchInput.focus();
+
+    });
+
+
+    /* =================================================
+       ENTER KEY
+    ================================================= */
+
+    searchInput.addEventListener("keydown", function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            filterJobs();
+
+        }
+
+    });
+
+
+    /* =================================================
+       INITIAL STATE
+    ================================================= */
+
+    jobCards.forEach(function(card){
+
+        card.style.display = "none";
+
+    });
+
+
+    emptyBox.style.display = "block";
+
+    emptyBox.innerHTML =
+        "👇 Pehle qualification select karo ya upar job search karo.";
+
+});
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Entrance Exam Guide | Mewat Saathi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#f6f9ff,#f8f5ff);color:#172033;line-height:1.65}
+a{text-decoration:none}
+.wrap{width:min(1100px,92%);margin:auto}
+.hero{margin:20px auto;padding:34px 26px;border-radius:28px;background:linear-gradient(135deg,#172554,#2563eb,#7c3aed);color:#fff;box-shadow:0 18px 45px #2563eb30}
+.badge{display:inline-block;padding:6px 12px;border-radius:30px;background:#ffffff18;border:1px solid #ffffff30;font-size:13px;margin-bottom:12px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin-bottom:8px}
+.hero p{color:#e7edff}
+.back{display:inline-block;margin:16px 0;padding:10px 15px;border-radius:12px;background:#fff;color:#172554;font-weight:700;box-shadow:0 6px 20px #00000012}
+.info{background:#fff;border-radius:22px;padding:23px;margin:18px 0;box-shadow:0 8px 28px #0f172a0d}
+.info h2{font-size:22px;margin-bottom:10px;color:#172554}
+.info h3{font-size:18px;margin:17px 0 7px;color:#1d4ed8}
+.info p{color:#475569}
+.info ul{padding-left:22px;color:#475569}
+.info li{margin:5px 0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mini{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:16px}
+.mini strong{display:block;color:#172554;margin-bottom:4px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{border:1px solid #dbe3ef;padding:9px;text-align:left}
+th{background:#eff6ff;color:#172554}
+.note{padding:15px;border-radius:15px;background:#fff7ed;border-left:5px solid #f97316;color:#7c2d12;margin-top:12px}
+.good{padding:15px;border-radius:15px;background:#ecfdf5;border-left:5px solid #10b981;color:#065f46;margin-top:12px}
+.source{display:inline-block;margin:7px 7px 0 0;padding:10px 13px;border-radius:11px;background:#172554;color:white;font-weight:700;font-size:13px}
+.step{counter-increment:step;position:relative;padding:14px 14px 14px 50px;background:#f8fafc;border-radius:15px;margin:9px 0}
+.step:before{content:counter(step);position:absolute;left:14px;top:13px;width:25px;height:25px;border-radius:50%;background:#2563eb;color:#fff;text-align:center;line-height:25px;font-weight:bold}
+.steps{counter-reset:step}
+.footer{margin-top:40px;background:#0f172a;color:#cbd5e1;padding:28px 0}
+.footer strong{color:#fff}
+.hide{display:none}
+@media(max-width:750px){.grid{grid-template-columns:1fr}.hero{padding:27px 20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="exams.html">← Back to Entrance Exams</a>
+<section class="hero">
+<div class="badge">🎓 Mewat Saathi • Detailed Exam Guide</div>
+<h1 id="title">Entrance Exam</h1>
+<p id="subtitle">Complete beginner-friendly guide</p>
+</section>
+<div id="content"></div>
+</div>
+<footer class="footer"><div class="wrap"><strong>🌱 Mewat Saathi</strong><br>Mewat ki awaaz, Mewat ke logon ke saath.<br><small>Exam dates, fees, eligibility and patterns can change. Always verify the latest official notification before applying.</small></div></footer>
+
+<script>
+const exams = {
+
+jee:{
+title:"JEE Main + JEE Advanced",
+subtitle:"Engineering se IIT, NIT, IIIT aur other institutes tak ka complete route",
+sections:[
+["🎯 About the Exam",`
+<p><strong>JEE Main:</strong> भारत में B.E./B.Tech, B.Arch और B.Planning admissions ke liye major national-level entrance examination hai. JEE Main Paper 1 B.E./B.Tech route ke liye use hota hai.</p>
+<p><strong>JEE Advanced:</strong> IITs me Bachelor's, Integrated Master's aur Dual Degree programmes me admission ke liye entrance examination hai. 2026 me JEE Advanced seven zonal coordinating IITs ke through JAB ke guidance me conduct hua.</p>
+<div class="good"><strong>Simple samjho:</strong> Engineering ke liye pehle JEE Main route samjho. IIT target kar rahe ho to JEE Advanced ka route bhi samjho.</div>`],
+["🏛️ Conducting Body & Frequency",`
+<ul><li>JEE Main: National Testing Agency (NTA).</li><li>JEE Advanced: seven zonal coordinating IITs under Joint Admission Board.</li><li>JEE Main 2026 me Session 1 aur Session 2 conduct hue.</li><li>JEE Advanced 2026 ek examination cycle me hua.</li></ul>`],
+["🎓 Who Should Give This Exam?",`
+<ul><li>PCM students jo engineering/B.Tech karna chahte hain.</li><li>NIT/IIIT/participating institutes target karne wale students.</li><li>IIT target karne wale students ko JEE Advanced eligibility bhi dekhni hoti hai.</li></ul>`],
+["🎓 Courses & Where Admission Happens",`
+<div class="grid">
+<div class="mini"><strong>JEE Main</strong> B.E./B.Tech, B.Arch, B.Planning ke applicable routes.</div>
+<div class="mini"><strong>JEE Advanced</strong> IITs ke Bachelor's, Integrated Master's aur Dual Degree programmes.</div>
+</div>
+<p style="margin-top:12px">JEE Main ke through participating NITs, IIITs, other CFTIs/participating institutions ke admission routes mil sakte hain. Counselling rules institute/category/programme ke according hote hain.</p>`],
+["🎓 JEE Advanced Eligibility",`
+<ul>
+<li>JEE Advanced 2026 ke liye JEE Main 2026 Paper 1 ke top 2,50,000 successful candidates ke shortlisting rules apply hue.</li>
+<li>JEE Advanced ke attempt/age/qualifying-year rules fixed universal statement se nahi samajhne chahiye; har year brochure check karna zaroori hai.</li>
+<li>Class 12 qualifying examination, required subjects aur marks/board percentile criteria admission year ke official rules ke according check karo.</li>
+</ul>
+<div class="note">⚠️ Internet par purane “2 attempts”, “75%” ya category rules ko blindly copy mat karo. Current year brochure hi final source hai.</div>`],
+["📝 JEE Main 2026 Paper 1 Pattern",`
+<table><tr><th>Subject</th><th>Section A</th><th>Section B</th><th>Total Questions</th><th>Marks</th></tr>
+<tr><td>Mathematics</td><td>20 MCQ</td><td>5 Numerical</td><td>25</td><td>100</td></tr>
+<tr><td>Physics</td><td>20 MCQ</td><td>5 Numerical</td><td>25</td><td>100</td></tr>
+<tr><td>Chemistry</td><td>20 MCQ</td><td>5 Numerical</td><td>25</td><td>100</td></tr>
+<tr><th>Total</th><th>60</th><th>15</th><th>75</th><th>300</th></tr></table>
+<ul><li>Correct answer: +4</li><li>Incorrect answer: -1</li><li>Unanswered: 0</li><li>Duration: 3 hours</li><li>Computer Based Test</li></ul>`],
+["📝 JEE Advanced Pattern",`
+<ul><li>2026 me Paper 1 aur Paper 2 dono compulsory the.</li><li>Har paper 3 hours ka tha.</li><li>Har paper me Physics, Chemistry aur Mathematics sections the.</li><li>Question papers Hindi aur English dono me available the.</li><li>Questions comprehension, reasoning aur analytical ability test karne ke liye design kiye jaate hain.</li><li>Some questions me negative marking ho sakti hai; exact marking scheme exam instructions me di jaati hai.</li></ul>
+<div class="note">JEE Advanced ka question type/marking fixed “single correct + multiple correct + integer” formula samajhna safe nahi hai. Year-specific instructions ko final maana jata hai.</div>`],
+["📚 Complete Syllabus",`
+<h3>Physics</h3><p>Mechanics, thermodynamics, properties of matter, waves, electricity & magnetism, optics, modern physics aur related Class 11–12 concepts.</p>
+<h3>Chemistry</h3><p>Physical Chemistry, Inorganic Chemistry aur Organic Chemistry. Numerical ability, bonding, reactions, mechanisms aur conceptual understanding important hai.</p>
+<h3>Mathematics</h3><p>Algebra, calculus, coordinate geometry, vectors & 3D geometry, trigonometry, probability/statistics aur related topics.</p>
+<div class="good">JEE Advanced me sirf formula yaad karna enough nahi hota. Question comprehension, reasoning aur multi-concept application demand kar sakta hai.</div>`],
+["🖥️ Registration — Step by Step",`
+<div class="steps">
+<div class="step">Official website par notification/brochure padho.</div>
+<div class="step">New registration karo aur active mobile/email use karo.</div>
+<div class="step">Personal, academic aur category details carefully fill karo.</div>
+<div class="step">Required photo/signature/certificates official specifications ke according upload karo.</div>
+<div class="step">Application fee, if applicable, official portal par pay karo.</div>
+<div class="step">Confirmation page/save/print details safely rakho.</div>
+<div class="step">Admit card download karke exam-centre instructions padho.</div>
+</div>`],
+["📄 Documents & Exam Day",`
+<ul><li>Admit card.</li><li>Valid photo ID as specified by the examination authority.</li><li>Category/PwD documents where applicable.</li><li>Exam authority ke prohibited/provided items rules check karo.</li></ul>
+<div class="note">Exact document list har exam/year me change ho sakti hai. Admit-card instructions final maanoge.</div>`],
+["📊 Result, Rank, Cutoff & Counselling",`
+<h3>JEE Main</h3><p>NTA score/result ke baad applicable institutes ki counselling/admission process follow hoti hai. JoSAA/CSAB routes institute and seat type ke according relevant ho sakte hain.</p>
+<h3>JEE Advanced</h3><p>Result ke baad rank list aur IIT admission process aata hai. IIT seats ke liye JoSAA counselling me registration, choice filling, seat allocation aur reporting hoti hai.</p>
+<h3>Cutoff</h3><p>“Cutoff” ek hi number nahi hota. Qualifying cutoff, category, institute, branch, round aur seat type ke according closing ranks/marks alag ho sakte hain.</p>`],
+["🏫 Counselling & Seat Allotment",`
+<div class="steps">
+<div class="step">Counselling portal par registration.</div>
+<div class="step">Available colleges/branches ko research karo.</div>
+<div class="step">Choice filling karo.</div>
+<div class="step">Seat allotment result dekho.</div>
+<div class="step">Required acceptance/payment/document process complete karo.</div>
+<div class="step">Upgrade/freeze rules samjho.</div>
+<div class="step">Final institute reporting/admission complete karo.</div>
+</div>`],
+["🚀 Preparation Strategy",`
+<h3>Beginner ho to:</h3>
+<ul><li>NCERT/Class 11–12 concepts strong karo.</li><li>Har chapter ke basic examples solve karo.</li><li>Phir PYQs start karo.</li><li>Weak chapters ki error notebook banao.</li><li>Weekly timed practice karo.</li><li>Full mock tests ke baad analysis zaroor karo.</li></ul>
+<h3>Daily approach</h3><p>Concept → solved examples → practice questions → PYQ → mistake analysis → revision.</p>`],
+["❌ Common Mistakes",`
+<ul><li>Sirf lectures dekhna aur questions na lagana.</li><li>PYQs ko last month ke liye chhodna.</li><li>Mock score dekhkar analysis na karna.</li><li>Har din nayi book/resource start karna.</li><li>Official notices ignore karna.</li><li>College/branch choices bina research ke fill karna.</li></ul>`],
+["💼 Courses & Career Scope",`
+<ul><li>Computer Science / IT</li><li>Electrical Engineering</li><li>Mechanical Engineering</li><li>Electronics & Communication</li><li>Civil Engineering</li><li>Chemical Engineering</li><li>Biotechnology and other branches</li></ul>
+<p>Career outcome college, branch, skills, internships, projects, higher study aur experience par depend karta hai. Sirf entrance exam clear karna career guarantee nahi hai.</p>`],
+["🔁 Alternative Routes",`
+<p>Agar JEE route suit nahi karta, to state/university/private university entrances jaise BITSAT, VITEEE, WBJEE, MHT-CET, COMEDK, MET, SRMJEEE aur other institute-specific routes bhi check kiye ja sakte hain. Har exam ki eligibility aur admission rules alag hain.</p>`],
+["🌐 Official Websites",`
+<a class="source" target="_blank" href="https://jeemain.nta.nic.in/">Official JEE Main</a>
+<a class="source" target="_blank" href="https://jeeadv.ac.in/">Official JEE Advanced</a>
+<a class="source" target="_blank" href="https://josaa.nic.in/">Official JoSAA</a>`]
+]},
+
+neet:{
+title:"NEET UG",
+subtitle:"Medical, dental aur applicable AYUSH undergraduate admissions ka national route",
+sections:[
+["🎯 About the Exam",`<p>NEET (UG) National Testing Agency dwara conduct kiya jane wala national undergraduate medical entrance examination hai. Iske through applicable undergraduate medical/dental/AYUSH admissions ke routes use hote hain.</p>`],
+["🏛️ Conducting Body & Frequency",`<ul><li>Conducting body: NTA.</li><li>Exam cycle aur dates official notification se confirm hoti hain.</li><li>2026 ka official bulletin NTA ne publish kiya.</li></ul>`],
+["🎓 Who Should Give This Exam?",`<ul><li>PCB/eligible science background ke students.</li><li>MBBS, BDS aur applicable AYUSH routes target karne wale students.</li><li>Course-specific eligibility zaroor check karo.</li></ul>`],
+["🎓 Courses & Admission",`<ul><li>MBBS</li><li>BDS</li><li>Applicable BAMS/BUMS/BSMS/BHMS routes</li></ul><p>College, state counselling, category aur course ke according admission procedure different ho sakta hai.</p>`],
+["📝 Exam Pattern",`<p>NEET ka exact current pattern, question count, marking, duration aur language ke liye latest NTA information bulletin ko final source maana jata hai. Is page ko yearly bulletin ke saath update kiya jana chahiye.</p><div class="note">⚠️ Purane NEET patterns ko current year samajhkar form ya preparation decision mat lo.</div>`],
+["📚 Syllabus",`<p>Physics, Chemistry aur Biology ke prescribed syllabus se questions aate hain. Official NTA syllabus PDF ko chapter-by-chapter checklist ki tarah use karo.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">Official NTA NEET website open karo.</div><div class="step">Registration details fill karo.</div><div class="step">Personal/academic information carefully enter karo.</div><div class="step">Required documents/images upload karo.</div><div class="step">Fee pay karo.</div><div class="step">Confirmation page save karo.</div></div>`],
+["📊 Result & Counselling",`<p>Result ke baad counselling route course aur seat type ke according hota hai. Government/private colleges, All India Quota, state counselling aur applicable AYUSH counselling ke rules alag ho sakte hain.</p>`],
+["📚 Preparation Strategy",`<ul><li>NCERT Biology ko line-by-line strong karo.</li><li>Physics ke concepts + numericals.</li><li>Chemistry me Physical + Organic + Inorganic balance.</li><li>PYQs aur timed mock practice.</li><li>Wrong questions ki revision notebook.</li></ul>`],
+["❌ Common Mistakes",`<ul><li>NCERT ko ignore karna.</li><li>Only lectures dekhna.</li><li>Mock analysis na karna.</li><li>Counselling rules ko result ke baad hi dekhna.</li></ul>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://neet.nta.nic.in/">Official NEET UG</a>`]
+]},
+
+cuet:{
+title:"CUET UG",
+subtitle:"Central aur participating universities ke undergraduate programmes ke liye common route",
+sections:[
+["🎯 About the Exam",`<p>CUET UG students ko participating universities ke undergraduate programmes ke admission process me common entrance route provide karta hai.</p>`],
+["🎓 Who Should Give This Exam?",`<p>Science, Commerce aur Arts/Humanities students — lekin desired university aur programme ki subject eligibility pehle check karna zaroori hai.</p>`],
+["📚 Courses",`<p>BA, BSc, BCom aur many other UG programmes ke admission routes participating universities ke according available ho sakte hain.</p>`],
+["📝 Exam Pattern",`<p>CUET ka subject selection, test structure aur marking programme/university requirements ke saath check karna chahiye. Latest NTA information bulletin final source hai.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">CUET official portal par registration.</div><div class="step">Personal/academic details fill.</div><div class="step">Required test subjects/programmes carefully select.</div><div class="step">Documents + fee process complete.</div><div class="step">Admit card and exam.</div></div>`],
+["📊 Result ke baad",`<p>CUET score ke baad desired university ka separate admission/counselling portal/process follow karna pad sakta hai. CUET score ka matlab automatic admission nahi hota.</p>`],
+["🎯 Preparation",`<ul><li>Apne selected subjects ka official syllabus identify karo.</li><li>NCERT/board concepts strong karo.</li><li>Question practice aur timed tests.</li><li>Target university ke programme rules check karo.</li></ul>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://cuet.nta.nic.in/">Official CUET UG</a>`]
+]},
+
+bitsat:{
+title:"BITSAT",
+subtitle:"BITS Pilani, Goa aur Hyderabad ke Integrated First Degree programmes ka entrance",
+sections:[
+["🎯 About the Exam",`<p>BITSAT BITS Pilani dwara conduct kiya jane wala computer-based online test hai. 2026 brochure ke according BITS Pilani, Goa aur Hyderabad campuses ke Integrated First Degree programmes me admission BITSAT ke basis par hua.</p>`],
+["🎓 Who Should Give This Exam?",`<p>Engineering aur BITS ke eligible Integrated First Degree programmes target karne wale students.</p>`],
+["🏫 Where Admission?",`<ul><li>BITS Pilani</li><li>BITS Goa</li><li>BITS Hyderabad</li></ul>`],
+["📝 Exam Pattern",`<p>Exact 2026 question distribution, duration, marking aur eligibility latest BITSAT brochure se verify karo. BITS admission portal official brochure provide karta hai.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">BITS admission portal open.</div><div class="step">Registration.</div><div class="step">Application details.</div><div class="step">Programme/campus preferences as required.</div><div class="step">Fee payment.</div><div class="step">Admit card/test slot instructions.</div></div>`],
+["📊 Result & Admission",`<p>Test score ke baad BITS ka admission process, preference submission aur seat allocation rules follow hote hain.</p>`],
+["📚 Preparation",`<ul><li>PCM/required subjects ke Class 11–12 concepts.</li><li>Speed + accuracy.</li><li>Computer-based timed practice.</li><li>Official mock/sample material.</li></ul>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://www.bitsadmission.com/">Official BITS Admissions</a>`]
+]},
+
+viteee:{
+title:"VITEEE",
+subtitle:"VIT ke B.Tech admission ke liye entrance examination",
+sections:[
+["🎯 About the Exam",`<p>VITEEE VIT ke B.Tech degree programme me admission ke liye entrance examination hai. 2026 official page ke according VITEEE B.Tech admission ke liye mandatory tha; XII board, JEE Main ya SAT scores ko substitute nahi maana gaya.</p>`],
+["📝 2026 Exam Pattern",`<table><tr><th>Section</th><th>Questions</th></tr><tr><td>Mathematics/Biology</td><td>40</td></tr><tr><td>Physics</td><td>35</td></tr><tr><td>Chemistry</td><td>35</td></tr><tr><td>Aptitude</td><td>10</td></tr><tr><td>English</td><td>5</td></tr><tr><th>Total</th><th>125</th></tr></table><ul><li>Duration: 2 hours 30 minutes</li><li>Correct: +4</li><li>Wrong: -1</li><li>Unanswered: 0</li><li>English only</li><li>CBT</li></ul>`],
+["🖥️ Application Process",`<div class="steps"><div class="step">New user registration.</div><div class="step">Sign in.</div><div class="step">Application form fill.</div><div class="step">Payment.</div><div class="step">Photo/signature upload.</div><div class="step">Filled application save.</div></div>`],
+["📚 Preparation",`<ul><li>PCM/PCB basics strong karo.</li><li>Aptitude and English ko ignore mat karo.</li><li>125-question timed practice karo.</li><li>Negative marking ki wajah se accuracy important rakho.</li></ul>`],
+["🏫 Admission",`<p>VIT campuses ke B.Tech programmes me rank/selection process ke through admission hota hai. Counselling instructions official portal par follow karo.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://viteee.vit.ac.in/">Official VITEEE</a>`]
+]},
+
+comedk:{
+title:"COMEDK UGET",
+subtitle:"Karnataka participating engineering colleges ka common entrance route",
+sections:[
+["🎯 About the Exam",`<p>COMEDK UGET participating Karnataka engineering institutions ke B.E. admissions ke liye common entrance test hai. 2026 me test ke baad centralized online counselling hui.</p>`],
+["📝 2026 Pattern",`<table><tr><th>Subject</th><th>Questions</th></tr><tr><td>Physics</td><td>60 MCQ</td></tr><tr><td>Chemistry</td><td>60 MCQ</td></tr><tr><td>Mathematics</td><td>60 MCQ</td></tr><tr><th>Total</th><th>180</th></tr></table><ul><li>Total marks: 180</li><li>Correct: +1</li><li>Wrong: no negative marking</li><li>English only</li><li>CBT</li></ul>`],
+["📚 Syllabus",`<p>2026 brochure ke according test CBSE syllabus based tha; approximately Class 11 33% aur Class 12 67% weightage.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">Official COMEDK portal.</div><div class="step">Registration + form.</div><div class="step">Required uploads/details.</div><div class="step">Online payment.</div><div class="step">Admit card/TAT.</div></div>`],
+["📊 Result & Counselling",`<p>Entrance score se merit/rank generate hoti hai aur centralized online counselling ke through participating institutions me seat selection hota hai.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://www.comedk.org/">Official COMEDK</a>`]
+]},
+
+mhtcet:{
+title:"MHT-CET",
+subtitle:"Maharashtra ke professional undergraduate courses ka state entrance route",
+sections:[
+["🎯 About the Exam",`<p>MHT-CET Maharashtra State Common Entrance Test Cell dwara conduct kiya jane wala entrance system hai. Engineering/technology aur applicable pharmacy/agriculture related routes ke liye programme-specific rules check hote hain.</p>`],
+["📝 2026 Pattern",`<p>2026 official brochure ke according PCM aur PCB examination duration 180 minutes thi. Physics/Chemistry/Biology questions ke liye 1 mark per question aur no negative marking specified thi. Language options English/Marathi/Urdu ke rules brochure me diye gaye hain.</p>`],
+["🎓 Who Should Give?",`<p>Maharashtra professional undergraduate programmes target karne wale eligible students. Candidature/domicile aur course-specific rules important ho sakte hain.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">CET Cell official website.</div><div class="step">Registration.</div><div class="step">Personal/academic details.</div><div class="step">Photo/signature/documents.</div><div class="step">Fee payment.</div><div class="step">Admit card.</div></div>`],
+["📊 Result & CAP",`<p>Result ke baad Maharashtra Centralized Admission Process (CAP) aur course-specific counselling rules follow hote hain.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://cetcell.mahacet.org/">Official MHT-CET Cell</a>`]
+]},
+
+wbjee:{
+title:"WBJEE",
+subtitle:"West Bengal engineering, technology aur pharmacy admission route",
+sections:[
+["🎯 About the Exam",`<p>WBJEE West Bengal Joint Entrance Examinations Board dwara conduct hota hai. Applicable engineering/technology/pharmacy programmes aur participating institutions ke admission route ke liye use hota hai.</p>`],
+["🎓 Who Should Give?",`<p>West Bengal ke participating institutions me eligible professional UG admission target karne wale students. Domicile aur programme-specific eligibility check karo.</p>`],
+["📝 Exam Pattern",`<p>Exact 2026 question count, category-wise marking aur paper details official WBJEE 2026 Information Bulletin se verify karni chahiye. Board ne 2026 bulletin aur counselling notices publish kiye hain.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">WBJEE Board official portal.</div><div class="step">Registration.</div><div class="step">Application details.</div><div class="step">Uploads + fee.</div><div class="step">Admit card.</div><div class="step">Exam.</div></div>`],
+["📊 Result & Counselling",`<p>Result/rank ke baad WBJEE counselling, choice filling aur seat allocation process follow hota hai. 2026 me online decentralized counselling notices bhi published hue.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://wbjeeb.nic.in/">Official WBJEE Board</a>`]
+]},
+
+iiser:{
+title:"IISER Aptitude Test (IAT)",
+subtitle:"Science, BS-MS aur research-oriented undergraduate route",
+sections:[
+["🎯 About the Exam",`<p>IISER Aptitude Test science aur research-oriented undergraduate admissions ka important route hai. IISERs ke programmes science subjects me deep study aur research exposure ke liye designed hain.</p>`],
+["🎓 Who Should Give?",`<ul><li>Science me strong interest.</li><li>Research/scientific career explore karna.</li><li>Physics, Chemistry, Mathematics, Biology background ke eligible students.</li></ul>`],
+["📚 What After Admission?",`<p>IISER programmes me students basic sciences ke multiple areas study karte hain aur research-oriented academic path follow kar sakte hain.</p>`],
+["📝 Exam",`<p>2026 official IAT brochure me eligibility, certificates, exam process aur programme details published hain. Exact current question distribution/marking ko latest brochure se verify karo.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">IISER admissions portal.</div><div class="step">Registration.</div><div class="step">Academic/category details.</div><div class="step">Required certificates upload.</div><div class="step">Fee/application submit.</div><div class="step">Admit card + exam.</div></div>`],
+["📚 Preparation",`<p>NCERT/Class 11–12 Physics, Chemistry, Mathematics, Biology concepts strong karo. Science reasoning aur objective practice karo.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://www.iiseradmission.in/">Official IISER Admissions</a>`]
+]},
+
+nest:{
+title:"NEST",
+subtitle:"NISER aur CEBS ka science/research undergraduate route",
+sections:[
+["🎯 About the Exam",`<p>NEST science-oriented undergraduate admission test hai. NEST 2026 brochure ke according examination Biology, Chemistry, Mathematics aur Physics ke four sections me structured tha.</p>`],
+["📝 2026 Pattern & Scoring",`<table><tr><th>Section</th><th>Questions</th><th>Marking</th></tr><tr><td>Biology</td><td>20</td><td>+3 correct, -1 wrong</td></tr><tr><td>Chemistry</td><td>20</td><td>+3 correct, -1 wrong</td></tr><tr><td>Mathematics</td><td>20</td><td>+3 correct, -1 wrong</td></tr><tr><td>Physics</td><td>20</td><td>+3 correct, -1 wrong</td></tr></table><p>Ranking calculation me section-wise minimum admissible score rules apply hote hain.</p>`],
+["📚 Syllabus",`<p>NEST 2026 syllabus primarily CBSE 2025–26/NCERT Class XI–XII Mathematics, Physics, Chemistry aur Biology par based tha. Class 10 science knowledge bhi kuch questions ke liye useful ho sakti hai.</p>`],
+["🎓 Admission",`<p>NEST ke through NISER aur CEBS jaise science/research institutions ke applicable programmes ka route milta hai.</p>`],
+["📚 Preparation",`<ul><li>NCERT line-by-line.</li><li>Four science sections me balanced preparation.</li><li>Timed objective practice.</li><li>Previous/sample papers.</li></ul>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://www.nestexam.in/">Official NEST</a>`]
+]},
+
+clat:{
+title:"CLAT UG",
+subtitle:"National Law Universities ke undergraduate law programmes ka major entrance route",
+sections:[
+["🎯 About the Exam",`<p>CLAT UG participating National Law Universities ke undergraduate law programmes me admission ke liye major common entrance exam hai.</p>`],
+["🎓 Who Should Give?",`<p>12th ke baad law karne wale students. Arts, Commerce aur Science background students programme eligibility ke according apply kar sakte hain.</p>`],
+["📚 Preparation Areas",`<ul><li>English Language</li><li>Current Affairs including General Knowledge</li><li>Legal Reasoning</li><li>Logical Reasoning</li><li>Quantitative Techniques</li></ul>`],
+["📝 Pattern",`<p>Exact current year questions, duration, marks aur negative marking official CLAT notification/brochure se verify karo. Pattern year-to-year update ho sakta hai.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">Consortium of NLUs portal.</div><div class="step">Registration.</div><div class="step">Personal/academic details.</div><div class="step">Programme/category choices.</div><div class="step">Documents + fee.</div><div class="step">Admit card and exam.</div></div>`],
+["📊 Result & Counselling",`<p>Rank ke baad counselling/preference process me participating NLUs ki choices fill ki jaati hain aur seat allotment hoti hai.</p>`],
+["💼 Career",`<p>Law degree ke baad litigation, corporate law, compliance, policy, legal research, judiciary-related competitive routes, academia aur other legal careers explore kiye ja sakte hain.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://consortiumofnlus.ac.in/">Official CLAT Consortium</a>`]
+]},
+
+nda:{
+title:"NDA & NA",
+subtitle:"UPSC ke through defence officer-entry examination",
+sections:[
+["🎯 About the Exam",`<p>NDA & NA Examination UPSC dwara conduct hota hai aur defence academy entry ka officer-level route hai. Army, Navy aur Air Force related eligibility course/notification ke according hoti hai.</p>`],
+["📅 Frequency",`<p>UPSC calendar me NDA & NA examination cycles year me multiple sessions ke form me aa sakte hain. 2026 me NDA & NA I aur II dono examinations listed hue.</p>`],
+["🎓 Who Should Give?",`<p>12th-level eligible students jo defence officer career explore karna chahte hain.</p>`],
+["📝 Written Exam",`<p>Written examination me Mathematics aur General Ability Test (GAT) papers hote hain. Exact current marks, duration, language aur negative marking notification me verify karo.</p>`],
+["🪖 Selection",`<div class="steps"><div class="step">UPSC written exam.</div><div class="step">Written result/shortlisting.</div><div class="step">SSB-related selection stages.</div><div class="step">Medical/other applicable standards.</div><div class="step">Final merit and joining process.</div></div>`],
+["⚠️ Eligibility",`<p>Age, educational qualification, marital status, physical/medical standards aur service-specific subjects strict rules ke according hote hain. Har notification carefully read karna mandatory hai.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://upsc.gov.in/">Official UPSC</a>`]
+]},
+
+nata:{
+title:"NATA",
+subtitle:"Architecture aptitude aur B.Arch admission route",
+sections:[
+["🎯 About the Exam",`<p>NATA architecture aptitude assessment hai jo participating institutions ke B.Arch admission process me use hota hai.</p>`],
+["🎓 Who Should Give?",`<ul><li>Architecture me interest rakhne wale students.</li><li>Design, drawing, spatial understanding aur mathematics me interest.</li><li>12th subject eligibility carefully check karne wale applicants.</li></ul>`],
+["📚 Preparation Areas",`<ul><li>Visual reasoning</li><li>Drawing/visualisation</li><li>Mathematical ability</li><li>General aptitude</li><li>Architecture awareness</li></ul>`],
+["📝 Pattern",`<p>NATA ka exact yearly pattern, number of attempts, duration aur scoring official Council of Architecture notification se verify karo.</p>`],
+["🖥️ Registration",`<div class="steps"><div class="step">Official NATA portal.</div><div class="step">Registration.</div><div class="step">Academic details.</div><div class="step">Documents/photo upload.</div><div class="step">Fee/application.</div><div class="step">Test instructions.</div></div>`],
+["🏫 Admission",`<p>NATA score ke baad B.Arch admission participating college/university ke admission rules ke according hota hai. NATA score hona automatic college admission guarantee nahi hai.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://www.nata.in/">Official NATA</a>`]
+]},
+
+jmi:{
+title:"Jamia Millia Islamia (JMI)",
+subtitle:"Course-wise university admission — ek single common JMI exam nahi",
+sections:[
+["🎯 About the Admission System",`<p>JMI ek Central University hai. Sab courses ke liye ek hi universal entrance exam nahi hota. Programme ke according JMI entrance, JEE Main, NATA, CUET, NEET, NCET ya other specified admission routes apply ho sakte hain.</p>`],
+["🎓 Sabse important rule",`<div class="good"><strong>Pehle course choose karo → phir JMI prospectus dekho → phir us course ka admission route identify karo.</strong></div>`],
+["📚 Example Routes",`<ul><li>Some programmes → JMI entrance test</li><li>Some programmes → JEE Main merit</li><li>Some programmes → CUET</li><li>Some programmes → NEET</li><li>Some programmes → NATA</li><li>Some programmes → NCET</li></ul>`],
+["🖥️ Application",`<div class="steps"><div class="step">JMI prospectus open karo.</div><div class="step">Desired course ki eligibility padho.</div><div class="step">Required entrance route identify karo.</div><div class="step">JMI admission portal par application complete karo.</div><div class="step">Entrance/merit process follow karo.</div><div class="step">Selection/document verification.</div><div class="step">Admission.</div></div>`],
+["📊 Result & Admission",`<p>Course-specific merit/entrance result ke baad JMI ke rules ke according selection, document verification aur admission process hota hai.</p>`],
+["⚠️ Common Mistake",`<p>Sirf “JMI me admission lena hai” kehkar CUET/JEE dena enough nahi hai. Desired course ka exact 2026–27 prospectus entry check karo.</p>`],
+["🌐 Official Website",`<a class="source" target="_blank" href="https://admission.jmi.ac.in/">JMI Admission Portal</a>`]
+]}
+};
+
+const params=new URLSearchParams(location.search);
+const key=params.get("exam")||"jee";
+const exam=exams[key]||exams.jee;
+
+document.getElementById("title").textContent=exam.title;
+document.getElementById("subtitle").textContent=exam.subtitle;
+
+const content=document.getElementById("content");
+
+exam.sections.forEach((s,i)=>{
+const box=document.createElement("section");
+box.className="info";
+box.innerHTML=`<h2>${i+1}. ${s[0]}</h2>${s[1]}`;
+content.appendChild(box);
+});
+</script>
+</body>
+</html>

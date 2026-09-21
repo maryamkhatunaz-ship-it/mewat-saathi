@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mewat Health Directory | Mewat Saathi</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#202124;
+}
+
+/* HEADER */
+
+header{
+    padding:14px 6%;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+}
+
+.logo{
+    font-size:21px;
+    font-weight:900;
+    color:#087f5b;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#087f5b;
+    font-weight:800;
+    background:#ecfaf4;
+    padding:9px 15px;
+    border-radius:12px;
+}
+
+/* HERO */
+
+.hero-wrap{
+    max-width:1050px;
+    margin:18px auto 10px;
+    padding:0 18px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    padding:22px 18px;
+    border-radius:28px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #e9fff6,
+        #effbff,
+        #f3edff
+    );
+
+    box-shadow:
+    10px 10px 25px rgba(0,0,0,.10),
+    -7px -7px 20px rgba(255,255,255,.95);
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(8,127,91,.10);
+    top:-75px;
+    left:-35px;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(89,70,180,.08);
+    right:-45px;
+    bottom:-75px;
+}
+
+.hero-icon{
+    position:relative;
+    z-index:2;
+
+    width:70px;
+    height:70px;
+
+    margin:0 auto 10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:21px;
+
+    font-size:35px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #fff,
+        #dcefe8
+    );
+
+    box-shadow:
+    8px 8px 17px rgba(0,0,0,.12),
+    -6px -6px 14px rgba(255,255,255,.95);
+}
+
+.hero h1{
+    position:relative;
+    z-index:2;
+
+    color:#087f5b;
+
+    font-size:
+    clamp(27px,4vw,39px);
+
+    margin-bottom:6px;
+}
+
+.hero p{
+    position:relative;
+    z-index:2;
+
+    max-width:700px;
+    margin:auto;
+
+    color:#667085;
+
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* SEARCH */
+
+.search-box{
+    max-width:850px;
+    margin:18px auto 0;
+
+    position:relative;
+    z-index:5;
+}
+
+.search-box input{
+    width:100%;
+
+    padding:15px 18px;
+
+    border:none;
+    outline:none;
+
+    border-radius:17px;
+
+    background:#fff;
+
+    font-size:15px;
+
+    box-shadow:
+    inset 3px 3px 8px rgba(0,0,0,.05),
+    6px 6px 15px rgba(0,0,0,.08);
+}
+
+/* MAIN */
+
+main{
+    max-width:1050px;
+    margin:auto;
+    padding:8px 18px 50px;
+}
+
+/* FILTERS */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    flex-wrap:wrap;
+    margin:18px 0;
+}
+
+.filter-btn{
+    border:none;
+    cursor:pointer;
+
+    padding:9px 15px;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    color:#596273;
+
+    font-weight:800;
+
+    box-shadow:
+    5px 5px 12px rgba(0,0,0,.08),
+    -4px -4px 10px rgba(255,255,255,.9);
+}
+
+.filter-btn.active{
+    background:#087f5b;
+    color:#fff;
+}
+
+/* TITLE */
+
+.section-title{
+    margin:25px 0 15px;
+
+    padding-left:13px;
+
+    border-left:7px solid #087f5b;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.section-title p{
+    margin-top:4px;
+    color:#667085;
+    font-size:14px;
+}
+
+/* CARDS */
+
+.directory-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:18px;
+}
+
+.place-card{
+    padding:21px;
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #fff,
+        #edf1f4
+    );
+
+    box-shadow:
+    9px 9px 20px rgba(0,0,0,.10),
+    -7px -7px 18px rgba(255,255,255,.95);
+
+    transition:.3s;
+}
+
+.place-card:hover{
+    transform:translateY(-5px);
+}
+
+.place-top{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-bottom:13px;
+}
+
+.place-icon{
+    min-width:58px;
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    font-size:29px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #fff,
+        #dfeee8
+    );
+
+    box-shadow:
+    6px 6px 13px rgba(0,0,0,.10),
+    -5px -5px 12px rgba(255,255,255,.9);
+}
+
+.place-card h3{
+    color:#087f5b;
+    font-size:18px;
+}
+
+.badge{
+    display:inline-block;
+
+    margin-top:5px;
+
+    padding:4px 8px;
+
+    border-radius:8px;
+
+    background:#e7f8f0;
+
+    color:#087f5b;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+.place-card p{
+    color:#667085;
+
+    font-size:13.5px;
+
+    line-height:1.6;
+
+    margin-bottom:7px;
+}
+
+.address{
+    color:#3f4652 !important;
+    font-weight:700;
+}
+
+/* BUTTON */
+
+.card-btn{
+    display:inline-block;
+
+    margin-top:10px;
+
+    text-decoration:none;
+
+    padding:9px 14px;
+
+    border-radius:11px;
+
+    background:#087f5b;
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+.email-btn{
+    background:#eef4ff;
+    color:#3159a5;
+    margin-left:6px;
+}
+
+/* EMERGENCY */
+
+.emergency{
+    margin-top:22px;
+
+    padding:23px;
+
+    border-radius:23px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #b91c1c,
+        #e53935
+    );
+
+    color:#fff;
+
+    box-shadow:
+    10px 10px 23px rgba(120,0,0,.18);
+}
+
+.emergency h2{
+    margin-bottom:8px;
+}
+
+.emergency p{
+    line-height:1.65;
+    font-size:14px;
+}
+
+.emergency-number{
+    display:inline-block;
+
+    margin-top:13px;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    background:#fff;
+
+    color:#b71c1c;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:900;
+}
+
+/* DEPARTMENT */
+
+.department{
+    margin-top:22px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:17px;
+}
+
+.person-card{
+    padding:19px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    box-shadow:
+    7px 7px 17px rgba(0,0,0,.08);
+}
+
+.person-card h3{
+    color:#087f5b;
+    margin-bottom:7px;
+}
+
+.person-card p{
+    color:#667085;
+    font-size:13.5px;
+    line-height:1.6;
+}
+
+.person-card a{
+    color:#087f5b;
+    font-weight:800;
+    text-decoration:none;
+}
+
+/* VERIFIED */
+
+.verified{
+    margin-top:22px;
+
+    padding:20px;
+
+    border-radius:21px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #effaf5,
+        #f2f6ff
+    );
+
+    box-shadow:
+    7px 7px 17px rgba(0,0,0,.07);
+}
+
+.verified h3{
+    color:#087f5b;
+    margin-bottom:7px;
+}
+
+.verified p{
+    color:#667085;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* SOURCE */
+
+.source{
+    margin-top:20px;
+
+    padding:17px;
+
+    border-radius:18px;
+
+    background:#eef1f5;
+
+    color:#667085;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+.source strong{
+    color:#202124;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:30px;
+
+    padding:25px 15px;
+
+    text-align:center;
+
+    background:#17212b;
+
+    color:#d9e0e6;
+}
+
+footer strong{
+    color:#6ee7b7;
+}
+
+footer p{
+    margin-top:6px;
+    font-size:13px;
+}
+
+/* NO RESULT */
+
+.no-result{
+    display:none;
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#667085;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .directory-grid,
+    .department{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    header{
+        padding:13px 5%;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .hero{
+        padding:18px 14px;
+        border-radius:22px;
+    }
+
+    .hero-icon{
+        width:60px;
+        height:60px;
+        font-size:30px;
+    }
+
+    .place-card{
+        padding:18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        Mewat Saathi
+    </div>
+
+    <a href="health.html" class="back-btn">
+        ← Health
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<div class="hero-wrap">
+
+<section class="hero">
+
+    <div class="hero-icon">
+        📍
+    </div>
+
+    <h1>
+        Mewat Health Directory
+    </h1>
+
+    <p>
+        Mewat/Nuh area mein verified government health
+        facilities aur important health contacts ek jagah.
+    </p>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 Hospital, Nalhar, Mandikhera, health..."
+        >
+
+    </div>
+
+</section>
+
+</div>
+
+
+<main>
+
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+    <button
+        class="filter-btn active"
+        data-filter="all">
+        All
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="hospital">
+        🏥 Hospitals
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="emergency">
+        🚑 Emergency
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="department">
+        👨‍⚕️ Health Department
+    </button>
+
+</div>
+
+
+<!-- HOSPITALS -->
+
+<div class="section-title">
+
+    <h2>
+        🏥 Government Hospitals
+    </h2>
+
+    <p>
+        Official Nuh District Administration listing se verified information.
+    </p>
+
+</div>
+
+
+<div class="directory-grid">
+
+
+<!-- MANDIKHERA -->
+
+<div
+    class="place-card"
+    data-category="hospital"
+    data-search="G H Mandikhera Hospital Mandikhera Firojpur Jhirka Nuh government hospital"
+>
+
+    <div class="place-top">
+
+        <div class="place-icon">
+            🏥
+        </div>
+
+        <div>
+
+            <h3>
+                G H Mandikhera Hospital
+            </h3>
+
+            <span class="badge">
+                ✓ Official Listing
+            </span>
+
+        </div>
+
+    </div>
+
+    <p class="address">
+        📍 Village & Post Mandikhera,
+        Tehsil Firojpur Jhirka, Nuh,
+        Haryana - 122103
+    </p>
+
+    <p>
+        Government hospital listed by
+        District Administration, Nuh.
+    </p>
+
+    <p>
+        ✉️ dhs.csmwt@hry.nic.in
+    </p>
+
+    <a
+        class="card-btn"
+        href="https://nuh.gov.in/public-utility/g-h-mandikhera-hospital/"
+        target="_blank"
+    >
+        Official Details
+    </a>
+
+</div>
+
+
+<!-- NALHAR -->
+
+<div
+    class="place-card"
+    data-category="hospital"
+    data-search="Shaheed Hasan Khan Mewati Government Medical College Nalhar Hospital Nuh"
+>
+
+    <div class="place-top">
+
+        <div class="place-icon">
+            🏥
+        </div>
+
+        <div>
+
+            <h3>
+                SHKM Government Medical College Nalhar Hospital
+            </h3>
+
+            <span class="badge">
+                ✓ Official Listing
+            </span>
+
+        </div>
+
+    </div>
+
+    <p class="address">
+        📍 Nalhar, Nuh,
+        Haryana - 122107
+    </p>
+
+    <p>
+        Shaheed Hasan Khan Mewati Government Medical College
+        Nalhar Hospital.
+    </p>
+
+    <p>
+        ☎️ 01267-282007
+    </p>
+
+    <p>
+        ✉️ directorgmcmewat@gmail.com
+    </p>
+
+    <a
+        class="card-btn"
+        href="tel:01267282007"
+    >
+        📞 Call
+    </a>
+
+    <a
+        class="card-btn email-btn"
+        href="https://nuh.gov.in/public-utility/shkm-gmc-nalhar-hospital/"
+        target="_blank"
+    >
+        Details
+    </a>
+
+</div>
+
+
+</div>
+
+
+<!-- EMERGENCY -->
+
+<div
+    class="emergency"
+    data-category="emergency"
+    data-search="ambulance patient transport emergency 102 Nuh Mewat"
+>
+
+    <h2>
+        🚑 Patient Transport / Ambulance
+    </h2>
+
+    <p>
+        District Administration Nuh ki official website par
+        <strong>Rogi Vahan / Patient Transport - 102</strong>
+        listed hai.
+    </p>
+
+    <p style="margin-top:7px;">
+        Emergency situation mein delay na karein aur
+        appropriate emergency medical help lein.
+    </p>
+
+    <a
+        href="tel:102"
+        class="emergency-number"
+    >
+        📞 102
+    </a>
+
+</div>
+
+
+<!-- HEALTH DEPARTMENT -->
+
+<div class="section-title">
+
+    <h2>
+        👨‍⚕️ Nuh Health Department
+    </h2>
+
+    <p>
+        District health administration ke verified contacts.
+    </p>
+
+</div>
+
+
+<div class="department">
+
+
+<div
+    class="person-card"
+    data-category="department"
+    data-search="CMO Nuh Chief Medical Officer health department"
+>
+
+    <h3>
+        Chief Medical Officer, Nuh
+    </h3>
+
+    <p>
+        👨‍⚕️ Dr. Sarvjeet Thaper
+    </p>
+
+    <p>
+        ☎️ 01268-661012
+    </p>
+
+    <p>
+        ✉️ dhs.csmwt@hry.nic.in
+    </p>
+
+    <a
+        href="tel:01268661012"
+    >
+        📞 Call Office
+    </a>
+
+</div>
+
+
+<div
+    class="person-card"
+    data-category="department"
+    data-search="Director Medical College Nalhar Mukesh Kumar"
+>
+
+    <h3>
+        Director, Medical College Nalhar
+    </h3>
+
+    <p>
+        👨‍⚕️ Sh. Mukesh Kumar
+    </p>
+
+    <p>
+        ☎️ 01267-282007
+    </p>
+
+    <p>
+        ✉️ gmcmewat@gmail.com
+    </p>
+
+    <a
+        href="tel:01267282007"
+    >
+        📞 Call Office
+    </a>
+
+</div>
+
+
+<div
+    class="person-card"
+    data-category="department"
+    data-search="Deputy CMO Nuh Rakesh Chawla"
+>
+
+    <h3>
+        Deputy CMO, Nuh
+    </h3>
+
+    <p>
+        👨‍⚕️ Dr. Rakesh Chawla
+    </p>
+
+    <p>
+        ✉️ chawlarakesh71@yahoo.com
+    </p>
+
+</div>
+
+
+<div
+    class="person-card"
+    data-category="department"
+    data-search="SMO Nuh Senior Medical Officer Kapil"
+>
+
+    <h3>
+        Senior Medical Officer, Nuh
+    </h3>
+
+    <p>
+        👨‍⚕️ Dr. Kapil
+    </p>
+
+    <p>
+        ✉️ smonuh@hry.nic.in
+    </p>
+
+</div>
+
+
+</div>
+
+
+<!-- VERIFIED INFO -->
+
+<div class="verified">
+
+    <h3>
+        🛡️ Information Verified
+    </h3>
+
+    <p>
+        Is directory mein currently wahi health facilities aur
+        contacts rakhe gaye hain jo District Administration Nuh
+        ki official website par available hain.
+        Hum fake hospital names, fake phone numbers ya
+        unverified local listings add nahi karenge.
+    </p>
+
+</div>
+
+
+<!-- IMPORTANT -->
+
+<div class="source">
+
+    <strong>
+        ⚠️ Important:
+    </strong>
+
+    Hospital ki services, timings, emergency availability ya
+    contact details change ho sakti hain. Visit/call karne se
+    pehle official information verify karna better hai.
+
+    <br><br>
+
+    <strong>
+        Official Source:
+    </strong>
+
+    District Administration, Nuh —
+    Hospitals & Health Department.
+
+</div>
+
+
+<div class="no-result" id="noResult">
+
+    😕 Koi matching health facility nahi mili.
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+    <strong>
+        Mewat Saathi
+    </strong>
+
+    <p>
+        Mewat ki awaaz, Mewat ke logon ke saath
+    </p>
+
+</footer>
+
+
+<script>
+
+/* SEARCH + FILTER */
+
+const searchInput =
+document.getElementById("searchInput");
+
+const filterButtons =
+document.querySelectorAll(".filter-btn");
+
+const cards =
+document.querySelectorAll(
+    ".place-card, .person-card, .emergency"
+);
+
+const noResult =
+document.getElementById("noResult");
+
+let currentFilter = "all";
+
+
+function updateResults(){
+
+    const search =
+    searchInput.value
+    .toLowerCase()
+    .trim();
+
+    let visible = 0;
+
+
+    cards.forEach(card => {
+
+        const category =
+        card.dataset.category || "";
+
+        const text =
+        (
+            card.innerText +
+            " " +
+            (card.dataset.search || "")
+        ).toLowerCase();
+
+
+        const filterMatch =
+        currentFilter === "all" ||
+        category === currentFilter;
+
+
+        const searchMatch =
+        text.includes(search);
+
+
+        if(filterMatch && searchMatch){
+
+            card.style.display = "";
+
+            visible++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    noResult.style.display =
+    visible === 0 ? "block" : "none";
+
+}
+
+
+/* SEARCH */
+
+searchInput.addEventListener(
+    "input",
+    updateResults
+);
+
+
+/* FILTER */
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            filterButtons.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+            this.classList.add("active");
+
+            currentFilter =
+            this.dataset.filter;
+
+            updateResults();
+
+        }
+    );
+
+});
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Women's Health | Mewat Saathi</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, #ffe5f0 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #e8ddff 0%, transparent 35%),
+        #f6f7fb;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #9b3d72;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: white;
+      background: #9b3d72;
+      padding: 9px 17px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(155,61,114,0.25);
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: 1100px;
+      margin: 35px auto 25px;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .hero-icon {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+
+      background: linear-gradient(145deg, #ffffff, #eadde5);
+
+      box-shadow:
+        12px 12px 25px rgba(0,0,0,0.12),
+        -8px -8px 20px rgba(255,255,255,0.9);
+
+      font-size: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #667085;
+      max-width: 720px;
+      margin: auto;
+      font-size: 17px;
+    }
+
+    /* VOICE */
+
+    .voice-box {
+      margin: 25px auto 5px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .voice-btn {
+      border: none;
+      cursor: pointer;
+      padding: 13px 22px;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #ffffff, #e4dce2);
+      color: #8d3267;
+      font-size: 16px;
+      font-weight: 800;
+
+      box-shadow:
+        7px 7px 15px rgba(0,0,0,0.12),
+        -5px -5px 12px rgba(255,255,255,0.9);
+
+      transition: 0.25s;
+    }
+
+    .voice-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .voice-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* MAIN */
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 10px 20px 50px;
+    }
+
+    .section-title {
+      font-size: 25px;
+      margin: 35px 0 18px;
+    }
+
+    /* 3D CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #ffffff, #ebe8ed);
+      border-radius: 22px;
+      padding: 25px;
+
+      box-shadow:
+        10px 10px 22px rgba(0,0,0,0.10),
+        -8px -8px 20px rgba(255,255,255,0.95);
+
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+
+      box-shadow:
+        15px 18px 30px rgba(0,0,0,0.14),
+        -8px -8px 20px rgba(255,255,255,1);
+    }
+
+    .card-icon {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #667085;
+      font-size: 15px;
+    }
+
+    /* INFO */
+
+    .info-box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 20px;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.07);
+    }
+
+    .info-box h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .info-box p {
+      color: #555;
+    }
+
+    /* WARNING */
+
+    .warning {
+      background: #fff5f5;
+      border: 1px solid #ffd5d5;
+      border-radius: 20px;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
+    .warning h3 {
+      color: #c62828;
+      margin-bottom: 10px;
+    }
+
+    .warning ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    /* SOURCE */
+
+    .source {
+      margin-top: 30px;
+      background: #fff0f7;
+      padding: 20px;
+      border-radius: 18px;
+      font-size: 14px;
+      color: #526070;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 30px;
+      color: #777;
+      background: rgba(255,255,255,0.7);
+    }
+
+    @media(max-width:600px) {
+
+      header {
+        padding: 12px 4%;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero {
+        padding: 25px 15px;
+      }
+
+      .container {
+        padding: 10px 15px 40px;
+      }
+
+      .card {
+        padding: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      Mewat Saathi
+    </div>
+
+    <a href="health.html" class="back-btn">
+      ← Health
+    </a>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-icon">
+      👩
+    </div>
+
+    <h1>Women's Health</h1>
+
+    <p>
+      Women ki health, periods, pregnancy, nutrition,
+      hygiene aur important warning signs ke baare mein
+      simple information.
+    </p>
+
+
+    <!-- VOICE BUTTON -->
+
+    <div class="voice-box">
+
+      <button class="voice-btn" onclick="speakPage()">
+        🔊 Sunna Hai
+      </button>
+
+      <button class="voice-btn" onclick="stopVoice()">
+        ⏹ Stop
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <main class="container">
+
+
+    <!-- INTRO -->
+
+    <h2 class="section-title">
+      Women's Health kyun important hai?
+    </h2>
+
+    <div class="info-box">
+
+      <p>
+        Women ki health mein physical health ke saath
+        reproductive health, nutrition, mental well-being
+        aur regular health check-up bhi important hote hain.
+        Kisi bhi unusual ya serious problem ko ignore nahi
+        karna chahiye.
+      </p>
+
+    </div>
+
+
+    <!-- PERIODS -->
+
+    <h2 class="section-title">
+      Periods & Menstrual Health
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">
+          🩸
+        </div>
+
+        <h3>Periods</h3>
+
+        <p>
+          Periods ek natural body process hai.
+          Har person ka cycle thoda different ho sakta hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🧼
+        </div>
+
+        <h3>Hygiene</h3>
+
+        <p>
+          Periods ke time personal hygiene maintain karna
+          aur sanitary products ko properly use karna important hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          📅
+        </div>
+
+        <h3>Cycle par dhyan</h3>
+
+        <p>
+          Periods ki date aur unusual changes ko note karna
+          useful ho sakta hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🩺
+        </div>
+
+        <h3>Unusual Changes</h3>
+
+        <p>
+          Bahut unusual bleeding, severe pain ya baar-baar
+          unusual changes ho to healthcare professional se
+          advice leni chahiye.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- PREGNANCY -->
+
+    <h2 class="section-title">
+      Pregnancy Care
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">
+          🤰
+        </div>
+
+        <h3>Regular Check-up</h3>
+
+        <p>
+          Pregnancy ke time regular antenatal check-ups
+          important hote hain.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🥗
+        </div>
+
+        <h3>Nutrition</h3>
+
+        <p>
+          Pregnancy mein balanced nutrition aur healthcare
+          professional ki advice important hoti hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          💊
+        </div>
+
+        <h3>Medicines</h3>
+
+        <p>
+          Pregnancy ke time koi medicine ya supplement
+          khud se start na karein.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          👩‍⚕️
+        </div>
+
+        <h3>Doctor ki Advice</h3>
+
+        <p>
+          Pregnancy mein unusual symptoms ya concern ho to
+          healthcare professional se contact karein.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- NUTRITION -->
+
+    <h2 class="section-title">
+      Nutrition & Daily Health
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">
+          🥦
+        </div>
+
+        <h3>Balanced Food</h3>
+
+        <p>
+          Daily diet mein different nutritious foods ko
+          include karna important hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          💧
+        </div>
+
+        <h3>Paani</h3>
+
+        <p>
+          Din bhar enough fluids lena body ke liye important hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🛌
+        </div>
+
+        <h3>Sleep & Rest</h3>
+
+        <p>
+          Proper sleep aur rest overall health ko support karta hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🧘
+        </div>
+
+        <h3>Mental Well-being</h3>
+
+        <p>
+          Stress, anxiety ya emotional problems ko ignore
+          nahi karna chahiye.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- WARNING -->
+
+    <h2 class="section-title">
+      ⚠️ Kab Medical Help Len?
+    </h2>
+
+    <div class="warning">
+
+      <h3>
+        In signs ko ignore na karein
+      </h3>
+
+      <ul>
+
+        <li>
+          Bahut zyada ya unusual bleeding
+        </li>
+
+        <li>
+          Bahut severe pain
+        </li>
+
+        <li>
+          Pregnancy ke time unusual bleeding ya severe pain
+        </li>
+
+        <li>
+          Saans lene mein dikkat
+        </li>
+
+        <li>
+          Behoshi ya severe weakness
+        </li>
+
+        <li>
+          High fever ke saath condition worse hona
+        </li>
+
+        <li>
+          Koi symptom continuously badhna
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- SIMPLE RULE -->
+
+    <h2 class="section-title">
+      Simple Rule
+    </h2>
+
+    <div class="info-box">
+
+      <p>
+        Apni body mein koi unusual change notice ho to
+        usko ignore na karein. Problem serious lag rahi ho
+        ya baar-baar ho rahi ho to qualified healthcare
+        professional se advice lena better hai.
+      </p>
+
+    </div>
+
+
+    <!-- AVOID -->
+
+    <h2 class="section-title">
+      Kya Avoid Karein?
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">
+          🚫
+        </div>
+
+        <h3>Problem Ignore na karein</h3>
+
+        <p>
+          Serious ya unusual symptoms ko unnecessarily delay
+          na karein.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          💊
+        </div>
+
+        <h3>Medicine khud se na lein</h3>
+
+        <p>
+          Especially pregnancy ke time medicines ke liye
+          healthcare professional ki advice lein.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🔍
+        </div>
+
+        <h3>Self-diagnosis avoid karein</h3>
+
+        <p>
+          Internet par symptoms match karke khud se disease
+          confirm na karein.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- SOURCE -->
+
+    <div class="source">
+
+      <strong>
+        Health Information:
+      </strong>
+
+      <br><br>
+
+      Ye page general health information ke liye hai.
+      Ye doctor ki diagnosis ya treatment ka replacement nahi hai.
+
+      <br><br>
+
+      Serious symptoms ya emergency mein qualified medical
+      help leni chahiye.
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <strong>
+      Mewat Saathi
+    </strong>
+
+    <br>
+
+    Mewat ki awaaz, Mewat ke logon ke saath ❤️
+
+  </footer>
+
+
+  <!-- VOICE SCRIPT -->
+
+  <script>
+
+    let speech;
+
+    function speakPage() {
+
+      if (!("speechSynthesis" in window)) {
+
+        alert("Aapke browser mein voice feature available nahi hai.");
+
+        return;
+      }
+
+      speechSynthesis.cancel();
+
+      const text = document.querySelector("main").innerText;
+
+      speech = new SpeechSynthesisUtterance(text);
+
+      speech.lang = "hi-IN";
+      speech.rate = 0.9;
+      speech.pitch = 1;
+
+      speechSynthesis.speak(speech);
+    }
+
+
+    function stopVoice() {
+
+      if ("speechSynthesis" in window) {
+
+        speechSynthesis.cancel();
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bukhaar & Common Illness | Mewat Saathi</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, #dff7ff 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #e8ddff 0%, transparent 35%),
+        #f5f7fb;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1769aa;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: white;
+      background: #1769aa;
+      padding: 9px 17px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(23,105,170,0.25);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1100px;
+      margin: 35px auto 25px;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .hero-icon {
+      width: 82px;
+      height: 82px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      background: linear-gradient(145deg, #ffffff, #dfe8f5);
+      box-shadow:
+        12px 12px 25px rgba(0,0,0,0.12),
+        -8px -8px 20px rgba(255,255,255,0.9);
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #667085;
+      max-width: 700px;
+      margin: auto;
+      font-size: 17px;
+    }
+
+    /* MAIN */
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 10px 20px 50px;
+    }
+
+    .section-title {
+      font-size: 25px;
+      margin: 35px 0 18px;
+    }
+
+    /* 3D CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #ffffff, #e9eef5);
+      border-radius: 22px;
+      padding: 25px;
+      box-shadow:
+        10px 10px 22px rgba(0,0,0,0.10),
+        -8px -8px 20px rgba(255,255,255,0.95);
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow:
+        15px 18px 30px rgba(0,0,0,0.14),
+        -8px -8px 20px rgba(255,255,255,1);
+    }
+
+    .card-icon {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #667085;
+      font-size: 15px;
+    }
+
+    /* INFO BOX */
+    .info-box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    }
+
+    .info-box h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .info-box p {
+      color: #555;
+    }
+
+    /* WARNING */
+    .warning {
+      background: #fff5f5;
+      border: 1px solid #ffd5d5;
+      border-radius: 20px;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
+    .warning h3 {
+      color: #c62828;
+      margin-bottom: 10px;
+    }
+
+    .warning ul {
+      padding-left: 20px;
+    }
+
+    /* LIST */
+    ul {
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    /* SOURCE */
+    .source {
+      margin-top: 30px;
+      background: #eef7ff;
+      padding: 20px;
+      border-radius: 18px;
+      font-size: 14px;
+      color: #526070;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 30px;
+      color: #777;
+      background: rgba(255,255,255,0.7);
+    }
+
+    @media(max-width:600px) {
+      header {
+        padding: 12px 4%;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero {
+        padding: 25px 15px;
+      }
+
+      .container {
+        padding: 10px 15px 40px;
+      }
+
+      .card {
+        padding: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Mewat Saathi</div>
+
+    <a href="health.html" class="back-btn">
+      ← Health
+    </a>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-icon">🌡️</div>
+
+    <h1>Bukhaar & Common Illness</h1>
+
+    <p>
+      Bukhaar ke common reasons, ghar par basic care aur
+      kab doctor ko dikhana chahiye — simple language mein.
+    </p>
+
+  </section>
+
+
+  <main class="container">
+
+    <!-- BASIC -->
+    <h2 class="section-title">Bukhaar kya hota hai?</h2>
+
+    <div class="info-box">
+
+      <p>
+        Bukhaar body ka temperature normal se badh jana hai.
+        Ye aksar infection ya kisi illness ki wajah se hota hai.
+        Bukhaar khud koi disease nahi, balki body mein kisi
+        problem ka ek sign ho sakta hai.
+      </p>
+
+    </div>
+
+
+    <!-- SYMPTOMS -->
+    <h2 class="section-title">Common signs</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🌡️</div>
+        <h3>Body temperature badhna</h3>
+        <p>
+          Body ka temperature normal se zyada ho sakta hai.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🥶</div>
+        <h3>Thand ya kampkapi</h3>
+        <p>
+          Bukhaar ke saath thand lagna ya kampkapi ho sakti hai.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">😴</div>
+        <h3>Weakness</h3>
+        <p>
+          Body mein weakness aur thakaan feel ho sakti hai.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🤕</div>
+        <h3>Headache & body pain</h3>
+        <p>
+          Kuch illnesses mein headache aur body pain bhi ho sakta hai.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- WHAT TO DO -->
+    <h2 class="section-title">Bukhaar mein kya karein?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">💧</div>
+        <h3>Paani aur fluids</h3>
+        <p>
+          Paani aur suitable fluids lete rahein,
+          taaki body mein paani ki kami na ho.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🛌</div>
+        <h3>Proper rest</h3>
+        <p>
+          Body ko recover karne ke liye enough rest karein.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🍲</div>
+        <h3>Halka khana</h3>
+        <p>
+          Agar bhookh ho to halka aur easily digest hone wala
+          khana le sakte hain.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">👀</div>
+        <h3>Symptoms dekhein</h3>
+        <p>
+          Bukhaar ke saath aur kya symptoms aa rahe hain,
+          un par bhi dhyan dein.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- HOW IT GETS BETTER -->
+    <h2 class="section-title">Bukhaar kaise theek hota hai?</h2>
+
+    <div class="info-box">
+
+      <p>
+        Bukhaar ka treatment uske reason par depend karta hai.
+        Bahut se common infections mein body rest, fluids aur
+        time ke saath recover kar leti hai.
+        Lekin agar symptoms badh rahe hain ya condition serious
+        lag rahi hai, to doctor se check karwana zaroori hai.
+      </p>
+
+    </div>
+
+
+    <!-- WARNING -->
+    <h2 class="section-title">Kab doctor ko dikhana chahiye?</h2>
+
+    <div class="warning">
+
+      <h3>⚠️ In signs ko ignore na karein</h3>
+
+      <ul>
+        <li>Saans lene mein dikkat</li>
+        <li>Seene mein dard</li>
+        <li>Bahut zyada weakness</li>
+        <li>Baar-baar vomiting</li>
+        <li>Bahut kam urine aana</li>
+        <li>Confusion ya unusual drowsiness</li>
+        <li>Condition continuously kharab hona</li>
+      </ul>
+
+    </div>
+
+
+    <!-- IMPORTANT -->
+    <h2 class="section-title">Important</h2>
+
+    <div class="info-box">
+
+      <p>
+        Har bukhaar ka reason same nahi hota.
+        Viral infection, flu, dengue aur doosri illnesses
+        mein symptoms alag ho sakte hain.
+        Isliye sirf bukhaar dekhkar khud se disease decide
+        na karein.
+      </p>
+
+    </div>
+
+
+    <!-- DO NOT -->
+    <h2 class="section-title">Kya avoid karein?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <h3>Khud se disease decide na karein</h3>
+        <p>
+          Sirf symptoms dekhkar exact illness confirm nahi hoti.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💊</div>
+        <h3>Khud se antibiotics na lein</h3>
+        <p>
+          Antibiotics har bukhaar ke liye useful nahi hoti.
+          Doctor ki advice zaroori hai.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⏳</div>
+        <h3>Condition ko ignore na karein</h3>
+        <p>
+          Agar symptoms serious ya continuously worse ho rahe hain,
+          medical help lein.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- SOURCE -->
+    <div class="source">
+
+      <strong>Health information:</strong><br><br>
+
+      Ye page general health information ke liye hai.
+      Serious symptoms ya worsening condition mein qualified
+      healthcare professional se medical advice lena chahiye.
+
+      <br><br>
+
+      Information checked against WHO health guidance.
+    </div>
+
+  </main>
+
+
+  <footer>
+    <strong>Mewat Saathi</strong><br>
+    Mewat ki awaaz, Mewat ke logon ke saath ❤️
+  </footer>
+
+</body>
+</html>

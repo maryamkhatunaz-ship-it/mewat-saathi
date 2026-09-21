@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PM-KISAN - Mewat Saathi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .info {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info p {
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .info li {
+            margin: 10px 0;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌾 PM-KISAN</h1>
+
+    <p>Pradhan Mantri Kisan Samman Nidhi</p>
+
+
+    <button onclick="showInfo('info1')">
+        📚 PM-KISAN Kya Hai?
+    </button>
+
+    <div id="info1" class="info">
+
+        <p>
+            PM-KISAN Government of India ki Central Sector Scheme hai.
+        </p>
+
+        <p>
+            Is scheme ke under eligible landholding farmer families
+            ko ₹6,000 per year ki financial support di jaati hai.
+        </p>
+
+        <p>
+            Ye amount 3 equal instalments mein directly
+            beneficiary ke bank account mein transfer kiya jata hai.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info2')">
+        💰 Kitna Paisa Milta Hai?
+    </button>
+
+    <div id="info2" class="info">
+
+        <p>
+            Total benefit:
+        </p>
+
+        <h2>₹6,000 per year</h2>
+
+        <p>
+            Ye amount 3 equal instalments mein diya jata hai.
+        </p>
+
+        <ul>
+            <li>💰 ₹2,000 — 1st instalment</li>
+            <li>💰 ₹2,000 — 2nd instalment</li>
+            <li>💰 ₹2,000 — 3rd instalment</li>
+        </ul>
+
+    </div>
+
+
+    <button onclick="showInfo('info3')">
+        👨‍🌾 Kaun Eligible Ho Sakta Hai?
+    </button>
+
+    <div id="info3" class="info">
+
+        <p>
+            Scheme eligible landholding farmer families ke liye hai.
+            State/UT governments eligible farmer families ko
+            scheme guidelines ke according identify karti hain.
+        </p>
+
+        <p>
+            Kuch categories scheme ke under excluded hain.
+            Isliye final eligibility official PM-KISAN rules
+            ke according check karni chahiye.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info4')">
+        🔐 eKYC Kya Hai?
+    </button>
+
+    <div id="info4" class="info">
+
+        <p>
+            PM-KISAN registered farmers ke liye eKYC mandatory hai.
+        </p>
+
+        <p>
+            Official PM-KISAN portal par eKYC ke options available hain.
+        </p>
+
+        <p>
+            Farmer apni eKYC status ko official PM-KISAN system
+            par check kar sakta hai.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info5')">
+        📝 Registration Kaise Karein?
+    </button>
+
+    <div id="info5" class="info">
+
+        <p>
+            New Farmer Registration official PM-KISAN portal
+            par available hai.
+        </p>
+
+        <p>
+            Registration ke process mein Aadhaar authentication,
+            mobile number aur state ki information required ho sakti hai.
+        </p>
+
+        <p>
+            Apply karne se pehle official portal par current
+            requirements zaroor check karein.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info6')">
+        📊 Payment Status Kaise Check Karein?
+    </button>
+
+    <div id="info6" class="info">
+
+        <p>
+            PM-KISAN ke official portal par
+            <strong>Know Your Status</strong> option available hai.
+        </p>
+
+        <p>
+            Wahan registration number ke through payment status
+            aur account-related information check ki ja sakti hai.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info7')">
+        🌐 Official Website
+    </button>
+
+    <div id="info7" class="info">
+
+        <p>
+            PM-KISAN ki official Government of India website:
+        </p>
+
+        <a href="https://pmkisan.gov.in/" target="_blank">
+            <button>🌐 PM-KISAN Official Website</button>
+        </a>
+
+    </div>
+
+
+    <br>
+
+    <a href="schemes.html">
+        <button>⬅️ Government Schemes Par Wapas</button>
+    </a>
+
+    <br>
+
+    <a href="index.html">
+        <button>🏠 Home Par Wapas Jayein</button>
+    </a>
+
+
+    <script>
+
+        function showInfo(id) {
+
+            let info = document.getElementById(id);
+
+            if (info.style.display === "block") {
+                info.style.display = "none";
+            } else {
+                info.style.display = "block";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

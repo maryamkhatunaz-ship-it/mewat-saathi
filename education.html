@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education - Mewat Saathi</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+.hero{
+    max-width:1050px;
+    margin:20px auto 10px;
+    padding:28px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#172554,#2563eb,#06b6d4);
+    color:white;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+.hero:after{
+    content:"";
+    position:absolute;
+    width:180px;height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,.10);
+    right:-50px;top:-50px;
+}
+.icon{
+    width:68px;height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:white;
+    color:#2563eb;
+    border-radius:20px;
+    font-size:32px;
+    box-shadow:0 10px 0 rgba(0,0,0,.12);
+    margin-bottom:18px;
+}
+.hero h1{font-size:34px;margin-bottom:8px}
+.hero p{font-size:16px;line-height:1.6;max-width:700px}
+
+.container{
+    max-width:1050px;
+    margin:auto;
+    padding:20px 18px 50px;
+}
+.section-title{
+    margin:22px 0 15px;
+    border-left:7px solid #2563eb;
+    padding-left:12px;
+}
+.section-title h2{font-size:25px}
+.section-title p{color:#64748b;margin-top:4px}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+.card{
+    text-decoration:none;
+    color:#172033;
+    background:white;
+    padding:22px;
+    border-radius:20px;
+    min-height:155px;
+    box-shadow:0 8px 0 #dbe4f0,0 12px 25px rgba(0,0,0,.07);
+    transition:.2s;
+}
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 13px 0 #cbd5e1,0 20px 30px rgba(0,0,0,.1);
+}
+.card .emoji{font-size:34px}
+.card h3{margin:12px 0 7px;font-size:20px}
+.card p{color:#64748b;line-height:1.5;font-size:14px}
+
+.note{
+    margin-top:25px;
+    padding:18px;
+    border-radius:18px;
+    background:#e0f2fe;
+    border:1px solid #bae6fd;
+    line-height:1.6;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#111827;
+    color:#cbd5e1;
+}
+
+@media(max-width:700px){
+    .grid{grid-template-columns:1fr}
+    .hero{margin:12px}
+    .hero h1{font-size:28px}
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="icon">🎓</div>
+    <h1>Education Hub</h1>
+    <p>
+        School se lekar college, entrance exam, course, career aur
+        government education support tak — education ki useful information
+        ek jagah.
+    </p>
+</section>
+
+<div class="container">
+
+<div class="section-title">
+    <h2>Student Journey</h2>
+    <p>Apni need ke according step choose karo.</p>
+</div>
+
+<div class="grid">
+
+<a class="card" href="school-directory.html">
+    <div class="emoji">🏫</div>
+    <h3>School Finder</h3>
+    <p>Mewat/Nuh ke schools ko area aur school type ke according dekho.</p>
+</a>
+
+<a class="card" href="college-directory.html">
+    <div class="emoji">🎓</div>
+    <h3>College & University Finder</h3>
+    <p>Pehle Mewat ke colleges, phir nearby districts aur wider options.</p>
+</a>
+
+<a class="card" href="scholarship.html">
+    <div class="emoji">💰</div>
+    <h3>Scholarship Finder</h3>
+    <p>Students ke liye scholarships aur official application information.</p>
+</a>
+
+<a class="card" href="exams.html">
+    <div class="emoji">📝</div>
+    <h3>Entrance Exams</h3>
+    <p>JEE, NEET, CUET, state entrance aur course-specific exams.</p>
+</a>
+
+<a class="card" href="online-learning.html">
+    <div class="emoji">💻</div>
+    <h3>Free Online Learning</h3>
+    <p>School subjects, competitive preparation aur digital learning.</p>
+</a>
+
+<a class="card" href="courses.html">
+    <div class="emoji">🧠</div>
+    <h3>Courses & Skills</h3>
+    <p>Coding, computer, AI, English, vocational aur digital skills.</p>
+</a>
+
+<a class="card" href="career-guidance.html">
+    <div class="emoji">🧭</div>
+    <h3>Career Guidance</h3>
+    <p>10th/12th ke baad kya kar sakte ho — simple roadmap.</p>
+</a>
+
+<a class="card" href="student-help.html">
+    <div class="emoji">🙋</div>
+    <h3>Student Help</h3>
+    <p>Admission, forms, documents, results aur student-related help.</p>
+</a>
+
+<a class="card" href="education-schemes.html">
+    <div class="emoji">🏛️</div>
+    <h3>Education Schemes</h3>
+    <p>Government education support aur student welfare schemes.</p>
+</a>
+
+<a class="card" href="education-directory.html">
+    <div class="emoji">📚</div>
+    <h3>Education Directory</h3>
+    <p>Education offices, institutions aur verified learning resources.</p>
+</a>
+
+</div>
+
+<div class="note">
+    <b>💡 Mewat Saathi:</b> Hum information ko official sources se verify
+    karke simple language mein dene ki koshish karenge. Admission se pehle
+    hamesha official college/exam website par latest eligibility aur dates check karo.
+</div>
+
+</div>
+
+<footer>
+    Mewat Saathi • Mewat ki awaaz, Mewat ke logon ke saath
+</footer>
+
+</body>
+</html>

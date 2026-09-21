@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Farmer Details | Mewat Saathi</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top left,#eafff0,transparent 35%),
+    linear-gradient(135deg,#f5fff8,#eef7ff);
+    color:#17351f;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    padding:15px 6%;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(12px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    border-bottom:1px solid #e5eee8;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:800;
+    color:#168044;
+}
+
+.back{
+    text-decoration:none;
+    color:white;
+    background:#168044;
+    padding:10px 17px;
+    border-radius:13px;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero-wrap{
+    max-width:1050px;
+    margin:22px auto;
+    padding:0 18px;
+}
+
+.hero{
+    padding:30px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#087f3e,#18a957);
+    color:white;
+    box-shadow:0 18px 35px rgba(0,90,40,.22);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,.09);
+    right:-60px;
+    top:-70px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.hero-icon{
+    width:70px;
+    height:70px;
+    min-width:70px;
+    border-radius:22px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+    box-shadow:
+    7px 8px 18px rgba(0,0,0,.2),
+    inset 2px 2px 5px white;
+}
+
+.hero h1{
+    font-size:30px;
+    margin-bottom:6px;
+}
+
+.hero p{
+    line-height:1.6;
+    font-size:15px;
+}
+
+/* CONTENT */
+
+.container{
+    max-width:1050px;
+    margin:auto;
+    padding:0 18px 40px;
+}
+
+/* DETAIL PAGE */
+
+.detail{
+    display:none;
+}
+
+.detail.active{
+    display:block;
+}
+
+/* TITLE */
+
+.detail-title{
+    background:white;
+    border-radius:22px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 9px 25px rgba(0,0,0,.07);
+    border-left:7px solid #18a957;
+}
+
+.detail-title h2{
+    color:#168044;
+    margin-bottom:7px;
+}
+
+.detail-title p{
+    color:#5d6f63;
+    line-height:1.6;
+}
+
+/* INFO CARDS */
+
+.info{
+    background:white;
+    padding:21px;
+    border-radius:20px;
+    margin-bottom:16px;
+    box-shadow:
+    6px 8px 20px rgba(0,0,0,.07);
+    border:1px solid #e8f1eb;
+}
+
+.info h3{
+    color:#168044;
+    margin-bottom:10px;
+    font-size:19px;
+}
+
+.info p{
+    line-height:1.7;
+    color:#4d6053;
+    font-size:15px;
+}
+
+.info ul{
+    padding-left:21px;
+    color:#4d6053;
+}
+
+.info li{
+    margin:8px 0;
+    line-height:1.6;
+}
+
+/* IMPORTANT BOX */
+
+.warning{
+    background:linear-gradient(135deg,#fff8df,#fff);
+    border-left:6px solid #e6a700;
+    padding:18px;
+    border-radius:18px;
+    margin:16px 0;
+}
+
+.warning strong{
+    color:#9a6a00;
+}
+
+/* GREEN BOX */
+
+.green-box{
+    background:linear-gradient(135deg,#edfff3,#ffffff);
+    border-left:6px solid #18a957;
+    padding:18px;
+    border-radius:18px;
+    margin:16px 0;
+}
+
+/* LINK */
+
+.official-link{
+    display:inline-block;
+    margin-top:12px;
+    background:#168044;
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+/* BACK */
+
+.bottom-back{
+    display:inline-block;
+    margin-top:10px;
+    background:#17351f;
+    color:white;
+    text-decoration:none;
+    padding:11px 17px;
+    border-radius:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .hero{
+        padding:23px 20px;
+    }
+
+    .hero-content{
+        align-items:flex-start;
+    }
+
+    .hero h1{
+        font-size:24px;
+    }
+
+    .hero-icon{
+        width:60px;
+        min-width:60px;
+        height:60px;
+        font-size:30px;
+    }
+
+    .info{
+        padding:18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        🌾 Mewat Saathi
+    </div>
+
+    <a href="farmer.html" class="back">
+        ← Farmer
+    </a>
+
+</header>
+
+
+<div class="hero-wrap">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-icon">
+                🌾
+            </div>
+
+            <div>
+
+                <h1 id="pageHeading">
+                    Farmer Help
+                </h1>
+
+                <p id="pageSubtitle">
+                    Farmers ke liye simple aur useful information.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- ================================================= -->
+<!-- 1 SCHEMES -->
+<!-- ================================================= -->
+
+<section class="detail" id="schemes">
+
+    <div class="detail-title">
+
+        <h2>📋 Important Farmer Schemes</h2>
+
+        <p>
+            Government ki farmer-related schemes ko samajhne,
+            eligibility check karne aur official information tak
+            pahunchne ke liye ye section banaya gaya hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌾 Scheme ka matlab kya hota hai?</h3>
+
+        <p>
+            Government farmers ke liye alag-alag programmes,
+            financial support, insurance, credit, infrastructure
+            aur agriculture development schemes chalati hai.
+            Har scheme ki eligibility aur application process
+            alag ho sakti hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🔎 Scheme check karte waqt kya dekhein?</h3>
+
+        <ul>
+
+            <li>Scheme kis type ke farmer ke liye hai.</li>
+
+            <li>Landholding ya registration ki requirement.</li>
+
+            <li>Required documents.</li>
+
+            <li>Application online hai ya offline.</li>
+
+            <li>Application ki last date agar applicable ho.</li>
+
+            <li>Official government website.</li>
+
+            <li>Application status kaise check karna hai.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Important:</strong>
+
+        Kisi agent ko sirf scheme ke naam par paise,
+        OTP, ATM PIN, UPI PIN ya password mat dena.
+        Scheme ki information official government source se verify karo.
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>📚 Mewat Saathi par kya milega?</h3>
+
+        <p>
+            Is section ko future mein important farmer schemes
+            ke separate cards ke saath expand kiya ja sakta hai.
+            Har scheme ke card mein eligibility, documents,
+            application process aur official link diya ja sakta hai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 2 FARMING -->
+<!-- ================================================= -->
+
+<section class="detail" id="farming">
+
+    <div class="detail-title">
+
+        <h2>🌾 Kheti & Fasal Guidance</h2>
+
+        <p>
+            Farming ko plan karne aur better farm management
+            samajhne ke liye basic guidance.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌱 Kheti start karne se pehle</h3>
+
+        <ul>
+
+            <li>Apni soil aur field ki condition samjhein.</li>
+
+            <li>Available water ko consider karein.</li>
+
+            <li>Season ke according crop choose karein.</li>
+
+            <li>Seed quality ka dhyan rakhein.</li>
+
+            <li>Crop planning pehle se karein.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌾 Crop planning</h3>
+
+        <p>
+            Crop plan banate waqt season, soil, irrigation,
+            available resources, expected market demand aur
+            local agriculture guidance ko consider karna useful hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🧪 Fertilizer aur seeds</h3>
+
+        <p>
+            Improved seeds aur fertilizers ka use crop aur soil
+            ki requirement ke according hona chahiye. Exact quantity
+            ke liye local agriculture officer ya qualified agriculture
+            expert ki advice lena safer hai.
+        </p>
+
+    </div>
+
+
+    <div class="green-box">
+
+        <strong>🏛️ Official Agriculture Guidance</strong>
+
+        <p>
+            Nuh Agriculture Department farmers ko latest
+            agricultural techniques, crop plans, pests/disease
+            control, fertilizers, improved seeds aur better farm
+            management par guidance aur training deta hai.
+        </p>
+
+        <a
+        class="official-link"
+        href="https://nuh.gov.in/departments/agriculture/"
+        target="_blank">
+        Nuh Agriculture Department →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 3 DISEASE -->
+<!-- ================================================= -->
+
+<section class="detail" id="disease">
+
+    <div class="detail-title">
+
+        <h2>🐛 Fasal Rog & Keede</h2>
+
+        <p>
+            Crop mein disease ya insects dikhne par kya samajhna
+            chahiye aur official help kahan se leni hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🔍 Problem ko identify karna</h3>
+
+        <p>
+            Fasal mein leaves ka colour change hona, spots,
+            holes, wilting, unusual growth ya insects dikhna
+            crop problem ka sign ho sakta hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>📸 Photo lekar help lena</h3>
+
+        <p>
+            Problem clearly samajhne ke liye affected leaves,
+            stem aur poore plant ki clear photos rakhna useful
+            ho sakta hai. Crop, village aur problem kab start hui
+            jaise details bhi note kar sakte hain.
+        </p>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Chemical use mein caution:</strong>
+
+        Kisi unknown pesticide ko randomly use na karein.
+        Product label aur qualified agriculture professional ki
+        guidance follow karein.
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🏛️ Official help</h3>
+
+        <p>
+            Nuh Agriculture Department crop pests aur diseases
+            ke control ke baare mein farmer guidance provide karta hai.
+        </p>
+
+        <a
+        class="official-link"
+        href="https://nuh.gov.in/departments/agriculture/"
+        target="_blank">
+        Official Agriculture Page →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 4 WEATHER -->
+<!-- ================================================= -->
+
+<section class="detail" id="weather">
+
+    <div class="detail-title">
+
+        <h2>🌦️ Mausam & Fasal Planning</h2>
+
+        <p>
+            Weather ko farming decisions mein consider karna
+            bahut important hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>☀️ Mausam ka farming par effect</h3>
+
+        <ul>
+
+            <li>Rainfall irrigation planning ko affect karta hai.</li>
+
+            <li>Temperature crop growth ko affect kar sakta hai.</li>
+
+            <li>Heavy rain se field waterlogging ho sakti hai.</li>
+
+            <li>Extreme weather se crop damage ka risk badh sakta hai.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>📅 Planning ka basic rule</h3>
+
+        <p>
+            Sowing, irrigation aur harvesting jaise decisions
+            karte waqt current aur expected weather information
+            ko check karna useful hai.
+        </p>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Important:</strong>
+
+        Sirf ek weather forecast par depend na karein.
+        Important farming decision se pehle reliable weather
+        information verify karein.
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 5 IRRIGATION -->
+<!-- ================================================= -->
+
+<section class="detail" id="irrigation">
+
+    <div class="detail-title">
+
+        <h2>💧 Sichai & Paani</h2>
+
+        <p>
+            Farming mein water management aur irrigation planning
+            ke basic points.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>💧 Paani planning</h3>
+
+        <ul>
+
+            <li>Crop ki water requirement samjhein.</li>
+
+            <li>Soil condition ko consider karein.</li>
+
+            <li>Unnecessary water wastage avoid karein.</li>
+
+            <li>Field drainage ka bhi dhyan rakhein.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌱 Irrigation timing</h3>
+
+        <p>
+            Irrigation ka timing crop, soil, weather aur
+            available water ke according change hota hai.
+            Isliye ek hi rule har crop par apply nahi hota.
+        </p>
+
+    </div>
+
+
+    <div class="green-box">
+
+        <strong>💡 Mewat Saathi idea</strong>
+
+        <p>
+            Future mein is page par crop-wise irrigation guidance
+            aur verified government water/agriculture resources
+            add kiye ja sakte hain.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 6 MACHINERY -->
+<!-- ================================================= -->
+
+<section class="detail" id="machinery">
+
+    <div class="detail-title">
+
+        <h2>🚜 Agriculture Machinery</h2>
+
+        <p>
+            Modern farming machines aur agricultural equipment
+            ke baare mein basic information.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🚜 Machinery kahan useful hoti hai?</h3>
+
+        <ul>
+
+            <li>Land preparation.</li>
+
+            <li>Sowing.</li>
+
+            <li>Crop management.</li>
+
+            <li>Harvesting.</li>
+
+            <li>Crop residue management.</li>
+
+            <li>Transport aur farm operations.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>💰 Machinery lene se pehle</h3>
+
+        <ul>
+
+            <li>Machine ki actual requirement check karein.</li>
+
+            <li>Purchase aur maintenance cost samjhein.</li>
+
+            <li>Machine ki capacity compare karein.</li>
+
+            <li>Government support/subsidy available hai ya nahi verify karein.</li>
+
+            <li>Official source se current rules check karein.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Safety:</strong>
+
+        Agricultural machinery ko trained person ki supervision
+        aur manufacturer ke safety instructions ke according use karein.
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 7 ANIMAL -->
+<!-- ================================================= -->
+
+<section class="detail" id="animal">
+
+    <div class="detail-title">
+
+        <h2>🐄 Pashupalan & Dairy</h2>
+
+        <p>
+            Dairy animals aur livestock se related basic
+            information aur government support resources.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🐄 Pashuon ki basic care</h3>
+
+        <ul>
+
+            <li>Clean drinking water available rakhein.</li>
+
+            <li>Balanced feed aur fodder ka dhyan rakhein.</li>
+
+            <li>Animal shelter clean rakhein.</li>
+
+            <li>Vaccination aur veterinary care ko ignore na karein.</li>
+
+            <li>Illness ke signs par veterinary professional se contact karein.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🥛 Dairy management</h3>
+
+        <p>
+            Dairy mein animal health, feed quality, cleanliness,
+            milk handling aur regular veterinary support important
+            factors hain.
+        </p>
+
+    </div>
+
+
+    <div class="green-box">
+
+        <strong>🏛️ Official Animal Husbandry Help</strong>
+
+        <p>
+            Nuh district mein Animal Husbandry Department
+            veterinary care, breeding, feed, milk quality,
+            dairying, fodder aur farmer training jaise areas
+            cover karta hai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 8 HORTICULTURE -->
+<!-- ================================================= -->
+
+<section class="detail" id="horticulture">
+
+    <div class="detail-title">
+
+        <h2>🥬 Bagwani</h2>
+
+        <p>
+            Fruits, vegetables, flowers aur horticulture crops
+            se related basic guidance.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌱 Bagwani mein kya aata hai?</h3>
+
+        <ul>
+
+            <li>Fruits.</li>
+
+            <li>Vegetables.</li>
+
+            <li>Flowers.</li>
+
+            <li>Nursery plants.</li>
+
+            <li>Plantation aur garden crops.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌿 Plant choose karte waqt</h3>
+
+        <p>
+            Climate, soil, water availability, season aur market
+            demand ko consider karna important hai.
+        </p>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Important:</strong>
+
+        Commercial crop choose karne se pehle local horticulture
+        department ya agriculture expert se current local guidance
+        verify karna useful hai.
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 9 MANDI -->
+<!-- ================================================= -->
+
+<section class="detail" id="mandi">
+
+    <div class="detail-title">
+
+        <h2>🏪 Mandi & Fasal Bikri</h2>
+
+        <p>
+            Crop ko market tak le jaane aur sale planning ko
+            samajhne ke basic points.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌾 Fasal bechne se pehle</h3>
+
+        <ul>
+
+            <li>Crop ki quality check karein.</li>
+
+            <li>Weight aur grading samjhein.</li>
+
+            <li>Market/mandi information check karein.</li>
+
+            <li>Transport cost ko consider karein.</li>
+
+            <li>Payment terms ko clearly samjhein.</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>📄 Records rakhein</h3>
+
+        <p>
+            Sale ke waqt receipt, weight slip, payment record
+            aur relevant documents sambhal kar rakhna useful hai.
+        </p>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Fraud se bachna:</strong>
+
+        Unknown buyer ko documents ya banking details blindly
+        share na karein. Payment receive hone ki proper confirmation
+        karein.
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 10 SERVICES -->
+<!-- ================================================= -->
+
+<section class="detail" id="services">
+
+    <div class="detail-title">
+
+        <h2>📄 Documents & Online Kaam</h2>
+
+        <p>
+            Farmers ko government services aur online processes
+            samajhne mein help karne ke liye basic guide.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>📁 Common documents</h3>
+
+        <p>
+            Alag-alag services ke liye documents different ho sakte
+            hain. Application karne se pehle official portal par
+            required documents check karein.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>💻 Online application ka basic process</h3>
+
+        <ol style="padding-left:22px;color:#4d6053;">
+
+            <li>Official website open karein.</li>
+
+            <li>Scheme/service identify karein.</li>
+
+            <li>Eligibility check karein.</li>
+
+            <li>Documents ready karein.</li>
+
+            <li>Form carefully fill karein.</li>
+
+            <li>Application submit karein.</li>
+
+            <li>Application/reference number save karein.</li>
+
+            <li>Status official website se check karein.</li>
+
+        </ol>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>🔐 OTP Safety:</strong>
+
+        OTP, UPI PIN, ATM PIN, password ya banking credentials
+        kisi ko share mat karein.
+
+    </div>
+
+
+    <div class="green-box">
+
+        <strong>🏛️ Local service help</strong>
+
+        <p>
+            Nuh district ki official website par Atal Seva Kendras
+            aur other public utilities ki directory available hai.
+        </p>
+
+        <a
+        class="official-link"
+        href="https://nuh.gov.in/public-utilities/"
+        target="_blank">
+        Nuh Public Utilities →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 11 NUH AGRICULTURE -->
+<!-- ================================================= -->
+
+<section class="detail" id="nuh">
+
+    <div class="detail-title">
+
+        <h2>🏛️ Mewat / Nuh Agriculture Help</h2>
+
+        <p>
+            Nuh district ke agriculture department se related
+            official information.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🌾 Agriculture Department kya karta hai?</h3>
+
+        <p>
+            Nuh Agriculture Department farmers ko modern
+            agricultural techniques, intensive cultivation,
+            crop planning, pest aur disease control, fertilizers,
+            improved seeds aur better farm management jaise
+            areas mein guidance deta hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>👨‍🌾 Farmer training</h3>
+
+        <p>
+            Department ke agriculture officers farmer guidance,
+            visits aur training/education activities ke through
+            improved farming practices ko promote karte hain.
+        </p>
+
+    </div>
+
+
+    <div class="green-box">
+
+        <strong>📞 District Agriculture Contact</strong>
+
+        <p>
+            Nuh district administration directory mein
+            Deputy Director Agriculture ka official contact
+            bhi listed hai.
+        </p>
+
+        <p style="margin-top:8px;">
+            Office: <strong>01267-274702</strong>
+        </p>
+
+    </div>
+
+
+    <a
+    class="official-link"
+    href="https://nuh.gov.in/departments/agriculture/"
+    target="_blank">
+    Official Nuh Agriculture Department →
+    </a>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 12 HELPLINE -->
+<!-- ================================================= -->
+
+<section class="detail" id="helpline">
+
+    <div class="detail-title">
+
+        <h2>📞 Kisan Helpline</h2>
+
+        <p>
+            Farmer-related help ke liye important official
+            contact information.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>📞 Kisan Call Centre</h3>
+
+        <p style="font-size:24px;color:#168044;font-weight:bold;">
+            1551
+        </p>
+
+        <p style="margin-top:8px;">
+            Nuh District Administration ki official helpline
+            listing mein Kisan Call Centre ka number 1551 diya gaya hai.
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h3>🏛️ Official information</h3>
+
+        <p>
+            Important agriculture issue mein local Agriculture
+            Department ya appropriate government office se
+            verified guidance lena better hai.
+        </p>
+
+        <a
+        class="official-link"
+        href="https://nuh.gov.in/departments/agriculture/"
+        target="_blank">
+        Nuh Agriculture Department →
+        </a>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Fake helpline se bachna:</strong>
+
+        WhatsApp, social media ya unknown person se mila hua
+        number blindly trust na karein. Official government
+        website se number verify karein.
+
+    </div>
+
+</section>
+
+
+<a href="farmer.html" class="bottom-back">
+    ← Farmer Help Center par wapas
+</a>
+
+
+</div>
+
+
+<script>
+
+/*
+   URL ke # ke according correct section open hoga.
+
+   Example:
+
+   farmer-details.html#schemes
+   farmer-details.html#farming
+   farmer-details.html#disease
+   farmer-details.html#weather
+   farmer-details.html#irrigation
+   farmer-details.html#machinery
+   farmer-details.html#animal
+   farmer-details.html#horticulture
+   farmer-details.html#mandi
+   farmer-details.html#services
+   farmer-details.html#nuh
+   farmer-details.html#helpline
+*/
+
+
+const sections = document.querySelectorAll(".detail");
+
+const heading = document.getElementById("pageHeading");
+const subtitle = document.getElementById("pageSubtitle");
+
+
+const pageInfo = {
+
+    schemes:{
+        title:"Important Farmer Schemes",
+        subtitle:"Farmers ke liye government schemes aur official information."
+    },
+
+    farming:{
+        title:"Kheti & Fasal Guidance",
+        subtitle:"Kheti planning aur better farm management ki basic guidance."
+    },
+
+    disease:{
+        title:"Fasal Rog & Keede",
+        subtitle:"Crop diseases aur pests ko samajhne ki basic guidance."
+    },
+
+    weather:{
+        title:"Mausam & Fasal Planning",
+        subtitle:"Weather ko farming decisions mein kaise consider karein."
+    },
+
+    irrigation:{
+        title:"Sichai & Paani",
+        subtitle:"Irrigation aur water management ki basic information."
+    },
+
+    machinery:{
+        title:"Agriculture Machinery",
+        subtitle:"Modern farming machines aur equipment ki information."
+    },
+
+    animal:{
+        title:"Pashupalan & Dairy",
+        subtitle:"Livestock, dairy aur animal care ki basic guidance."
+    },
+
+    horticulture:{
+        title:"Bagwani",
+        subtitle:"Fruits, vegetables aur horticulture ki basic information."
+    },
+
+    mandi:{
+        title:"Mandi & Fasal Bikri",
+        subtitle:"Crop selling aur market planning ki basic guidance."
+    },
+
+    services:{
+        title:"Documents & Online Kaam",
+        subtitle:"Government services aur online processes ki guidance."
+    },
+
+    nuh:{
+        title:"Mewat / Nuh Agriculture Help",
+        subtitle:"Nuh Agriculture Department ki official information."
+    },
+
+    helpline:{
+        title:"Kisan Helpline",
+        subtitle:"Important official farmer helpline information."
+    }
+
+};
+
+
+function showSection(){
+
+    let id = window.location.hash.substring(1);
+
+    if(!pageInfo[id]){
+        id = "schemes";
+    }
+
+    sections.forEach(section => {
+
+        section.classList.remove("active");
+
+    });
+
+    const selected = document.getElementById(id);
+
+    if(selected){
+        selected.classList.add("active");
+    }
+
+    heading.textContent = pageInfo[id].title;
+
+    subtitle.textContent = pageInfo[id].subtitle;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+showSection();
+
+
+window.addEventListener("hashchange",showSection);
+
+</script>
+
+</body>
+</html>

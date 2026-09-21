@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mewat Saathi | Health</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:
+        radial-gradient(circle at 10% 5%, rgba(16,185,129,.12), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(37,99,235,.12), transparent 30%),
+        #f5f8fb;
+    color:#172033;
+}
+
+/* HEADER */
+
+.header{
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(0,0,0,.06);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:46px;
+    height:46px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#0f766e,#10b981);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:800;
+    font-size:18px;
+    box-shadow:0 8px 25px rgba(16,185,129,.25);
+}
+
+.logo-text h2{
+    font-size:20px;
+}
+
+.logo-text p{
+    font-size:11px;
+    color:#718096;
+    margin-top:3px;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#047857;
+    background:#ecfdf5;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.back-btn:hover{
+    transform:translateY(-2px);
+    background:#d1fae5;
+}
+
+/* HERO */
+
+.hero{
+    width:86%;
+    max-width:1200px;
+    margin:42px auto 35px;
+    padding:55px 45px;
+    border-radius:32px;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(255,255,255,.18),transparent 25%),
+        linear-gradient(135deg,#065f46,#059669 48%,#0ea5e9);
+    color:white;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 25px 60px rgba(5,150,105,.22);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    right:-80px;
+    top:-110px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:rgba(255,255,255,.07);
+    right:220px;
+    bottom:-100px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:780px;
+}
+
+.badge{
+    display:inline-flex;
+    padding:8px 15px;
+    border-radius:30px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.2);
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:44px;
+    line-height:1.1;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#a7f3d0;
+}
+
+.hero p{
+    font-size:17px;
+    line-height:1.7;
+    color:#e8fff7;
+    max-width:700px;
+}
+
+/* SECTION */
+
+.section{
+    width:86%;
+    max-width:1200px;
+    margin:0 auto 45px;
+}
+
+.section-heading{
+    margin-bottom:22px;
+}
+
+.section-heading h2{
+    font-size:28px;
+}
+
+.section-heading p{
+    margin-top:6px;
+    color:#718096;
+    font-size:14px;
+}
+
+/* GRID */
+
+.health-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+/* CARD */
+
+.health-card{
+    text-decoration:none;
+    color:inherit;
+    background:rgba(255,255,255,.96);
+    border:1px solid #e4eaf1;
+    border-radius:25px;
+    padding:25px;
+    min-height:260px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    transition:.3s ease;
+    box-shadow:
+        0 10px 25px rgba(15,23,42,.055),
+        0 2px 5px rgba(15,23,42,.03);
+}
+
+.health-card::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:linear-gradient(135deg,rgba(16,185,129,.09),rgba(37,99,235,.04));
+    right:-40px;
+    top:-40px;
+    transition:.3s;
+}
+
+.health-card:hover{
+    transform:translateY(-9px);
+    border-color:#a7f3d0;
+    box-shadow:
+        0 22px 45px rgba(15,23,42,.11),
+        0 5px 12px rgba(16,185,129,.08);
+}
+
+.health-card:hover::before{
+    transform:scale(1.4);
+}
+
+.icon-box{
+    width:64px;
+    height:64px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+    background:linear-gradient(135deg,#ecfdf5,#dbeafe);
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.8),
+        0 8px 18px rgba(15,23,42,.06);
+    margin-bottom:20px;
+    position:relative;
+    z-index:2;
+}
+
+.health-card h3{
+    font-size:20px;
+    margin-bottom:9px;
+    position:relative;
+    z-index:2;
+}
+
+.health-card p{
+    color:#64748b;
+    line-height:1.6;
+    font-size:14px;
+    position:relative;
+    z-index:2;
+}
+
+.card-bottom{
+    margin-top:auto;
+    padding-top:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    z-index:2;
+}
+
+.card-label{
+    font-size:11px;
+    font-weight:800;
+    color:#059669;
+    background:#ecfdf5;
+    padding:7px 10px;
+    border-radius:20px;
+}
+
+.arrow{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    background:#f1f5f9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#334155;
+    font-size:18px;
+    transition:.25s;
+}
+
+.health-card:hover .arrow{
+    background:#059669;
+    color:white;
+    transform:translateX(4px);
+}
+
+/* AYUSHMAN FEATURE */
+
+.feature{
+    width:86%;
+    max-width:1200px;
+    margin:0 auto 45px;
+    padding:35px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 45px rgba(15,23,42,.12);
+}
+
+.feature::after{
+    content:"";
+    position:absolute;
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    background:rgba(16,185,129,.12);
+    right:-70px;
+    top:-100px;
+}
+
+.feature-content{
+    position:relative;
+    z-index:2;
+}
+
+.feature-tag{
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:20px;
+    background:rgba(16,185,129,.15);
+    color:#6ee7b7;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.feature h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#cbd5e1;
+    line-height:1.7;
+    max-width:720px;
+    font-size:14px;
+}
+
+.feature-btn{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    background:#10b981;
+    color:white;
+    padding:12px 18px;
+    border-radius:13px;
+    font-size:14px;
+    font-weight:800;
+    transition:.25s;
+}
+
+.feature-btn:hover{
+    background:#059669;
+    transform:translateY(-2px);
+}
+
+/* TRUST */
+
+.trust{
+    width:86%;
+    max-width:1200px;
+    margin:0 auto 45px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.trust-card{
+    background:white;
+    border:1px solid #e6ebf2;
+    border-radius:20px;
+    padding:22px;
+}
+
+.trust-icon{
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.trust-card h3{
+    font-size:17px;
+    margin-bottom:6px;
+}
+
+.trust-card p{
+    color:#718096;
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* DISCLAIMER */
+
+.notice{
+    width:86%;
+    max-width:1200px;
+    margin:0 auto 45px;
+    padding:20px;
+    border-radius:18px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    color:#9a3412;
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:35px 7%;
+}
+
+footer h3{
+    font-size:20px;
+    margin-bottom:7px;
+}
+
+footer p{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.footer-line{
+    margin-top:15px;
+    color:#64748b;
+    font-size:12px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .health-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .trust{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .header{
+        padding:14px 5%;
+    }
+
+    .hero{
+        width:92%;
+        padding:40px 25px;
+        margin-top:25px;
+        border-radius:25px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .section,
+    .feature,
+    .trust,
+    .notice{
+        width:92%;
+    }
+
+    .health-grid{
+        grid-template-columns:1fr;
+    }
+
+    .health-card{
+        min-height:230px;
+    }
+
+    .logo-text h2{
+        font-size:17px;
+    }
+
+    .back-btn{
+        padding:8px 12px;
+        font-size:13px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            MS
+        </div>
+
+        <div class="logo-text">
+            <h2>Mewat Saathi</h2>
+            <p>Mewat ki awaaz, Mewat ke logon ke saath</p>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-btn">
+        ← Home
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🏥 Mewat Health Saathi
+        </div>
+
+        <h1>
+            Sehat ki zaroori
+            <span>information ek jagah.</span>
+        </h1>
+
+        <p>
+            Health se judi important information aur useful services ko
+            category ke through easily explore karo. Kisi topic par tap karo
+            aur uski dedicated information dekho.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- HEALTH BOXES -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <h2>Health Categories</h2>
+
+        <p>
+            Jis topic ke baare mein jaana hai, uske box par tap karo.
+        </p>
+
+    </div>
+
+
+    <div class="health-grid">
+
+
+        <!-- 1 -->
+
+        <a href="fever.html" class="health-card">
+
+            <div class="icon-box">
+                🤒
+            </div>
+
+            <h3>Bukhaar & Common Illness</h3>
+
+            <p>
+                Fever aur common illnesses ke baare mein basic information,
+                care aur kab medical help leni chahiye.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    HEALTH INFO
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 2 -->
+
+        <a href="child-health.html" class="health-card">
+
+            <div class="icon-box">
+                👶
+            </div>
+
+            <h3>Bachchon ki Sehat</h3>
+
+            <p>
+                Children health, nutrition, vaccination aur child-care
+                information ko ek dedicated page par dekho.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    CHILD HEALTH
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 3 -->
+
+        <a href="women-health.html" class="health-card">
+
+            <div class="icon-box">
+                👩
+            </div>
+
+            <h3>Women's Health</h3>
+
+            <p>
+                Women ke liye important health information aur preventive
+                care resources.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    WOMEN
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 4 -->
+
+        <a href="vaccination.html" class="health-card">
+
+            <div class="icon-box">
+                💉
+            </div>
+
+            <h3>Vaccination</h3>
+
+            <p>
+                Immunisation aur vaccination se judi useful information aur
+                official resources.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    IMMUNISATION
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 5 -->
+
+        <a href="ayushman-bharat.html" class="health-card">
+
+            <div class="icon-box">
+                💳
+            </div>
+
+            <h3>Ayushman Bharat</h3>
+
+            <p>
+                Ayushman Bharat aur PM-JAY se judi official information aur
+                beneficiary resources.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    GOVERNMENT
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 6 -->
+
+        <a href="dental-health.html" class="health-card">
+
+            <div class="icon-box">
+                🦷
+            </div>
+
+            <h3>Dental Health</h3>
+
+            <p>
+                Teeth, gums, oral hygiene aur dental-care ke basic health
+                resources.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    ORAL HEALTH
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 7 -->
+
+        <a href="eye-care.html" class="health-card">
+
+            <div class="icon-box">
+                👁️
+            </div>
+
+            <h3>Eye Care</h3>
+
+            <p>
+                Eyes ki basic care, common concerns aur preventive health
+                information.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    EYE HEALTH
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 8 -->
+
+        <a href="mental-health.html" class="health-card">
+
+            <div class="icon-box">
+                🧠
+            </div>
+
+            <h3>Mental Health</h3>
+
+            <p>
+                Mental wellbeing, stress aur emotional health ke liye
+                trustworthy information aur support resources.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    WELLBEING
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- 9 -->
+
+        <a href="health-services.html" class="health-card">
+
+            <div class="icon-box">
+                🏥
+            </div>
+
+            <h3>Health Services</h3>
+
+            <p>
+                Hospitals, health services, telemedicine aur official health
+                resources ko explore karo.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="card-label">
+                    SERVICES
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- AYUSHMAN FEATURE -->
+
+<section class="feature">
+
+    <div class="feature-content">
+
+        <div class="feature-tag">
+            OFFICIAL HEALTH RESOURCE
+        </div>
+
+        <h2>💳 Ayushman Bharat</h2>
+
+        <p>
+            Ayushman Bharat PM-JAY ke official beneficiary information aur
+            resources ko dedicated page se access karo.
+        </p>
+
+        <a href="ayushman-bharat.html" class="feature-btn">
+            Open Ayushman Bharat →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- TRUST -->
+
+<section class="trust">
+
+    <div class="trust-card">
+
+        <div class="trust-icon">
+            🛡️
+        </div>
+
+        <h3>Reliable Information</h3>
+
+        <p>
+            Health information ko reliable and official sources ke basis par
+            build kiya jayega.
+        </p>
+
+    </div>
+
+
+    <div class="trust-card">
+
+        <div class="trust-icon">
+            📚
+        </div>
+
+        <h3>Easy to Understand</h3>
+
+        <p>
+            Information ko simple language aur separate pages mein organize
+            kiya jayega.
+        </p>
+
+    </div>
+
+
+    <div class="trust-card">
+
+        <div class="trust-icon">
+            📱
+        </div>
+
+        <h3>Mobile Friendly</h3>
+
+        <p>
+            Health sections phone par bhi easily browse kiye ja sakenge.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- NOTICE -->
+
+<div class="notice">
+
+    <strong>Important:</strong>
+    Mewat Saathi health information provide karta hai.
+    Ye doctor ke diagnosis ya emergency medical treatment ka replacement
+    nahi hai. Serious ya urgent health problem mein qualified medical
+    professional/emergency service se help leni chahiye.
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>Mewat Saathi</h3>
+
+    <p>
+        Mewat ki awaaz, Mewat ke logon ke saath.
+    </p>
+
+    <div class="footer-line">
+        Health information ko responsibly use karein.
+    </div>
+
+</footer>
+
+</body>
+</html>

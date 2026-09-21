@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship - Mewat Saathi</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="scholarships-data.js"></script>
+
+    <style>
+        .scholarship-page{
+            max-width:1150px;
+            margin:auto;
+            padding:20px;
+        }
+
+        .sch-hero{
+            background:linear-gradient(135deg,#075e54,#0b806f);
+            color:white;
+            border-radius:22px;
+            padding:28px 24px;
+            margin-bottom:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,.12);
+        }
+
+        .sch-hero h1{
+            margin:0 0 8px;
+            font-size:30px;
+        }
+
+        .sch-hero p{
+            margin:6px 0;
+            line-height:1.6;
+        }
+
+        .language-box{
+            display:flex;
+            justify-content:flex-end;
+            gap:7px;
+            margin-bottom:12px;
+        }
+
+        .lang-btn{
+            border:1px solid #ddd;
+            background:white;
+            padding:7px 13px;
+            border-radius:20px;
+            cursor:pointer;
+            font-weight:600;
+        }
+
+        .lang-btn.active{
+            background:#075e54;
+            color:white;
+            border-color:#075e54;
+        }
+
+        .finder{
+            background:white;
+            border-radius:20px;
+            padding:22px;
+            box-shadow:0 5px 22px rgba(0,0,0,.08);
+            margin-bottom:20px;
+        }
+
+        .finder h2{
+            margin-top:0;
+            color:#075e54;
+        }
+
+        .finder-sub{
+            color:#666;
+            margin-bottom:18px;
+        }
+
+        .filter-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:14px;
+        }
+
+        .field label{
+            display:block;
+            font-weight:700;
+            margin-bottom:6px;
+        }
+
+        .field select{
+            width:100%;
+            padding:12px;
+            border:1px solid #ddd;
+            border-radius:12px;
+            background:white;
+            font-size:15px;
+        }
+
+        .find-btn{
+            margin-top:18px;
+            width:100%;
+            border:none;
+            background:#075e54;
+            color:white;
+            padding:14px;
+            border-radius:13px;
+            font-size:16px;
+            font-weight:700;
+            cursor:pointer;
+        }
+
+        .find-btn:hover{
+            background:#064d45;
+        }
+
+        .quick-info{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:12px;
+            margin-bottom:20px;
+        }
+
+        .info-card{
+            background:white;
+            padding:18px;
+            border-radius:17px;
+            box-shadow:0 4px 18px rgba(0,0,0,.07);
+        }
+
+        .info-card strong{
+            display:block;
+            color:#075e54;
+            margin-bottom:6px;
+        }
+
+        .results-head{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+            margin:20px 0 12px;
+        }
+
+        .results-head h2{
+            margin:0;
+        }
+
+        #resultCount{
+            background:#e9f7f4;
+            color:#075e54;
+            padding:7px 12px;
+            border-radius:20px;
+            font-weight:700;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:16px;
+        }
+
+        .sch-card{
+            background:white;
+            border-radius:20px;
+            padding:20px;
+            box-shadow:0 5px 22px rgba(0,0,0,.08);
+            border:1px solid #eee;
+            position:relative;
+        }
+
+        .match-badge{
+            display:inline-block;
+            background:#e8f7ef;
+            color:#16733b;
+            padding:5px 10px;
+            border-radius:20px;
+            font-size:12px;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+
+        .state-badge{
+            display:inline-block;
+            background:#f3f3f3;
+            color:#555;
+            padding:5px 10px;
+            border-radius:20px;
+            font-size:12px;
+            margin-bottom:10px;
+        }
+
+        .sch-card h3{
+            margin:5px 0 14px;
+            font-size:20px;
+        }
+
+        .benefit-box{
+            background:#fff8df;
+            border:1px solid #f1df9a;
+            border-radius:14px;
+            padding:14px;
+            margin-bottom:14px;
+        }
+
+        .benefit-title{
+            font-size:13px;
+            color:#866900;
+            font-weight:800;
+            margin-bottom:4px;
+        }
+
+        .benefit-text{
+            font-size:17px;
+            font-weight:800;
+            color:#5e4a00;
+        }
+
+        .meta{
+            display:flex;
+            flex-wrap:wrap;
+            gap:7px;
+            margin-bottom:12px;
+        }
+
+        .meta span{
+            background:#f4f6f7;
+            padding:6px 9px;
+            border-radius:9px;
+            font-size:12px;
+        }
+
+        .deadline{
+            padding:10px;
+            border-radius:10px;
+            background:#f8f8f8;
+            margin:12px 0;
+            font-size:14px;
+        }
+
+        .card-actions{
+            display:flex;
+            gap:8px;
+            flex-wrap:wrap;
+        }
+
+        .card-actions a,
+        .card-actions button{
+            border:none;
+            text-decoration:none;
+            padding:10px 12px;
+            border-radius:10px;
+            font-weight:700;
+            cursor:pointer;
+            font-size:13px;
+        }
+
+        .apply{
+            background:#075e54;
+            color:white;
+        }
+
+        .details{
+            background:#e9f7f4;
+            color:#075e54;
+        }
+
+        .save{
+            background:#f2f2f2;
+            color:#333;
+        }
+
+        .empty{
+            background:white;
+            padding:30px;
+            text-align:center;
+            border-radius:18px;
+            box-shadow:0 5px 20px rgba(0,0,0,.07);
+        }
+
+        .help-section{
+            margin-top:25px;
+            background:white;
+            border-radius:20px;
+            padding:22px;
+            box-shadow:0 5px 22px rgba(0,0,0,.07);
+        }
+
+        .help-section h2{
+            color:#075e54;
+            margin-top:0;
+        }
+
+        .steps{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:12px;
+        }
+
+        .step{
+            background:#f7faf9;
+            padding:15px;
+            border-radius:14px;
+        }
+
+        .step b{
+            color:#075e54;
+        }
+
+        .warning{
+            margin-top:15px;
+            background:#fff3f3;
+            border:1px solid #ffd2d2;
+            padding:14px;
+            border-radius:12px;
+            color:#8b2525;
+        }
+
+        @media(max-width:800px){
+            .filter-grid,
+            .quick-info,
+            .steps,
+            .cards{
+                grid-template-columns:1fr;
+            }
+
+            .sch-hero h1{
+                font-size:25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="scholarship-page">
+
+    <div class="language-box">
+        <button class="lang-btn active" id="hindiBtn" onclick="setLanguage('hi')">हिंदी</button>
+        <button class="lang-btn" id="englishBtn" onclick="setLanguage('en')">English</button>
+    </div>
+
+    <section class="sch-hero">
+        <h1 id="heroTitle">🎓 आपके लिए कौन-सी Scholarship है?</h1>
+        <p id="heroText">
+            अपनी पढ़ाई, category, gender और state चुनिए — Mewat Saathi आपके लिए relevant scholarships ढूंढेगा।
+        </p>
+        <p id="heroSmall">
+            💰 सबसे पहले आपको बताया जाएगा कि scholarship से क्या benefit मिल सकता है।
+        </p>
+    </section>
+
+    <section class="finder">
+
+        <h2 id="finderTitle">🔎 अपनी Scholarship खोजें</h2>
+
+        <p class="finder-sub" id="finderSub">
+            अपनी current पढ़ाई चुनें। Scholarship का नाम search करने की जरूरत नहीं है।
+        </p>
+
+        <div class="filter-grid">
+
+            <div class="field">
+                <label id="educationLabel">आप अभी क्या पढ़ रहे हैं?</label>
+                <select id="education">
+                    <option value="">सभी Education Levels</option>
+                    <option value="class6">Class 6</option>
+                    <option value="class7">Class 7</option>
+                    <option value="class8">Class 8</option>
+                    <option value="class9">Class 9</option>
+                    <option value="class10">Class 10</option>
+                    <option value="class11">Class 11</option>
+                    <option value="class12">Class 12</option>
+                    <option value="iti">ITI</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="ug">UG / College</option>
+                    <option value="pg">PG</option>
+                    <option value="phd">PhD / Research</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label id="categoryLabel">Category</label>
+                <select id="category">
+                    <option value="">सभी Categories</option>
+                    <option value="sc">SC</option>
+                    <option value="st">ST</option>
+                    <option value="obc">OBC</option>
+                    <option value="ebc">EBC</option>
+                    <option value="dnt">DNT</option>
+                    <option value="minority">Minority</option>
+                    <option value="general">General</option>
+                    <option value="disability">Disability</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label id="genderLabel">Gender</label>
+                <select id="gender">
+                    <option value="">Any Gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="any">All / Any</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label id="stateLabel">आप किस State से हैं?</label>
+                <select id="state">
+                    <option value="">All India</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                    <option value="all-india">All India</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label id="courseLabel">Stream / Course</label>
+                <select id="course">
+                    <option value="">All Courses</option>
+                    <option value="school">School</option>
+                    <option value="engineering">Engineering / Technical</option>
+                    <option value="medical">Medical</option>
+                    <option value="agriculture">Agriculture</option>
+                    <option value="science">Science</option>
+                    <option value="arts">Arts / Humanities</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="research">Research</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label id="savedLabel">Saved Scholarships</label>
+                <select id="savedFilter">
+                    <option value="all">All Scholarships</option>
+                    <option value="saved">Only Saved ⭐</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button class="find-btn" onclick="findScholarships()" id="findBtn">
+            🔎 Scholarships खोजें
+        </button>
+
+    </section>
+
+    <section class="quick-info">
+
+        <div class="info-card">
+            <strong>💰 Benefit पहले</strong>
+            <span id="info1">हर card में सबसे पहले benefit/support दिखेगा।</span>
+        </div>
+
+        <div class="info-card">
+            <strong>🔗 Official Link</strong>
+            <span id="info2">Application के लिए official source ही इस्तेमाल होगा।</span>
+        </div>
+
+        <div class="info-card">
+            <strong>✓ Verified</strong>
+            <span id="info3">Information को official source से verify किया जाएगा।</span>
+        </div>
+
+    </section>
+
+    <div class="results-head">
+        <h2 id="resultsTitle">📚 Scholarships</h2>
+        <span id="resultCount">0</span>
+    </div>
+
+    <div id="results" class="cards"></div>
+
+    <section class="help-section">
+
+        <h2 id="helpTitle">🧑‍💻 Form भरने में परेशानी हो तो?</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <b>1. OTR / Registration</b>
+                <p id="step1">
+                    जिस portal पर OTR या registration जरूरी हो, पहले उसे पूरा करें।
+                </p>
+            </div>
+
+            <div class="step">
+                <b>2. Documents</b>
+                <p id="step2">
+                    Aadhaar, marksheet, income/caste/domicile जैसे जरूरी documents तैयार रखें।
+                </p>
+            </div>
+
+            <div class="step">
+                <b>3. CSC Help</b>
+                <p id="step3">
+                    Online form खुद नहीं भर पा रहे हैं तो nearby CSC से सहायता ली जा सकती है।
+                </p>
+            </div>
+
+        </div>
+
+        <div class="warning" id="warning">
+            ⚠️ किसी unknown व्यक्ति को OTP, password या जरूरी personal details न दें। केवल official portal का उपयोग करें।
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+let currentLanguage = localStorage.getItem("scholarshipLanguage") || "hi";
+
+const text = {
+    hi:{
+        heroTitle:"🎓 आपके लिए कौन-सी Scholarship है?",
+        heroText:"अपनी पढ़ाई, category, gender और state चुनिए — Mewat Saathi आपके लिए relevant scholarships ढूंढेगा।",
+        heroSmall:"💰 सबसे पहले आपको बताया जाएगा कि scholarship से क्या benefit मिल सकता है।",
+        finderTitle:"🔎 अपनी Scholarship खोजें",
+        finderSub:"अपनी current पढ़ाई चुनें। Scholarship का नाम search करने की जरूरत नहीं है।",
+        educationLabel:"आप अभी क्या पढ़ रहे हैं?",
+        categoryLabel:"Category",
+        genderLabel:"Gender",
+        stateLabel:"आप किस State से हैं?",
+        courseLabel:"Stream / Course",
+        savedLabel:"Saved Scholarships",
+        findBtn:"🔎 Scholarships खोजें",
+        info1:"हर card में सबसे पहले benefit/support दिखेगा।",
+        info2:"Application के लिए official source ही इस्तेमाल होगा।",
+        info3:"Information को official source से verify किया जाएगा।",
+        resultsTitle:"📚 Scholarships",
+        helpTitle:"🧑‍💻 Form भरने में परेशानी हो तो?",
+        step1:"जिस portal पर OTR या registration जरूरी हो, पहले उसे पूरा करें।",
+        step2:"Aadhaar, marksheet, income/caste/domicile जैसे जरूरी documents तैयार रखें।",
+        step3:"Online form खुद नहीं भर पा रहे हैं तो nearby CSC से सहायता ली जा सकती है।",
+        warning:"⚠️ किसी unknown व्यक्ति को OTP, password या जरूरी personal details न दें। केवल official portal का उपयोग करें।"
+    },
+    en:{
+        heroTitle:"🎓 Which Scholarship is for You?",
+        heroText:"Select your education, category, gender and state — Mewat Saathi will find relevant scholarships.",
+        heroSmall:"💰 Benefits/support are shown first so you can quickly understand what you may get.",
+        finderTitle:"🔎 Find Your Scholarship",
+        finderSub:"Select your current education. You do not need to search by scholarship name.",
+        educationLabel:"What are you studying now?",
+        categoryLabel:"Category",
+        genderLabel:"Gender",
+        stateLabel:"Which State are you from?",
+        courseLabel:"Stream / Course",
+        savedLabel:"Saved Scholarships",
+        findBtn:"🔎 Find Scholarships",
+        info1:"Benefits/support are shown first on every card.",
+        info2:"Only official sources are used for applications.",
+        info3:"Information is checked against official sources.",
+        resultsTitle:"📚 Scholarships",
+        helpTitle:"🧑‍💻 Need help filling the form?",
+        step1:"Complete OTR or registration first when the official portal requires it.",
+        step2:"Keep Aadhaar, marksheets and required certificates ready.",
+        step3:"If you cannot complete the form yourself, a nearby CSC may help.",
+        warning:"⚠️ Never share OTP, password or important personal details with unknown people. Use official portals only."
+    }
+};
+
+function setLanguage(lang){
+    currentLanguage=lang;
+    localStorage.setItem("scholarshipLanguage",lang);
+
+    document.getElementById("hindiBtn").classList.toggle("active",lang==="hi");
+    document.getElementById("englishBtn").classList.toggle("active",lang==="en");
+
+    Object.keys(text[lang]).forEach(key=>{
+        const el=document.getElementById(key);
+        if(el) el.textContent=text[lang][key];
+    });
+
+    findScholarships();
+}
+
+function getSaved(){
+    try{
+        return JSON.parse(localStorage.getItem("savedScholarships") || "[]");
+    }catch(e){
+        return [];
+    }
+}
+
+function saveScholarship(id){
+    let saved=getSaved();
+
+    if(saved.includes(id)){
+        saved=saved.filter(x=>x!==id);
+        alert(currentLanguage==="hi" ? "Scholarship Saved list से हटाई गई।" : "Scholarship removed from Saved.");
+    }else{
+        saved.push(id);
+        alert(currentLanguage==="hi" ? "Scholarship Saved ⭐" : "Scholarship Saved ⭐");
+    }
+
+    localStorage.setItem("savedScholarships",JSON.stringify(saved));
+    findScholarships();
+}
+
+function shareScholarship(id){
+    const url=location.origin + location.pathname.replace("scholarship.html","") +
+        "scholarship-details.html?id=" + encodeURIComponent(id);
+
+    if(navigator.share){
+        navigator.share({
+            title:"Mewat Saathi Scholarship",
+            url:url
+        });
+    }else{
+        navigator.clipboard.writeText(url).then(()=>{
+            alert(currentLanguage==="hi" ? "Link copy हो गया।" : "Link copied.");
+        });
+    }
+}
+
+function findScholarships(){
+
+    const education=document.getElementById("education").value;
+    const category=document.getElementById("category").value;
+    const gender=document.getElementById("gender").value;
+    const state=document.getElementById("state").value;
+    const course=document.getElementById("course").value;
+    const savedFilter=document.getElementById("savedFilter").value;
+
+    const saved=getSaved();
+
+    let list=scholarships.filter(s=>{
+
+        const levelMatch=!education || s.levels.includes(education);
+
+        const categoryMatch=!category ||
+            s.categories.includes("all") ||
+            s.categories.includes(category);
+
+        const genderMatch=!gender ||
+            s.genders.includes("any") ||
+            s.genders.includes(gender);
+
+        const stateMatch=!state ||
+            s.states.includes("all") ||
+            s.states.includes(state);
+
+        const courseMatch=!course ||
+            s.courses.includes("all") ||
+            s.courses.includes(course);
+
+        const savedMatch=savedFilter!=="saved" || saved.includes(s.id);
+
+        return levelMatch && categoryMatch && genderMatch &&
+               stateMatch && courseMatch && savedMatch;
+    });
+
+    renderResults(list);
+}
+
+function renderResults(list){
+
+    const container=document.getElementById("results");
+    document.getElementById("resultCount").textContent=list.length;
+
+    if(!list.length){
+
+        container.innerHTML=`
+            <div class="empty" style="grid-column:1/-1">
+                <h3>${currentLanguage==="hi" ? "😕 अभी कोई matching scholarship नहीं मिली" : "😕 No matching scholarship found"}</h3>
+                <p>
+                    ${currentLanguage==="hi"
+                    ? "Education या State filter को थोड़ा broad करके फिर search करें।"
+                    : "Try broadening your education or state filters and search again."}
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML=list.map(s=>{
+
+        const name=currentLanguage==="hi" ? s.nameHi : s.nameEn;
+        const benefit=currentLanguage==="hi" ? s.benefitHi : s.benefitEn;
+        const desc=currentLanguage==="hi" ? s.shortHi : s.shortEn;
+
+        const saved=getSaved().includes(s.id);
+
+        const applyText=s.directApply
+            ? (currentLanguage==="hi" ? "📝 Direct Apply" : "📝 Direct Apply")
+            : (currentLanguage==="hi" ? "🔗 Official Portal" : "🔗 Official Portal");
+
+        const detailsText=currentLanguage==="hi" ? "पूरा विवरण" : "Full Details";
+        const saveText=saved ? "★ Saved" : "☆ Save";
+
+        return `
+            <article class="sch-card">
+
+                <span class="match-badge">
+                    ✓ ${currentLanguage==="hi" ? "Eligibility check करें" : "Check eligibility"}
+                </span>
+
+                <span class="state-badge">
+                    📍 ${s.stateLabel}
+                </span>
+
+                <h3>${escapeHTML(name)}</h3>
+
+                <div class="benefit-box">
+                    <div class="benefit-title">
+                        💰 ${currentLanguage==="hi" ? "आपको क्या Benefit मिल सकता है?" : "What Benefit Can You Get?"}
+                    </div>
+
+                    <div class="benefit-text">
+                        ${escapeHTML(benefit)}
+                    </div>
+                </div>
+
+                <p>${escapeHTML(desc)}</p>
+
+                <div class="meta">
+                    <span>🎓 ${escapeHTML(s.levelLabel)}</span>
+                    <span>👤 ${escapeHTML(s.categoryLabel)}</span>
+                    <span>🏫 ${escapeHTML(s.courseLabel)}</span>
+                </div>
+
+                <div class="deadline">
+                    ⏰ <strong>${currentLanguage==="hi" ? "Student Application Last Date" : "Student Application Last Date"}:</strong>
+                    ${escapeHTML(s.deadline)}
+                </div>
+
+                <small>
+                    ✓ ${currentLanguage==="hi" ? "Last verified" : "Last verified"}:
+                    ${escapeHTML(s.lastVerified)}
+                </small>
+
+                <div class="card-actions" style="margin-top:14px">
+
+                    <a class="apply"
+                       href="${escapeAttr(s.applyUrl)}"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        ${applyText}
+                    </a>
+
+                    <a class="details"
+                       href="scholarship-details.html?id=${encodeURIComponent(s.id)}&lang=${currentLanguage}">
+                        ${detailsText}
+                    </a>
+
+                    <button class="save" onclick="saveScholarship('${escapeAttr(s.id)}')">
+                        ${saveText}
+                    </button>
+
+                    <button class="save" onclick="shareScholarship('${escapeAttr(s.id)}')">
+                        ↗ Share
+                    </button>
+
+                </div>
+
+            </article>
+        `;
+
+    }).join("");
+}
+
+function escapeHTML(value){
+    return String(value ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+function escapeAttr(value){
+    return escapeHTML(value);
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+    setLanguage(currentLanguage);
+});
+</script>
+
+</body>
+</html>

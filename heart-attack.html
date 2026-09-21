@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Attack | Mewat Saathi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f6f7fb;
+    color:#202124;
+}
+
+/* HEADER */
+header{
+    width:100%;
+    padding:14px 6%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:900;
+    color:#c62828;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#b71c1c;
+    font-weight:800;
+    background:#fff0f0;
+    padding:9px 15px;
+    border-radius:12px;
+}
+
+/* HERO */
+.hero-wrap{
+    max-width:1050px;
+    margin:18px auto 8px;
+    padding:0 18px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:21px 18px 18px;
+    text-align:center;
+    border-radius:28px;
+    background:linear-gradient(135deg,#fff0f0,#fff7f7,#f5efff);
+    box-shadow:
+        10px 10px 25px rgba(0,0,0,.10),
+        -7px -7px 20px rgba(255,255,255,.95);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(220,38,38,.10);
+    top:-75px;
+    left:-35px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(124,58,237,.08);
+    right:-45px;
+    bottom:-75px;
+}
+
+.hero-icon{
+    position:relative;
+    z-index:2;
+    width:70px;
+    height:70px;
+    margin:0 auto 9px;
+    border-radius:21px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    background:linear-gradient(145deg,#fff,#f3dede);
+    box-shadow:
+        8px 8px 17px rgba(0,0,0,.12),
+        -6px -6px 14px rgba(255,255,255,.95);
+}
+
+.hero h1{
+    position:relative;
+    z-index:2;
+    color:#c62828;
+    font-size:clamp(27px,4vw,39px);
+    margin-bottom:5px;
+}
+
+.hero p{
+    position:relative;
+    z-index:2;
+    max-width:720px;
+    margin:auto;
+    color:#667085;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.voice-box{
+    position:relative;
+    z-index:3;
+    margin:13px auto 0;
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    flex-wrap:wrap;
+}
+
+.voice-btn{
+    border:none;
+    cursor:pointer;
+    padding:9px 16px;
+    border-radius:12px;
+    background:linear-gradient(145deg,#fff,#f0dddd);
+    color:#b71c1c;
+    font-weight:800;
+    box-shadow:
+        5px 5px 12px rgba(0,0,0,.10),
+        -4px -4px 10px rgba(255,255,255,.9);
+}
+
+/* EMERGENCY ALERT */
+.emergency{
+    max-width:1050px;
+    margin:18px auto;
+    padding:0 18px;
+}
+
+.alert-box{
+    padding:20px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#b91c1c,#e53935);
+    color:white;
+    box-shadow:9px 9px 22px rgba(120,0,0,.20);
+}
+
+.alert-box h2{
+    font-size:22px;
+    margin-bottom:7px;
+}
+
+.alert-box p{
+    line-height:1.6;
+    font-size:14px;
+}
+
+.alert-box strong{
+    color:#fff6a8;
+}
+
+/* MAIN */
+main{
+    max-width:1050px;
+    margin:auto;
+    padding:5px 18px 50px;
+}
+
+.section-title{
+    margin:24px 0 15px;
+    padding-left:13px;
+    border-left:7px solid #c62828;
+}
+
+.section-title h2{
+    font-size:24px;
+    color:#242b35;
+}
+
+.section-title p{
+    color:#667085;
+    margin-top:4px;
+    font-size:14px;
+}
+
+/* 3D CARDS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    padding:20px;
+    border-radius:21px;
+    background:linear-gradient(145deg,#fff,#edf0f3);
+    box-shadow:
+        9px 9px 20px rgba(0,0,0,.10),
+        -7px -7px 18px rgba(255,255,255,.95);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.icon{
+    width:55px;
+    height:55px;
+    border-radius:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    margin-bottom:13px;
+    background:linear-gradient(145deg,#fff,#f0dddd);
+    box-shadow:
+        6px 6px 13px rgba(0,0,0,.10),
+        -5px -5px 12px rgba(255,255,255,.9);
+}
+
+.card h3{
+    color:#b71c1c;
+    font-size:18px;
+    margin-bottom:7px;
+}
+
+.card p{
+    color:#667085;
+    font-size:13.5px;
+    line-height:1.6;
+}
+
+/* BIG INFO */
+.big-box{
+    margin-top:20px;
+    padding:23px;
+    border-radius:23px;
+    background:#fff;
+    box-shadow:8px 8px 20px rgba(0,0,0,.08);
+}
+
+.big-box h3{
+    color:#b71c1c;
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.big-box p{
+    color:#596273;
+    line-height:1.75;
+    font-size:14px;
+}
+
+.big-box ul{
+    padding-left:21px;
+    margin-top:10px;
+}
+
+.big-box li{
+    color:#596273;
+    margin:8px 0;
+    line-height:1.55;
+}
+
+/* RED FLAGS */
+.red-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.red-card{
+    padding:18px;
+    border-radius:19px;
+    background:#fff4f4;
+    border-left:6px solid #d32f2f;
+    box-shadow:6px 6px 15px rgba(0,0,0,.07);
+}
+
+.red-card h3{
+    color:#b71c1c;
+    margin-bottom:6px;
+}
+
+.red-card p{
+    color:#596273;
+    font-size:13.5px;
+    line-height:1.6;
+}
+
+/* DO / DON'T */
+.do-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.do-box,
+.dont-box{
+    padding:21px;
+    border-radius:21px;
+    box-shadow:7px 7px 17px rgba(0,0,0,.08);
+}
+
+.do-box{
+    background:#effaf3;
+    border-top:6px solid #159957;
+}
+
+.dont-box{
+    background:#fff1f1;
+    border-top:6px solid #d32f2f;
+}
+
+.do-box h3{
+    color:#137a43;
+    margin-bottom:10px;
+}
+
+.dont-box h3{
+    color:#b71c1c;
+    margin-bottom:10px;
+}
+
+.do-box li,
+.dont-box li{
+    margin:8px 0;
+    color:#596273;
+    line-height:1.5;
+}
+
+/* PREVENTION */
+.prevent{
+    padding:24px;
+    border-radius:23px;
+    background:linear-gradient(135deg,#fff5f5,#f4f0ff);
+    box-shadow:8px 8px 20px rgba(0,0,0,.08);
+}
+
+.prevent-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+    margin-top:15px;
+}
+
+.prevent-item{
+    text-align:center;
+    padding:17px 10px;
+    border-radius:17px;
+    background:#fff;
+    box-shadow:5px 5px 13px rgba(0,0,0,.07);
+}
+
+.prevent-item .p-icon{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.prevent-item strong{
+    color:#b71c1c;
+    font-size:13px;
+}
+
+/* MEWAT SECTION */
+.mewat{
+    margin-top:22px;
+    padding:24px;
+    border-radius:24px;
+    color:white;
+    background:linear-gradient(135deg,#7f1d1d,#b91c1c,#7c3aed);
+    box-shadow:10px 10px 24px rgba(0,0,0,.16);
+}
+
+.mewat h2{
+    margin-bottom:9px;
+}
+
+.mewat p{
+    font-size:14px;
+    line-height:1.7;
+    opacity:.96;
+}
+
+.mewat-list{
+    margin-top:13px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.mewat-item{
+    padding:12px;
+    border-radius:13px;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.20);
+}
+
+/* SOURCES */
+.source{
+    margin-top:20px;
+    padding:17px;
+    border-radius:18px;
+    background:#f0f3f7;
+    color:#596273;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.source strong{
+    color:#242b35;
+}
+
+/* FOOTER */
+footer{
+    margin-top:30px;
+    padding:25px 15px;
+    text-align:center;
+    background:#191919;
+    color:#ddd;
+}
+
+footer strong{
+    color:#ff8080;
+}
+
+footer p{
+    margin-top:6px;
+    font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .prevent-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+
+    header{
+        padding:13px 5%;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .hero{
+        border-radius:22px;
+        padding:17px 14px;
+    }
+
+    .hero-icon{
+        width:60px;
+        height:60px;
+        font-size:30px;
+    }
+
+    .grid,
+    .red-grid,
+    .do-grid,
+    .mewat-list{
+        grid-template-columns:1fr;
+    }
+
+    .prevent-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Mewat Saathi</div>
+    <a href="health.html" class="back-btn">← Health</a>
+</header>
+
+
+<!-- HERO -->
+<div class="hero-wrap">
+    <section class="hero">
+
+        <div class="hero-icon">❤️</div>
+
+        <h1>Heart Attack</h1>
+
+        <p>
+            Signs, causes, risk factors, emergency care aur prevention —
+            simple language mein important information.
+        </p>
+
+        <div class="voice-box">
+            <button class="voice-btn" onclick="speakPage()">🔊 Sunna Hai</button>
+            <button class="voice-btn" onclick="stopVoice()">⏹ Stop</button>
+        </div>
+
+    </section>
+</div>
+
+
+<!-- EMERGENCY -->
+<div class="emergency">
+    <div class="alert-box">
+        <h2>🚨 Sabse Important Baat</h2>
+
+        <p>
+            Agar kisi person ko heart attack ke possible symptoms ho rahe hain,
+            to <strong>wait karke dekhna nahi chahiye</strong>.
+            Heart attack ek medical emergency hai aur early medical care
+            bahut important hoti hai.
+        </p>
+    </div>
+</div>
+
+
+<main>
+
+<!-- WHAT -->
+<div class="section-title">
+    <h2>🫀 Heart Attack kya hota hai?</h2>
+    <p>Sabse pehle basic cheez samjho.</p>
+</div>
+
+<div class="big-box">
+
+    <h3>Heart ko blood aur oxygen chahiye</h3>
+
+    <p>
+        Heart ki muscle ko continuously blood aur oxygen milta rehna zaroori hai.
+        Heart ki kisi coronary artery mein blood flow block ho jaye,
+        to heart muscle ke ek part ko oxygen kam milti hai.
+        Agar blockage ko jaldi treat na kiya jaye, heart muscle damage ho sakti hai.
+    </p>
+
+    <p style="margin-top:10px;">
+        Isi situation ko commonly <strong>heart attack</strong> kaha jata hai.
+        Ye emergency hai — symptoms ko ignore karke ghar par wait karna safe approach nahi hai.
+    </p>
+
+</div>
+
+
+<!-- WHY -->
+<div class="section-title">
+    <h2>❓ Heart Attack kyu hota hai?</h2>
+    <p>Body mein blockage kaise develop ho sakti hai?</p>
+</div>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="icon">🩸</div>
+        <h3>Fatty Deposits</h3>
+        <p>
+            Time ke saath arteries ki inner walls mein fatty deposits
+            build up ho sakte hain. Is process ko atherosclerosis kaha jata hai.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧱</div>
+        <h3>Blockage</h3>
+        <p>
+            Plaque rupture hone par blood clot ban sakta hai,
+            jo artery mein blood flow ko suddenly block kar sakta hai.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">⏱️</div>
+        <h3>Time Matters</h3>
+        <p>
+            Blood flow rukne ke baad affected heart muscle ko oxygen nahi milti.
+            Isliye early emergency care important hoti hai.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- RISK -->
+<div class="section-title">
+    <h2>⚠️ Risk Kin Cheezon Se Badh Sakta Hai?</h2>
+    <p>Kuch factors ko control kiya ja sakta hai.</p>
+</div>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="icon">🚬</div>
+        <h3>Tobacco</h3>
+        <p>
+            Smoking aur tobacco use cardiovascular disease ke important
+            risk factors hain.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧂</div>
+        <h3>Unhealthy Diet</h3>
+        <p>
+            Excess salt, unhealthy fats aur poor-quality diet heart disease
+            ka risk badha sakti hai.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🩺</div>
+        <h3>High BP</h3>
+        <p>
+            Long-term high blood pressure heart aur blood vessels par
+            extra pressure daalta hai.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🍬</div>
+        <h3>Diabetes</h3>
+        <p>
+            Raised blood glucose cardiovascular risk ko increase kar sakta hai.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧪</div>
+        <h3>High Cholesterol</h3>
+        <p>
+            Raised blood lipids arteries mein fatty deposits ke development
+            se connected hain.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🏃</div>
+        <h3>Physical Inactivity</h3>
+        <p>
+            Regular physical activity na hona cardiovascular risk factors
+            ko worsen kar sakta hai.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- WARNING -->
+<div class="section-title">
+    <h2>🚨 Warning Signs</h2>
+    <p>Ye signs aayein to serious lo.</p>
+</div>
+
+<div class="red-grid">
+
+    <div class="red-card">
+        <h3>🫀 Chest Discomfort</h3>
+        <p>
+            Chest ke centre mein pressure, tightness, squeezing ya discomfort
+            ho sakta hai.
+        </p>
+    </div>
+
+    <div class="red-card">
+        <h3>💪 Arm / Shoulder</h3>
+        <p>
+            Discomfort arm ya shoulder tak spread ho sakta hai.
+        </p>
+    </div>
+
+    <div class="red-card">
+        <h3>😮‍💨 Breathing Problem</h3>
+        <p>
+            Saans lene mein difficulty ya unusual shortness of breath ho sakti hai.
+        </p>
+    </div>
+
+    <div class="red-card">
+        <h3>🥶 Cold Sweat</h3>
+        <p>
+            Cold sweating, pale skin ya unusual sweating bhi ho sakti hai.
+        </p>
+    </div>
+
+    <div class="red-card">
+        <h3>🤢 Nausea</h3>
+        <p>
+            Nausea ya vomiting ho sakti hai, aur symptoms har person mein
+            same nahi hote.
+        </p>
+    </div>
+
+    <div class="red-card">
+        <h3>😵 Dizziness</h3>
+        <p>
+            Light-headedness, weakness ya faint feeling bhi ho sakti hai.
+        </p>
+    </div>
+
+</div>
+
+
+<div class="big-box">
+
+    <h3>⚠️ Important: Har Heart Attack Same Nahi Hota</h3>
+
+    <p>
+        Kuch logon mein chest pain prominent hota hai, lekin symptoms
+        person-to-person vary kar sakte hain. Women, older adults aur
+        diabetes wale kuch logon mein symptoms less typical ho sakte hain,
+        jaise breathlessness, unusual tiredness, indigestion-like discomfort
+        ya back/jaw discomfort.
+    </p>
+
+</div>
+
+
+<!-- EMERGENCY CARE -->
+<div class="section-title">
+    <h2>🚑 Agar Heart Attack ka Suspect Ho To?</h2>
+    <p>Sabse important part.</p>
+</div>
+
+<div class="do-grid">
+
+    <div class="do-box">
+        <h3>✅ Kya Karein</h3>
+
+        <ul>
+            <li>Emergency medical help immediately activate karein.</li>
+            <li>Person ko appropriate emergency medical facility tak jaldi pahunchane ki koshish karein.</li>
+            <li>Symptoms start hone ka approximate time yaad rakhein.</li>
+            <li>Person ko unnecessary physical activity na karwayein.</li>
+            <li>Doctors ko existing medical history aur regular medicines ke baare mein batayein.</li>
+        </ul>
+    </div>
+
+    <div class="dont-box">
+        <h3>❌ Kya Na Karein</h3>
+
+        <ul>
+            <li>Symptoms ko sirf gas/acidity maan kar wait na karein.</li>
+            <li>Random medicine ya home remedy par depend na karein.</li>
+            <li>Emergency care lene mein delay na karein.</li>
+            <li>Person ko unnecessary chalne ya exertion karne na dein.</li>
+            <li>Online information ko doctor ke emergency assessment ka replacement na samjhein.</li>
+        </ul>
+    </div>
+
+</div>
+
+
+<!-- HOSPITAL -->
+<div class="section-title">
+    <h2>🏥 Hospital Mein Kya Hota Hai?</h2>
+    <p>Doctors situation ko kaise check karte hain?</p>
+</div>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="icon">📈</div>
+        <h3>ECG</h3>
+        <p>
+            ECG heart ki electrical activity check karta hai aur suspected
+            heart attack mein important test hai.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧪</div>
+        <h3>Troponin Blood Test</h3>
+        <p>
+            Blood mein cardiac troponin check karke heart muscle damage
+            ke evidence ko assess kiya ja sakta hai.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🩻</div>
+        <h3>Further Assessment</h3>
+        <p>
+            Situation ke according doctors additional tests aur coronary
+            artery imaging decide kar sakte hain.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- TREATMENT -->
+<div class="section-title">
+    <h2>🩺 Treatment Kaise Hota Hai?</h2>
+    <p>Treatment blockage aur patient ki condition par depend karta hai.</p>
+</div>
+
+<div class="big-box">
+
+    <h3>Blood Flow Restore Karna Important Goal Hai</h3>
+
+    <p>
+        Hospital mein doctors ka main goal affected heart muscle tak
+        blood flow ko restore karna hota hai. Situation ke according
+        angioplasty/PCI, medicines ya doosre procedures ki zarurat ho sakti hai.
+    </p>
+
+    <p style="margin-top:10px;">
+        <strong>Important:</strong> Heart attack ki medicines khud se start,
+        stop ya change nahi karni chahiye. Treatment doctor decide karta hai.
+    </p>
+
+</div>
+
+
+<!-- PREVENTION -->
+<div class="section-title">
+    <h2>🛡️ Heart Attack ka Risk Kaise Kam Karein?</h2>
+    <p>Daily habits ka role bahut important hai.</p>
+</div>
+
+<div class="prevent">
+
+    <div class="prevent-grid">
+
+        <div class="prevent-item">
+            <div class="p-icon">🚭</div>
+            <strong>Tobacco Avoid</strong>
+        </div>
+
+        <div class="prevent-item">
+            <div class="p-icon">🥗</div>
+            <strong>Healthy Diet</strong>
+        </div>
+
+        <div class="prevent-item">
+            <div class="p-icon">🏃</div>
+            <strong>Physical Activity</strong>
+        </div>
+
+        <div class="prevent-item">
+            <div class="p-icon">🩺</div>
+            <strong>BP Check</strong>
+        </div>
+
+        <div class="prevent-item">
+            <div class="p-icon">🍬</div>
+            <strong>Diabetes Control</strong>
+        </div>
+
+        <div class="prevent-item">
+            <div class="p-icon">🧪</div>
+            <strong>Cholesterol Check</strong>
+        </div>
+
+        <div class="prevent-item">
+            <div class="p-icon">😴</div>
+            <strong>Good Sleep</strong>
+        </div>
+
+        <div class="prevent-item">
+            <div class="p-icon">👨‍⚕️</div>
+            <strong>Regular Check-up</strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- DIFFERENCE -->
+<div class="section-title">
+    <h2>❤️ Heart Attack ≠ Cardiac Arrest</h2>
+    <p>Dono same cheez nahi hain.</p>
+</div>
+
+<div class="do-grid">
+
+    <div class="do-box">
+        <h3>❤️ Heart Attack</h3>
+        <ul>
+            <li>Blood-flow problem hai.</li>
+            <li>Coronary artery ka blood flow block ho sakta hai.</li>
+            <li>Person aksar conscious ho sakta hai.</li>
+            <li>Emergency medical treatment required hota hai.</li>
+        </ul>
+    </div>
+
+    <div class="dont-box">
+        <h3>⚡ Cardiac Arrest</h3>
+        <ul>
+            <li>Heart ki electrical activity suddenly fail ho jati hai.</li>
+            <li>Heart effective pumping stop kar deta hai.</li>
+            <li>Person suddenly unresponsive ho sakta hai.</li>
+            <li>Immediate emergency response required hota hai.</li>
+        </ul>
+    </div>
+
+</div>
+
+
+<!-- MEWAT -->
+<div class="mewat">
+
+    <h2>📍 Mewat ke Liye Important</h2>
+
+    <p>
+        Mewat Saathi ka purpose sirf information dena nahi hai.
+        Emergency situation mein sabse important cheez hai ki family ko
+        pehle se pata ho ki medical help kaise leni hai aur kis facility
+        tak jaana hai.
+    </p>
+
+    <div class="mewat-list">
+
+        <div class="mewat-item">
+            🏥 Nearby Government Hospital
+        </div>
+
+        <div class="mewat-item">
+            🚑 Emergency / Ambulance Information
+        </div>
+
+        <div class="mewat-item">
+            🩺 PHC / CHC Information
+        </div>
+
+        <div class="mewat-item">
+            🫀 Heart-care / Cardiology Facility
+        </div>
+
+    </div>
+
+    <p style="margin-top:14px;">
+        <strong>Next upgrade:</strong> Mewat Saathi mein verified Mewat/Nuh
+        area ki hospitals, PHC/CHC aur emergency facilities ka separate
+        directory section add kiya ja sakta hai — bina fake numbers ya
+        unverified information ke.
+    </p>
+
+</div>
+
+
+<!-- SOURCE -->
+<div class="source">
+
+    <strong>📚 Information Source:</strong><br>
+
+    World Health Organization (WHO) — Heart Attack & Cardiovascular Diseases<br>
+    Ministry of Health & Family Welfare, Government of India —
+    STEMI/heart attack management guidance.
+    
+    <br><br>
+
+    <strong>⚠️ Disclaimer:</strong>
+    Ye page awareness aur basic information ke liye hai.
+    Heart attack suspected ho to online page padhte rehne ke bajay
+    immediate medical help lena important hai.
+
+</div>
+
+</main>
+
+
+<footer>
+    <strong>Mewat Saathi</strong>
+    <p>Mewat ki awaaz, Mewat ke logon ke saath</p>
+</footer>
+
+
+<script>
+
+function speakPage(){
+
+    if(!("speechSynthesis" in window)){
+        alert("Aapke browser mein voice feature available nahi hai.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const text = document.querySelector("main").innerText;
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "hi-IN";
+    speech.rate = 0.88;
+    speech.pitch = 1;
+
+    speechSynthesis.speak(speech);
+}
+
+function stopVoice(){
+
+    if("speechSynthesis" in window){
+        speechSynthesis.cancel();
+    }
+
+}
+
+</script>
+
+</body>
+</html>

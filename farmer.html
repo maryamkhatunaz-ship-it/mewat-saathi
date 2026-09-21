@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Farmer Help Center | Mewat Saathi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:
+        radial-gradient(circle at top left,#eafff0,transparent 35%),
+        linear-gradient(135deg,#f5fff8,#eef7ff);
+    color:#17351f;
+    min-height:100vh;
+}
+
+/* HEADER */
+header{
+    width:100%;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,0,0,.06);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+    color:#168044;
+}
+
+.back-btn{
+    text-decoration:none;
+    background:#168044;
+    color:white;
+    padding:10px 18px;
+    border-radius:14px;
+    font-weight:bold;
+    box-shadow:0 6px 15px rgba(22,128,68,.25);
+}
+
+/* HERO */
+.hero-wrap{
+    max-width:1100px;
+    margin:22px auto 15px;
+    padding:0 18px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:35px 28px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#087f3e,#18a957);
+    color:white;
+    box-shadow:
+        0 18px 35px rgba(0,90,40,.22),
+        inset 0 2px 0 rgba(255,255,255,.25);
+}
+
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.10);
+}
+
+.hero::before{
+    width:180px;
+    height:180px;
+    right:-60px;
+    top:-70px;
+}
+
+.hero::after{
+    width:120px;
+    height:120px;
+    left:-45px;
+    bottom:-60px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.hero-icon{
+    width:78px;
+    height:78px;
+    min-width:78px;
+    border-radius:24px;
+    background:linear-gradient(145deg,#fff,#dfffea);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:42px;
+    box-shadow:
+        8px 8px 18px rgba(0,0,0,.20),
+        inset 2px 2px 5px rgba(255,255,255,.9);
+}
+
+.hero h1{
+    font-size:34px;
+    margin-bottom:7px;
+}
+
+.hero p{
+    font-size:16px;
+    line-height:1.6;
+    opacity:.95;
+}
+
+/* SEARCH */
+.search-wrap{
+    max-width:1100px;
+    margin:20px auto;
+    padding:0 18px;
+}
+
+.search-box{
+    width:100%;
+    padding:16px 20px;
+    border:none;
+    outline:none;
+    border-radius:18px;
+    background:white;
+    font-size:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+/* SECTION */
+.section-title{
+    max-width:1100px;
+    margin:28px auto 15px;
+    padding:0 18px;
+}
+
+.section-title h2{
+    font-size:25px;
+    border-left:7px solid #18a957;
+    padding-left:12px;
+}
+
+/* CARDS */
+.cards{
+    max-width:1100px;
+    margin:auto;
+    padding:0 18px 35px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    text-decoration:none;
+    color:#17351f;
+    background:linear-gradient(145deg,#ffffff,#f0fff5);
+    border-radius:24px;
+    padding:22px;
+    min-height:190px;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+        8px 8px 18px rgba(20,80,40,.13),
+        -4px -4px 12px rgba(255,255,255,.9);
+
+    border:1px solid rgba(22,128,68,.08);
+
+    transition:.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px) rotateX(2deg);
+    box-shadow:
+        12px 18px 28px rgba(20,80,40,.18),
+        -4px -4px 12px white;
+}
+
+.card:active{
+    transform:scale(.98);
+}
+
+.card::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-40px;
+    bottom:-40px;
+    border-radius:50%;
+    background:rgba(24,169,87,.08);
+}
+
+.card-icon{
+    width:62px;
+    height:62px;
+    border-radius:19px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:32px;
+
+    background:linear-gradient(145deg,#eafff0,#c9f7d9);
+
+    box-shadow:
+        6px 7px 12px rgba(0,80,35,.16),
+        inset 2px 2px 5px white;
+
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#55705d;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.arrow{
+    position:absolute;
+    right:18px;
+    top:20px;
+    font-size:20px;
+    color:#168044;
+    font-weight:bold;
+}
+
+/* OFFICIAL BOX */
+.official{
+    max-width:1100px;
+    margin:0 auto 35px;
+    padding:0 18px;
+}
+
+.official-box{
+    background:linear-gradient(135deg,#effff4,#ffffff);
+    border-radius:24px;
+    padding:22px;
+    border:1px solid #d8f1df;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.official-box h3{
+    color:#168044;
+    margin-bottom:8px;
+}
+
+.official-box p{
+    line-height:1.6;
+    color:#52645a;
+    font-size:14px;
+}
+
+.official-link{
+    display:inline-block;
+    margin-top:12px;
+    text-decoration:none;
+    background:#168044;
+    color:white;
+    padding:10px 16px;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    color:#63736a;
+    font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:850px){
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+}
+
+@media(max-width:560px){
+    header{
+        padding:13px 18px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .back-btn{
+        padding:8px 13px;
+        font-size:13px;
+    }
+
+    .hero{
+        padding:25px 20px;
+    }
+
+    .hero-content{
+        align-items:flex-start;
+    }
+
+    .hero-icon{
+        width:62px;
+        min-width:62px;
+        height:62px;
+        font-size:32px;
+    }
+
+    .hero h1{
+        font-size:24px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        min-height:160px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌾 Mewat Saathi</div>
+
+    <a href="index.html" class="back-btn">
+        ← Home
+    </a>
+</header>
+
+
+<!-- HERO -->
+<div class="hero-wrap">
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-icon">
+                🌾
+            </div>
+
+            <div>
+                <h1>Farmer Help Center</h1>
+
+                <p>
+                    Kheti, fasal, schemes, pashupalan, mandi aur
+                    agriculture se judi useful jaankari ek hi jagah.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+
+<!-- SEARCH -->
+<div class="search-wrap">
+
+    <input
+        type="text"
+        id="searchInput"
+        class="search-box"
+        placeholder="🔎 Search karein... jaise scheme, fasal, mandi, pashupalan"
+    >
+
+</div>
+
+
+<div class="section-title">
+    <h2>🌱 Farmer Services</h2>
+</div>
+
+
+<!-- CARDS -->
+<div class="cards" id="cards">
+
+
+    <!-- 1 -->
+    <a href="farmer-details.html#schemes" class="card"></a>
+
+        <div class="card-icon">📋</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Important Farmer Schemes</h3>
+
+        <p>
+            Farmers ke liye important government schemes,
+            support aur official information.
+        </p>
+
+    </a>
+
+
+    <!-- 2 -->
+    <a href="farming.html" class="card">
+
+        <div class="card-icon">🌾</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Kheti & Fasal Guidance</h3>
+
+        <p>
+            Kheti planning, crop selection, improved techniques
+            aur better farm management.
+        </p>
+
+    </a>
+
+
+    <!-- 3 -->
+    <a href="crop-disease.html" class="card">
+
+        <div class="card-icon">🐛</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Fasal Rog & Keede</h3>
+
+        <p>
+            Crop diseases, pests aur unse judi basic
+            guidance aur official help.
+        </p>
+
+    </a>
+
+
+    <!-- 4 -->
+    <a href="weather-farming.html" class="card">
+
+        <div class="card-icon">🌦️</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Mausam & Fasal Planning</h3>
+
+        <p>
+            Mausam ko dhyan mein rakhkar farming planning
+            aur fasal decisions.
+        </p>
+
+    </a>
+
+
+    <!-- 5 -->
+    <a href="irrigation.html" class="card">
+
+        <div class="card-icon">💧</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Sichai & Paani</h3>
+
+        <p>
+            Irrigation, paani management aur farming mein
+            water-use guidance.
+        </p>
+
+    </a>
+
+
+    <!-- 6 -->
+    <a href="machinery.html" class="card">
+
+        <div class="card-icon">🚜</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Agriculture Machinery</h3>
+
+        <p>
+            Farming machines, equipment aur modern
+            mechanised farming ki information.
+        </p>
+
+    </a>
+
+
+    <!-- 7 -->
+    <a href="animal-husbandry.html" class="card">
+
+        <div class="card-icon">🐄</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Pashupalan & Dairy</h3>
+
+        <p>
+            Pashuon ki health, breeding, dairy, fodder
+            aur livestock-related official information.
+        </p>
+
+    </a>
+
+
+    <!-- 8 -->
+    <a href="horticulture.html" class="card">
+
+        <div class="card-icon">🥬</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Bagwani</h3>
+
+        <p>
+            Fruits, vegetables, plants aur horticulture
+            se judi useful information.
+        </p>
+
+    </a>
+
+
+    <!-- 9 -->
+    <a href="mandi.html" class="card">
+
+        <div class="card-icon">🏪</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Mandi & Fasal Bikri</h3>
+
+        <p>
+            Mandi, crop selling aur fasal ko market tak
+            pahunchane se judi guidance.
+        </p>
+
+    </a>
+
+
+    <!-- 10 -->
+    <a href="farmer-services.html" class="card">
+
+        <div class="card-icon">📄</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Documents & Online Kaam</h3>
+
+        <p>
+            Farmer documents, online government services
+            aur forms ke liye guidance.
+        </p>
+
+    </a>
+
+
+    <!-- 11 -->
+    <a href="nuh-agriculture.html" class="card">
+
+        <div class="card-icon">🏛️</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Mewat / Nuh Agriculture Help</h3>
+
+        <p>
+            Nuh Agriculture Department aur local
+            agriculture-related official information.
+        </p>
+
+    </a>
+
+
+    <!-- 12 -->
+    <a href="farmer-helpline.html" class="card">
+
+        <div class="card-icon">📞</div>
+
+        <span class="arrow">→</span>
+
+        <h3>Kisan Helpline</h3>
+
+        <p>
+            Important farmer helpline numbers aur
+            official contact information.
+        </p>
+
+    </a>
+
+</div>
+
+
+<!-- OFFICIAL INFORMATION -->
+<div class="official">
+
+    <div class="official-box">
+
+        <h3>🏛️ Official Agriculture Information</h3>
+
+        <p>
+            Nuh Agriculture Department farmers ko modern
+            agricultural techniques, crop planning, pest aur
+            disease control, improved seeds, fertilizers,
+            demonstrations aur farmer training jaise areas mein
+            guidance deta hai.
+        </p>
+
+        <a
+            href="https://nuh.gov.in/departments/agriculture/"
+            target="_blank"
+            class="official-link"
+        >
+            Official Nuh Agriculture Website →
+        </a>
+
+    </div>
+
+</div>
+
+
+<footer>
+    🌾 Mewat Saathi — Mewat ki awaaz, Mewat ke logon ke saath
+</footer>
+
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("input", function(){
+
+    const search = this.value.toLowerCase().trim();
+
+    cards.forEach(card => {
+
+        const text = card.textContent.toLowerCase();
+
+        if(text.includes(search)){
+            card.style.display = "";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

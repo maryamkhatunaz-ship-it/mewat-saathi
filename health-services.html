@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Services | Mewat Saathi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#202124;
+}
+
+/* HEADER */
+header{
+    width:100%;
+    padding:15px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#ffffff;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    color:#087f5b;
+}
+
+.home-btn{
+    text-decoration:none;
+    color:#087f5b;
+    font-weight:800;
+    padding:9px 16px;
+    border-radius:12px;
+    background:#eefaf5;
+}
+
+/* HERO WRAPPER */
+.hero-wrap{
+    max-width:1050px;
+    margin:18px auto 8px;
+    padding:0 18px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    padding:20px 18px 18px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#e9fff6,#e9f5ff,#f3edff);
+    box-shadow:
+        10px 10px 25px rgba(0,0,0,.10),
+        -7px -7px 20px rgba(255,255,255,.95);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:rgba(8,127,91,.10);
+    top:-65px;
+    left:-35px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(89,70,180,.08);
+    right:-45px;
+    bottom:-75px;
+}
+
+.hero-icon{
+    position:relative;
+    z-index:2;
+    width:68px;
+    height:68px;
+    margin:0 auto 9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:20px;
+    font-size:34px;
+    background:linear-gradient(145deg,#ffffff,#dcefe8);
+    box-shadow:
+        8px 8px 17px rgba(0,0,0,.12),
+        -6px -6px 14px rgba(255,255,255,.95);
+}
+
+.hero h1{
+    position:relative;
+    z-index:2;
+    font-size:clamp(27px,4vw,38px);
+    color:#087f5b;
+    margin-bottom:6px;
+}
+
+.hero p{
+    position:relative;
+    z-index:2;
+    max-width:700px;
+    margin:auto;
+    color:#667085;
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* VOICE */
+.voice-box{
+    position:relative;
+    z-index:3;
+    margin:13px auto 0;
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    flex-wrap:wrap;
+}
+
+.voice-btn{
+    border:none;
+    cursor:pointer;
+    padding:9px 16px;
+    border-radius:12px;
+    background:linear-gradient(145deg,#ffffff,#dcebe5);
+    color:#087f5b;
+    font-size:14px;
+    font-weight:800;
+    box-shadow:
+        5px 5px 12px rgba(0,0,0,.10),
+        -4px -4px 10px rgba(255,255,255,.9);
+    transition:.25s;
+}
+
+.voice-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* MAIN */
+main{
+    max-width:1050px;
+    margin:auto;
+    padding:15px 18px 50px;
+}
+
+.section-title{
+    margin:22px 0 15px;
+    padding-left:13px;
+    border-left:7px solid #087f5b;
+}
+
+.section-title h2{
+    font-size:24px;
+    color:#1f2937;
+}
+
+.section-title p{
+    color:#667085;
+    margin-top:4px;
+    font-size:14px;
+}
+
+/* CARDS */
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.service-card{
+    text-decoration:none;
+    color:inherit;
+    padding:21px;
+    min-height:185px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#ffffff,#edf1f4);
+    box-shadow:
+        9px 9px 20px rgba(0,0,0,.10),
+        -7px -7px 18px rgba(255,255,255,.95);
+    transition:.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-6px);
+}
+
+.service-icon{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:17px;
+    font-size:28px;
+    margin-bottom:14px;
+    background:linear-gradient(145deg,#ffffff,#dfeee8);
+    box-shadow:
+        6px 6px 13px rgba(0,0,0,.10),
+        -5px -5px 12px rgba(255,255,255,.9);
+}
+
+.service-card h3{
+    font-size:18px;
+    margin-bottom:7px;
+    color:#087f5b;
+}
+
+.service-card p{
+    font-size:13.5px;
+    line-height:1.55;
+    color:#667085;
+}
+
+/* FEATURE */
+.feature{
+    margin-top:22px;
+    padding:23px;
+    border-radius:23px;
+    background:linear-gradient(135deg,#087f5b,#0b9b70,#3976d3);
+    color:white;
+    box-shadow:10px 10px 23px rgba(0,0,0,.14);
+}
+
+.feature h2{
+    margin-bottom:8px;
+}
+
+.feature p{
+    line-height:1.65;
+    font-size:14px;
+    opacity:.95;
+}
+
+/* INFO */
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:17px;
+    margin-top:18px;
+}
+
+.info-box{
+    padding:19px;
+    border-radius:20px;
+    background:#fff;
+    box-shadow:7px 7px 17px rgba(0,0,0,.08);
+}
+
+.info-box h3{
+    margin-bottom:7px;
+    color:#087f5b;
+}
+
+.info-box p{
+    font-size:14px;
+    line-height:1.6;
+    color:#667085;
+}
+
+/* DISCLAIMER */
+.disclaimer{
+    margin-top:22px;
+    padding:17px;
+    border-radius:18px;
+    background:#fff8e6;
+    border-left:6px solid #e3a008;
+    color:#5f4b12;
+    font-size:13.5px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+    margin-top:30px;
+    padding:25px 15px;
+    text-align:center;
+    background:#17212b;
+    color:#d9e0e6;
+}
+
+footer strong{
+    color:#6ee7b7;
+}
+
+footer p{
+    margin-top:6px;
+    font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    header{
+        padding:13px 5%;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .hero{
+        padding:17px 14px;
+        border-radius:22px;
+    }
+
+    .hero-icon{
+        width:60px;
+        height:60px;
+        font-size:30px;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .service-card{
+        min-height:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Mewat Saathi</div>
+    <a href="health.html" class="home-btn">← Health</a>
+</header>
+
+<div class="hero-wrap">
+    <section class="hero">
+
+        <div class="hero-icon">🏥</div>
+
+        <h1>Health Services</h1>
+
+        <p>
+            Health services ko samajhne, sahi jagah tak pahunchne
+            aur available government health facilities ke baare mein
+            basic information.
+        </p>
+
+        <div class="voice-box">
+            <button class="voice-btn" onclick="speakPage()">🔊 Sunna Hai</button>
+            <button class="voice-btn" onclick="stopVoice()">⏹ Stop</button>
+        </div>
+
+    </section>
+</div>
+
+<main>
+
+    <div class="section-title">
+        <h2>Important Health Services</h2>
+        <p>Apni need ke according relevant service ko samjhein.</p>
+    </div>
+
+    <div class="services-grid">
+
+        <a href="#emergency" class="service-card">
+            <div class="service-icon">🚑</div>
+            <h3>Emergency Help</h3>
+            <p>
+                Serious emergency mein delay na karein. Nearby
+                appropriate emergency medical facility tak pahunchna important hai.
+            </p>
+        </a>
+
+        <a href="#hospital" class="service-card">
+            <div class="service-icon">🏨</div>
+            <h3>Hospital & PHC</h3>
+            <p>
+                Government health system mein primary level facilities
+                aur hospitals basic se specialised care tak services de sakte hain.
+            </p>
+        </a>
+
+        <a href="#aam" class="service-card">
+            <div class="service-icon">🩺</div>
+            <h3>Ayushman Arogya Mandir</h3>
+            <p>
+                Primary healthcare ke under preventive, general care,
+                screening aur kai other health services available hain.
+            </p>
+        </a>
+
+        <a href="#telemedicine" class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Online Doctor</h3>
+            <p>
+                eSanjeevani government telemedicine service ke through
+                eligible users remote medical consultation le sakte hain.
+            </p>
+        </a>
+
+        <a href="#diagnostic" class="service-card">
+            <div class="service-icon">🧪</div>
+            <h3>Tests & Diagnostics</h3>
+            <p>
+                Kuch health facilities par basic diagnostic aur screening
+                services available ho sakti hain.
+            </p>
+        </a>
+
+        <a href="#vaccination" class="service-card">
+            <div class="service-icon">💉</div>
+            <h3>Vaccination</h3>
+            <p>
+                Children, adolescents aur adults ke liye recommended
+                vaccination services health system ke through mil sakti hain.
+            </p>
+        </a>
+
+        <a href="#ayushman" class="service-card">
+            <div class="service-icon">💳</div>
+            <h3>Ayushman / Health Cover</h3>
+            <p>
+                Eligible families ke liye government health coverage
+                schemes available hain. Eligibility check karna zaroori hai.
+            </p>
+        </a>
+
+        <a href="#health-worker" class="service-card">
+            <div class="service-icon">👩‍⚕️</div>
+            <h3>ASHA / Health Worker</h3>
+            <p>
+                Community-level health workers basic health awareness,
+                guidance aur healthcare services tak connection mein help karte hain.
+            </p>
+        </a>
+
+        <a href="#mental" class="service-card">
+            <div class="service-icon">🧠</div>
+            <h3>Mental Health Help</h3>
+            <p>
+                Mental health concern ko ignore na karein. Professional
+                support aur government tele-mental health services available hain.
+            </p>
+        </a>
+
+    </div>
+
+    <div class="feature">
+        <h2>📱 eSanjeevani</h2>
+        <p>
+            eSanjeevani India ki National Telemedicine Service hai.
+            Iske through patients ko remote medical consultation ki facility
+            mil sakti hai. Government sources ke according iska use
+            patient-to-doctor aur healthcare-facility based telemedicine
+            dono models mein hota hai.
+        </p>
+    </div>
+
+    <div class="section-title">
+        <h2>Kaunsi Service Kab?</h2>
+        <p>Simple way mein samjho.</p>
+    </div>
+
+    <div class="info-grid">
+
+        <div class="info-box" id="emergency">
+            <h3>🚑 Emergency</h3>
+            <p>
+                Agar situation serious ya rapidly worsening ho,
+                online information par depend karne ke bajay
+                emergency medical help lena important hai.
+            </p>
+        </div>
+
+        <div class="info-box" id="hospital">
+            <h3>🏨 Hospital / PHC</h3>
+            <p>
+                Fever, infection, injury, recurring problem ya kisi
+                health concern ke liye appropriate healthcare facility
+                se assessment karwana better hai.
+            </p>
+        </div>
+
+        <div class="info-box" id="aam">
+            <h3>🩺 Ayushman Arogya Mandir</h3>
+            <p>
+                Government ke Ayushman Arogya Mandir network mein
+                primary healthcare, screening, maternal-child health,
+                oral, eye, mental health aur other services ka expanded range hai.
+            </p>
+        </div>
+
+        <div class="info-box" id="telemedicine">
+            <h3>📱 Telemedicine</h3>
+            <p>
+                Jab in-person visit immediately possible na ho aur
+                online consultation suitable ho, eSanjeevani jaise
+                government telemedicine service ka option dekha ja sakta hai.
+            </p>
+        </div>
+
+        <div class="info-box" id="diagnostic">
+            <h3>🧪 Tests</h3>
+            <p>
+                Diagnostic test ki need doctor ya healthcare professional
+                situation ke according decide kar sakte hain. Har test
+                har facility par available nahi hota.
+            </p>
+        </div>
+
+        <div class="info-box" id="vaccination">
+            <h3>💉 Vaccination</h3>
+            <p>
+                Vaccination ke liye nearby government health facility,
+                vaccination centre ya healthcare worker se current
+                availability aur schedule confirm karein.
+            </p>
+        </div>
+
+        <div class="info-box" id="ayushman">
+            <h3>💳 Health Coverage</h3>
+            <p>
+                Government health schemes mein eligibility aur covered
+                services alag ho sakti hain. Official portal ya authorised
+                health facility se details verify karein.
+            </p>
+        </div>
+
+        <div class="info-box" id="health-worker">
+            <h3>👩‍⚕️ Community Health Worker</h3>
+            <p>
+                ASHA aur other frontline health workers community ko
+                health services, awareness aur appropriate facility tak
+                pahunchne mein guide kar sakte hain.
+            </p>
+        </div>
+
+        <div class="info-box" id="mental">
+            <h3>🧠 Mental Health</h3>
+            <p>
+                Mental health concern ke liye professional help lena
+                normal hai. Government ka Tele-MANAS programme bhi
+                tele-mental health support provide karta hai.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="disclaimer">
+        ⚠️ <strong>Important:</strong>
+        Mewat Saathi health information ko simple banane ke liye hai.
+        Ye doctor ki diagnosis ya emergency medical care ka replacement nahi hai.
+        Health problem serious ho, symptoms worsen ho rahe hon, ya emergency lage,
+        to qualified healthcare professional / appropriate medical facility se help lein.
+    </div>
+
+</main>
+
+<footer>
+    <strong>Mewat Saathi</strong>
+    <p>Mewat ki awaaz, Mewat ke logon ke saath</p>
+</footer>
+
+<script>
+
+function speakPage(){
+
+    if(!("speechSynthesis" in window)){
+        alert("Aapke browser mein voice feature available nahi hai.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const text = document.querySelector("main").innerText;
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "hi-IN";
+    speech.rate = 0.9;
+    speech.pitch = 1;
+
+    speechSynthesis.speak(speech);
+}
+
+function stopVoice(){
+    if("speechSynthesis" in window){
+        speechSynthesis.cancel();
+    }
+}
+
+</script>
+
+</body>
+</html>

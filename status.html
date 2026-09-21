@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Complaint Status - Mewat Saathi</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .status-box {
+
+            background-color: white;
+
+            padding: 22px;
+
+            margin-top: 20px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(0, 0, 0, 0.1);
+
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-top: 15px;
+
+            margin-bottom: 8px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            box-sizing: border-box;
+
+            border:
+                1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+        }
+
+
+        .check-button {
+
+            width: 100%;
+
+            padding: 16px;
+
+            margin-top: 20px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background-color: #146b3a;
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+        }
+
+
+        .check-button:disabled {
+
+            background-color: #777;
+
+        }
+
+
+        #result {
+
+            display: none;
+
+            background-color: #f2f7f2;
+
+            padding: 20px;
+
+            margin-top: 20px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .status {
+
+            padding: 12px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+
+            text-align: center;
+
+            margin-top: 15px;
+
+        }
+
+
+        .pending {
+
+            background-color: #fff1bd;
+
+        }
+
+
+        .progress {
+
+            background-color: #dcecff;
+
+        }
+
+
+        .resolved {
+
+            background-color: #dff5e5;
+
+        }
+
+
+        .error-box {
+
+            background-color: #ffe5e5;
+
+            color: #9b0000;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="home-container">
+
+        <div class="hero">
+
+            <h1>🔎 Complaint Status</h1>
+
+            <p>
+                Apni complaint ka current status check karein
+            </p>
+
+        </div>
+
+
+        <div class="status-box">
+
+            <label>
+                🆔 Complaint ID
+            </label>
+
+            <input
+                type="number"
+                id="complaintId"
+                placeholder="Example: 1"
+            >
+
+
+            <label>
+                📱 Mobile Number
+            </label>
+
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="Complaint submit karte waqt wala number"
+                maxlength="10"
+            >
+
+
+            <button
+                class="check-button"
+                id="checkButton"
+                onclick="checkStatus()"
+            >
+                🔎 Status Check Karein
+            </button>
+
+
+            <div id="result"></div>
+
+        </div>
+
+
+        <br>
+
+
+        <a href="complaint.html">
+
+            <button>
+                📝 New Complaint Karein
+            </button>
+
+        </a>
+
+
+        <br><br>
+
+
+        <a href="index.html">
+
+            <button>
+                🏠 Home Par Wapas Jayein
+            </button>
+
+        </a>
+
+    </div>
+
+
+    <script>
+
+        async function checkStatus() {
+
+            let complaintId =
+                document
+                .getElementById("complaintId")
+                .value
+                .trim();
+
+
+            let mobile =
+                document
+                .getElementById("mobile")
+                .value
+                .trim();
+
+
+            let result =
+                document.getElementById(
+                    "result"
+                );
+
+
+            let checkButton =
+                document.getElementById(
+                    "checkButton"
+                );
+
+
+            if (
+                complaintId === "" ||
+                mobile === ""
+            ) {
+
+                alert(
+                    "Complaint ID aur Mobile Number dono likhein."
+                );
+
+                return;
+
+            }
+
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                alert(
+                    "Please valid 10 digit mobile number likhein."
+                );
+
+                return;
+
+            }
+
+
+            checkButton.disabled = true;
+
+            checkButton.innerText =
+                "⏳ Status Check Ho Raha Hai...";
+
+
+            try {
+
+                let formData =
+                    new FormData();
+
+
+                formData.append(
+                    "mobile",
+                    mobile
+                );
+
+
+                let response =
+                    await fetch(
+                        "http://127.0.0.1:5000/complaint/"
+                        + complaintId,
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+
+                let data =
+                    await response.json();
+
+
+                result.style.display =
+                    "block";
+
+
+                if (!response.ok || data.error) {
+
+                    result.innerHTML =
+
+                        "<div class='error-box'>" +
+
+                        "<h2>❌ Complaint Nahi Mili</h2>" +
+
+                        "<p>" +
+                        (data.error ||
+                        "Complaint nahi mili.") +
+                        "</p>" +
+
+                        "</div>";
+
+                    return;
+
+                }
+
+
+                let statusClass =
+                    "";
+
+
+                if (data.status === "Pending") {
+
+                    statusClass =
+                        "pending";
+
+                }
+
+                else if (
+                    data.status === "In Progress"
+                ) {
+
+                    statusClass =
+                        "progress";
+
+                }
+
+                else if (
+                    data.status === "Resolved"
+                ) {
+
+                    statusClass =
+                        "resolved";
+
+                }
+
+
+                result.innerHTML =
+
+                    "<h2>📝 Complaint Details</h2>" +
+
+                    "<p><strong>Complaint ID:</strong> #" +
+                    data.id +
+                    "</p>" +
+
+                    "<p><strong>Village:</strong> " +
+                    data.village +
+                    "</p>" +
+
+                    "<p><strong>Category:</strong> " +
+                    data.category +
+                    "</p>" +
+
+                    "<div class='status " +
+                    statusClass +
+                    "'>" +
+
+                    "Status: " +
+                    data.status +
+
+                    "</div>";
+
+
+            }
+
+            catch (error) {
+
+                result.style.display =
+                    "block";
+
+
+                result.innerHTML =
+
+                    "<div class='error-box'>" +
+
+                    "<h2>❌ Connection Error</h2>" +
+
+                    "<p>" +
+                    "Backend se connection nahi ho paya." +
+                    "</p>" +
+
+                    "</div>";
+
+                console.log(error);
+
+            }
+
+
+            finally {
+
+                checkButton.disabled =
+                    false;
+
+                checkButton.innerText =
+                    "🔎 Status Check Karein";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

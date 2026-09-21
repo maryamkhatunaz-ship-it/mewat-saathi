@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>College Finder - Mewat Saathi</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial;background:#f5f7fb;color:#172033}
+.hero{
+ max-width:1050px;margin:18px auto 8px;padding:25px;
+ border-radius:26px;color:white;
+ background:linear-gradient(135deg,#312e81,#4f46e5,#06b6d4);
+ box-shadow:0 15px 35px #0002
+}
+.hero h1{font-size:31px;margin-bottom:7px}
+.hero p{line-height:1.6}
+.container{max-width:1050px;margin:auto;padding:18px}
+.search{
+ width:100%;padding:15px;border:0;border-radius:15px;
+ box-shadow:0 5px 20px #0001;margin-bottom:18px;font-size:15px
+}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tabs button{
+ border:0;padding:10px 15px;border-radius:20px;
+ background:#e2e8f0;cursor:pointer
+}
+.tabs button.active{background:#2563eb;color:white}
+.group{margin-bottom:28px}
+.group h2{margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.card{
+ background:white;padding:19px;border-radius:19px;
+ box-shadow:0 7px 0 #dbe4f0,0 10px 20px #0000000c;
+}
+.card h3{margin-bottom:7px}
+.card p{color:#64748b;line-height:1.5;font-size:14px}
+.badge{
+ display:inline-block;background:#dcfce7;color:#166534;
+ padding:5px 9px;border-radius:15px;font-size:12px;margin-bottom:9px
+}
+a.btn{
+ display:inline-block;margin-top:12px;text-decoration:none;
+ background:#2563eb;color:white;padding:9px 13px;border-radius:10px
+}
+footer{text-align:center;background:#111827;color:#cbd5e1;padding:25px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero{margin:10px}}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<h1>🎓 College & University Finder</h1>
+<p>
+Pehle Mewat/Nuh ke options dekho. Uske baad nearby districts,
+phir wider options.
+</p>
+</section>
+
+<div class="container">
+
+<input id="search" class="search"
+placeholder="College, district ya course search karo...">
+
+<div class="tabs">
+<button class="active" onclick="filter('all',this)">All</button>
+<button onclick="filter('mewat',this)">Mewat</button>
+<button onclick="filter('nearby',this)">Nearby</button>
+</div>
+
+<div class="group">
+<h2>📍 1. Mewat / Nuh</h2>
+
+<div class="grid">
+
+<div class="card" data-area="mewat">
+<span class="badge">Official Nuh Listing</span>
+<h3>Mewat Engineering College</h3>
+<p>Palla, District Nuh, Haryana.</p>
+<p>Engineering & Technology related higher education.</p>
+<a class="btn" href="http://mecw.ac.in" target="_blank">Official Website</a>
+</div>
+
+<div class="card" data-area="mewat">
+<span class="badge">Official Nuh Listing</span>
+<h3>SHKM Government Medical College</h3>
+<p>Nalhar, Nuh, Haryana.</p>
+<p>Medical education and healthcare institution.</p>
+<a class="btn" href="http://www.gmcmewat.ac.in" target="_blank">Official Website</a>
+</div>
+
+<div class="card" data-area="mewat">
+<span class="badge">Official Nuh Listing</span>
+<h3>Yaseen Meo Degree College</h3>
+<p>Nuh, Haryana.</p>
+<p>Degree-level higher education.</p>
+<a class="btn" href="http://ymdcollege.ac.in" target="_blank">Official Website</a>
+</div>
+
+</div>
+</div>
+
+<div class="group">
+<h2>📍 2. Nearby Districts</h2>
+
+<div class="grid">
+
+<div class="card" data-area="nearby">
+<span class="badge">Palwal</span>
+<h3>BR Ambedkar Government PG College</h3>
+<p>Sector-12A, Nuh Road, Palwal.</p>
+<p>Government postgraduate college.</p>
+</div>
+
+<div class="card" data-area="nearby">
+<span class="badge">Faridabad</span>
+<h3>Government College, Tigaon</h3>
+<p>Village Tigaon, Faridabad.</p>
+<p>Government college.</p>
+</div>
+
+<div class="card" data-area="nearby">
+<span class="badge">Faridabad</span>
+<h3>Jawahar Lal Nehru College</h3>
+<p>Sector-16A, Faridabad.</p>
+<p>Government college.</p>
+</div>
+
+<div class="card" data-area="nearby">
+<span class="badge">Gurugram</span>
+<h3>Dronacharya Government College</h3>
+<p>New Railway Road, Gurugram.</p>
+</div>
+
+<div class="card" data-area="nearby">
+<span class="badge">Rewari</span>
+<h3>Government College, Bawal</h3>
+<p>Bawal, Rewari.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<footer>
+Mewat Saathi • College Finder
+</footer>
+
+<script>
+const search=document.getElementById("search");
+const cards=document.querySelectorAll(".card");
+
+search.addEventListener("input",()=>{
+ let q=search.value.toLowerCase();
+ cards.forEach(card=>{
+   card.style.display=card.innerText.toLowerCase().includes(q)?"block":"none";
+ });
+});
+
+function filter(type,btn){
+ document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+
+ cards.forEach(card=>{
+   card.style.display=(type==="all"||card.dataset.area===type)?"block":"none";
+ });
+}
+</script>
+
+</body>
+</html>

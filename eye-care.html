@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Eye Care | Mewat Saathi</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 0% 0%, #e4f5ff 0%, transparent 32%),
+        radial-gradient(circle at 100% 100%, #e9e1ff 0%, transparent 32%),
+        #f5f7fb;
+
+      color: #172033;
+      line-height: 1.6;
+    }
+
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid #e5e7eb;
+
+      padding: 12px 6%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      color: #4568a8;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: white;
+
+      background: linear-gradient(135deg, #4568a8, #6b82c5);
+
+      padding: 8px 15px;
+      border-radius: 11px;
+
+      font-weight: 700;
+
+      box-shadow:
+        4px 5px 10px rgba(0,0,0,0.12);
+    }
+
+
+    /* PREMIUM HERO */
+
+    .hero-wrap {
+      max-width: 1050px;
+      margin: 18px auto 5px;
+      padding: 0 18px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+
+      text-align: center;
+
+      padding: 24px 20px 20px;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.98),
+          rgba(227,238,255,0.93)
+        );
+
+      border: 1px solid rgba(255,255,255,0.9);
+
+      box-shadow:
+        12px 14px 30px rgba(0,0,0,0.10),
+        -8px -8px 22px rgba(255,255,255,0.95);
+    }
+
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+
+      background: rgba(69,104,168,0.10);
+
+      top: -75px;
+      left: -45px;
+
+      filter: blur(2px);
+    }
+
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 130px;
+      height: 130px;
+
+      border-radius: 50%;
+
+      background: rgba(113,88,190,0.10);
+
+      right: -40px;
+      bottom: -70px;
+
+      filter: blur(2px);
+    }
+
+
+    /* 3D ICON */
+
+    .hero-icon {
+      position: relative;
+      z-index: 2;
+
+      width: 68px;
+      height: 68px;
+
+      margin: 0 auto 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 21px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #dce8fa
+        );
+
+      box-shadow:
+        8px 9px 18px rgba(0,0,0,0.13),
+        -7px -7px 16px rgba(255,255,255,0.95),
+        inset 1px 1px 2px rgba(255,255,255,0.9);
+
+      font-size: 34px;
+    }
+
+
+    .hero h1 {
+      position: relative;
+      z-index: 2;
+
+      font-size: clamp(27px, 4vw, 37px);
+
+      margin-bottom: 3px;
+
+      color: #4568a8;
+
+      letter-spacing: -0.5px;
+    }
+
+
+    .hero p {
+      position: relative;
+      z-index: 2;
+
+      color: #667085;
+
+      max-width: 650px;
+
+      margin: auto;
+
+      font-size: 15px;
+    }
+
+
+    /* VOICE */
+
+    .voice-box {
+      position: relative;
+      z-index: 3;
+
+      margin: 14px auto 0;
+
+      display: flex;
+      justify-content: center;
+
+      gap: 9px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .voice-btn {
+      border: none;
+
+      cursor: pointer;
+
+      padding: 9px 16px;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #dfe7f4
+        );
+
+      color: #4568a8;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+      box-shadow:
+        5px 6px 13px rgba(0,0,0,0.10),
+        -4px -4px 10px rgba(255,255,255,0.95);
+
+      transition: 0.25s;
+    }
+
+
+    .voice-btn:hover {
+      transform: translateY(-2px);
+    }
+
+
+    .voice-btn:active {
+      transform: scale(0.96);
+    }
+
+
+    /* MAIN */
+
+    .container {
+      max-width: 1050px;
+
+      margin: auto;
+
+      padding: 12px 20px 50px;
+    }
+
+
+    /* SECTION TITLE */
+
+    .section-title {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 25px;
+
+      margin: 25px 0 14px;
+
+      color: #172033;
+    }
+
+
+    .section-title::before {
+      content: "";
+
+      width: 7px;
+      height: 30px;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #4568a8,
+          #7563bf
+        );
+
+      box-shadow:
+        3px 3px 8px rgba(0,0,0,0.12);
+    }
+
+
+    /* CARDS */
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+      gap: 20px;
+    }
+
+
+    .card {
+      position: relative;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #e8edf4
+        );
+
+      border-radius: 22px;
+
+      padding: 24px;
+
+      box-shadow:
+        10px 10px 22px rgba(0,0,0,0.10),
+        -8px -8px 20px rgba(255,255,255,0.95);
+
+      transition: 0.3s;
+
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+
+    .card:hover {
+      transform: translateY(-7px);
+
+      box-shadow:
+        14px 17px 30px rgba(0,0,0,0.13),
+        -8px -8px 20px rgba(255,255,255,1);
+    }
+
+
+    .card-icon {
+      width: 54px;
+      height: 54px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #dce6f4
+        );
+
+      box-shadow:
+        6px 7px 14px rgba(0,0,0,0.10),
+        -5px -5px 12px rgba(255,255,255,0.95);
+
+      font-size: 28px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .card h3 {
+      margin-bottom: 7px;
+
+      font-size: 20px;
+    }
+
+
+    .card p {
+      color: #667085;
+
+      font-size: 15px;
+    }
+
+
+    /* FEATURE */
+
+    .feature {
+      position: relative;
+
+      overflow: hidden;
+
+      margin-top: 22px;
+
+      padding: 28px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #4568a8,
+          #5b7fc0,
+          #735eb4
+        );
+
+      color: white;
+
+      box-shadow:
+        12px 15px 28px rgba(0,0,0,0.15),
+        -6px -6px 15px rgba(255,255,255,0.75);
+    }
+
+
+    .feature::after {
+      content: "👁️";
+
+      position: absolute;
+
+      right: 25px;
+      bottom: -18px;
+
+      font-size: 95px;
+
+      opacity: 0.13;
+
+      transform: rotate(-12deg);
+    }
+
+
+    .feature h2,
+    .feature p {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .feature h2 {
+      margin-bottom: 8px;
+    }
+
+
+    .feature p {
+      opacity: 0.95;
+
+      max-width: 760px;
+    }
+
+
+    /* INFO BOX */
+
+    .info-box {
+      background: rgba(255,255,255,0.92);
+
+      padding: 24px;
+
+      border-radius: 20px;
+
+      margin-top: 15px;
+
+      box-shadow:
+        8px 10px 25px rgba(0,0,0,0.07),
+        -5px -5px 15px rgba(255,255,255,0.9);
+
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+
+    .info-box p {
+      color: #555;
+    }
+
+
+    /* WARNING */
+
+    .warning {
+      background:
+        linear-gradient(
+          145deg,
+          #fff8ef,
+          #fff1df
+        );
+
+      border: 1px solid #fed7aa;
+
+      border-radius: 20px;
+
+      padding: 24px;
+
+      margin-top: 15px;
+
+      box-shadow:
+        7px 8px 18px rgba(0,0,0,0.06);
+    }
+
+
+    .warning h3 {
+      color: #c2410c;
+
+      margin-bottom: 10px;
+    }
+
+
+    .warning ul {
+      padding-left: 20px;
+    }
+
+
+    li {
+      margin: 8px 0;
+    }
+
+
+    /* SOURCE */
+
+    .source {
+      margin-top: 25px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #eef6ff,
+          #e5eef9
+        );
+
+      padding: 20px;
+
+      border-radius: 18px;
+
+      font-size: 14px;
+
+      color: #526070;
+
+      box-shadow:
+        6px 7px 16px rgba(0,0,0,0.06);
+    }
+
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+
+      padding: 30px 20px;
+
+      margin-top: 25px;
+
+      color: #777;
+
+      background:
+        rgba(255,255,255,0.75);
+
+      border-top: 1px solid #e5e7eb;
+    }
+
+
+    /* MOBILE */
+
+    @media(max-width:600px) {
+
+      header {
+        padding: 12px 4%;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero-wrap {
+        padding: 0 12px;
+        margin-top: 13px;
+      }
+
+      .hero {
+        padding: 20px 15px 18px;
+
+        border-radius: 23px;
+      }
+
+      .hero-icon {
+        width: 60px;
+        height: 60px;
+
+        font-size: 30px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .container {
+        padding: 8px 15px 40px;
+      }
+
+      .section-title {
+        font-size: 22px;
+
+        margin-top: 22px;
+      }
+
+      .card {
+        padding: 21px;
+      }
+
+      .feature {
+        padding: 23px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      Mewat Saathi
+    </div>
+
+    <a href="health.html" class="back-btn">
+      ← Health
+    </a>
+
+  </header>
+
+
+
+  <!-- PREMIUM HEADING -->
+
+  <div class="hero-wrap">
+
+    <section class="hero">
+
+      <div class="hero-icon">
+        👁️
+      </div>
+
+      <h1>
+        Eye Care
+      </h1>
+
+      <p>
+        Eyes ko healthy rakhne, vision problems ko samajhne
+        aur timely eye care lene ki basic information.
+      </p>
+
+
+      <div class="voice-box">
+
+        <button
+          class="voice-btn"
+          onclick="speakPage()">
+
+          🔊 Sunna Hai
+
+        </button>
+
+
+        <button
+          class="voice-btn"
+          onclick="stopVoice()">
+
+          ⏹ Stop
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+  <main class="container">
+
+
+    <!-- BASIC -->
+
+    <h2 class="section-title">
+      👁️ Eye Care kyun important hai?
+    </h2>
+
+    <div class="info-box">
+
+      <p>
+        Vision daily life, education, work aur normal activities
+        ke liye bahut important hai.
+      </p>
+
+      <br>
+
+      <p>
+        Kai eye conditions ko early detection aur timely treatment
+        se manage kiya ja sakta hai. Isliye vision mein noticeable
+        change ko ignore nahi karna chahiye.
+      </p>
+
+    </div>
+
+
+
+    <!-- COMMON PROBLEMS -->
+
+    <h2 class="section-title">
+      🔎 Common Eye Problems
+    </h2>
+
+
+    <div class="cards">
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          👓
+        </div>
+
+        <h3>
+          Refractive Error
+        </h3>
+
+        <p>
+          Myopia, hyperopia aur astigmatism jaise refractive errors
+          blurred vision ka cause ho sakte hain.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          💧
+        </div>
+
+        <h3>
+          Dry Eye
+        </h3>
+
+        <p>
+          Dry eye mein eyes uncomfortable, dry ya irritated
+          feel ho sakti hain.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🔴
+        </div>
+
+        <h3>
+          Conjunctivitis
+        </h3>
+
+        <p>
+          Redness, irritation aur discharge jaise symptoms
+          conjunctivitis mein ho sakte hain.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🌫️
+        </div>
+
+        <h3>
+          Cataract
+        </h3>
+
+        <p>
+          Cataract eye ke lens ko cloudy bana sakta hai aur
+          vision ko affect kar sakta hai.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- DAILY CARE -->
+
+    <h2 class="section-title">
+      🌿 Basic Eye Care
+    </h2>
+
+
+    <div class="cards">
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          🧼
+        </div>
+
+        <h3>
+          Hygiene
+        </h3>
+
+        <p>
+          Eyes ko unnecessary rub karne se bachein aur
+          personal hygiene ka dhyan rakhein.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          ☀️
+        </div>
+
+        <h3>
+          Outdoor Safety
+        </h3>
+
+        <p>
+          Bright sunlight aur outdoor conditions mein
+          appropriate eye protection useful ho sakti hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          📱
+        </div>
+
+        <h3>
+          Screen Habits
+        </h3>
+
+        <p>
+          Long screen sessions ke dauran breaks lena aur
+          comfortable viewing distance maintain karna useful hai.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          👓
+        </div>
+
+        <h3>
+          Correct Glasses
+        </h3>
+
+        <p>
+          Agar vision problem hai to proper eye examination
+          ke baad recommended glasses use karein.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- CHILDREN -->
+
+    <h2 class="section-title">
+      👦 Children ki Eyes
+    </h2>
+
+    <div class="info-box">
+
+      <p>
+        Bachchon mein vision problem education aur daily activities
+        ko affect kar sakti hai. Agar child ko board dekhne mein
+        difficulty, frequent squinting ya noticeable vision problem
+        ho, to eye professional se assessment karana useful hai.
+      </p>
+
+    </div>
+
+
+
+    <!-- FEATURE -->
+
+    <div class="feature">
+
+      <h2>
+        ⭐ Simple Rule
+      </h2>
+
+      <p>
+        Vision mein persistent change, blurry vision ya eye problem
+        ko ignore na karein. Early assessment aur appropriate care
+        kai conditions mein complications ko reduce karne mein help
+        kar sakti hai.
+      </p>
+
+    </div>
+
+
+
+    <!-- WARNING -->
+
+    <h2 class="section-title">
+      ⚠️ Kab jaldi medical help leni chahiye?
+    </h2>
+
+
+    <div class="warning">
+
+      <h3>
+        Serious eye symptoms ko ignore na karein
+      </h3>
+
+      <ul>
+
+        <li>
+          Suddenly vision kam ya change ho jana
+        </li>
+
+        <li>
+          Severe eye pain
+        </li>
+
+        <li>
+          Eye injury ya chemical exposure
+        </li>
+
+        <li>
+          Severe redness ke saath pain ya vision problem
+        </li>
+
+        <li>
+          Eye ke saamne unusual flashes/floaters ke saath
+          sudden vision changes
+        </li>
+
+      </ul>
+
+    </div>
+
+
+
+    <!-- CHECKUP -->
+
+    <h2 class="section-title">
+      👨‍⚕️ Eye Check-up
+    </h2>
+
+    <div class="info-box">
+
+      <p>
+        Regular eye assessment se vision problems ko identify
+        karne mein help mil sakti hai. Glasses ki zarurat,
+        eye disease ya persistent symptoms ke case mein qualified
+        eye-care professional se examination karayein.
+      </p>
+
+      <br>
+
+      <p>
+        Online vision test ko professional eye examination ka
+        replacement nahi samajhna chahiye. WHO bhi regular eye
+        checks ki importance par zor deta hai. :contentReference[oaicite:1]{index=1}
+      </p>
+
+    </div>
+
+
+
+    <!-- SOURCE -->
+
+    <div class="source">
+
+      <strong>
+        Health Information:
+      </strong>
+
+      <br><br>
+
+      Ye page general eye-health education ke liye hai.
+      Ye diagnosis ya treatment ka replacement nahi hai.
+
+      <br><br>
+
+      Main information WHO ke eye-care guidance ke according
+      rakhi gayi hai. :contentReference[oaicite:2]{index=2}
+
+    </div>
+
+  </main>
+
+
+
+  <footer>
+
+    <strong>
+      Mewat Saathi
+    </strong>
+
+    <br>
+
+    Mewat ki awaaz, Mewat ke logon ke saath ❤️
+
+  </footer>
+
+
+
+  <!-- VOICE -->
+
+  <script>
+
+    function speakPage() {
+
+      if (!("speechSynthesis" in window)) {
+
+        alert(
+          "Aapke browser mein voice feature available nahi hai."
+        );
+
+        return;
+      }
+
+      speechSynthesis.cancel();
+
+      const text =
+        document.querySelector("main").innerText;
+
+      const speech =
+        new SpeechSynthesisUtterance(text);
+
+      speech.lang = "hi-IN";
+
+      speech.rate = 0.9;
+
+      speech.pitch = 1;
+
+      speechSynthesis.speak(speech);
+    }
+
+
+    function stopVoice() {
+
+      if ("speechSynthesis" in window) {
+
+        speechSynthesis.cancel();
+
+      }
+
+    }
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Complaint - Mewat Saathi</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at top left,#dff7e9,transparent 35%),
+        radial-gradient(circle at bottom right,#e8f0ff,transparent 35%),
+        #f5f8f7;
+    color:#17221b;
+}
+
+.container{
+    width:min(950px,94%);
+    margin:28px auto 60px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,#064d2d,#07844a,#12a765);
+    color:white;
+    border-radius:30px;
+    padding:42px 25px;
+    text-align:center;
+    box-shadow:0 22px 55px rgba(0,80,45,.25);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    top:-100px;
+    right:-60px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background:rgba(255,255,255,.06);
+    bottom:-90px;
+    left:-50px;
+}
+
+.hero h1{
+    position:relative;
+    z-index:2;
+    margin:0 0 12px;
+    font-size:36px;
+}
+
+.hero p{
+    position:relative;
+    z-index:2;
+    margin:0;
+    font-size:17px;
+    opacity:.95;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    background:rgba(255,255,255,.95);
+    margin-top:24px;
+    padding:28px;
+    border-radius:25px;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.08),
+        0 2px 8px rgba(0,0,0,.04);
+    border:1px solid rgba(255,255,255,.8);
+}
+
+.card h2{
+    margin-top:0;
+    color:#075e36;
+    font-size:24px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+label{
+    display:block;
+    margin:17px 0 7px;
+    font-weight:700;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccd6cf;
+    border-radius:13px;
+    font-size:16px;
+    outline:none;
+    background:#fff;
+    transition:.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#11945a;
+    box-shadow:0 0 0 4px rgba(17,148,90,.10);
+}
+
+textarea{
+    min-height:135px;
+    resize:vertical;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:16px;
+    margin-top:21px;
+    background:linear-gradient(135deg,#08743f,#0ca45d);
+    color:white;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(8,116,63,.20);
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 11px 25px rgba(8,116,63,.28);
+}
+
+button:disabled{
+    background:#8b9590;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.message{
+    display:none;
+    margin-top:18px;
+    padding:18px;
+    border-radius:16px;
+    line-height:1.6;
+}
+
+.success{
+    background:#e9f8ef;
+    border:1px solid #9ad5b1;
+    color:#075e36;
+}
+
+.error{
+    background:#fff0f0;
+    border:1px solid #efb0b0;
+    color:#a40000;
+}
+
+.success-id{
+    font-size:28px;
+    font-weight:900;
+    margin:10px 0;
+}
+
+.small-note{
+    font-size:14px;
+    color:#59645e;
+    line-height:1.6;
+}
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden{
+    display:none!important;
+}
+
+/* =========================
+   VIP COMPLAINT DETAILS
+========================= */
+
+.details-heading{
+    margin-top:30px!important;
+    padding-bottom:12px;
+    border-bottom:2px solid #e8eee9;
+}
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:18px;
+}
+
+.detail{
+    position:relative;
+    background:
+        linear-gradient(135deg,#f7fbf8,#eef7f1);
+    padding:17px;
+    border-radius:16px;
+    border:1px solid #dce9df;
+    box-shadow:0 5px 14px rgba(0,0,0,.04);
+}
+
+.detail strong{
+    display:block;
+    margin-bottom:8px;
+    color:#075e36;
+    font-size:14px;
+}
+
+.detail span{
+    display:block;
+    font-size:17px;
+    font-weight:700;
+    word-break:break-word;
+}
+
+.detail.full{
+    grid-column:1/-1;
+}
+
+.complaint-text{
+    white-space:pre-wrap;
+    line-height:1.65;
+    font-size:16px!important;
+    font-weight:500!important;
+    color:#27322b;
+}
+
+/* =========================
+   STATUS HIGHLIGHT
+========================= */
+
+.status-detail{
+    background:linear-gradient(135deg,#fff9dc,#fff2a8);
+    border:1px solid #f1d66b;
+}
+
+.status-detail span{
+    color:#805d00;
+}
+
+/* =========================
+   STATUS TIMELINE
+========================= */
+
+.status-title{
+    margin-top:25px;
+    margin-bottom:12px;
+    color:#075e36;
+    font-size:18px;
+    font-weight:800;
+}
+
+.status-timeline{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.status-step{
+    flex:1;
+    text-align:center;
+    padding:15px 8px;
+    border-radius:14px;
+    font-size:14px;
+    font-weight:800;
+    background:#edf0ee;
+    color:#6a716d;
+    border:1px solid #dfe4e1;
+}
+
+.status-step.active{
+    background:#fff1bd;
+    color:#805d00;
+    border-color:#efd46b;
+}
+
+.status-step.progress-active{
+    background:#dcecff;
+    color:#14518b;
+    border-color:#a9c9ee;
+}
+
+.status-step.resolved-active{
+    background:#dff5e5;
+    color:#126431;
+    border-color:#a8d9b5;
+}
+
+/* =========================
+   BOTTOM LINK
+========================= */
+
+.links{
+    margin-top:22px;
+}
+
+.links a{
+    text-decoration:none;
+}
+
+.links button{
+    margin-top:0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    .container{
+        width:94%;
+        margin-top:18px;
+    }
+
+    .hero{
+        padding:32px 18px;
+        border-radius:24px;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .card{
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .card h2{
+        font-size:21px;
+    }
+
+    .detail-grid{
+        grid-template-columns:1fr;
+    }
+
+    .detail.full{
+        grid-column:auto;
+    }
+
+    .status-timeline{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <div class="hero">
+
+        <h1>📢 Complaint / Problem Report</h1>
+
+        <p>
+            Mewat ki problem report karein aur
+            apni complaint ka status track karein.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         SUBMIT COMPLAINT
+    ========================= -->
+
+    <div class="card">
+
+        <h2>📝 Apni Problem Report Karein</h2>
+
+        <label>👤 Naam</label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Apna naam likhein"
+        >
+
+
+        <label>📱 Mobile Number</label>
+
+        <input
+            type="tel"
+            id="mobile"
+            maxlength="10"
+            inputmode="numeric"
+            placeholder="10 digit mobile number"
+        >
+
+
+        <label>📍 Village / Area</label>
+
+        <input
+            type="text"
+            id="village"
+            placeholder="Village ya area ka naam"
+        >
+
+
+        <label>📂 Problem Category</label>
+
+        <select id="category">
+
+            <option value="">
+                -- Category Select Karein --
+            </option>
+
+            <option value="Water">
+                💧 Water
+            </option>
+
+            <option value="Road">
+                🛣️ Road
+            </option>
+
+            <option value="Electricity">
+                💡 Electricity
+            </option>
+
+            <option value="Education">
+                📚 Education
+            </option>
+
+            <option value="Health">
+                🏥 Health
+            </option>
+
+            <option value="Government">
+                🏛️ Government
+            </option>
+
+            <option value="Other">
+                📌 Other
+            </option>
+
+        </select>
+
+
+        <label>📝 Problem / Complaint</label>
+
+        <textarea
+            id="complaint"
+            placeholder="Apni problem detail mein likhein..."
+        ></textarea>
+
+
+        <label>📷 Photo (Optional)</label>
+
+        <input
+            type="file"
+            id="photo"
+            accept="image/*"
+        >
+
+
+        <label>🎥 Video (Optional)</label>
+
+        <input
+            type="file"
+            id="video"
+            accept="video/*"
+        >
+
+
+        <button
+            type="button"
+            id="submitButton"
+        >
+            🚀 Complaint Submit Karein
+        </button>
+
+
+        <div
+            id="submitMessage"
+            class="message"
+        ></div>
+
+    </div>
+
+
+    <!-- =========================
+         STATUS CHECK
+    ========================= -->
+
+    <div class="card">
+
+        <h2>
+            🔎 Apni Complaint Ka Status Check Karein
+        </h2>
+
+        <p class="small-note">
+
+            Complaint submit karte waqt jo
+            <b>Complaint ID</b> aur
+            <b>mobile number</b> mila tha,
+            wahi yahan enter karein.
+
+        </p>
+
+
+        <label>🆔 Complaint ID</label>
+
+        <input
+            type="number"
+            id="checkComplaintId"
+            placeholder="Example: 28"
+        >
+
+
+        <label>📱 Wahi Mobile Number</label>
+
+        <input
+            type="tel"
+            id="checkMobile"
+            maxlength="10"
+            inputmode="numeric"
+            placeholder="Complaint submit karte waqt wala number"
+        >
+
+
+        <button
+            type="button"
+            id="checkButton"
+        >
+            🔎 Status Check Karein
+        </button>
+
+
+        <div
+            id="checkMessage"
+            class="message"
+        ></div>
+
+
+        <!-- =========================
+             DETAILS
+             START HIDDEN
+        ========================= -->
+
+        <div
+            id="complaintDetails"
+            class="hidden"
+        >
+
+            <h2 class="details-heading">
+                📋 Complaint Details
+            </h2>
+
+
+            <div class="detail-grid">
+
+
+                <div class="detail">
+
+                    <strong>
+                        🆔 Complaint ID
+                    </strong>
+
+                    <span id="detailId"></span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <strong>
+                        👤 Naam
+                    </strong>
+
+                    <span id="detailName"></span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <strong>
+                        📱 Mobile
+                    </strong>
+
+                    <span id="detailMobile"></span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <strong>
+                        📍 Village / Area
+                    </strong>
+
+                    <span id="detailVillage"></span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <strong>
+                        📂 Category
+                    </strong>
+
+                    <span id="detailCategory"></span>
+
+                </div>
+
+
+                <div class="detail status-detail">
+
+                    <strong>
+                        🟡 Current Status
+                    </strong>
+
+                    <span id="detailStatus"></span>
+
+                </div>
+
+
+                <div class="detail full">
+
+                    <strong>
+                        📝 Uski Complaint
+                    </strong>
+
+                    <div
+                        id="detailComplaint"
+                        class="complaint-text"
+                    ></div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="status-title">
+                📊 Complaint Progress
+            </div>
+
+
+            <div class="status-timeline">
+
+
+                <div
+                    id="stepPending"
+                    class="status-step"
+                >
+                    🟡 Pending
+                </div>
+
+
+                <div
+                    id="stepProgress"
+                    class="status-step"
+                >
+                    🔵 In Progress
+                </div>
+
+
+                <div
+                    id="stepResolved"
+                    class="status-step"
+                >
+                    🟢 Resolved
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HOME -->
+
+    <div class="links">
+
+        <a href="index.html">
+
+            <button type="button">
+                🏠 Home Par Wapas Jayein
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const BACKEND_URL =
+    "http://127.0.0.1:5000";
+
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const checkButton =
+    document.getElementById("checkButton");
+
+
+submitButton.addEventListener(
+    "click",
+    submitComplaint
+);
+
+
+checkButton.addEventListener(
+    "click",
+    checkStatus
+);
+
+
+/* =========================
+   MESSAGE FUNCTION
+========================= */
+
+function showMessage(
+    element,
+    type,
+    title,
+    text
+){
+
+    element.className =
+        "message " + type;
+
+    element.style.display =
+        "block";
+
+    element.innerHTML =
+        "<strong>" +
+        title +
+        "</strong><br>" +
+        text;
+}
+
+
+/* =========================
+   SUBMIT COMPLAINT
+========================= */
+
+async function submitComplaint(){
+
+    const name =
+        document.getElementById(
+            "name"
+        ).value.trim();
+
+
+    const mobile =
+        document.getElementById(
+            "mobile"
+        ).value.trim();
+
+
+    const village =
+        document.getElementById(
+            "village"
+        ).value.trim();
+
+
+    const category =
+        document.getElementById(
+            "category"
+        ).value.trim();
+
+
+    const complaint =
+        document.getElementById(
+            "complaint"
+        ).value.trim();
+
+
+    const photo =
+        document.getElementById(
+            "photo"
+        ).files[0];
+
+
+    const video =
+        document.getElementById(
+            "video"
+        ).files[0];
+
+
+    const message =
+        document.getElementById(
+            "submitMessage"
+        );
+
+
+    if(
+        !name ||
+        !mobile ||
+        !village ||
+        !category ||
+        !complaint
+    ){
+
+        showMessage(
+            message,
+            "error",
+            "❌ Information Missing",
+            "Naam, Mobile, Village/Area, Category aur Complaint sab fill karein."
+        );
+
+        return;
+    }
+
+
+    if(
+        !/^[0-9]{10}$/.test(
+            mobile
+        )
+    ){
+
+        showMessage(
+            message,
+            "error",
+            "❌ Mobile Number Galat",
+            "Mobile number exactly 10 digits ka hona chahiye."
+        );
+
+        return;
+    }
+
+
+    submitButton.disabled =
+        true;
+
+    submitButton.innerText =
+        "⏳ Complaint Submit Ho Rahi Hai...";
+
+
+    try{
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "name",
+            name
+        );
+
+
+        formData.append(
+            "mobile",
+            mobile
+        );
+
+
+        formData.append(
+            "village",
+            village
+        );
+
+
+        formData.append(
+            "category",
+            category
+        );
+
+
+        formData.append(
+            "complaint",
+            complaint
+        );
+
+
+        if(photo){
+
+            formData.append(
+                "photo",
+                photo
+            );
+
+        }
+
+
+        if(video){
+
+            formData.append(
+                "video",
+                video
+            );
+
+        }
+
+
+        const response =
+            await fetch(
+                BACKEND_URL +
+                "/complaint",
+                {
+                    method:"POST",
+                    body:formData
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            showMessage(
+                message,
+                "error",
+                "❌ Complaint Submit Nahi Hui",
+                data.error ||
+                "Server se complaint save nahi hui."
+            );
+
+            return;
+        }
+
+
+        /* SUCCESS */
+
+        message.className =
+            "message success";
+
+        message.style.display =
+            "block";
+
+
+        message.innerHTML = `
+
+            <div>
+                ✅ Complaint Successfully Saved!
+            </div>
+
+            <div class="success-id">
+                🆔 Complaint ID:
+                #${data.complaint_id}
+            </div>
+
+            <div>
+                Aap is ID ko zaroor save rakhein.
+            </div>
+
+            <div class="small-note">
+                Complaint ID aur wahi mobile number
+                neeche automatically fill kar diya gaya hai.
+                Ab <b>Status Check Karein</b> dabayein.
+            </div>
+
+        `;
+
+
+        /* AUTO FILL */
+
+        document.getElementById(
+            "checkComplaintId"
+        ).value =
+            data.complaint_id;
+
+
+        document.getElementById(
+            "checkMobile"
+        ).value =
+            mobile;
+
+
+        /* DETAILS HIDDEN */
+
+        document.getElementById(
+            "complaintDetails"
+        ).classList.add(
+            "hidden"
+        );
+
+
+        document.getElementById(
+            "checkMessage"
+        ).style.display =
+            "none";
+
+
+        /* CLEAR FORM */
+
+        document.getElementById(
+            "name"
+        ).value = "";
+
+
+        document.getElementById(
+            "mobile"
+        ).value = "";
+
+
+        document.getElementById(
+            "village"
+        ).value = "";
+
+
+        document.getElementById(
+            "category"
+        ).value = "";
+
+
+        document.getElementById(
+            "complaint"
+        ).value = "";
+
+
+        document.getElementById(
+            "photo"
+        ).value = "";
+
+
+        document.getElementById(
+            "video"
+        ).value = "";
+
+
+        /* STATUS SECTION PAR LE JAO */
+
+        document.getElementById(
+            "checkComplaintId"
+        ).scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showMessage(
+            message,
+            "error",
+            "❌ Connection Error",
+            "Backend se connection nahi ho paya. Pehle app.py backend chalu karein."
+        );
+
+    }
+
+    finally{
+
+        submitButton.disabled =
+            false;
+
+        submitButton.innerText =
+            "🚀 Complaint Submit Karein";
+
+    }
+
+}
+
+
+/* =========================
+   CHECK STATUS
+========================= */
+
+async function checkStatus(){
+
+    const complaintId =
+        document.getElementById(
+            "checkComplaintId"
+        ).value.trim();
+
+
+    const mobile =
+        document.getElementById(
+            "checkMobile"
+        ).value.trim();
+
+
+    const message =
+        document.getElementById(
+            "checkMessage"
+        );
+
+
+    const details =
+        document.getElementById(
+            "complaintDetails"
+        );
+
+
+    /* OLD DETAILS HIDE */
+
+    details.classList.add(
+        "hidden"
+    );
+
+    message.style.display =
+        "none";
+
+
+    /* VALIDATION */
+
+    if(
+        !complaintId ||
+        !mobile
+    ){
+
+        showMessage(
+            message,
+            "error",
+            "❌ Information Missing",
+            "Complaint ID aur wahi Mobile Number dono daalein."
+        );
+
+        return;
+    }
+
+
+    if(
+        !/^[0-9]{10}$/.test(
+            mobile
+        )
+    ){
+
+        showMessage(
+            message,
+            "error",
+            "❌ Mobile Number Galat",
+            "Please valid 10 digit mobile number daalein."
+        );
+
+        return;
+    }
+
+
+    checkButton.disabled =
+        true;
+
+    checkButton.innerText =
+        "⏳ Status Check Ho Raha Hai...";
+
+
+    try{
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "mobile",
+            mobile
+        );
+
+
+        const response =
+            await fetch(
+
+                BACKEND_URL +
+                "/complaint/" +
+                encodeURIComponent(
+                    complaintId
+                ),
+
+                {
+                    method:"POST",
+                    body:formData
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        /*
+        WRONG ID OR MOBILE
+
+        Details show nahi hongi.
+        */
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            details.classList.add(
+                "hidden"
+            );
+
+
+            showMessage(
+                message,
+                "error",
+                "❌ Complaint Nahi Mili",
+                data.error ||
+                "Complaint ID ya Mobile Number galat hai."
+            );
+
+
+            return;
+        }
+
+
+        /*
+        =========================
+        SUCCESS
+        =========================
+
+        Yahan EXACT DATABASE DATA
+        show hoga.
+        */
+
+
+        document.getElementById(
+            "detailId"
+        ).textContent =
+            "#" + data.id;
+
+
+        document.getElementById(
+            "detailName"
+        ).textContent =
+            data.name || "-";
+
+
+        document.getElementById(
+            "detailMobile"
+        ).textContent =
+            data.mobile || mobile;
+
+
+        document.getElementById(
+            "detailVillage"
+        ).textContent =
+            data.village || "-";
+
+
+        document.getElementById(
+            "detailCategory"
+        ).textContent =
+            data.category || "-";
+
+
+        document.getElementById(
+            "detailComplaint"
+        ).textContent =
+            data.complaint || "-";
+
+
+        document.getElementById(
+            "detailStatus"
+        ).textContent =
+            data.status || "Pending";
+
+
+        /*
+        STATUS RESET
+        */
+
+        document.getElementById(
+            "stepPending"
+        ).className =
+            "status-step";
+
+
+        document.getElementById(
+            "stepProgress"
+        ).className =
+            "status-step";
+
+
+        document.getElementById(
+            "stepResolved"
+        ).className =
+            "status-step";
+
+
+        /*
+        CURRENT STATUS
+        */
+
+        if(
+            data.status ===
+            "Pending"
+        ){
+
+            document.getElementById(
+                "stepPending"
+            ).classList.add(
+                "active"
+            );
+
+        }
+
+
+        else if(
+            data.status ===
+            "In Progress"
+        ){
+
+            document.getElementById(
+                "stepPending"
+            ).classList.add(
+                "active"
+            );
+
+
+            document.getElementById(
+                "stepProgress"
+            ).classList.add(
+                "progress-active"
+            );
+
+        }
+
+
+        else if(
+            data.status ===
+            "Resolved"
+        ){
+
+            document.getElementById(
+                "stepPending"
+            ).classList.add(
+                "active"
+            );
+
+
+            document.getElementById(
+                "stepProgress"
+            ).classList.add(
+                "progress-active"
+            );
+
+
+            document.getElementById(
+                "stepResolved"
+            ).classList.add(
+                "resolved-active"
+            );
+
+        }
+
+
+        /*
+        DETAILS SHOW
+        */
+
+        details.classList.remove(
+            "hidden"
+        );
+
+
+        showMessage(
+            message,
+            "success",
+            "✅ Complaint Mil Gayi",
+            "Aapki complaint ki poori details neeche dikhayi ja rahi hain."
+        );
+
+
+        details.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+
+        details.classList.add(
+            "hidden"
+        );
+
+
+        showMessage(
+            message,
+            "error",
+            "❌ Connection Error",
+            "Backend se connection nahi ho paya. Check karein ki app.py chalu hai."
+        );
+
+    }
+
+    finally{
+
+        checkButton.disabled =
+            false;
+
+        checkButton.innerText =
+            "🔎 Status Check Karein";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

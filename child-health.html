@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Child Health | Mewat Saathi</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, #e3f8ff 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #eee4ff 0%, transparent 35%),
+        #f5f7fb;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1769aa;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: white;
+      background: #1769aa;
+      padding: 9px 17px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(23,105,170,0.25);
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 35px auto 25px;
+      padding: 35px 25px;
+      text-align: center;
+    }
+
+    .hero-icon {
+      width: 82px;
+      height: 82px;
+      margin: auto auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      background: linear-gradient(145deg, #ffffff, #dfe8f5);
+      box-shadow:
+        12px 12px 25px rgba(0,0,0,0.12),
+        -8px -8px 20px rgba(255,255,255,0.9);
+      font-size: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #667085;
+      max-width: 720px;
+      margin: auto;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 10px 20px 50px;
+    }
+
+    .section-title {
+      font-size: 25px;
+      margin: 35px 0 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #ffffff, #e9eef5);
+      border-radius: 22px;
+      padding: 25px;
+      box-shadow:
+        10px 10px 22px rgba(0,0,0,0.10),
+        -8px -8px 20px rgba(255,255,255,0.95);
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow:
+        15px 18px 30px rgba(0,0,0,0.14),
+        -8px -8px 20px rgba(255,255,255,1);
+    }
+
+    .card-icon {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #667085;
+      font-size: 15px;
+    }
+
+    .info-box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    }
+
+    .info-box h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .info-box p {
+      color: #555;
+    }
+
+    .warning {
+      background: #fff5f5;
+      border: 1px solid #ffd5d5;
+      border-radius: 20px;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
+    .warning h3 {
+      color: #c62828;
+      margin-bottom: 10px;
+    }
+
+    .warning ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .source {
+      margin-top: 30px;
+      background: #eef7ff;
+      padding: 20px;
+      border-radius: 18px;
+      font-size: 14px;
+      color: #526070;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 30px;
+      color: #777;
+      background: rgba(255,255,255,0.7);
+    }
+
+    @media(max-width:600px) {
+      header {
+        padding: 12px 4%;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero {
+        padding: 25px 15px;
+      }
+
+      .container {
+        padding: 10px 15px 40px;
+      }
+
+      .card {
+        padding: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Mewat Saathi</div>
+
+    <a href="health.html" class="back-btn">
+      ← Health
+    </a>
+  </header>
+
+
+  <section class="hero">
+
+    <div class="hero-icon">👶</div>
+
+    <h1>Child Health</h1>
+
+    <p>
+      Bachchon ki health, daily care aur important warning signs
+      ke baare mein simple information.
+    </p>
+
+  </section>
+
+
+  <main class="container">
+
+    <h2 class="section-title">Bachchon ki health kyun important hai?</h2>
+
+    <div class="info-box">
+      <p>
+        Bachchon ka body aur mind abhi develop ho raha hota hai.
+        Isliye unki proper food, clean water, vaccination,
+        rest aur regular health care par dhyan dena important hai.
+      </p>
+    </div>
+
+
+    <h2 class="section-title">Basic Child Care</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🥗</div>
+        <h3>Healthy Food</h3>
+        <p>
+          Bachche ko age ke according healthy aur nutritious food
+          dene par dhyan dein.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💧</div>
+        <h3>Paani</h3>
+        <p>
+          Bachche ko enough fluids dein, especially jab weather
+          bahut hot ho ya bachcha sick ho.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💉</div>
+        <h3>Vaccination</h3>
+        <p>
+          Bachche ki vaccination schedule ke according vaccines
+          lagwana important hai.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">😴</div>
+        <h3>Proper Rest</h3>
+        <p>
+          Bachche ko age ke according enough sleep aur rest milna
+          chahiye.
+        </p>
+      </div>
+
+    </div>
+
+
+    <h2 class="section-title">Agar Bachcha Bimaar Ho</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🌡️</div>
+        <h3>Temperature Check</h3>
+        <p>
+          Agar bachcha hot feel kare ya fever ke signs ho,
+          temperature check karein.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🥤</div>
+        <h3>Fluids</h3>
+        <p>
+          Bachcha pee sakta hai to fluids dete rahein,
+          taaki paani ki kami na ho.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">👀</div>
+        <h3>Behaviour Dekhein</h3>
+        <p>
+          Bachcha normal active hai ya unusually sleepy/weak,
+          is par dhyan dein.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">👨‍⚕️</div>
+        <h3>Doctor ki Advice</h3>
+        <p>
+          Agar symptoms serious hain ya bachcha continuously
+          worse ho raha hai, doctor se contact karein.
+        </p>
+      </div>
+
+    </div>
+
+
+    <h2 class="section-title">⚠️ Important Warning Signs</h2>
+
+    <div class="warning">
+
+      <h3>In signs ko ignore na karein</h3>
+
+      <ul>
+        <li>Bachcha properly kha ya pee nahi pa raha</li>
+        <li>Saans lene mein dikkat ya breathing bahut fast hona</li>
+        <li>Bachcha bahut zyada sleepy ya respond na kare</li>
+        <li>Fits/convulsions aana</li>
+        <li>Sab kuch vomit kar dena</li>
+        <li>High fever ke saath condition worse hona</li>
+        <li>Bachcha normal se bahut kam active ho jana</li>
+      </ul>
+
+    </div>
+
+
+    <h2 class="section-title">Parents ke liye simple rule</h2>
+
+    <div class="info-box">
+
+      <p>
+        Agar bachcha normal se bahut alag behave kar raha hai,
+        kha-pi nahi raha, breathing mein problem hai ya
+        bahut sleepy ho gaya hai, to wait na karein.
+        Medical help lena better hai.
+      </p>
+
+    </div>
+
+
+    <h2 class="section-title">Kya avoid karein?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <h3>Khud se disease decide na karein</h3>
+        <p>
+          Sirf symptoms dekhkar exact disease confirm nahi hoti.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💊</div>
+        <h3>Medicine khud se na dein</h3>
+        <p>
+          Bachchon ki medicine aur dose age aur condition ke
+          according different ho sakti hai.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⏳</div>
+        <h3>Serious signs ko delay na karein</h3>
+        <p>
+          Danger signs dikhein to medical help lene mein
+          unnecessary delay na karein.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="source">
+
+      <strong>Health Information:</strong><br><br>
+
+      Ye page general information ke liye hai.
+      Ye doctor ki diagnosis ya treatment ka replacement nahi hai.
+
+      <br><br>
+
+      Information WHO aur UNICEF ki child-health guidance
+      ko dhyan mein rakhkar prepare ki gayi hai.
+
+    </div>
+
+  </main>
+
+
+  <footer>
+    <strong>Mewat Saathi</strong><br>
+    Mewat ki awaaz, Mewat ke logon ke saath ❤️
+  </footer>
+
+</body>
+</html>

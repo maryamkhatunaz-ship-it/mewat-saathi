@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JEE Main Complete Guide | Mewat Saathi</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HERO */
+
+.hero-wrap{
+    max-width:1100px;
+    margin:18px auto 8px;
+    padding:0 16px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:34px 28px;
+    border-radius:28px;
+    background:linear-gradient(
+        135deg,
+        #101d42,
+        #1769e0,
+        #008f8c
+    );
+    color:white;
+    box-shadow:0 18px 45px rgba(20,50,100,.20);
+}
+
+.hero:before,
+.hero:after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+}
+
+.hero:before{
+    width:230px;
+    height:230px;
+    right:-80px;
+    top:-100px;
+}
+
+.hero:after{
+    width:160px;
+    height:160px;
+    left:-70px;
+    bottom:-90px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:20px;
+    background:rgba(255,255,255,.14);
+    font-size:13px;
+    margin-bottom:13px;
+}
+
+.hero h1{
+    font-size:38px;
+    margin-bottom:6px;
+}
+
+.hero-subtitle{
+    color:#dfeaff;
+    max-width:800px;
+}
+
+.hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:18px;
+}
+
+.hero-meta span{
+    background:rgba(255,255,255,.13);
+    padding:8px 12px;
+    border-radius:11px;
+    font-size:12px;
+}
+
+/* MAIN */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:0 16px;
+}
+
+/* QUICK STATS */
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+    margin:18px 0;
+}
+
+.quick{
+    background:white;
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 8px 22px rgba(0,0,0,.06);
+    border:1px solid #edf0f6;
+}
+
+.quick strong{
+    display:block;
+    font-size:24px;
+    color:#1769e0;
+}
+
+.quick span{
+    color:#68748a;
+    font-size:13px;
+}
+
+/* SECTIONS */
+
+.section{
+    margin:22px 0;
+}
+
+.section-title{
+    font-size:24px;
+    margin-bottom:12px;
+    padding-left:12px;
+    border-left:6px solid #1769e0;
+}
+
+.card{
+    background:white;
+    border-radius:21px;
+    padding:23px;
+    box-shadow:0 8px 25px rgba(20,40,80,.07);
+    border:1px solid #edf0f6;
+}
+
+.card p{
+    color:#59677d;
+    margin-bottom:11px;
+}
+
+.card ul{
+    margin-left:20px;
+    color:#59677d;
+}
+
+.card li{
+    margin:7px 0;
+}
+
+/* TWO COLUMN */
+
+.two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow-x:auto;
+    border-radius:18px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    min-width:650px;
+}
+
+th{
+    background:#1769e0;
+    color:white;
+    padding:13px;
+    text-align:left;
+}
+
+td{
+    padding:13px;
+    border-bottom:1px solid #e8edf4;
+    color:#4f5d72;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+.total-row td{
+    font-weight:bold;
+    background:#eef5ff;
+    color:#173a70;
+}
+
+/* HIGHLIGHT */
+
+.highlight{
+    background:linear-gradient(135deg,#eef6ff,#ffffff);
+    border:1px solid #cfe2ff;
+    border-radius:20px;
+    padding:21px;
+}
+
+.highlight h3{
+    color:#1456a8;
+    margin-bottom:8px;
+}
+
+.warning{
+    background:#fff7df;
+    border:1px solid #f0dc96;
+    border-radius:20px;
+    padding:20px;
+    color:#62562e;
+}
+
+.success{
+    background:#ecfbf4;
+    border:1px solid #c9eedb;
+    border-radius:20px;
+    padding:20px;
+    color:#315f48;
+}
+
+/* SUBJECT */
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.subject{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 8px 23px rgba(0,0,0,.06);
+    border:1px solid #edf0f6;
+}
+
+.subject-icon{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.subject h3{
+    margin-bottom:7px;
+}
+
+.subject p{
+    color:#69758a;
+    font-size:14px;
+}
+
+/* BENEFITS */
+
+.benefit-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.benefit{
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 8px 22px rgba(0,0,0,.06);
+}
+
+.benefit h3{
+    margin-bottom:6px;
+}
+
+.benefit p{
+    color:#68748a;
+    font-size:14px;
+}
+
+/* STEPS */
+
+.steps{
+    display:grid;
+    gap:12px;
+}
+
+.step{
+    display:flex;
+    gap:14px;
+    background:white;
+    padding:17px;
+    border-radius:17px;
+    box-shadow:0 7px 20px rgba(0,0,0,.05);
+}
+
+.step-number{
+    min-width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#1769e0;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.step h3{
+    margin-bottom:3px;
+}
+
+.step p{
+    color:#69758a;
+    font-size:14px;
+}
+
+/* EXAMPLE */
+
+.example{
+    background:#101d42;
+    color:white;
+    padding:23px;
+    border-radius:21px;
+}
+
+.example p{
+    color:#dce7fb;
+}
+
+.formula{
+    margin-top:12px;
+    padding:15px;
+    border-radius:13px;
+    background:rgba(255,255,255,.09);
+    font-weight:bold;
+}
+
+/* CTA */
+
+.cta{
+    margin:25px 0;
+    padding:28px;
+    border-radius:24px;
+    background:linear-gradient(135deg,#1769e0,#008f8c);
+    color:white;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(20,90,180,.18);
+}
+
+.cta h2{
+    margin-bottom:8px;
+}
+
+.cta p{
+    color:#e4efff;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:40px;
+    padding:30px 20px;
+    background:#101827;
+    color:#dbe4f3;
+    text-align:center;
+}
+
+footer p{
+    margin:6px;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .quick-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .subject-grid{
+        grid-template-columns:1fr;
+    }
+
+    .two-col{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:29px;
+    }
+
+    .hero{
+        padding:28px 20px;
+    }
+
+    .quick-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .benefit-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HERO -->
+
+<div class="hero-wrap">
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🎓 Mewat Saathi • Complete Exam Guide
+            </div>
+
+            <h1>JEE Main</h1>
+
+            <p class="hero-subtitle">
+                Joint Entrance Examination (Main) — Engineering,
+                B.Arch aur B.Planning admissions ke liye important
+                national-level entrance examination.
+            </p>
+
+            <div class="hero-meta">
+                <span>🇮🇳 National Level</span>
+                <span>🎓 Undergraduate</span>
+                <span>📚 PCM / Relevant Subjects</span>
+                <span>💻 Computer Based</span>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- QUICK FACTS -->
+
+<section class="section">
+
+    <div class="quick-grid">
+
+        <div class="quick">
+            <strong>75</strong>
+            <span>Paper 1 questions</span>
+        </div>
+
+        <div class="quick">
+            <strong>300</strong>
+            <span>Paper 1 maximum marks</span>
+        </div>
+
+        <div class="quick">
+            <strong>3 hrs</strong>
+            <span>Paper 1 duration</span>
+        </div>
+
+        <div class="quick">
+            <strong>+4 / -1</strong>
+            <span>Correct / Incorrect</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- YEAR NOTICE -->
+
+<section class="section">
+
+    <div class="warning">
+
+        <strong>⚠️ Year note:</strong>
+
+        Neeche diya gaya detailed pattern
+        <strong>JEE Main 2026 official information</strong>
+        par based hai.
+
+        2027 ke liye NTA ki new information bulletin aane par
+        dates, eligibility, fees ya pattern mein change ho sakta hai.
+        Isliye students ko apne exam year ka latest official bulletin
+        zaroor check karna chahiye.
+
+    </div>
+
+</section>
+
+
+<!-- WHAT -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        📘 JEE Main kya hai?
+    </h2>
+
+    <div class="card">
+
+        <p>
+            JEE Main India ka major national-level entrance examination
+            hai jo undergraduate engineering aur architecture/planning
+            admissions ke liye conduct kiya jata hai.
+        </p>
+
+        <p>
+            Engineering students ke liye sabse important route
+            <strong>Paper 1 – B.E./B.Tech</strong> hai.
+        </p>
+
+        <p>
+            JEE Main ka result/NTA Score admission processes mein
+            use hota hai aur JEE Advanced ke eligibility route se bhi
+            iska important connection hai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PAPERS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        📝 JEE Main mein kaunse papers hote hain?
+    </h2>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Paper</th>
+                <th>Course</th>
+                <th>Focus</th>
+            </tr>
+
+            <tr>
+                <td>Paper 1</td>
+                <td>B.E. / B.Tech</td>
+                <td>Mathematics + Physics + Chemistry</td>
+            </tr>
+
+            <tr>
+                <td>Paper 2A</td>
+                <td>B.Arch</td>
+                <td>Mathematics + Aptitude + Drawing</td>
+            </tr>
+
+            <tr>
+                <td>Paper 2B</td>
+                <td>B.Planning</td>
+                <td>Mathematics + Aptitude + Planning</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- PAPER 1 -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🚀 Paper 1 — B.E. / B.Tech
+    </h2>
+
+    <div class="highlight">
+
+        <h3>
+            Sabse important section for engineering aspirants
+        </h3>
+
+        <p>
+            Paper 1 mein Mathematics, Physics aur Chemistry
+            teen subjects hote hain.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- EXACT PATTERN -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        📊 Exact Question & Marks Pattern
+    </h2>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <tr>
+                <th>Subject</th>
+                <th>Section A</th>
+                <th>Section B</th>
+                <th>Total Questions</th>
+                <th>Marks</th>
+            </tr>
+
+            <tr>
+                <td>Mathematics</td>
+                <td>20 MCQs</td>
+                <td>5 Numerical</td>
+                <td>25</td>
+                <td>100</td>
+            </tr>
+
+            <tr>
+                <td>Physics</td>
+                <td>20 MCQs</td>
+                <td>5 Numerical</td>
+                <td>25</td>
+                <td>100</td>
+            </tr>
+
+            <tr>
+                <td>Chemistry</td>
+                <td>20 MCQs</td>
+                <td>5 Numerical</td>
+                <td>25</td>
+                <td>100</td>
+            </tr>
+
+            <tr class="total-row">
+                <td>TOTAL</td>
+                <td>60 MCQs</td>
+                <td>15 Numerical</td>
+                <td>75</td>
+                <td>300</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- MARKING -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🎯 Marking Scheme
+    </h2>
+
+    <div class="two-col">
+
+        <div class="card">
+
+            <h3>Section A — MCQ</h3>
+
+            <ul>
+                <li>Correct answer: <strong>+4</strong></li>
+                <li>Incorrect answer: <strong>-1</strong></li>
+                <li>Unanswered: <strong>0</strong></li>
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Section B — Numerical</h3>
+
+            <ul>
+                <li>Correct answer: <strong>+4</strong></li>
+                <li>Incorrect answer: <strong>-1</strong></li>
+                <li>Unanswered: <strong>0</strong></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SIMPLE EXAMPLE -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🧮 Marking ko example se samjho
+    </h2>
+
+    <div class="example">
+
+        <p>
+            Maan lo kisi subject mein tumne:
+        </p>
+
+        <br>
+
+        <p>
+            ✅ 18 questions correct
+        </p>
+
+        <p>
+            ❌ 4 questions wrong
+        </p>
+
+        <p>
+            ⭕ 3 questions chhod diye
+        </p>
+
+        <div class="formula">
+            Score = (18 × 4) − (4 × 1)
+            = 72 − 4
+            = 68 marks
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SUBJECTS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        📚 Teen Subjects
+    </h2>
+
+    <div class="subject-grid">
+
+        <div class="subject">
+
+            <div class="subject-icon">📐</div>
+
+            <h3>Mathematics</h3>
+
+            <p>
+                Algebra, Calculus, Coordinate Geometry,
+                Vectors, 3D Geometry, Probability,
+                Statistics, Trigonometry aur related topics.
+            </p>
+
+        </div>
+
+
+        <div class="subject">
+
+            <div class="subject-icon">⚛️</div>
+
+            <h3>Physics</h3>
+
+            <p>
+                Mechanics, Electrodynamics, Optics,
+                Modern Physics, Thermodynamics aur
+                other prescribed syllabus topics.
+            </p>
+
+        </div>
+
+
+        <div class="subject">
+
+            <div class="subject-icon">🧪</div>
+
+            <h3>Chemistry</h3>
+
+            <p>
+                Physical Chemistry, Organic Chemistry
+                aur Inorganic Chemistry ke prescribed
+                syllabus topics.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DURATION -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        ⏱️ Exam Duration
+    </h2>
+
+    <div class="card">
+
+        <p>
+            JEE Main 2026 Paper 1 ke liye normal examination
+            duration <strong>3 hours</strong> hai.
+        </p>
+
+        <p>
+            Exact instructions aur special cases ke liye
+            apne examination year ki official bulletin check karni chahiye.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- MODE -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        💻 Exam Mode
+    </h2>
+
+    <div class="card">
+
+        <p>
+            Paper 1 computer-based test format mein conduct hota hai.
+        </p>
+
+        <p>
+            Isliye preparation mein sirf notebook questions nahi,
+            balki timed computer-based mock tests bhi practice karna useful hai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ELIGIBILITY -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🎓 Eligibility
+    </h2>
+
+    <div class="card">
+
+        <p>
+            JEE Main ki eligibility har exam year ke official bulletin
+            mein define hoti hai.
+        </p>
+
+        <p>
+            <strong>2026 bulletin</strong> ke according JEE Main 2026
+            ke liye candidates par age limit nahi thi.
+        </p>
+
+        <p>
+            2026 ke qualifying-examination rules ke according
+            2024 ya 2025 mein Class 12/equivalent pass karne wale
+            aur 2026 mein appearing candidates eligible categories
+            mein included the.
+        </p>
+
+        <p>
+            Lekin ek important difference hai:
+            <strong>JEE Main mein appear karne ki eligibility</strong>
+            aur kisi particular college/course ki
+            <strong>admission eligibility</strong> same cheez zaroori nahi hai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ATTEMPTS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🔁 Sessions / Attempts
+    </h2>
+
+    <div class="card">
+
+        <p>
+            JEE Main 2026 ko two-session format mein conduct kiya gaya.
+        </p>
+
+        <p>
+            Candidate dono sessions mein appear kar sakta tha,
+            aur multiple sessions mein appear karne par applicable
+            NTA Score/ranking rules official bulletin ke according
+            apply hote hain.
+        </p>
+
+        <p>
+            Future year ke exact session/attempt rules ke liye
+            us year ki official NTA notification check karna zaroori hai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LANGUAGES -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🌐 Exam Language
+    </h2>
+
+    <div class="card">
+
+        <p>
+            JEE Main multiple Indian languages mein available hota hai,
+            lekin available language options paper/session aur official
+            notification ke according verify karni chahiye.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SYLLABUS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        📖 Syllabus
+    </h2>
+
+    <div class="two-col">
+
+        <div class="card">
+
+            <h3>Mathematics</h3>
+
+            <ul>
+                <li>Algebra</li>
+                <li>Calculus</li>
+                <li>Coordinate Geometry</li>
+                <li>3D Geometry</li>
+                <li>Vectors</li>
+                <li>Probability & Statistics</li>
+                <li>Trigonometry</li>
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Physics + Chemistry</h3>
+
+            <ul>
+                <li>Physics — Mechanics</li>
+                <li>Physics — Electricity & Magnetism</li>
+                <li>Physics — Optics</li>
+                <li>Physics — Modern Physics</li>
+                <li>Chemistry — Physical</li>
+                <li>Chemistry — Organic</li>
+                <li>Chemistry — Inorganic</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="highlight">
+
+        <strong>
+            📌 Important:
+        </strong>
+
+        Complete official syllabus ko exam year ke NTA
+        syllabus document se hi verify karo.
+
+    </div>
+
+</section>
+
+
+<!-- BENEFITS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🌟 JEE Main dene ke benefits
+    </h2>
+
+    <div class="benefit-grid">
+
+        <div class="benefit">
+
+            <h3>🏫 NITs ka route</h3>
+
+            <p>
+                JEE Main score engineering admissions mein
+                NITs ke route ka important part hai.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>💻 IIITs</h3>
+
+            <p>
+                Participating IIITs mein engineering/technology
+                programmes ke admissions ke options mil sakte hain.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>🏛️ Other Institutes</h3>
+
+            <p>
+                JEE Main participating institutes aur
+                applicable admission systems ke through
+                additional opportunities mil sakti hain.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>🚀 JEE Advanced Route</h3>
+
+            <p>
+                JEE Main performance JEE Advanced ke eligibility
+                process se connected hai, subject to that year's rules.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>🎯 Multiple Options</h3>
+
+            <p>
+                Engineering aspirant ko ek hi college par depend
+                rehne ke bajay multiple institute options mil sakte hain.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>🌐 National Exam</h3>
+
+            <p>
+                National-level examination hone ki wajah se
+                students different parts of India ke participating
+                institutes ko target kar sakte hain.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COLLEGES -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🏫 JEE Main ke baad kya options ho sakte hain?
+    </h2>
+
+    <div class="card">
+
+        <ul>
+
+            <li>
+                NITs
+            </li>
+
+            <li>
+                IIITs
+            </li>
+
+            <li>
+                Other participating CFTIs/institutions
+            </li>
+
+            <li>
+                Participating state/institutional admission routes,
+                wherever applicable
+            </li>
+
+        </ul>
+
+        <br>
+
+        <p>
+            Final admission institute, programme, category,
+            rank/score, seat availability, counselling aur
+            applicable eligibility rules par depend karta hai.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- COUNSELLING -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🧭 Exam ke baad kya hota hai?
+    </h2>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <div>
+
+                <h3>Result / NTA Score</h3>
+
+                <p>
+                    Exam ke baad NTA score/result available hota hai.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <div>
+
+                <h3>Rank / Applicable Result</h3>
+
+                <p>
+                    Candidate ka applicable result admission process
+                    mein use hota hai.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <div>
+
+                <h3>Counselling</h3>
+
+                <p>
+                    Applicable counselling process mein registration,
+                    choice filling aur seat allocation hota hai.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">4</div>
+
+            <div>
+
+                <h3>College + Branch</h3>
+
+                <p>
+                    Available choices, rank, category, seat availability
+                    aur eligibility ke according seat mil sakti hai.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">5</div>
+
+            <div>
+
+                <h3>Admission</h3>
+
+                <p>
+                    Documents verification aur institute ke admission
+                    requirements complete karke admission process finish hota hai.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CAREER -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        💼 B.Tech ke baad career options
+    </h2>
+
+    <div class="benefit-grid">
+
+        <div class="benefit">
+            <h3>💻 Software Development</h3>
+            <p>
+                Software, web aur application development.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <h3>🤖 AI / ML</h3>
+            <p>
+                Artificial intelligence, machine learning aur data-related careers.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <h3>🔐 Cybersecurity</h3>
+            <p>
+                Security engineering, networks aur cyber defence related roles.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <h3>📊 Data</h3>
+            <p>
+                Data analytics, data engineering aur related technical fields.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <h3>⚙️ Core Engineering</h3>
+            <p>
+                Mechanical, Civil, Electrical, Electronics aur other engineering careers.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <h3>🎓 Higher Studies</h3>
+            <p>
+                M.Tech, MS, MBA, research aur other higher-study routes.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MOTIVATION -->
+
+<section class="section">
+
+    <div class="success">
+
+        <h2>🔥 Student Motivation</h2>
+
+        <br>
+
+        <p>
+            JEE Main ko sirf “300 marks ka paper” mat samjho.
+            Ye tumhare liye engineering ke multiple routes open karne
+            wala examination ho sakta hai.
+        </p>
+
+        <br>
+
+        <p>
+            Lekin motivation ka matlab ye nahi ki har student ko
+            IIT hi jaana hai.
+            Engineering ke andar bhi bahut saare colleges,
+            branches aur career paths hote hain.
+        </p>
+
+        <br>
+
+        <p>
+            <strong>
+                Goal simple hai:
+                apni preparation strong karo,
+                exam ko samjho aur apne options maximum rakho.
+            </strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PREPARATION -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        📅 Preparation ka basic roadmap
+    </h2>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <div>
+                <h3>NCERT / Basics</h3>
+                <p>
+                    Class 11–12 concepts ko strong karo.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <div>
+                <h3>Chapter Practice</h3>
+                <p>
+                    Har chapter ke questions systematically solve karo.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <div>
+                <h3>PYQs</h3>
+                <p>
+                    Previous-year questions se actual exam pattern samjho.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">4</div>
+
+            <div>
+                <h3>Mock Tests</h3>
+                <p>
+                    Full-length timed tests se speed aur accuracy improve karo.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">5</div>
+
+            <div>
+                <h3>Mistake Analysis</h3>
+                <p>
+                    Sirf marks mat dekho. Galat questions ka reason identify karo.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        ❌ Common mistakes
+    </h2>
+
+    <div class="card">
+
+        <ul>
+
+            <li>
+                Sirf theory padhna aur questions kam lagana
+            </li>
+
+            <li>
+                PYQs ko ignore karna
+            </li>
+
+            <li>
+                Mock test dena lekin analysis na karna
+            </li>
+
+            <li>
+                Negative marking ko ignore karna
+            </li>
+
+            <li>
+                Latest official notification check na karna
+            </li>
+
+            <li>
+                Sirf ek college ko target karke baaki options ignore karna
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- OFFICIAL SOURCE -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        🔗 Official Information
+    </h2>
+
+    <div class="card">
+
+        <p>
+            JEE Main ki latest official information,
+            notifications, bulletin, syllabus, result aur
+            other notices NTA ki official JEE Main website par
+            check karo.
+        </p>
+
+        <br>
+
+        <a
+            href="https://jeemain.nta.nic.in/"
+            target="_blank"
+            style="
+                display:inline-block;
+                padding:12px 18px;
+                border-radius:12px;
+                background:#1769e0;
+                color:white;
+                font-weight:bold;
+            "
+        >
+            Visit Official JEE Main Website →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+
+<section class="cta">
+
+    <h2>🚀 Ab tumhari turn hai</h2>
+
+    <p>
+        Exam ko samjho → syllabus complete karo →
+        PYQs lagao → mocks do → mistakes improve karo.
+    </p>
+
+</section>
+
+
+</div>
+
+
+<footer>
+
+    <p><strong>MEWAT SAATHI</strong></p>
+
+    <p>Mewat ki awaaz, Mewat ke logon ke saath</p>
+
+    <p>© 2026 Mewat Saathi</p>
+
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PM Ujjwala Yojana - Mewat Saathi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .info {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info p {
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .info li {
+            margin: 10px 0;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🔥 PM Ujjwala Yojana</h1>
+
+    <p>Pradhan Mantri Ujjwala Yojana</p>
+
+
+    <button onclick="showInfo('info1')">
+        📚 PM Ujjwala Yojana Kya Hai?
+    </button>
+
+    <div id="info1" class="info">
+
+        <p>
+            Pradhan Mantri Ujjwala Yojana (PMUY) Government of India
+            ki scheme hai jo eligible households ko clean cooking
+            fuel ke roop mein LPG connection tak pahunch dene ke
+            purpose se shuru ki gayi thi.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info2')">
+        👩‍👩‍👧 Kaun Apply Kar Sakta Hai?
+    </button>
+
+    <div id="info2" class="info">
+
+        <p>
+            PMUY ke under connection eligible adult women ko
+            scheme ke rules ke according diya jata hai.
+        </p>
+
+        <p>
+            Applicant household ko scheme ki eligibility conditions
+            fulfill karni hoti hain.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info3')">
+        📄 Kaunse Documents Chahiye?
+    </button>
+
+    <div id="info3" class="info">
+
+        <ul>
+            <li>🪪 Aadhaar related information</li>
+            <li>🏠 Address / residence information</li>
+            <li>🏦 Bank account details</li>
+            <li>📱 Mobile number</li>
+            <li>📄 Scheme ke according additional documents</li>
+        </ul>
+
+        <p>
+            Exact document requirements connection provider aur
+            current PMUY rules ke according verify karein.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info4')">
+        🎁 Kya Benefit Milta Hai?
+    </button>
+
+    <div id="info4" class="info">
+
+        <p>
+            Eligible beneficiaries ko LPG connection se related
+            assistance scheme ke rules ke according mil sakti hai.
+        </p>
+
+        <p>
+            Benefits aur applicable assistance time ke saath
+            government notifications ke according change ho sakti hai.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info5')">
+        📝 Apply Kaise Karein?
+    </button>
+
+    <div id="info5" class="info">
+
+        <p>
+            PMUY connection ke liye eligible applicant authorised
+            LPG distributor ke through application process complete
+            kar sakta hai.
+        </p>
+
+        <p>
+            Application se pehle latest eligibility aur documents
+            official PMUY information se verify karein.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info6')">
+        🌐 Official Website
+    </button>
+
+    <div id="info6" class="info">
+
+        <p>
+            PM Ujjwala Yojana ki official information Government of
+            India ke PMUY portal par milti hai.
+        </p>
+
+        <a href="https://www.pmuy.gov.in/" target="_blank">
+            <button>🌐 PMUY Official Website</button>
+        </a>
+
+    </div>
+
+
+    <br>
+
+    <a href="schemes.html">
+        <button>⬅️ Government Schemes Par Wapas</button>
+    </a>
+
+    <br>
+
+    <a href="index.html">
+        <button>🏠 Home Par Wapas Jayein</button>
+    </a>
+
+
+    <script>
+
+        function showInfo(id) {
+
+            let info = document.getElementById(id);
+
+            if (info.style.display === "block") {
+                info.style.display = "none";
+            } else {
+                info.style.display = "block";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

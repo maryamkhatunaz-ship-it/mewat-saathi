@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PM Awas Yojana - Mewat Saathi</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .info {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info p {
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .info li {
+            margin: 10px 0;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🏠 PM Awas Yojana</h1>
+
+    <p>Pradhan Mantri Awas Yojana</p>
+
+
+    <button onclick="showInfo('info1')">
+        📚 PM Awas Yojana Kya Hai?
+    </button>
+
+    <div id="info1" class="info">
+
+        <p>
+            PM Awas Yojana Government of India ki housing scheme hai,
+            jiska aim eligible families ko affordable housing support
+            provide karna hai.
+        </p>
+
+        <p>
+            Urban areas ke liye PMAY-U 2.0 ke under eligible families
+            ko housing assistance ke different options milte hain.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info2')">
+        👨‍👩‍👧 Kaun Eligible Ho Sakta Hai?
+    </button>
+
+    <div id="info2" class="info">
+
+        <p>
+            PMAY-U 2.0 ke liye urban areas mein eligible EWS, LIG
+            aur MIG households scheme ke rules ke according apply
+            kar sakte hain.
+        </p>
+
+        <p>
+            Important condition ye hai ki applicant family ke paas
+            India mein kahin bhi pucca house nahi hona chahiye,
+            subject to scheme rules.
+        </p>
+
+        <ul>
+            <li>🏠 Pucca house ownership check hoti hai</li>
+            <li>💰 Household income dekhi ja sakti hai</li>
+            <li>📍 Urban area eligibility important hai</li>
+            <li>📄 Scheme ke documents aur verification required ho sakte hain</li>
+        </ul>
+
+    </div>
+
+
+    <button onclick="showInfo('info3')">
+        💰 Income Categories Kya Hain?
+    </button>
+
+    <div id="info3" class="info">
+
+        <p><strong>EWS:</strong> Annual household income up to ₹3 lakh.</p>
+
+        <p><strong>LIG:</strong> Annual household income ₹3 lakh se ₹6 lakh tak.</p>
+
+        <p><strong>MIG:</strong> Annual household income ₹6 lakh se ₹9 lakh tak
+        under PMAY-U 2.0 guidelines.</p>
+
+    </div>
+
+
+    <button onclick="showInfo('info4')">
+        🏗️ Scheme Mein Kya Help Milti Hai?
+    </button>
+
+    <div id="info4" class="info">
+
+        <p>
+            PMAY-U 2.0 mein different components hain, jaise
+            Beneficiary Led Construction, Affordable Housing in
+            Partnership, Affordable Rental Housing aur Interest
+            Subsidy Scheme.
+        </p>
+
+        <p>
+            Benefit applicant ki eligibility aur selected component
+            ke according depend karta hai.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info5')">
+        📄 Kaunse Documents Chahiye?
+    </button>
+
+    <div id="info5" class="info">
+
+        <p>
+            Exact documents applicant aur selected component ke
+            according alag ho sakte hain.
+        </p>
+
+        <ul>
+            <li>🪪 Aadhaar / Aadhaar Virtual ID</li>
+            <li>📱 Mobile number</li>
+            <li>💰 Income-related information</li>
+            <li>🏠 Address-related information</li>
+            <li>📄 Scheme ke according additional documents</li>
+        </ul>
+
+        <p>
+            Apply karne se pehle official portal par current
+            document requirements verify karein.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info6')">
+        📝 Apply Kaise Karein?
+    </button>
+
+    <div id="info6" class="info">
+
+        <p>
+            PMAY-U 2.0 ke application process ke liye official
+            government system aur concerned Urban Local Body (ULB)
+            ke instructions follow karne chahiye.
+        </p>
+
+        <p>
+            Application submit karne se pehle eligibility aur
+            documents verify karna important hai.
+        </p>
+
+    </div>
+
+
+    <button onclick="showInfo('info7')">
+        🌐 Official Website
+    </button>
+
+    <div id="info7" class="info">
+
+        <p>
+            PMAY-U ki official website par scheme guidelines,
+            application-related information aur latest updates
+            mil sakte hain.
+        </p>
+
+        <a href="https://pmay-urban.gov.in/" target="_blank">
+            <button>🌐 PMAY-U Official Website</button>
+        </a>
+
+    </div>
+
+
+    <br>
+
+    <a href="schemes.html">
+        <button>⬅️ Government Schemes Par Wapas</button>
+    </a>
+
+    <br>
+
+    <a href="index.html">
+        <button>🏠 Home Par Wapas Jayein</button>
+    </a>
+
+
+    <script>
+
+        function showInfo(id) {
+
+            let info = document.getElementById(id);
+
+            if (info.style.display === "block") {
+                info.style.display = "none";
+            } else {
+                info.style.display = "block";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

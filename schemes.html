@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sarkari Yojana | Mewat Saathi</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 35%),
+        radial-gradient(circle at top right, #dcfce7 0, transparent 35%),
+        #f6f8fc;
+      color: #172033;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.86);
+      border-bottom: 1px solid rgba(15,23,42,0.08);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      min-height: 72px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #16a34a, #2563eb);
+      color: white;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+    }
+
+    .brand-text h2 {
+      font-size: 19px;
+    }
+
+    .brand-text p {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .back-btn {
+      padding: 10px 15px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 48px 20px 25px;
+    }
+
+    .hero-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 38px;
+      background:
+        linear-gradient(135deg, rgba(37,99,235,0.96), rgba(16,185,129,0.94));
+      color: white;
+      box-shadow: 0 25px 60px rgba(30,64,175,0.22);
+    }
+
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      right: -70px;
+      top: -90px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero-box::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      left: -70px;
+      bottom: -90px;
+      background: rgba(255,255,255,0.10);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1.08;
+      margin-bottom: 13px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* SEARCH */
+
+    .search-area {
+      max-width: 1180px;
+      margin: auto;
+      padding: 15px 20px 5px;
+    }
+
+    .search-box {
+      background: white;
+      border-radius: 20px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 12px 35px rgba(15,23,42,0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .search-icon {
+      padding-left: 12px;
+      font-size: 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 0;
+      outline: none;
+      padding: 14px 8px;
+      font-size: 15px;
+      background: transparent;
+    }
+
+    /* FILTERS */
+
+    .filter-area {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 20px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .filter {
+      border: 0;
+      background: white;
+      border: 1px solid #e2e8f0;
+      padding: 10px 15px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      transition: .2s;
+    }
+
+    .filter:hover {
+      transform: translateY(-2px);
+    }
+
+    .filter.active {
+      background: #172554;
+      color: white;
+      border-color: #172554;
+    }
+
+    /* INFO STRIP */
+
+    .info-strip {
+      max-width: 1180px;
+      margin: 0 auto 15px;
+      padding: 0 20px;
+    }
+
+    .info {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 16px;
+      padding: 13px 16px;
+      color: #9a3412;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* GRID */
+
+    .section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 10px 20px 50px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin: 10px 0 20px;
+    }
+
+    .section-head h2 {
+      font-size: 24px;
+    }
+
+    .count {
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .scheme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    /* CARD */
+
+    .scheme-card {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid #e2e8f0;
+      border-radius: 23px;
+      padding: 20px;
+      box-shadow: 0 12px 35px rgba(15,23,42,0.06);
+      transition: .25s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 330px;
+    }
+
+    .scheme-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 45px rgba(15,23,42,0.12);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .scheme-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      background: #eff6ff;
+    }
+
+    .save-btn {
+      border: 0;
+      background: #f8fafc;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .save-btn.saved {
+      background: #fee2e2;
+    }
+
+    .scheme-card h3 {
+      margin-top: 15px;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    .category {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 9px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .benefit {
+      margin-top: 15px;
+      background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+      border: 1px solid #bbf7d0;
+      border-radius: 15px;
+      padding: 13px;
+    }
+
+    .benefit small {
+      display: block;
+      color: #166534;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .benefit strong {
+      color: #14532d;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .who {
+      margin-top: 13px;
+      color: #475569;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    .btn {
+      flex: 1;
+      border: 0;
+      border-radius: 12px;
+      padding: 11px 10px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #172554;
+      color: white;
+    }
+
+    .btn-light {
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    /* NO RESULT */
+
+    .no-result {
+      display: none;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 22px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .no-result .big {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .no-result p {
+      color: #64748b;
+      margin-top: 7px;
+    }
+
+    /* HELP */
+
+    .help-box {
+      margin-top: 30px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      border-radius: 25px;
+      padding: 28px;
+    }
+
+    .help-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .help-box p {
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .help-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .help-point {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.09);
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 28px 20px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* TOAST */
+
+    #toast {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translate(-50%, 120px);
+      background: #0f172a;
+      color: white;
+      padding: 13px 18px;
+      border-radius: 13px;
+      font-size: 13px;
+      z-index: 999;
+      opacity: 0;
+      transition: .3s;
+      box-shadow: 0 15px 35px rgba(0,0,0,.2);
+    }
+
+    #toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+      .scheme-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .help-points {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        padding: 10px 14px;
+      }
+
+      .brand-text p {
+        display: none;
+      }
+
+      .back-btn {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 25px 14px 15px;
+      }
+
+      .hero-box {
+        padding: 27px 21px;
+        border-radius: 24px;
+      }
+
+      .search-area,
+      .filter-area,
+      .section,
+      .info-strip {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .scheme-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .scheme-card {
+        min-height: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <a href="index.html" class="brand">
+      <div class="brand-logo">🤝</div>
+
+      <div class="brand-text">
+        <h2>Mewat Saathi</h2>
+        <p>Mewat ki awaaz, Mewat ke logon ke saath</p>
+      </div>
+    </a>
+
+    <a href="index.html" class="back-btn">
+      ← Home
+    </a>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-box">
+
+    <div class="hero-content">
+
+      <span class="tag">🏛️ Government Schemes</span>
+
+      <h1>
+        Sarkari Yojana<br>
+        jo aapke kaam aa sakti hain
+      </h1>
+
+      <p>
+        Kisan, mahila, health, ghar, business aur doosri
+        zarooraton ke liye important Sarkari Yojana ek jagah.
+        Yojana ke benefit, eligibility aur official website
+        tak pahunchna aasaan banaya gaya hai.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="search-area">
+
+  <div class="search-box">
+
+    <div class="search-icon">🔎</div>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Yojana search karo... jaise Kisan, Ghar, Gas, Health"
+      autocomplete="off"
+    >
+
+  </div>
+
+</section>
+
+
+<section class="filter-area">
+
+  <div class="filters">
+
+    <button class="filter active" data-category="all">
+      ✨ Sabhi
+    </button>
+
+    <button class="filter" data-category="kisan">
+      🌾 Kisan
+    </button>
+
+    <button class="filter" data-category="health">
+      🏥 Health
+    </button>
+
+    <button class="filter" data-category="housing">
+      🏠 Ghar
+    </button>
+
+    <button class="filter" data-category="women">
+      👩 Women
+    </button>
+
+    <button class="filter" data-category="business">
+      💼 Business
+    </button>
+
+    <button class="filter" data-category="education">
+      🎓 Education
+    </button>
+
+    <button class="filter" data-category="social">
+      🛡️ Social Security
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="info-strip">
+
+  <div class="info">
+    ⚠️ <strong>Important:</strong>
+    Mewat Saathi information ko simple banata hai,
+    lekin application/eligibility ka final decision
+    concerned Government department ka hota hai.
+    Aadhaar, OTP, bank PIN ya password kisi unknown person
+    ko share na karein.
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="section-head">
+
+    <div>
+      <h2>Important Yojana</h2>
+      <div class="count" id="resultCount">
+        Yojana load ho rahi hain...
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="scheme-grid" id="schemeGrid">
+
+
+    <!-- PM KISAN -->
+
+    <article
+      class="scheme-card"
+      data-category="kisan"
+      data-search="pm kisan kisan samman nidhi farmer agriculture 6000 किसान"
+    >
+
+      <div class="card-top">
+
+        <div class="scheme-icon">
+          🌾
+        </div>
+
+        <button
+          class="save-btn"
+          onclick="toggleSave(this,'pm-kisan')"
+          title="Save"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <h3>
+        PM-KISAN Samman Nidhi
+      </h3>
+
+      <span class="category">
+        🌾 Kisan
+      </span>
+
+      <div class="benefit">
+
+        <small>💰 मुख्य लाभ</small>
+
+        <strong>
+          पात्र landholding farmer families ko
+          ₹6,000 per year DBT ke through.
+        </strong>
+
+      </div>
+
+      <p class="who">
+        👤 Eligible landholding farmer families,
+        subject to scheme exclusions.
+      </p>
+
+      <div class="card-actions">
+
+        <a
+          href="pm-kisan.html"
+          class="btn btn-primary"
+        >
+          Details
+        </a>
+
+        <a
+          href="https://www.pmkisan.gov.in/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-light"
+        >
+          Official ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- AYUSHMAN -->
+
+    <article
+      class="scheme-card"
+      data-category="health"
+      data-search="ayushman bharat pm jay health hospital 5 lakh इलाज स्वास्थ्य"
+    >
+
+      <div class="card-top">
+
+        <div class="scheme-icon">
+          🏥
+        </div>
+
+        <button
+          class="save-btn"
+          onclick="toggleSave(this,'ayushman-bharat')"
+          title="Save"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <h3>
+        Ayushman Bharat PM-JAY
+      </h3>
+
+      <span class="category">
+        🏥 Health
+      </span>
+
+      <div class="benefit">
+
+        <small>💰 मुख्य लाभ</small>
+
+        <strong>
+          Eligible beneficiaries ke liye
+          ₹5 lakh per family per year tak
+          hospitalization cover.
+        </strong>
+
+      </div>
+
+      <p class="who">
+        👤 Eligible beneficiary families;
+        70+ citizens ke liye bhi PM-JAY expansion
+        available hai according to current rules.
+      </p>
+
+      <div class="card-actions">
+
+        <a
+          href="ayushman-bharat.html"
+          class="btn btn-primary"
+        >
+          Details
+        </a>
+
+        <a
+          href="https://pmjay.gov.in/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-light"
+        >
+          Official ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- PMAY -->
+
+    <article
+      class="scheme-card"
+      data-category="housing"
+      data-search="pm awas yojana ghar house housing urban rural आवास मकान"
+    >
+
+      <div class="card-top">
+
+        <div class="scheme-icon">
+          🏠
+        </div>
+
+        <button
+          class="save-btn"
+          onclick="toggleSave(this,'pm-awas')"
+          title="Save"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <h3>
+        Pradhan Mantri Awas Yojana
+      </h3>
+
+      <span class="category">
+        🏠 Housing
+      </span>
+
+      <div class="benefit">
+
+        <small>🏠 मुख्य लाभ</small>
+
+        <strong>
+          Eligible households ke liye
+          government housing assistance,
+          scheme/area ke rules ke according.
+        </strong>
+
+      </div>
+
+      <p class="who">
+        👤 Eligibility urban/rural component,
+        household status aur applicable guidelines
+        par depend karti hai.
+      </p>
+
+      <div class="card-actions">
+
+        <a
+          href="pm-awas.html"
+          class="btn btn-primary"
+        >
+          Details
+        </a>
+
+        <a
+          href="https://pmaymis.gov.in/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-light"
+        >
+          Official ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- UJJWALA -->
+
+    <article
+      class="scheme-card"
+      data-category="women"
+      data-search="ujjwala gas lpg cylinder women mahila kitchen fuel प्रधानमंत्री उज्ज्वला"
+    >
+
+      <div class="card-top">
+
+        <div class="scheme-icon">
+          🔥
+        </div>
+
+        <button
+          class="save-btn"
+          onclick="toggleSave(this,'ujjwala')"
+          title="Save"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <h3>
+        Pradhan Mantri Ujjwala Yojana
+      </h3>
+
+      <span class="category">
+        👩 Women
+      </span>
+
+      <div class="benefit">
+
+        <small>🔥 मुख्य लाभ</small>
+
+        <strong>
+          Eligible women ko LPG connection
+          scheme rules ke according.
+        </strong>
+
+      </div>
+
+      <p class="who">
+        👤 Eligible households ki adult women,
+        current PMUY eligibility criteria ke
+        according.
+      </p>
+
+      <div class="card-actions">
+
+        <a
+          href="ujjwala.html"
+          class="btn btn-primary"
+        >
+          Details
+        </a>
+
+        <a
+          href="https://www.pmuy.gov.in/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-light"
+        >
+          Official ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- PM SVANIDHI -->
+
+    <article
+      class="scheme-card"
+      data-category="business"
+      data-search="pm svanidhi street vendor loan business rehri patri ठेला व्यवसाय"
+    >
+
+      <div class="card-top">
+
+        <div class="scheme-icon">
+          🛒
+        </div>
+
+        <button
+          class="save-btn"
+          onclick="toggleSave(this,'pm-svanidhi')"
+          title="Save"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <h3>
+        PM SVANidhi
+      </h3>
+
+      <span class="category">
+        💼 Business
+      </span>
+
+      <div class="benefit">
+
+        <small>💼 किसके काम आ सकती है</small>
+
+        <strong>
+          Street vendors ke liye working-capital
+          support scheme.
+        </strong>
+
+      </div>
+
+      <p class="who">
+        👤 Eligible street vendors,
+        applicable government guidelines ke according.
+      </p>
+
+      <div class="card-actions">
+
+        <a
+          href="https://www.myscheme.gov.in/schemes/pm-svanidhi"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+        >
+          Details ↗
+        </a>
+
+        <a
+          href="https://pmsvanidhi.mohua.gov.in/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-light"
+        >
+          Official ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- SCHOLARSHIP -->
+
+    <article
+      class="scheme-card"
+      data-category="education"
+      data-search="scholarship student education scholarship national state छात्रवृत्ति पढ़ाई"
+    >
+
+      <div class="card-top">
+
+        <div class="scheme-icon">
+          🎓
+        </div>
+
+        <button
+          class="save-btn"
+          onclick="toggleSave(this,'scholarship')"
+          title="Save"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <h3>
+        Student Scholarships
+      </h3>
+
+      <span class="category">
+        🎓 Education
+      </span>
+
+      <div class="benefit">
+
+        <small>🎓 मुख्य लाभ</small>
+
+        <strong>
+          Different scholarships ke through
+          fees, maintenance aur education support
+          mil sakta hai.
+        </strong>
+
+      </div>
+
+      <p class="who">
+        👤 Eligibility scholarship, class/course,
+        category aur income criteria ke according
+        alag hoti hai.
+      </p>
+
+      <div class="card-actions">
+
+        <a
+          href="scholarship.html"
+          class="btn btn-primary"
+        >
+          Scholarships
+        </a>
+
+        <a
+          href="https://scholarships.gov.in/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-light"
+        >
+          NSP ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- SOCIAL SECURITY -->
+
+    <article
+      class="scheme-card"
+      data-category="social"
+      data-search="pension social security old age widow disability pension वृद्ध विधवा दिव्यांग सामाजिक सुरक्षा"
+    >
+
+      <div class="card-top">
+
+        <div class="scheme-icon">
+          🛡️
+        </div>
+
+        <button
+          class="save-btn"
+          onclick="toggleSave(this,'social-security')"
+          title="Save"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <h3>
+        Social Security Support
+      </h3>
+
+      <span class="category">
+        🛡️ Social Security
+      </span>
+
+      <div class="benefit">
+
+        <small>🛡️ मुख्य लाभ</small>
+
+        <strong>
+          Eligible elderly, widows aur
+          persons with disabilities ke liye
+          applicable pension/support schemes.
+        </strong>
+
+      </div>
+
+      <p class="who">
+        👤 Scheme ke according age, income,
+        category aur state conditions apply hoti hain.
+      </p>
+
+      <div class="card-actions">
+
+        <a
+          href="https://www.myscheme.gov.in/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+        >
+          Find Scheme ↗
+        </a>
+
+        <button
+          class="btn btn-light"
+          onclick="shareScheme('Social Security Schemes')"
+        >
+          Share
+        </button>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+
+  <div class="no-result" id="noResult">
+
+    <div class="big">🔎</div>
+
+    <h3>Yojana nahi mili</h3>
+
+    <p>
+      Search ko thoda simple karke dobara try karein.
+      Jaise: <strong>kisan</strong>, <strong>ghar</strong>,
+      <strong>health</strong>, <strong>gas</strong>.
+    </p>
+
+  </div>
+
+
+  <div class="help-box">
+
+    <h2>🤝 Yojana samajhne mein dikkat?</h2>
+
+    <p>
+      Agar kisi Sarkari Yojana ka naam pata hai lekin
+      eligibility, documents ya apply karne ka process
+      samajh nahi aa raha, to Mewat Saathi par uski
+      detailed information dekhein.
+    </p>
+
+    <div class="help-points">
+
+      <div class="help-point">
+        🔎 <strong>Search</strong><br>
+        Apni zaroorat ke hisaab se yojana dhoondhein.
+      </div>
+
+      <div class="help-point">
+        📄 <strong>Documents</strong><br>
+        Apply karne se pehle required documents check karein.
+      </div>
+
+      <div class="help-point">
+        🌐 <strong>Official Portal</strong><br>
+        Final application hamesha official government portal
+        par karein.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <strong>Mewat Saathi</strong><br>
+
+  Mewat ki awaaz, Mewat ke logon ke saath.
+
+  <br><br>
+
+  ⚠️ Government scheme information time ke saath
+  change ho sakti hai. Application se pehle official
+  government portal par current details verify karein.
+
+</footer>
+
+
+<div id="toast"></div>
+
+
+<script>
+
+  const cards = [...document.querySelectorAll(".scheme-card")];
+
+  const filters = [...document.querySelectorAll(".filter")];
+
+  const searchInput = document.getElementById("searchInput");
+
+  const resultCount = document.getElementById("resultCount");
+
+  const noResult = document.getElementById("noResult");
+
+  let currentCategory = "all";
+
+
+  /* SEARCH + FILTER */
+
+  function filterSchemes() {
+
+    const search =
+      searchInput.value
+        .trim()
+        .toLowerCase();
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+      const category =
+        card.dataset.category;
+
+      const text =
+        card.dataset.search.toLowerCase();
+
+      const categoryMatch =
+        currentCategory === "all" ||
+        category === currentCategory;
+
+      const searchMatch =
+        search === "" ||
+        text.includes(search);
+
+      if (categoryMatch && searchMatch) {
+
+        card.style.display = "flex";
+
+        visible++;
+
+      } else {
+
+        card.style.display = "none";
+
+      }
+
+    });
+
+    resultCount.textContent =
+      `${visible} yojana${visible === 1 ? "" : "en"} dikh rahi hain`;
+
+    noResult.style.display =
+      visible === 0 ? "block" : "none";
+
+  }
+
+
+  searchInput.addEventListener(
+    "input",
+    filterSchemes
+  );
+
+
+  filters.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      filters.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      currentCategory =
+        button.dataset.category;
+
+      filterSchemes();
+
+    });
+
+  });
+
+
+  /* SAVE */
+
+  function toggleSave(button, id) {
+
+    const key = "mewat_saved_schemes";
+
+    let saved =
+      JSON.parse(
+        localStorage.getItem(key) || "[]"
+      );
+
+    if (saved.includes(id)) {
+
+      saved =
+        saved.filter(item => item !== id);
+
+      button.classList.remove("saved");
+
+      button.textContent = "♡";
+
+      showToast("Yojana saved list se hata di gayi");
+
+    } else {
+
+      saved.push(id);
+
+      button.classList.add("saved");
+
+      button.textContent = "♥";
+
+      showToast("Yojana save ho gayi ❤️");
+
+    }
+
+    localStorage.setItem(
+      key,
+      JSON.stringify(saved)
+    );
+
+  }
+
+
+  /* LOAD SAVED STATE */
+
+  function loadSaved() {
+
+    const key = "mewat_saved_schemes";
+
+    const saved =
+      JSON.parse(
+        localStorage.getItem(key) || "[]"
+      );
+
+    document
+      .querySelectorAll(".save-btn")
+      .forEach(button => {
+
+        const onclick =
+          button.getAttribute("onclick") || "";
+
+        const match =
+          onclick.match(/'([^']+)'/);
+
+        if (!match) return;
+
+        const id = match[1];
+
+        if (saved.includes(id)) {
+
+          button.classList.add("saved");
+
+          button.textContent = "♥";
+
+        }
+
+      });
+
+  }
+
+
+  /* SHARE */
+
+  function shareScheme(name) {
+
+    if (
+      navigator.share
+    ) {
+
+      navigator.share({
+
+        title: `${name} | Mewat Saathi`,
+
+        text:
+          `${name} ke baare mein Mewat Saathi par information dekhein.`,
+
+        url: window.location.href
+
+      }).catch(() => {});
+
+    } else {
+
+      navigator.clipboard
+        .writeText(window.location.href)
+        .then(() => {
+
+          showToast(
+            "Page link copy ho gaya"
+          );
+
+        });
+
+    }
+
+  }
+
+
+  /* TOAST */
+
+  let toastTimer;
+
+  function showToast(message) {
+
+    const toast =
+      document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+      setTimeout(() => {
+
+        toast.classList.remove("show");
+
+      }, 2200);
+
+  }
+
+
+  /* INITIAL */
+
+  loadSaved();
+
+  filterSchemes();
+
+</script>
+
+</body>
+</html>

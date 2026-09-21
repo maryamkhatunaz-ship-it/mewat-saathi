@@ -1,1387 +1,1289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Mewat Saathi</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f6f8f5;
-            color: #17231b;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-
-        /* =====================================================
-           HEADER
-        ===================================================== */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            background: rgba(255,255,255,0.90);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid #e4e9e4;
-        }
-
-        .navbar {
-            max-width: 1180px;
-            min-height: 70px;
-
-            margin: auto;
-            padding: 0 20px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            font-size: 21px;
-            font-weight: 800;
-            color: #145c35;
-        }
-
-        .logo-mark {
-            width: 42px;
-            height: 42px;
-
-            border-radius: 13px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: white;
-            font-size: 21px;
-            font-weight: 900;
-
-            background:
-                linear-gradient(145deg,#28a85c,#0e5b32);
-
-            box-shadow:
-                inset 3px 3px 5px rgba(255,255,255,.25),
-                inset -4px -4px 7px rgba(0,0,0,.18),
-                0 6px 14px rgba(20,92,53,.20);
-
-            transform: perspective(100px) rotateX(5deg);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            padding: 9px 13px;
-            border-radius: 9px;
-
-            font-size: 14px;
-            font-weight: 600;
-            color: #59645d;
-        }
-
-        .nav-links a:hover {
-            background: #edf6ef;
-            color: #145c35;
-        }
-
-        .menu-btn {
-            display: none;
-
-            width: 42px;
-            height: 42px;
-
-            border: none;
-            border-radius: 11px;
-
-            background: #edf6ef;
-            color: #145c35;
-
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-
-        /* =====================================================
-           HERO / FIRST SCREEN
-        ===================================================== */
-
-        .hero {
-            position: relative;
-            min-height: calc(100vh - 70px);
-
-            display: flex;
-            align-items: center;
-
-            overflow: hidden;
-
-            background:
-                radial-gradient(circle at 10% 20%, rgba(49,181,96,.15), transparent 28%),
-                radial-gradient(circle at 90% 20%, rgba(249,181,59,.16), transparent 25%),
-                radial-gradient(circle at 80% 90%, rgba(83,130,255,.10), transparent 28%),
-                linear-gradient(135deg,#f2faf4,#ffffff 55%,#f7fbf6);
-        }
-
-        /* Decorative floating circles */
-
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: .6;
-            filter: blur(.2px);
-        }
-
-        .shape-one {
-            width: 90px;
-            height: 90px;
-            background: #c9efd5;
-            top: 12%;
-            left: 4%;
-            box-shadow: inset -12px -12px 20px rgba(0,0,0,.06);
-        }
-
-        .shape-two {
-            width: 55px;
-            height: 55px;
-            background: #ffe2a1;
-            top: 25%;
-            right: 8%;
-        }
-
-        .shape-three {
-            width: 35px;
-            height: 35px;
-            background: #bfcfff;
-            bottom: 18%;
-            left: 12%;
-        }
-
-        .hero-container {
-            width: 100%;
-            max-width: 1180px;
-
-            margin: auto;
-            padding: 65px 20px;
-
-            display: grid;
-            grid-template-columns: 1.05fr .95fr;
-            gap: 55px;
-            align-items: center;
-        }
-
-        .hero-left {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-
-            padding: 8px 13px;
-            border-radius: 30px;
-
-            background: #e2f5e7;
-            color: #146039;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            box-shadow:
-                0 5px 15px rgba(20,92,53,.08);
-        }
-
-        .hero-title {
-            margin-top: 19px;
-
-            font-size: clamp(42px,6vw,72px);
-            line-height: 1.02;
-
-            letter-spacing: -3px;
-        }
-
-        .hero-title span {
-            color: #15934a;
-        }
-
-        .hero-subtitle {
-            max-width: 570px;
-
-            margin-top: 18px;
-
-            font-size: 17px;
-            color: #68736b;
-            line-height: 1.65;
-        }
-
-
-        /* =====================================================
-           SEARCH
-        ===================================================== */
-
-        .search-wrapper {
-            max-width: 610px;
-            margin-top: 25px;
-        }
-
-        .search-box {
-            display: flex;
-            align-items: center;
-
-            background: white;
-
-            padding: 7px;
-
-            border: 1px solid #dce5de;
-            border-radius: 17px;
-
-            box-shadow:
-                0 12px 35px rgba(22,65,38,.10),
-                inset 0 1px 0 rgba(255,255,255,.8);
-        }
-
-        .search-icon {
-            padding-left: 13px;
-            font-size: 20px;
-        }
-
-        .search-box input {
-            flex: 1;
-
-            min-width: 0;
-
-            border: none;
-            outline: none;
-
-            background: transparent;
-
-            padding: 14px 12px;
-
-            font-size: 14px;
-            color: #17231b;
-        }
-
-        .search-box input::placeholder {
-            color: #8b958e;
-        }
-
-        .search-button {
-            border: none;
-            cursor: pointer;
-
-            background: #155f37;
-            color: white;
-
-            padding: 12px 20px;
-
-            border-radius: 11px;
-
-            font-weight: 700;
-
-            box-shadow:
-                inset 0 2px 2px rgba(255,255,255,.15),
-                0 5px 12px rgba(21,95,55,.20);
-        }
-
-        .search-button:hover {
-            transform: translateY(-1px);
-            background: #104d2c;
-        }
-
-        .quick-search {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-
-            margin-top: 10px;
-        }
-
-        .quick-search button {
-            border: 1px solid #dce5de;
-            background: rgba(255,255,255,.75);
-
-            color: #526159;
-
-            padding: 6px 10px;
-            border-radius: 20px;
-
-            font-size: 11px;
-            cursor: pointer;
-        }
-
-        .quick-search button:hover {
-            color: #155f37;
-            background: #edf7ef;
-        }
-
-
-        /* =====================================================
-           SEARCH RESULTS
-        ===================================================== */
-
-        .search-results {
-            margin-top: 12px;
-            max-width: 610px;
-        }
-
-        .results-box {
-            background: white;
-
-            border: 1px solid #dfe7e1;
-            border-radius: 14px;
-
-            overflow: hidden;
-
-            box-shadow: 0 12px 25px rgba(0,0,0,.07);
-        }
-
-        .result-heading {
-            padding: 12px 15px;
-
-            color: #718078;
-            font-size: 12px;
-            font-weight: 700;
-
-            border-bottom: 1px solid #edf0ed;
-        }
-
-        .result {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            gap: 15px;
-
-            padding: 14px 15px;
-
-            border-bottom: 1px solid #edf0ed;
-        }
-
-        .result:last-child {
-            border-bottom: none;
-        }
-
-        .result h3 {
-            font-size: 14px;
-            margin-bottom: 3px;
-        }
-
-        .result p {
-            color: #78837c;
-            font-size: 11px;
-        }
-
-        .result a {
-            white-space: nowrap;
-
-            background: #e9f5ec;
-            color: #155f37;
-
-            padding: 7px 11px;
-
-            border-radius: 8px;
-
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .no-result {
-            background: white;
-
-            padding: 18px;
-
-            border: 1px solid #dfe7e1;
-            border-radius: 14px;
-
-            color: #758078;
-            font-size: 13px;
-        }
-
-
-        /* =====================================================
-           HERO VISUAL
-        ===================================================== */
-
-        .hero-visual {
-            position: relative;
-            min-height: 490px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .phone-card {
-            position: relative;
-
-            width: 285px;
-            min-height: 440px;
-
-            padding: 18px;
-
-            border-radius: 34px;
-
-            background:
-                linear-gradient(145deg,#ffffff,#edf5ef);
-
-            border: 1px solid rgba(255,255,255,.8);
-
-            box-shadow:
-                25px 30px 60px rgba(31,74,47,.20),
-                -10px -10px 30px rgba(255,255,255,.85),
-                inset 1px 1px 3px white;
-
-            transform:
-                perspective(1000px)
-                rotateY(-8deg)
-                rotateX(3deg);
-
-            z-index: 2;
-        }
-
-        .phone-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            margin-bottom: 18px;
-        }
-
-        .phone-brand {
-            font-size: 13px;
-            font-weight: 800;
-            color: #155f37;
-        }
-
-        .phone-dot {
-            width: 10px;
-            height: 10px;
-
-            border-radius: 50%;
-
-            background: #39b96a;
-
-            box-shadow: 0 0 0 5px #dff4e5;
-        }
-
-        .phone-title {
-            font-size: 24px;
-            font-weight: 800;
-            line-height: 1.1;
-
-            margin-bottom: 5px;
-        }
-
-        .phone-small {
-            font-size: 10px;
-            color: #7a867e;
-        }
-
-        .mini-search {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-
-            background: white;
-
-            border: 1px solid #e1e7e2;
-
-            padding: 10px;
-            margin: 17px 0;
-
-            border-radius: 12px;
-
-            color: #8b948e;
-            font-size: 10px;
-
-            box-shadow: 0 5px 12px rgba(0,0,0,.04);
-        }
-
-        .mini-grid {
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 10px;
-        }
-
-        .mini-service {
-            min-height: 95px;
-
-            border-radius: 18px;
-
-            padding: 12px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            box-shadow:
-                inset 2px 2px 5px rgba(255,255,255,.65),
-                inset -4px -5px 10px rgba(0,0,0,.08),
-                0 7px 13px rgba(0,0,0,.07);
-        }
-
-        .mini-service .mini-icon {
-            width: 35px;
-            height: 35px;
-
-            border-radius: 11px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 18px;
-
-            background: rgba(255,255,255,.72);
-
-            box-shadow:
-                2px 3px 7px rgba(0,0,0,.08);
-        }
-
-        .mini-service strong {
-            font-size: 11px;
-        }
-
-        .mini-green {
-            background: linear-gradient(145deg,#dff7e6,#bde7ca);
-        }
-
-        .mini-yellow {
-            background: linear-gradient(145deg,#fff4cc,#ffe29b);
-        }
-
-        .mini-blue {
-            background: linear-gradient(145deg,#e1ebff,#c2d4ff);
-        }
-
-        .mini-pink {
-            background: linear-gradient(145deg,#ffe5ed,#ffc5d4);
-        }
-
-        /* Floating 3D cards */
-
-        .float-card {
-            position: absolute;
-
-            padding: 13px 16px;
-
-            border-radius: 15px;
-
-            background: rgba(255,255,255,.93);
-
-            border: 1px solid rgba(255,255,255,.9);
-
-            box-shadow:
-                12px 17px 30px rgba(0,0,0,.10),
-                inset 2px 2px 5px rgba(255,255,255,.8);
-
-            font-size: 12px;
-            font-weight: 700;
-
-            z-index: 4;
-        }
-
-        .float-one {
-            left: 0;
-            top: 18%;
-
-            color: #155f37;
-
-            transform: rotate(-7deg);
-        }
-
-        .float-two {
-            right: 0;
-            bottom: 22%;
-
-            color: #a56700;
-
-            transform: rotate(7deg);
-        }
-
-        .float-three {
-            left: 8%;
-            bottom: 7%;
-
-            color: #4264a5;
-
-            transform: rotate(-4deg);
-        }
-
-
-        /* =====================================================
-           SECTION
-        ===================================================== */
-
-        .section {
-            padding: 75px 20px;
-        }
-
-        .container {
-            max-width: 1120px;
-            margin: auto;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 34px;
-        }
-
-        .section-heading .small-title {
-            color: #15934a;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .section-heading h2 {
-            font-size: 34px;
-            margin-top: 5px;
-            margin-bottom: 8px;
-        }
-
-        .section-heading p {
-            color: #748078;
-            font-size: 14px;
-        }
-
-
-        /* =====================================================
-           3D SERVICE CARDS
-        ===================================================== */
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 17px;
-        }
-
-        .service-card {
-            position: relative;
-
-            min-height: 190px;
-
-            padding: 20px;
-
-            border-radius: 22px;
-
-            background: white;
-
-            border: 1px solid #e4eae5;
-
-            overflow: hidden;
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
-        }
-
-        .service-card:hover {
-            transform:
-                translateY(-8px)
-                rotateX(2deg)
-                rotateY(-2deg);
-
-            box-shadow:
-                0 20px 35px rgba(25,65,40,.13);
-        }
-
-        .service-card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 100px;
-            height: 100px;
-
-            border-radius: 50%;
-
-            right: -40px;
-            bottom: -45px;
-
-            opacity: .25;
-        }
-
-        .service-icon {
-            width: 63px;
-            height: 63px;
-
-            border-radius: 18px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 31px;
-
-            margin-bottom: 18px;
-
-            box-shadow:
-                inset 4px 4px 8px rgba(255,255,255,.75),
-                inset -6px -7px 12px rgba(0,0,0,.08),
-                0 9px 14px rgba(0,0,0,.08);
-
-            transform:
-                perspective(200px)
-                rotateX(4deg);
-        }
-
-        .service-card h3 {
-            font-size: 17px;
-            margin-bottom: 5px;
-        }
-
-        .service-card p {
-            color: #748078;
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        .service-arrow {
-            position: absolute;
-            right: 17px;
-            bottom: 17px;
-
-            width: 27px;
-            height: 27px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background: #f0f5f1;
-            color: #155f37;
-
-            font-size: 14px;
-            font-weight: 800;
-        }
-
-
-        /* Card colours */
-
-        .scholarship .service-icon {
-            background: linear-gradient(145deg,#e5d7ff,#c7adff);
-        }
-
-        .scholarship::after {
-            background: #a675ff;
-        }
-
-        .schemes .service-icon {
-            background: linear-gradient(145deg,#ffe7aa,#ffc75c);
-        }
-
-        .schemes::after {
-            background: #ffbf3f;
-        }
-
-        .jobs .service-icon {
-            background: linear-gradient(145deg,#cde1ff,#91baff);
-        }
-
-        .jobs::after {
-            background: #5e91ff;
-        }
-
-        .education .service-icon {
-            background: linear-gradient(145deg,#c8f2d4,#8fdda8);
-        }
-
-        .education::after {
-            background: #4cc574;
-        }
-
-        .health .service-icon {
-            background: linear-gradient(145deg,#ffd5df,#ff9fb5);
-        }
-
-        .health::after {
-            background: #ff7194;
-        }
-
-        .farmer .service-icon {
-            background: linear-gradient(145deg,#fff0b8,#fbd76c);
-        }
-
-        .farmer::after {
-            background: #e5ae25;
-        }
-
-        .women .service-icon {
-            background: linear-gradient(145deg,#ffd7ed,#ffacd7);
-        }
-
-        .women::after {
-            background: #ed6fb2;
-        }
-
-        .directory .service-icon {
-            background: linear-gradient(145deg,#cce9ff,#9dcfff);
-        }
-
-        .directory::after {
-            background: #559fe5;
-        }
-
-
-        /* =====================================================
-           MORE FEATURES
-        ===================================================== */
-
-        .more-section {
-            background: #eef5ef;
-        }
-
-        .more-grid {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 13px;
-        }
-
-        .more-card {
-            background: rgba(255,255,255,.8);
-
-            border: 1px solid #dfe9e1;
-
-            padding: 17px;
-
-            border-radius: 17px;
-
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            transition: .2s;
-        }
-
-        .more-card:hover {
-            transform: translateY(-3px);
-            background: white;
-            box-shadow: 0 10px 22px rgba(20,60,35,.08);
-        }
-
-        .more-icon {
-            width: 43px;
-            height: 43px;
-
-            border-radius: 13px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: #f3f7f3;
-
-            font-size: 20px;
-        }
-
-        .more-card strong {
-            display: block;
-            font-size: 13px;
-        }
-
-        .more-card span {
-            font-size: 10px;
-            color: #7d8881;
-        }
-
-
-        /* =====================================================
-           ABOUT / PURPOSE
-        ===================================================== */
-
-        .purpose {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            gap: 45px;
-            align-items: center;
-        }
-
-        .purpose-title {
-            font-size: 38px;
-            line-height: 1.1;
-        }
-
-        .purpose-title span {
-            color: #15934a;
-        }
-
-        .purpose-text {
-            color: #6f7a73;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-top: 12px;
-        }
-
-        .purpose-points {
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 12px;
-        }
-
-        .purpose-point {
-            padding: 18px;
-
-            border-radius: 16px;
-
-            background: white;
-            border: 1px solid #e2e9e3;
-
-            box-shadow: 0 8px 20px rgba(20,60,35,.05);
-        }
-
-        .purpose-point .big-icon {
-            font-size: 25px;
-            margin-bottom: 8px;
-        }
-
-        .purpose-point strong {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .purpose-point p {
-            font-size: 11px;
-            color: #7b857f;
-        }
-
-
-        /* =====================================================
-           COMPLAINT CTA
-        ===================================================== */
-
-        .complaint-section {
-            padding: 0 20px 75px;
-        }
-
-        .complaint-box {
-            position: relative;
-            overflow: hidden;
-
-            max-width: 1120px;
-            margin: auto;
-
-            border-radius: 25px;
-
-            padding: 38px;
-
-            color: white;
-
-            background:
-                radial-gradient(circle at 85% 20%,rgba(255,255,255,.12),transparent 20%),
-                linear-gradient(135deg,#155f37,#0b4327);
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            gap: 25px;
-
-            box-shadow:
-                0 18px 40px rgba(15,80,43,.18);
-        }
-
-        .complaint-box h2 {
-            font-size: 28px;
-            margin-bottom: 6px;
-        }
-
-        .complaint-box p {
-            color: #d4e8da;
-            font-size: 13px;
-        }
-
-        .complaint-button {
-            background: white;
-            color: #155f37;
-
-            padding: 13px 19px;
-
-            border-radius: 11px;
-
-            font-size: 13px;
-            font-weight: 800;
-
-            white-space: nowrap;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-            background: #142019;
-            color: white;
-
-            padding: 35px 20px;
-        }
-
-        .footer-inner {
-            max-width: 1120px;
-            margin: auto;
-
-            display: flex;
-            justify-content: space-between;
-            gap: 25px;
-        }
-
-        .footer-logo {
-            font-size: 19px;
-            font-weight: 800;
-        }
-
-        .footer-text {
-            color: #aebdb2;
-            font-size: 11px;
-            margin-top: 5px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .footer-links a {
-            color: #c7d2ca;
-            font-size: 12px;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media (max-width: 950px) {
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-subtitle,
-            .search-wrapper {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .quick-search {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                min-height: 430px;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .more-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .purpose {
-                grid-template-columns: 1fr;
-            }
-        }
-
-
-        @media (max-width: 700px) {
-
-            .nav-links {
-                display: none;
-
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-
-                padding: 10px 20px;
-
-                flex-direction: column;
-                align-items: stretch;
-
-                background: white;
-
-                border-bottom: 1px solid #e4e9e4;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .hero {
-                min-height: auto;
-            }
-
-            .hero-container {
-                padding-top: 48px;
-                padding-bottom: 45px;
-            }
-
-            .hero-title {
-                letter-spacing: -1.8px;
-            }
-
-            .hero-visual {
-                min-height: 390px;
-            }
-
-            .phone-card {
-                width: 260px;
-                min-height: 400px;
-            }
-
-            .float-one {
-                left: 2%;
-            }
-
-            .float-two {
-                right: 2%;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2,1fr);
-                gap: 11px;
-            }
-
-            .service-card {
-                min-height: 175px;
-                padding: 16px;
-            }
-
-            .service-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 27px;
-            }
-
-            .section {
-                padding: 55px 15px;
-            }
-
-            .purpose-points {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .complaint-section {
-                padding: 0 15px 55px;
-            }
-
-            .complaint-box {
-                padding: 28px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-            }
-        }
-
-
-        @media (max-width: 470px) {
-
-            .navbar {
-                min-height: 62px;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .logo-mark {
-                width: 37px;
-                height: 37px;
-            }
-
-            .hero-title {
-                font-size: 41px;
-            }
-
-            .hero-subtitle {
-                font-size: 14px;
-            }
-
-            .search-box {
-                padding: 5px;
-            }
-
-            .search-icon {
-                display: none;
-            }
-
-            .search-box input {
-                padding: 12px 8px;
-                font-size: 12px;
-            }
-
-            .search-button {
-                padding: 11px 13px;
-                font-size: 12px;
-            }
-
-            .hero-visual {
-                transform: scale(.91);
-                margin: -15px 0;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .service-card {
-                min-height: 165px;
-            }
-
-            .service-card h3 {
-                font-size: 14px;
-            }
-
-            .service-card p {
-                font-size: 10px;
-            }
-
-            .more-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .purpose-points {
-                grid-template-columns: 1fr;
-            }
-
-            .purpose-title {
-                font-size: 31px;
-            }
-
-            .complaint-box h2 {
-                font-size: 23px;
-            }
-
-            .result {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mewat Saathi</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f6faf7;
+    color:#143d2d;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid #e3eee7;
+}
+
+.navbar{
+    max-width:1200px;
+    min-height:70px;
+    margin:auto;
+    padding:0 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    font-weight:800;
+    color:#075c3d;
+}
+
+.logo-mark{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(135deg,#008f5b,#006b45);
+    color:white;
+    font-size:23px;
+    font-weight:900;
+
+    box-shadow:0 7px 18px rgba(0,110,70,.20);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:600;
+    color:#36564a;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:#008b58;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:#e9f7f0;
+    color:#08744c;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    min-height:590px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.94) 0%,
+            rgba(255,255,255,.78) 38%,
+            rgba(255,255,255,.15) 75%
+        ),
+        url("mewat-bg.jpg") center/cover no-repeat;
+
+    display:flex;
+    align-items:center;
+}
+
+.hero-container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    padding:65px 22px 75px;
+}
+
+.hero-left{
+    max-width:690px;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+
+    padding:8px 15px;
+    border-radius:30px;
+
+    background:rgba(0,132,82,.10);
+    color:#08764c;
+
+    font-size:14px;
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+.hero-title{
+    font-size:58px;
+    line-height:1.04;
+    letter-spacing:-2px;
+    color:#073f2d;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.hero-title span{
+    display:block;
+    color:#00935c;
+}
+
+.hero-subtitle{
+    max-width:610px;
+    font-size:18px;
+    line-height:1.65;
+    color:#36584b;
+    margin-bottom:28px;
+}
+
+/* =========================
+   FOUNDER BADGE
+========================= */
+
+.founder-badge{
+    position:absolute;
+    top:22px;
+    right:25px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    padding:9px 14px;
+
+    background:rgba(255,255,255,.90);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(0,120,75,.15);
+    border-radius:30px;
+
+    box-shadow:0 8px 25px rgba(0,70,40,.12);
+
+    color:#176047;
+    font-size:11px;
+    line-height:1.25;
+}
+
+.founder-icon{
+    width:27px;
+    height:27px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#e3f7ec;
+    color:#078253;
+
+    font-size:14px;
+}
+
+.founder-text strong{
+    display:block;
+    font-size:10px;
+    color:#789087;
+    font-weight:600;
+}
+
+.founder-text span{
+    display:block;
+    font-weight:800;
+    color:#07583b;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-wrapper{
+    position:relative;
+    max-width:720px;
+}
+
+.search-box{
+    height:62px;
+
+    display:flex;
+    align-items:center;
+
+    background:white;
+    border-radius:35px;
+
+    padding:7px 8px 7px 20px;
+
+    box-shadow:
+        0 14px 40px rgba(0,70,45,.15);
+
+    border:1px solid rgba(0,100,60,.08);
+}
+
+.search-icon{
+    font-size:21px;
+    margin-right:12px;
+    opacity:.65;
+}
+
+.search-box input{
+    flex:1;
+    min-width:0;
+
+    border:0;
+    outline:0;
+
+    font-size:15px;
+    color:#183f32;
+
+    background:transparent;
+}
+
+.search-box input::placeholder{
+    color:#83958e;
+}
+
+.search-button{
+    height:48px;
+    padding:0 28px;
+
+    border:0;
+    border-radius:28px;
+
+    background:linear-gradient(
+        135deg,
+        #079a60,
+        #007345
+    );
+
+    color:white;
+    font-size:15px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:0 7px 17px rgba(0,120,70,.20);
+}
+
+.quick-search{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:12px;
+}
+
+.quick-search button{
+    border:1px solid rgba(0,110,70,.15);
+    background:rgba(255,255,255,.85);
+
+    padding:7px 12px;
+    border-radius:20px;
+
+    color:#24614b;
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.search-results{
+    margin-top:10px;
+}
+
+.results-box{
+    background:white;
+    border-radius:18px;
+    padding:15px;
+
+    box-shadow:0 12px 35px rgba(0,50,30,.15);
+
+    max-height:320px;
+    overflow:auto;
+}
+
+.result-heading{
+    font-size:13px;
+    color:#789087;
+    margin-bottom:8px;
+}
+
+.result{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+
+    padding:13px 5px;
+    border-bottom:1px solid #edf2ef;
+}
+
+.result:last-child{
+    border-bottom:0;
+}
+
+.result h3{
+    font-size:15px;
+    margin-bottom:3px;
+}
+
+.result p{
+    font-size:12px;
+    color:#71817a;
+}
+
+.result a{
+    align-self:center;
+    color:#008b58;
+    font-size:12px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.no-result{
+    background:white;
+    padding:18px;
+    border-radius:18px;
+    color:#64766e;
+    font-size:13px;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.section{
+    padding:65px 20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.small-title{
+    color:#008b58;
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.section-heading h2{
+    font-size:34px;
+    color:#123e2f;
+    margin-bottom:8px;
+}
+
+.section-heading p{
+    color:#71837b;
+    font-size:14px;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.service-card{
+    position:relative;
+
+    min-height:205px;
+    padding:22px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(0,0,0,.06);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+    overflow:hidden;
+}
+
+.service-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,60,40,.10);
+}
+
+.service-icon{
+    width:52px;
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:17px;
+
+    background:rgba(255,255,255,.75);
+
+    font-size:25px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 7px 16px rgba(0,0,0,.07);
+}
+
+.service-card h3{
+    font-size:18px;
+    margin-bottom:8px;
+    color:#153f31;
+}
+
+.service-card p{
+    font-size:13px;
+    line-height:1.5;
+    color:#587067;
+    max-width:210px;
+}
+
+.service-arrow{
+    position:absolute;
+    right:17px;
+    bottom:17px;
+
+    width:32px;
+    height:32px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:white;
+
+    font-size:17px;
+    font-weight:900;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.08);
+}
+
+/* COLORS */
+
+.scholarship{
+    background:linear-gradient(135deg,#ecfff5,#f9fffb);
+}
+
+.scholarship .service-icon{
+    color:#008f59;
+}
+
+.schemes{
+    background:linear-gradient(135deg,#fff9df,#fffef5);
+}
+
+.schemes .service-icon{
+    color:#e4a300;
+}
+
+.jobs{
+    background:linear-gradient(135deg,#edf6ff,#f9fcff);
+}
+
+.jobs .service-icon{
+    color:#0877c9;
+}
+
+.education{
+    background:linear-gradient(135deg,#f5efff,#fcf9ff);
+}
+
+.education .service-icon{
+    color:#7040bd;
+}
+
+.health{
+    background:linear-gradient(135deg,#fff0f0,#fffafa);
+}
+
+.health .service-icon{
+    color:#e74343;
+}
+
+.farmer{
+    background:linear-gradient(135deg,#effff0,#f9fff8);
+}
+
+.farmer .service-icon{
+    color:#29904b;
+}
+
+.women{
+    background:linear-gradient(135deg,#f8efff,#fdf9ff);
+}
+
+.women .service-icon{
+    color:#8748bd;
+}
+
+.directory{
+    background:linear-gradient(135deg,#eafbff,#f8feff);
+}
+
+.directory .service-icon{
+    color:#079bb2;
+}
+
+/* =========================
+   COMPLAINT
+========================= */
+
+.complaint-section{
+    padding:0 20px 35px;
+}
+
+.complaint-box{
+    max-width:1100px;
+    margin:auto;
+
+    padding:25px 30px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8faef,
+            #f8fffb
+        );
+
+    border:1px solid #ccebd8;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.complaint-box h2{
+    font-size:22px;
+    color:#14583e;
+    margin-bottom:6px;
+}
+
+.complaint-box p{
+    color:#648078;
+    font-size:13px;
+}
+
+.complaint-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:13px 22px;
+
+    background:#078952;
+    color:white;
+
+    border-radius:28px;
+
+    font-size:13px;
+    font-weight:800;
+
+    white-space:nowrap;
+
+    box-shadow:0 8px 20px rgba(0,130,75,.17);
+}
+
+/* =========================
+   COMING SOON
+========================= */
+
+.coming-soon{
+    max-width:700px;
+    margin:0 auto 55px;
+
+    text-align:center;
+
+    padding:13px 18px;
+
+    border-radius:30px;
+
+    background:linear-gradient(
+        90deg,
+        #eefcf3,
+        #fafffb,
+        #eefcf3
+    );
+
+    color:#08784d;
+
+    font-size:13px;
+    font-weight:700;
+
+    border:1px solid #d9f0e1;
+}
+
+.coming-soon span{
+    margin-right:7px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#073d2b;
+    color:white;
+    padding:35px 20px;
+}
+
+.footer-inner{
+    max-width:1100px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+}
+
+.footer-logo{
+    font-size:20px;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.footer-text{
+    color:#b7d4c8;
+    font-size:12px;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+    color:#d0e5dc;
+    font-size:12px;
+}
+
+/* =========================
+   MOBILE BOTTOM NAV
+========================= */
+
+.bottom-nav{
+    display:none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:15px;
+        right:15px;
+
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+
+        padding:15px;
+
+        background:white;
+        border-radius:18px;
+
+        box-shadow:0 15px 35px rgba(0,60,40,.15);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:12px;
+        border-radius:10px;
+    }
+
+    .nav-links a:hover{
+        background:#eef9f3;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        min-height:650px;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255,255,255,.88),
+                rgba(255,255,255,.35) 55%,
+                rgba(255,255,255,.10)
+            ),
+            url("mewat-bg.jpg") center/cover no-repeat;
+    }
+
+    .hero-container{
+        padding:80px 18px 50px;
+    }
+
+    .hero-left{
+        max-width:100%;
+    }
+
+    .hero-title{
+        font-size:44px;
+        letter-spacing:-1.5px;
+    }
+
+    .hero-subtitle{
+        font-size:16px;
+        line-height:1.55;
+    }
+
+    .founder-badge{
+        top:12px;
+        right:12px;
+    }
+
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .service-card{
+        min-height:180px;
+        padding:17px;
+        border-radius:17px;
+    }
+
+    .service-icon{
+        width:46px;
+        height:46px;
+        font-size:22px;
+        margin-bottom:13px;
+    }
+
+    .service-card h3{
+        font-size:15px;
+    }
+
+    .service-card p{
+        font-size:11px;
+    }
+
+    .section-heading h2{
+        font-size:28px;
+    }
+
+    .complaint-box{
+        padding:20px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .complaint-button{
+        width:100%;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-links{
+        gap:13px;
+    }
+
+    /* mobile bottom bar */
+
+    .bottom-nav{
+        position:fixed;
+        display:flex;
+
+        left:10px;
+        right:10px;
+        bottom:10px;
+
+        height:68px;
+
+        z-index:2000;
+
+        background:rgba(255,255,255,.96);
+        backdrop-filter:blur(15px);
+
+        border:1px solid #dcebe4;
+        border-radius:22px;
+
+        box-shadow:0 12px 35px rgba(0,50,30,.18);
+
+        align-items:center;
+        justify-content:space-around;
+    }
+
+    .bottom-nav a{
+        flex:1;
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+
+        gap:3px;
+
+        color:#73857e;
+
+        font-size:10px;
+        font-weight:700;
+    }
+
+    .bottom-nav .nav-icon{
+        font-size:20px;
+        line-height:1;
+    }
+
+    .bottom-nav a.active{
+        color:#008653;
+    }
+
+    body{
+        padding-bottom:85px;
+    }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media(max-width:500px){
+
+    .navbar{
+        min-height:62px;
+        padding:0 13px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-mark{
+        width:37px;
+        height:37px;
+        font-size:20px;
+        border-radius:10px;
+    }
+
+    .hero{
+        min-height:610px;
+    }
+
+    .hero-container{
+        padding:90px 15px 35px;
+    }
+
+    .hero-title{
+        font-size:39px;
+    }
+
+    .hero-subtitle{
+        font-size:14px;
+    }
+
+    .founder-badge{
+        padding:7px 10px;
+        font-size:9px;
+    }
+
+    .founder-icon{
+        width:23px;
+        height:23px;
+        font-size:11px;
+    }
+
+    .founder-text strong{
+        font-size:8px;
+    }
+
+    .founder-text span{
+        font-size:9px;
+    }
+
+    .search-box{
+        height:55px;
+        padding-left:14px;
+    }
+
+    .search-button{
+        height:43px;
+        padding:0 18px;
+        font-size:13px;
+    }
+
+    .search-box input{
+        font-size:12px;
+    }
+
+    .quick-search button{
+        font-size:10px;
+        padding:6px 9px;
+    }
+
+    .section{
+        padding:45px 13px;
+    }
+
+    .section-heading{
+        margin-bottom:22px;
+    }
+
+    .section-heading h2{
+        font-size:25px;
+    }
+
+    .section-heading p{
+        font-size:12px;
+    }
+
+    .services-grid{
+        gap:10px;
+    }
+
+    .service-card{
+        min-height:165px;
+        padding:14px;
+    }
+
+    .service-icon{
+        width:42px;
+        height:42px;
+        border-radius:14px;
+        font-size:20px;
+    }
+
+    .service-card h3{
+        font-size:14px;
+        margin-bottom:6px;
+    }
+
+    .service-card p{
+        font-size:10px;
+        line-height:1.4;
+    }
+
+    .service-arrow{
+        width:27px;
+        height:27px;
+        right:10px;
+        bottom:10px;
+        font-size:14px;
+    }
+
+    .complaint-section{
+        padding:0 13px 25px;
+    }
+
+    .complaint-box{
+        border-radius:18px;
+        padding:18px;
+    }
+
+    .complaint-box h2{
+        font-size:18px;
+    }
+
+    .complaint-box p{
+        font-size:11px;
+    }
+
+    .complaint-button{
+        font-size:12px;
+        padding:12px;
+    }
+
+    .coming-soon{
+        margin:0 15px 35px;
+        font-size:11px;
+        padding:11px;
+    }
+
+    footer{
+        padding:28px 15px;
+    }
+
+    .footer-logo{
+        font-size:17px;
+    }
+
+    .footer-text,
+    .footer-links a{
+        font-size:10px;
+    }
+}
+/* =========================
+   COMPACT LAYOUT
+   KHAALI SPACE KAM
+========================= */
+
+.hero-container {
+    padding: 35px 20px !important;
+}
+
+.hero {
+    min-height: auto !important;
+}
+
+.hero-visual {
+    min-height: 350px !important;
+}
+
+.section {
+    padding: 30px 20px !important;
+}
+
+.section-heading {
+    margin-bottom: 18px !important;
+}
+
+.section-title {
+    margin-bottom: 6px !important;
+}
+
+.service-grid {
+    gap: 12px !important;
+}
+
+.service-card {
+    min-height: 145px !important;
+    padding: 14px !important;
+}
+
+.service-card h3 {
+    margin: 8px 0 5px !important;
+}
+
+.service-card p {
+    margin: 0 !important;
+    line-height: 1.35 !important;
+}
+
+.complaint-section {
+    margin-top: 15px !important;
+    padding: 25px 20px !important;
+}
+
+.complaint-box {
+    padding: 22px !important;
+}
+
+.founder-badge {
+    margin: 8px !important;
+}
+
+.coming-soon {
+    margin-top: 12px !important;
+    margin-bottom: 5px !important;
+}
+
+footer {
+    padding: 20px 15px !important;
+}
+
+/* MOBILE — aur compact */
+@media (max-width: 600px) {
+
+    .hero-container {
+        padding: 22px 14px !important;
+    }
+
+    .hero-visual {
+        min-height: 260px !important;
+    }
+
+    .section {
+        padding: 20px 12px !important;
+    }
+
+    .section-heading {
+        margin-bottom: 12px !important;
+    }
+
+    .service-grid {
+        gap: 9px !important;
+    }
+
+    .service-card {
+        min-height: 125px !important;
+        padding: 11px !important;
+    }
+
+    .service-card h3 {
+        margin: 5px 0 3px !important;
+        font-size: 16px !important;
+    }
+
+    .service-card p {
+        font-size: 12px !important;
+        line-height: 1.25 !important;
+    }
+
+    .complaint-section {
+        margin-top: 8px !important;
+        padding: 18px 12px !important;
+    }
+
+    .complaint-box {
+        padding: 16px !important;
+    }
+
+    footer {
+        padding: 15px 10px !important;
+    }
+}
+</style>
 </head>
 
 
 <body>
 
-
-<!-- =========================================================
+<!-- =========================
      HEADER
-========================================================= -->
+========================= -->
 
 <header>
 
-    <nav class="navbar">
+<nav class="navbar">
 
-        <a href="index.html" class="logo">
+    <a href="index.html" class="logo">
 
-            <span class="logo-mark">म</span>
+        <span class="logo-mark">M</span>
 
-            <span>Mewat Saathi</span>
+        <span>Mewat Saathi</span>
 
-        </a>
-
-
-        <div class="nav-links" id="navLinks">
-
-            <a href="index.html">Home</a>
-
-            <a href="#services">Services</a>
-
-            <a href="directory.html">Directory</a>
-
-            <a href="complaint.html">Complaint</a>
-
-        </div>
+    </a>
 
 
-        <button
-            class="menu-btn"
-            id="menuBtn"
-        >
-            ☰
-        </button>
+    <div class="nav-links" id="navLinks">
 
-    </nav>
+        <a href="index.html">Home</a>
+
+        <a href="#services">Services</a>
+
+        <a href="scholarship.html">Scholarship</a>
+
+        <a href="schemes.html">Yojana</a>
+
+        <a href="jobs.html">Jobs</a>
+
+        <a href="directory.html">Directory</a>
+
+        <a href="complaint.html">Complaint</a>
+
+    </div>
+
+
+    <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Menu"
+    >
+        ☰
+    </button>
+
+</nav>
 
 </header>
 
 
-
-<!-- =========================================================
+<!-- =========================
      HERO
-========================================================= -->
+========================= -->
 
 <section class="hero">
 
 
-    <div class="floating-shape shape-one"></div>
-    <div class="floating-shape shape-two"></div>
-    <div class="floating-shape shape-three"></div>
+    <!-- Founder corner -->
+
+    <div class="founder-badge">
+
+        <div class="founder-icon">
+            👤
+        </div>
+
+        <div class="founder-text">
+
+            <strong>
+                Founder
+            </strong>
+
+            <span>
+                Mev Waliulla Jamal
+            </span>
+
+        </div>
+
+    </div>
 
 
     <div class="hero-container">
 
 
-        <!-- LEFT -->
-
         <div class="hero-left">
+
 
             <div class="hero-badge">
                 ✦ Mewat ke liye bana hai
@@ -1390,18 +1292,20 @@
 
             <h1 class="hero-title">
 
-                Mewat ki
-                <span>apni</span>
-                help app.
+                Mewat ki Har Zaroorat
+
+                <span>
+                    Ab Ek Hi Jagah
+                </span>
 
             </h1>
 
 
             <p class="hero-subtitle">
 
-                Scholarship se lekar Sarkari Yojana,
-                Jobs, Health, Education aur local help tak —
-                zaroori information ek jagah.
+                Sarkari yojana, scholarship, job,
+                education, health, farmer seva aur
+                bahut kuch — sab kuch ab aapke mobile par.
 
             </p>
 
@@ -1423,7 +1327,7 @@
                     <input
                         type="search"
                         id="siteSearchInput"
-                        placeholder="Yahan search karo jo aapko chahiye..."
+                        placeholder="Kya dhoondh rahe hain?"
                         autocomplete="off"
                     >
 
@@ -1469,136 +1373,19 @@
 
         </div>
 
-
-
-        <!-- RIGHT / 3D VISUAL -->
-
-        <div class="hero-visual">
-
-
-            <div class="float-card float-one">
-                🎓 Scholarship
-            </div>
-
-
-            <div class="float-card float-two">
-                🌾 Farmer Help
-            </div>
-
-
-            <div class="float-card float-three">
-                🏥 Health
-            </div>
-
-
-            <div class="phone-card">
-
-
-                <div class="phone-top">
-
-                    <span class="phone-brand">
-                        MEWAT SAATHI
-                    </span>
-
-                    <span class="phone-dot"></span>
-
-                </div>
-
-
-                <div class="phone-title">
-                    Aapko kya chahiye?
-                </div>
-
-
-                <div class="phone-small">
-                    Zaroori information yahin milegi
-                </div>
-
-
-                <div class="mini-search">
-                    🔍
-                    <span>
-                        Search information...
-                    </span>
-                </div>
-
-
-                <div class="mini-grid">
-
-
-                    <div class="mini-service mini-green">
-
-                        <div class="mini-icon">
-                            🎓
-                        </div>
-
-                        <strong>
-                            Scholarship
-                        </strong>
-
-                    </div>
-
-
-                    <div class="mini-service mini-yellow">
-
-                        <div class="mini-icon">
-                            🏛️
-                        </div>
-
-                        <strong>
-                            Yojana
-                        </strong>
-
-                    </div>
-
-
-                    <div class="mini-service mini-blue">
-
-                        <div class="mini-icon">
-                            💼
-                        </div>
-
-                        <strong>
-                            Jobs
-                        </strong>
-
-                    </div>
-
-
-                    <div class="mini-service mini-pink">
-
-                        <div class="mini-icon">
-                            🏥
-                        </div>
-
-                        <strong>
-                            Health
-                        </strong>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      SERVICES
-========================================================= -->
+========================= -->
 
 <section
     class="section"
     id="services"
 >
-
 
     <div class="container">
 
@@ -1606,19 +1393,18 @@
         <div class="section-heading">
 
             <div class="small-title">
-                Explore
+                Mewat Saathi
             </div>
 
             <h2>
-                Mewat mein kya chahiye?
+                Hamari Sewaayein
             </h2>
 
             <p>
-                Bas category choose karo.
+                Apni zaroorat ke hisaab se category select karein
             </p>
 
         </div>
-
 
 
         <div class="services-grid">
@@ -1638,7 +1424,7 @@
                 </h3>
 
                 <p>
-                    Students ke liye scholarships aur financial help.
+                    Students ke liye scholarship aur financial help.
                 </p>
 
                 <span class="service-arrow">
@@ -1646,7 +1432,6 @@
                 </span>
 
             </a>
-
 
 
             <a
@@ -1663,7 +1448,7 @@
                 </h3>
 
                 <p>
-                    Government schemes aur benefits.
+                    Kendra aur Rajya ki yojanaon ki jankari.
                 </p>
 
                 <span class="service-arrow">
@@ -1671,7 +1456,6 @@
                 </span>
 
             </a>
-
 
 
             <a
@@ -1688,7 +1472,7 @@
                 </h3>
 
                 <p>
-                    Jobs, naukri aur career information.
+                    Sarkari aur private naukriyon ki jankari.
                 </p>
 
                 <span class="service-arrow">
@@ -1696,7 +1480,6 @@
                 </span>
 
             </a>
-
 
 
             <a
@@ -1713,7 +1496,7 @@
                 </h3>
 
                 <p>
-                    School, courses aur padhai ki information.
+                    School, college, exam aur admission details.
                 </p>
 
                 <span class="service-arrow">
@@ -1721,7 +1504,6 @@
                 </span>
 
             </a>
-
 
 
             <a
@@ -1738,7 +1520,7 @@
                 </h3>
 
                 <p>
-                    Health services aur useful information.
+                    Hospital, health scheme aur medical seva.
                 </p>
 
                 <span class="service-arrow">
@@ -1746,7 +1528,6 @@
                 </span>
 
             </a>
-
 
 
             <a
@@ -1763,7 +1544,7 @@
                 </h3>
 
                 <p>
-                    Kisan, kheti aur farming help.
+                    Kheti, beej, mausam aur mandi ki jankari.
                 </p>
 
                 <span class="service-arrow">
@@ -1771,7 +1552,6 @@
                 </span>
 
             </a>
-
 
 
             <a
@@ -1788,7 +1568,7 @@
                 </h3>
 
                 <p>
-                    Women ke liye useful information aur support.
+                    Yojana, suraksha aur sashaktikaran.
                 </p>
 
                 <span class="service-arrow">
@@ -1796,7 +1576,6 @@
                 </span>
 
             </a>
-
 
 
             <a
@@ -1813,7 +1592,7 @@
                 </h3>
 
                 <p>
-                    Mewat ke local useful contacts aur services.
+                    Mewat ke local useful services aur contacts.
                 </p>
 
                 <span class="service-arrow">
@@ -1830,306 +1609,22 @@
 </section>
 
 
-
-<!-- =========================================================
-     MORE FEATURES
-========================================================= -->
-
-<section class="section more-section">
-
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <div class="small-title">
-                Coming inside Mewat Saathi
-            </div>
-
-            <h2>
-                Aur bhi bahut kuch.
-            </h2>
-
-            <p>
-                App ko dheere-dheere aur useful banaya jayega.
-            </p>
-
-        </div>
-
-
-
-        <div class="more-grid">
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    🤖
-                </div>
-
-                <div>
-                    <strong>Mewat AI</strong>
-                    <span>Smart information help</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    🎥
-                </div>
-
-                <div>
-                    <strong>Useful Videos</strong>
-                    <span>Important videos & guides</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    📄
-                </div>
-
-                <div>
-                    <strong>Forms & Documents</strong>
-                    <span>Useful forms and documents</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    🚨
-                </div>
-
-                <div>
-                    <strong>Emergency Help</strong>
-                    <span>Important emergency contacts</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    📢
-                </div>
-
-                <div>
-                    <strong>Mewat Updates</strong>
-                    <span>Important local updates</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    🏢
-                </div>
-
-                <div>
-                    <strong>Government Contacts</strong>
-                    <span>Useful official contacts</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    🕌
-                </div>
-
-                <div>
-                    <strong>Community Help</strong>
-                    <span>Useful community information</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="more-card">
-
-                <div class="more-icon">
-                    🔎
-                </div>
-
-                <div>
-                    <strong>More Coming</strong>
-                    <span>New features over time</span>
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PURPOSE
-========================================================= -->
-
-<section class="section">
-
-
-    <div class="container">
-
-
-        <div class="purpose">
-
-
-            <div>
-
-                <div class="small-title">
-                    WHY MEWAT SAATHI?
-                </div>
-
-                <h2 class="purpose-title">
-
-                    Information
-                    <span>simple</span>
-                    honi chahiye.
-
-                </h2>
-
-                <p class="purpose-text">
-
-                    Mewat Saathi ka purpose sirf information dikhana
-                    nahi hai. Goal hai ki jo information kisi insaan
-                    ke kaam ki hai, woh usse easily mil sake.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="purpose-points">
-
-
-                <div class="purpose-point">
-
-                    <div class="big-icon">
-                        ⚡
-                    </div>
-
-                    <strong>
-                        Easy
-                    </strong>
-
-                    <p>
-                        Kam steps mein useful information.
-                    </p>
-
-                </div>
-
-
-
-                <div class="purpose-point">
-
-                    <div class="big-icon">
-                        🔍
-                    </div>
-
-                    <strong>
-                        Find Fast
-                    </strong>
-
-                    <p>
-                        Search karke information dhoondho.
-                    </p>
-
-                </div>
-
-
-
-                <div class="purpose-point">
-
-                    <div class="big-icon">
-                        📱
-                    </div>
-
-                    <strong>
-                        Mobile Friendly
-                    </strong>
-
-                    <p>
-                        Phone par bhi easily use ho.
-                    </p>
-
-                </div>
-
-
-
-                <div class="purpose-point">
-
-                    <div class="big-icon">
-                        🤝
-                    </div>
-
-                    <strong>
-                        For Mewat
-                    </strong>
-
-                    <p>
-                        Local needs ko dhyaan mein rakhkar.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
+<!-- =========================
      COMPLAINT
-========================================================= -->
+========================= -->
 
 <section class="complaint-section">
 
-
     <div class="complaint-box">
-
 
         <div>
 
             <h2>
-                Mewat ki koi problem hai?
+                Shikayat Dari Karein
             </h2>
 
             <p>
-                Problem ko Mewat Saathi par report karein.
+                Kisi bhi samasya, shikayat ya sujhav ke liye online complaint darj karein.
             </p>
 
         </div>
@@ -2142,16 +1637,27 @@
             Complaint Karein →
         </a>
 
-
     </div>
 
 </section>
 
 
+<!-- =========================
+     COMING SOON
+========================= -->
 
-<!-- =========================================================
+<div class="coming-soon">
+
+    <span>✨</span>
+
+    Or bhi bahut kuch aane wala isi app me jald hi...
+
+</div>
+
+
+<!-- =========================
      FOOTER
-========================================================= -->
+========================= -->
 
 <footer>
 
@@ -2195,437 +1701,563 @@
 
         </div>
 
-
     </div>
 
 </footer>
 
 
+<!-- =========================
+     MOBILE BOTTOM NAV
+========================= -->
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
+<nav class="bottom-nav">
+
+    <a
+        href="index.html"
+        class="active"
+    >
+
+        <span class="nav-icon">
+            🏠
+        </span>
+
+        <span>
+            Home
+        </span>
+
+    </a>
+
+
+    <a href="#siteSearchInput">
+
+        <span class="nav-icon">
+            🔍
+        </span>
+
+        <span>
+            Search
+        </span>
+
+    </a>
+
+
+    <a href="#services">
+
+        <span class="nav-icon">
+            ▦
+        </span>
+
+        <span>
+            Categories
+        </span>
+
+    </a>
+
+
+    <a href="complaint.html">
+
+        <span class="nav-icon">
+            📋
+        </span>
+
+        <span>
+            Complaints
+        </span>
+
+    </a>
+
+
+    <a href="directory.html">
+
+        <span class="nav-icon">
+            •••
+        </span>
+
+        <span>
+            More
+        </span>
+
+    </a>
+
+</nav>
+
 
 <script>
 
+/* =========================
+   MOBILE MENU
+========================= */
 
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
+const menuBtn =
+    document.getElementById("menuBtn");
 
-    const menuBtn =
-        document.getElementById("menuBtn");
-
-    const navLinks =
-        document.getElementById("navLinks");
+const navLinks =
+    document.getElementById("navLinks");
 
 
-    menuBtn.addEventListener("click", function () {
+menuBtn.addEventListener(
+    "click",
+    function(){
 
         navLinks.classList.toggle("active");
+
+    }
+);
+
+
+/* Close menu after clicking link */
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                navLinks.classList.remove("active");
+
+            }
+        );
 
     });
 
 
-
-    /* =====================================================
-       SEARCH DATABASE
-    ===================================================== */
-
-    const searchData = [
-
-        {
-            name: "Scholarship",
-            description: "Scholarships aur student financial help.",
-            url: "scholarship.html",
-
-            keywords: [
-                "scholarship",
-                "scholarships",
-                "scholar",
-                "छात्रवृत्ति",
-                "स्कॉलरशिप",
-                "student",
-                "students",
-                "stipend",
-                "fee",
-                "fees",
-                "छात्र"
-            ]
-        },
-
-
-        {
-            name: "Sarkari Yojana",
-            description: "Government schemes aur benefits.",
-            url: "schemes.html",
-
-            keywords: [
-                "scheme",
-                "schemes",
-                "yojana",
-                "yojna",
-                "sarkari",
-                "government",
-                "सरकारी",
-                "योजना",
-                "लाभ",
-                "pm",
-                "प्रधानमंत्री"
-            ]
-        },
-
-
-        {
-            name: "Jobs",
-            description: "Naukri, employment aur career information.",
-            url: "jobs.html",
-
-            keywords: [
-                "job",
-                "jobs",
-                "naukri",
-                "rojgar",
-                "employment",
-                "career",
-                "नौकरी",
-                "रोजगार",
-                "करियर",
-                "काम"
-            ]
-        },
-
-
-        {
-            name: "Education",
-            description: "School, college, courses aur padhai.",
-            url: "education.html",
-
-            keywords: [
-                "education",
-                "study",
-                "school",
-                "college",
-                "course",
-                "courses",
-                "exam",
-                "padhai",
-                "पढ़ाई",
-                "शिक्षा",
-                "स्कूल",
-                "कॉलेज",
-                "परीक्षा"
-            ]
-        },
-
-
-        {
-            name: "Health",
-            description: "Health services aur useful health information.",
-            url: "health.html",
-
-            keywords: [
-                "health",
-                "hospital",
-                "doctor",
-                "medicine",
-                "treatment",
-                "swasthya",
-                "इलाज",
-                "अस्पताल",
-                "डॉक्टर",
-                "स्वास्थ्य",
-                "दवा"
-            ]
-        },
-
-
-        {
-            name: "Farmer",
-            description: "Kisan, kheti aur farming help.",
-            url: "farmer.html",
-
-            keywords: [
-                "farmer",
-                "farm",
-                "farming",
-                "kisan",
-                "kheti",
-                "agriculture",
-                "fasal",
-                "किसान",
-                "खेती",
-                "कृषि",
-                "फसल"
-            ]
-        },
-
-
-        {
-            name: "Women Support",
-            description: "Women ke liye useful information.",
-            url: "women.html",
-
-            keywords: [
-                "women",
-                "woman",
-                "mahila",
-                "girl",
-                "ladki",
-                "महिला",
-                "लड़की"
-            ]
-        },
-
-
-        {
-            name: "Local Directory",
-            description: "Local contacts aur useful services.",
-            url: "directory.html",
-
-            keywords: [
-                "directory",
-                "local",
-                "contact",
-                "nearby",
-                "service",
-                "help",
-                "hospital",
-                "school",
-                "shop",
-                "मदद",
-                "संपर्क",
-                "स्थानीय"
-            ]
-        },
-
-
-        {
-            name: "Complaint / Report",
-            description: "Problem ya complaint submit karein.",
-            url: "complaint.html",
-
-            keywords: [
-                "complaint",
-                "report",
-                "problem",
-                "shikayat",
-                "issue",
-                "शिकायत",
-                "समस्या",
-                "रिपोर्ट",
-                "दिक्कत"
-            ]
-        }
-
-    ];
-
-
-
-    /* =====================================================
-       SEARCH
-    ===================================================== */
-
-    const searchForm =
-        document.getElementById("siteSearchForm");
-
-    const searchInput =
-        document.getElementById("siteSearchInput");
-
-    const searchResults =
-        document.getElementById("searchResults");
-
-
-    function performSearch(query) {
-
-        query = query
-            .trim()
-            .toLowerCase();
-
-
-        if (!query) {
-
-            searchResults.style.display = "none";
-            searchResults.innerHTML = "";
-
-            return;
-        }
-
-
-        const words = query
-            .split(/\s+/)
-            .filter(word => word.length > 0);
-
-
-        const results =
-            searchData.filter(item => {
-
-                const searchable =
-                    (
-                        item.name +
-                        " " +
-                        item.description +
-                        " " +
-                        item.keywords.join(" ")
-                    ).toLowerCase();
-
-
-                return words.some(word =>
-                    searchable.includes(word)
-                );
-
-            });
-
-
-        searchResults.style.display = "block";
-
-
-        if (results.length === 0) {
-
-            searchResults.innerHTML = `
-
-                <div class="no-result">
-
-                    <strong>
-                        😕 Is search ka result nahi mila
-                    </strong>
-
-                    Try:
-                    Scholarship, Yojana, Job, Health,
-                    Education, Farmer ya Complaint.
-
-                </div>
-
-            `;
-
-            return;
-        }
-
-
-        let html = `
-
-            <div class="results-box">
-
-                <div class="result-heading">
-                    ${results.length} result mila
-                </div>
-
-        `;
-
-
-        results.forEach(item => {
-
-            html += `
-
-                <div class="result">
-
-                    <div>
-
-                        <h3>
-                            ${item.name}
-                        </h3>
-
-                        <p>
-                            ${item.description}
-                        </p>
-
-                    </div>
-
-                    <a href="${item.url}">
-                        Open →
-                    </a>
-
-                </div>
-
-            `;
-
-        });
-
-
-        html += `
-            </div>
-        `;
-
-
-        searchResults.innerHTML = html;
+/* =========================
+   SEARCH DATABASE
+========================= */
+
+const searchData = [
+
+    {
+        name:"Scholarship",
+        description:"Scholarships aur student financial help.",
+        url:"scholarship.html",
+
+        keywords:[
+            "scholarship",
+            "scholarships",
+            "student",
+            "students",
+            "stipend",
+            "fee",
+            "fees",
+            "छात्रवृत्ति",
+            "स्कॉलरशिप",
+            "छात्र"
+        ]
+    },
+
+
+    {
+        name:"Sarkari Yojana",
+        description:"Government schemes aur benefits.",
+        url:"schemes.html",
+
+        keywords:[
+            "scheme",
+            "schemes",
+            "yojana",
+            "yojna",
+            "sarkari",
+            "government",
+            "सरकारी",
+            "योजना",
+            "लाभ",
+            "pm",
+            "प्रधानमंत्री"
+        ]
+    },
+
+
+    {
+        name:"Jobs",
+        description:"Naukri, employment aur career information.",
+        url:"jobs.html",
+
+        keywords:[
+            "job",
+            "jobs",
+            "naukri",
+            "rojgar",
+            "employment",
+            "career",
+            "नौकरी",
+            "रोजगार",
+            "करियर",
+            "काम"
+        ]
+    },
+
+
+    {
+        name:"Education",
+        description:"School, college, courses aur padhai.",
+        url:"education.html",
+
+        keywords:[
+            "education",
+            "study",
+            "school",
+            "college",
+            "course",
+            "courses",
+            "exam",
+            "padhai",
+            "पढ़ाई",
+            "शिक्षा",
+            "स्कूल",
+            "कॉलेज",
+            "परीक्षा"
+        ]
+    },
+
+
+    {
+        name:"Health",
+        description:"Health services aur useful health information.",
+        url:"health.html",
+
+        keywords:[
+            "health",
+            "hospital",
+            "doctor",
+            "medicine",
+            "treatment",
+            "swasthya",
+            "इलाज",
+            "अस्पताल",
+            "डॉक्टर",
+            "स्वास्थ्य",
+            "दवा"
+        ]
+    },
+
+
+    {
+        name:"Farmer",
+        description:"Kisan, kheti aur farming help.",
+        url:"farmer.html",
+
+        keywords:[
+            "farmer",
+            "farm",
+            "farming",
+            "kisan",
+            "kheti",
+            "agriculture",
+            "fasal",
+            "किसान",
+            "खेती",
+            "कृषि",
+            "फसल"
+        ]
+    },
+
+
+    {
+        name:"Women Support",
+        description:"Women ke liye useful information.",
+        url:"women.html",
+
+        keywords:[
+            "women",
+            "woman",
+            "mahila",
+            "girl",
+            "ladki",
+            "महिला",
+            "लड़की"
+        ]
+    },
+
+
+    {
+        name:"Local Directory",
+        description:"Local contacts aur useful services.",
+        url:"directory.html",
+
+        keywords:[
+            "directory",
+            "local",
+            "contact",
+            "nearby",
+            "service",
+            "help",
+            "hospital",
+            "school",
+            "shop",
+            "मदद",
+            "संपर्क",
+            "स्थानीय"
+        ]
+    },
+
+
+    {
+        name:"Complaint / Report",
+        description:"Problem ya complaint submit karein.",
+        url:"complaint.html",
+
+        keywords:[
+            "complaint",
+            "report",
+            "problem",
+            "shikayat",
+            "issue",
+            "शिकायत",
+            "समस्या",
+            "रिपोर्ट",
+            "दिक्कत"
+        ]
+    }
+
+];
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const searchForm =
+    document.getElementById(
+        "siteSearchForm"
+    );
+
+const searchInput =
+    document.getElementById(
+        "siteSearchInput"
+    );
+
+const searchResults =
+    document.getElementById(
+        "searchResults"
+    );
+
+
+function performSearch(query){
+
+    query =
+        query
+        .trim()
+        .toLowerCase();
+
+
+    if(!query){
+
+        searchResults.style.display =
+            "none";
+
+        searchResults.innerHTML =
+            "";
+
+        return;
 
     }
 
 
-
-    searchForm.addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-            performSearch(
-                searchInput.value
-            );
-
-        }
-    );
+    const words =
+        query
+        .split(/\s+/)
+        .filter(
+            word => word.length > 0
+        );
 
 
+    const results =
+        searchData.filter(item => {
 
-    /* =====================================================
-       QUICK SEARCH
-    ===================================================== */
+            const searchable =
+                (
+                    item.name +
+                    " " +
+                    item.description +
+                    " " +
+                    item.keywords.join(" ")
+                )
+                .toLowerCase();
 
-    document
-        .querySelectorAll("[data-search]")
-        .forEach(button => {
 
-            button.addEventListener(
-                "click",
-                function() {
-
-                    const query =
-                        this.dataset.search;
-
-                    searchInput.value =
-                        query;
-
-                    performSearch(query);
-
-                    searchInput.focus();
-
-                }
+            return words.some(
+                word =>
+                    searchable.includes(word)
             );
 
         });
 
 
+    searchResults.style.display =
+        "block";
 
-    /* =====================================================
-       LIVE SEARCH
-    ===================================================== */
 
-    searchInput.addEventListener(
-        "input",
-        function() {
+    if(results.length === 0){
 
-            if (
-                this.value.trim().length >= 2
-            ) {
+        searchResults.innerHTML = `
 
-                performSearch(
-                    this.value
-                );
+            <div class="no-result">
 
-            } else {
+                <strong>
+                    😕 Is search ka result nahi mila
+                </strong>
 
-                searchResults.style.display =
-                    "none";
+                <br><br>
+
+                Try:
+                Scholarship, Yojana, Job,
+                Health, Education, Farmer
+                ya Complaint.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <div class="results-box">
+
+            <div class="result-heading">
+                ${results.length} result mila
+            </div>
+
+    `;
+
+
+    results.forEach(item => {
+
+        html += `
+
+            <div class="result">
+
+                <div>
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <p>
+                        ${item.description}
+                    </p>
+
+                </div>
+
+                <a href="${item.url}">
+                    Open →
+                </a>
+
+            </div>
+
+        `;
+
+    });
+
+
+    html += `
+        </div>
+    `;
+
+
+    searchResults.innerHTML =
+        html;
+
+}
+
+
+/* Search submit */
+
+searchForm.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        performSearch(
+            searchInput.value
+        );
+
+    }
+);
+
+
+/* Quick search */
+
+document
+    .querySelectorAll("[data-search]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                const query =
+                    this.dataset.search;
+
+                searchInput.value =
+                    query;
+
+                performSearch(query);
+
+                searchInput.focus();
 
             }
+        );
+
+    });
+
+
+/* Live search */
+
+searchInput.addEventListener(
+    "input",
+    function(){
+
+        if(
+            this.value.trim().length >= 2
+        ){
+
+            performSearch(
+                this.value
+            );
+
+        }
+        else{
+
+            searchResults.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* Mobile bottom Search button */
+
+document
+    .querySelector(
+        '.bottom-nav a[href="#siteSearchInput"]'
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            setTimeout(
+                function(){
+
+                    searchInput.focus();
+
+                },
+                200
+            );
 
         }
     );
 
-
 </script>
-
 
 </body>
 </html>

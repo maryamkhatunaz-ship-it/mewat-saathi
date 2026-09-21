@@ -61,13 +61,17 @@ def home():
 
 @app.route("/<path:path>")
 def serve_frontend(path):
+
     file_path = os.path.join(BASE_DIR, path)
 
     if os.path.isfile(file_path):
         return send_from_directory(BASE_DIR, path)
 
-    return send_from_directory(BASE_DIR, "index.html")
-
+    return jsonify({
+        "success": False,
+        "message": "Page not found",
+        "requested_page": path
+    }), 404
 
 # =========================
 # BACKEND TEST

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b7a3b">
+<title>Mewat Workers</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f7f6;color:#17211b}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.top{background:linear-gradient(135deg,#075e2d,#0b8a45);color:#fff;padding:16px}
+.top-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font-size:23px;font-weight:800}.sub{font-size:12px;opacity:.9;margin-top:3px}
+.lang{background:#fff;color:#075e2d;border:0;border-radius:20px;padding:8px 12px;font-weight:700}
+.wrap{max-width:1100px;margin:auto;padding:14px}
+.hero{background:#fff;border-radius:18px;padding:20px;box-shadow:0 4px 18px #0000000d;margin-bottom:14px}
+.hero h1{font-size:28px;margin-bottom:8px}.hero p{color:#58645d;line-height:1.5}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.btn{border:0;border-radius:12px;padding:13px;font-weight:700}
+.primary{background:#0b7a3b;color:#fff}.light{background:#e8f5ee;color:#075e2d}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 10px}
+.section-title h2{font-size:20px}
+.filters{background:#fff;border-radius:16px;padding:13px;box-shadow:0 4px 18px #0000000d}
+.filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+label{font-size:12px;font-weight:700;color:#536058;margin-bottom:5px;display:block}
+input,select{width:100%;padding:11px;border:1px solid #d7ded9;border-radius:10px;background:#fff;outline:none}
+input:focus,select:focus{border-color:#0b7a3b}
+.full{grid-column:1/-1}
+.worker-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.card{background:#fff;border-radius:16px;padding:14px;box-shadow:0 4px 18px #0000000d}
+.worker-head{display:flex;gap:12px;align-items:center}
+.avatar{width:62px;height:62px;border-radius:50%;object-fit:cover;background:#dcefe4;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:800;color:#0b7a3b;flex:none}
+.name{font-size:18px;font-weight:800}.skill{color:#0b7a3b;font-weight:700;margin-top:3px}
+.badge{display:inline-block;background:#e5f6eb;color:#08783a;border-radius:20px;padding:4px 8px;font-size:11px;font-weight:800;margin-top:6px}
+.meta{margin-top:12px;color:#59655e;font-size:13px;line-height:1.65}
+.rate{font-size:18px;font-weight:800;margin-top:9px}
+.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.call{background:#e8f5ee;color:#08783a}.wa{background:#dff6e6;color:#08783a}
+.empty{text-align:center;padding:25px;color:#68736d;background:#fff;border-radius:16px}
+.note{font-size:12px;color:#6a746e;margin-top:10px;line-height:1.5}
+.quiz{background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 18px #0000000d}
+.q{font-weight:800;line-height:1.45;margin-bottom:10px}.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid #d7ded9;background:#fff;border-radius:10px;padding:10px}.opt.selected{border-color:#0b7a3b;background:#eaf7ef}
+.quiz-top{display:flex;justify-content:space-between;font-size:13px;color:#5c6861;margin-bottom:12px}
+.result{margin-top:12px;font-weight:800}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:9px 5px;border-bottom:1px solid #e5e9e6;text-align:left}th{color:#59645e}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:20}.modal.show{display:flex}
+.modal-box{background:#fff;width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.close{border:0;background:#eef2ef;border-radius:50%;width:34px;height:34px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-full{grid-column:1/-1}
+.file{padding:9px;background:#f3f6f4}.form-actions{margin-top:14px}.success{background:#e6f7eb;color:#08783a;padding:10px;border-radius:10px;margin-bottom:10px;display:none}
+footer{text-align:center;color:#77817b;font-size:12px;padding:28px 10px}
+@media(min-width:700px){
+ .wrap{padding:24px}.actions{max-width:500px}.worker-grid{grid-template-columns:repeat(2,1fr)}
+ .modal{align-items:center}.modal-box{border-radius:20px}
+}
+@media(max-width:480px){.filter-grid,.form-grid{grid-template-columns:1fr}.full,.form-full{grid-column:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div>
+      <div class="logo">👷 Mewat Workers</div>
+      <div class="sub" id="tagline">Mewat ke workers, seedha aapke paas</div>
+    </div>
+    <button class="lang" id="langBtn" onclick="toggleLang()">EN</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1 id="heroTitle">Apne area ka worker dhoondho</h1>
+    <p id="heroText">Electrician, plumber, mistry, driver, mechanic aur doosre local workers ko skill aur location ke hisaab se search karo.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="openModal()" id="addBtn">+ Apni Worker Profile Add Karein</button>
+      <button class="btn light" onclick="document.getElementById('workers').scrollIntoView({behavior:'smooth'})" id="findBtn">Worker Dhoondhein</button>
+    </div>
+  </section>
+
+  <div class="section-title"><h2 id="findTitle">Workers Search</h2></div>
+  <section class="filters">
+    <div class="filter-grid">
+      <div class="full">
+        <label id="searchLabel">Search</label>
+        <input id="search" placeholder="Naam ya skill..." oninput="renderWorkers()">
+      </div>
+      <div>
+        <label id="stateLabel">State</label>
+        <select id="state" onchange="updateDistricts();renderWorkers()"></select>
+      </div>
+      <div>
+        <label id="districtLabel">District</label>
+        <select id="district" onchange="updateTehsils();renderWorkers()"></select>
+      </div>
+      <div>
+        <label id="tehsilLabel">Tehsil</label>
+        <select id="tehsil" onchange="renderWorkers()"></select>
+      </div>
+      <div>
+        <label id="categoryLabel">Skill / Category</label>
+        <select id="category" onchange="renderWorkers()"></select>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title"><h2 id="workerTitle">Available Workers</h2><span id="count"></span></div>
+  <section id="workers" class="worker-grid"></section>
+
+  <div class="section-title"><h2 id="quizTitle">🏆 Daily CET / Police Quiz</h2></div>
+  <section class="quiz">
+    <div class="quiz-top"><span id="dateText"></span><span id="streakText">Streak: 0</span></div>
+    <p class="note" id="quizNote">Roz 5 questions. Har correct answer = 1 point. Leaderboard highest score ke order mein.</p>
+    <input id="playerName" placeholder="Apna naam">
+    <div id="quizArea" style="margin-top:14px"></div>
+    <button class="btn primary" id="submitQuiz" onclick="submitQuiz()" style="margin-top:12px;width:100%">Quiz Submit Karein</button>
+    <div class="result" id="quizResult"></div>
+    <div style="margin-top:18px">
+      <h3 id="leaderTitle" style="margin-bottom:8px">Today's Leaderboard</h3>
+      <div style="overflow:auto"><table><thead><tr><th>#</th><th>Name</th><th>Score</th></tr></thead><tbody id="leaderboard"></tbody></table></div>
+    </div>
+  </section>
+
+  <p class="note">Safety: Worker ko contact karne se pehle details verify karein. <b>Mewat Workers worker se koi joining/listing fee nahi leta.</b> Daily fee worker khud set karta hai.</p>
+</main>
+
+<footer>© Mewat Workers — Mewat, Haryana • Rajasthan • Uttar Pradesh</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><h2 id="modalTitle">Free Worker Registration</h2><button class="close" onclick="closeModal()">✕</button></div>
+    <div class="success" id="success"></div>
+    <form id="workerForm" onsubmit="addWorker(event)">
+      <div class="form-grid">
+        <div class="form-full"><label>Name *</label><input id="name" required></div>
+        <div><label>Skill / Category *</label><select id="fcategory" required></select></div>
+        <div><label>Apni Fee / Daily Rate ₹ per day *</label><input id="rate" type="number" min="0" required placeholder="Worker khud apni fee likhe, e.g. 700"></div>
+        <div><label>State *</label><select id="fstate" required onchange="formDistricts()"></select></div>
+        <div><label>District *</label><select id="fdistrict" required onchange="formTehsils()"></select></div>
+        <div><label>Tehsil *</label><select id="ftehsil" required></select></div>
+        <div class="form-full"><label>Village / Area</label><input id="village" placeholder="Gaon / Mohalla"></div>
+        <div class="form-full"><label>Phone / WhatsApp *</label><input id="phone" type="tel" required placeholder="10 digit mobile number"></div>
+        <div class="form-full"><label>Profile Photo</label><input class="file" id="photo" type="file" accept="image/*"></div>
+      </div>
+      <p class="note"><b>Fee worker khud decide karega.</b> Mewat Workers koi fixed fee set nahi karta. Worker apni daily fee ₹/day khud enter karega. Profile add karna FREE hai.</p>
+      <div class="form-actions"><button class="btn primary" style="width:100%">Profile Add Karein</button></div>
+    </form>
+  </div>
+</div>
+
+<script>
+const categories=["Electrician","Plumber","Mistry","Painter","Carpenter","Welder","Mechanic","Driver","AC / Fridge Technician","Mobile Technician","Tutor","Tailor","Beautician","Farm Worker","Other"];
+
+const regions={
+ "Haryana":{
+  "Nuh":["Nuh","Ferozepur Jhirka","Punahana","Tauru","Nagina"],
+  "Gurugram":["Sohna","Pataudi","Farrukhnagar"],
+  "Palwal":["Hodal","Hathin","Palwal"]
+ },
+ "Rajasthan":{
+  "Alwar":["Tijara","Ramgarh","Lachhmangarh","Kishangarh Bas"],
+  "Bharatpur":["Kaman","Deeg","Nagar","Pahari"],
+  "Dholpur":["Dholpur","Rajakhera","Bari"]
+ },
+ "Uttar Pradesh":{
+  "Mathura":["Chhata","Kosi Kalan","Mathura"],
+  "Agra":["Kheragarh","Fatehabad","Bah"],
+  "Aligarh":["Khair","Iglas","Koil"]
+ }
+};
+
+const demoWorkers=[
+ {name:"Aarif",category:"Electrician",state:"Haryana",district:"Nuh",tehsil:"Nuh",village:"Nuh",rate:700,phone:"",verified:true},
+ {name:"Imran",category:"Plumber",state:"Haryana",district:"Nuh",tehsil:"Punahana",village:"Punahana",rate:650,phone:"",verified:true},
+ {name:"Salim",category:"Mistry",state:"Rajasthan",district:"Alwar",tehsil:"Tijara",village:"Tijara",rate:900,phone:"",verified:false}
+];
+let workers=JSON.parse(localStorage.getItem("mewatWorkers")||"null")||demoWorkers;
+let lang="hi";
+
+function fillSelect(id,items,first){
+ const s=document.getElementById(id); s.innerHTML="";
+ if(first!==undefined){const o=document.createElement("option");o.value="";o.textContent=first;s.appendChild(o)}
+ items.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;s.appendChild(o)});
+}
+function states(){return Object.keys(regions)}
+function updateDistricts(){
+ const st=document.getElementById("state").value;
+ fillSelect("district",st?Object.keys(regions[st]):[],"All Districts");
+ fillSelect("tehsil",[],"All Tehsils");
+}
+function updateTehsils(){
+ const st=document.getElementById("state").value,di=document.getElementById("district").value;
+ fillSelect("tehsil",st&&di?regions[st][di]:[],"All Tehsils");
+}
+function formDistricts(){
+ const st=document.getElementById("fstate").value;
+ fillSelect("fdistrict",st?Object.keys(regions[st]):[],"Select District");
+ fillSelect("ftehsil",[],"Select Tehsil");
+}
+function formTehsils(){
+ const st=document.getElementById("fstate").value,di=document.getElementById("fdistrict").value;
+ fillSelect("ftehsil",st&&di?regions[st][di]:[],"Select Tehsil");
+}
+function init(){
+ fillSelect("state",states(),"All States"); updateDistricts();
+ fillSelect("category",categories,"All Skills");
+ fillSelect("fcategory",categories,"Select Skill");
+ fillSelect("fstate",states(),"Select State"); formDistricts();
+ document.getElementById("dateText").textContent=new Date().toLocaleDateString("en-IN");
+ renderWorkers(); renderQuiz(); renderLeaderboard(); updateStreak();
+}
+function renderWorkers(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const st=document.getElementById("state").value,di=document.getElementById("district").value,te=document.getElementById("tehsil").value,cat=document.getElementById("category").value;
+ const arr=workers.filter(w=>(!q||`${w.name} ${w.category} ${w.village}`.toLowerCase().includes(q))&&(!st||w.state===st)&&(!di||w.district===di)&&(!te||w.tehsil===te)&&(!cat||w.category===cat));
+ document.getElementById("count").textContent=arr.length+" workers";
+ const box=document.getElementById("workers");
+ if(!arr.length){box.innerHTML='<div class="empty">Is filter mein abhi koi worker nahi mila.</div>';return}
+ box.innerHTML=arr.map(w=>{
+  const initial=(w.name||"W").charAt(0).toUpperCase();
+  const avatar=w.photo?`<img class="avatar" src="${escapeAttr(w.photo)}">`:`<div class="avatar">${initial}</div>`;
+  const phone=w.phone||"";
+  return `<article class="card">
+   <div class="worker-head">${avatar}<div><div class="name">${escapeHtml(w.name)}</div><div class="skill">${escapeHtml(w.category)}</div><div class="badge">${w.verified?"✓ Verified":"⏳ Verification pending"}</div></div></div>
+   <div class="meta">📍 ${escapeHtml(w.village||"")} ${escapeHtml(w.tehsil)}, ${escapeHtml(w.district)}, ${escapeHtml(w.state)}</div>
+   <div class="rate">💰 ₹${Number(w.rate||0).toLocaleString("en-IN")} / day <span style="font-size:11px;color:#68736d;font-weight:600">Worker ki apni fee</span></div>
+   <div class="card-actions">
+    <button class="btn call" onclick="callWorker('${escapeAttr(phone)}')" ${phone?"":"disabled"}>📞 Call Now</button>
+    <button class="btn wa" onclick="waWorker('${escapeAttr(phone)}')" ${phone?"":"disabled"}>💬 WhatsApp</button>
+   </div>
+  </article>`;
+ }).join("");
+}
+function callWorker(p){if(p)location.href="tel:"+p}
+function waWorker(p){if(p)location.href="https://wa.me/91"+p.replace(/\\D/g,"")}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function escapeAttr(s){return escapeHtml(s).replace(/`/g,"&#096;")}
+
+function openModal(){document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show");document.getElementById("success").style.display="none"}
+function addWorker(e){
+ e.preventDefault();
+ const phone=document.getElementById("phone").value.replace(/\D/g,"");
+ if(phone.length!==10){alert("Please 10 digit mobile number enter karein.");return}
+ const photoFile=document.getElementById("photo").files[0];
+ const save=(photo)=>{
+  const w={name:document.getElementById("name").value.trim(),category:document.getElementById("fcategory").value,state:document.getElementById("fstate").value,district:document.getElementById("fdistrict").value,tehsil:document.getElementById("ftehsil").value,village:document.getElementById("village").value.trim(),rate:Number(document.getElementById("rate").value),phone,photo:photo||"",verified:false,createdAt:Date.now()};
+  workers.unshift(w);localStorage.setItem("mewatWorkers",JSON.stringify(workers));renderWorkers();
+  document.getElementById("success").textContent="✅ Worker profile successfully added. Verification pending.";
+  document.getElementById("success").style.display="block";document.getElementById("workerForm").reset();formDistricts();
+ };
+ if(photoFile){const r=new FileReader();r.onload=()=>save(r.result);r.readAsDataURL(photoFile)}else save("");
+}
+
+const quizBank=[
+ {q:"Bharat ka Samvidhan kab lagu hua?",o:["15 August 1947","26 January 1950","26 November 1949","2 October 1950"],a:1},
+ {q:"Haryana ki rajdhani kya hai?",o:["Jaipur","Chandigarh","Delhi","Hisar"],a:1},
+ {q:"Police emergency helpline number kya hai?",o:["100","101","108","112"],a:3},
+ {q:"1 kilometre mein kitne metre hote hain?",o:["100","500","1000","1500"],a:2},
+ {q:"Haryana ka formation day kab hota hai?",o:["1 November","15 August","26 January","2 October"],a:0},
+ {q:"Lok Sabha ka normal tenure kitne saal ka hota hai?",o:["3","4","5","6"],a:2},
+ {q:"Rajasthan ki rajdhani kya hai?",o:["Jodhpur","Kota","Jaipur","Ajmer"],a:2},
+ {q:"Uttar Pradesh ki rajdhani kya hai?",o:["Kanpur","Lucknow","Agra","Meerut"],a:1},
+ {q:"Computer ka CPU generally kis kaam se related hai?",o:["Processing","Printing","Typing only","Charging"],a:0},
+ {q:"2 + 5 × 2 = ?",o:["14","12","9","7"],a:2}
+];
+let todayQuiz=[],answers=[];
+function seededQuestions(){
+ const d=new Date();const seed=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+ let arr=[...quizBank];for(let i=arr.length-1;i>0;i--){const j=(seed*(i+3)+17)% (i+1);[arr[i],arr[j]]=[arr[j],arr[i]]}return arr.slice(0,5)
+}
+function renderQuiz(){
+ todayQuiz=seededQuestions();answers=Array(5).fill(null);
+ document.getElementById("quizArea").innerHTML=todayQuiz.map((x,i)=>`<div style="margin-bottom:16px"><div class="q">${i+1}. ${x.q}</div><div class="opts">${x.o.map((op,j)=>`<button class="opt" onclick="pick(${i},${j},this)">${op}</button>`).join("")}</div></div>`).join("");
+ const done=JSON.parse(localStorage.getItem("mewatQuizDone")||"null");
+ if(done===new Date().toISOString().slice(0,10)){document.getElementById("submitQuiz").disabled=true;document.getElementById("quizResult").textContent="Aaj ka quiz already submit ho chuka hai."}
+}
+function pick(i,j,el){answers[i]=j;el.parentElement.querySelectorAll(".opt").forEach(b=>b.classList.remove("selected"));el.classList.add("selected")}
+function submitQuiz(){
+ const name=document.getElementById("playerName").value.trim();
+ if(!name){alert("Pehle apna naam enter karein.");return}
+ if(answers.some(x=>x===null)){alert("Saare 5 questions answer karein.");return}
+ const score=answers.reduce((s,a,i)=>s+(a===todayQuiz[i].a?1:0),0);
+ const date=new Date().toISOString().slice(0,10);
+ const board=JSON.parse(localStorage.getItem("mewatLeaderboard")||"[]");
+ board.push({name,score,date,time:Date.now()});
+ localStorage.setItem("mewatLeaderboard",JSON.stringify(board));
+ localStorage.setItem("mewatQuizDone",JSON.stringify(date));
+ document.getElementById("quizResult").textContent=`Aaj ka score: ${score}/5`;
+ document.getElementById("submitQuiz").disabled=true;renderLeaderboard();updateStreak();
+}
+function renderLeaderboard(){
+ const date=new Date().toISOString().slice(0,10);
+ const b=JSON.parse(localStorage.getItem("mewatLeaderboard")||"[]").filter(x=>x.date===date).sort((a,b)=>b.score-a.score||a.time-b.time);
+ document.getElementById("leaderboard").innerHTML=b.length?b.map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(x.name)}</td><td><b>${x.score}/5</b></td></tr>`).join(""):'<tr><td colspan="3">Aaj abhi koi score nahi.</td></tr>';
+}
+function updateStreak(){
+ const streak=Number(localStorage.getItem("mewatStreak")||0);
+ document.getElementById("streakText").textContent="Streak: "+streak;
+}
+function toggleLang(){
+ lang=lang==="hi"?"en":"hi";document.getElementById("langBtn").textContent=lang==="hi"?"EN":"HI";
+ if(lang==="en"){
+  document.getElementById("tagline").textContent="Local workers, right near you";
+  document.getElementById("heroTitle").textContent="Find a worker near you";
+  document.getElementById("heroText").textContent="Search local workers by skill and location.";
+  document.getElementById("addBtn").textContent="+ Add Your Free Worker Profile";
+  document.getElementById("findBtn").textContent="Find Workers";
+  document.getElementById("findTitle").textContent="Worker Search";
+  document.getElementById("workerTitle").textContent="Available Workers";
+  document.getElementById("quizTitle").textContent="🏆 Daily CET / Police Quiz";
+  document.getElementById("quizNote").textContent="5 questions daily. 1 point for every correct answer.";
+  document.getElementById("leaderTitle").textContent="Today's Leaderboard";
+  document.getElementById("submitQuiz").textContent="Submit Quiz";
+  document.getElementById("modalTitle").textContent="Free Worker Registration";
+ }else location.reload();
+}
+init();
+</script>
+</body>
+</html>

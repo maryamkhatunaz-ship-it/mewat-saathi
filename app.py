@@ -12,7 +12,6 @@ DB_PATH = os.path.join(BASE_DIR, "mewat_saathi.db")
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "media_uploads")
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
@@ -28,7 +27,6 @@ def get_db():
 
 def init_db():
     conn = get_db()
-
     conn.execute("""
         CREATE TABLE IF NOT EXISTS complaints (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,7 +40,6 @@ def init_db():
             status TEXT DEFAULT 'Pending'
         )
     """)
-
     conn.commit()
     conn.close()
 
@@ -51,7 +48,7 @@ init_db()
 
 
 # =========================
-# HOME / WEBSITE
+# WEBSITE PAGES
 # =========================
 
 @app.route("/")
@@ -59,9 +56,24 @@ def home():
     return send_from_directory(BASE_DIR, "index.html")
 
 
+# IMPORTANT: Worker page
+# File must be inside:
+# mewat-workers/mewat.html
+@app.route("/mewat-workers/mewat.html")
+def worker_page():
+    return send_from_directory(
+        os.path.join(BASE_DIR, "mewat-workers"),
+        "mewat.html"
+    )
+
+
+# Other website files:
+# /complaint.html
+# /scholarship.html
+# /style.css
+# /mewat-workers/other-file.html
 @app.route("/<path:path>")
 def serve_frontend(path):
-
     file_path = os.path.join(BASE_DIR, path)
 
     if os.path.isfile(file_path):
@@ -72,6 +84,7 @@ def serve_frontend(path):
         "message": "Page not found",
         "requested_page": path
     }), 404
+
 
 # =========================
 # BACKEND TEST
@@ -99,7 +112,6 @@ def health():
 
 @app.route("/complaint", methods=["POST"])
 def save_complaint():
-
     try:
         name = request.form.get("name", "").strip()
         mobile = request.form.get("mobile", "").strip()
@@ -119,68 +131,31 @@ def save_complaint():
         photo_filename = None
         video_filename = None
 
-        # -------------------------
-        # PHOTO
-        # -------------------------
-
         if photo and photo.filename:
             extension = os.path.splitext(photo.filename)[1].lower()
             photo_filename = f"{uuid.uuid4().hex}{extension}"
-
-            photo.save(
-                os.path.join(
-                    app.config["UPLOAD_FOLDER"],
-                    photo_filename
-                )
-            )
-
-        # -------------------------
-        # VIDEO
-        # -------------------------
+            photo.save(os.path.join(
+                app.config["UPLOAD_FOLDER"], photo_filename
+            ))
 
         if video and video.filename:
             extension = os.path.splitext(video.filename)[1].lower()
             video_filename = f"{uuid.uuid4().hex}{extension}"
-
-            video.save(
-                os.path.join(
-                    app.config["UPLOAD_FOLDER"],
-                    video_filename
-                )
-            )
-
-        # -------------------------
-        # DATABASE
-        # -------------------------
+            video.save(os.path.join(
+                app.config["UPLOAD_FOLDER"], video_filename
+            ))
 
         conn = get_db()
-
         cursor = conn.execute("""
             INSERT INTO complaints
-            (
-                name,
-                mobile,
-                village,
-                category,
-                complaint,
-                photo,
-                video,
-                status
-            )
+            (name, mobile, village, category, complaint, photo, video, status)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """, (
-            name,
-            mobile,
-            village,
-            category,
-            complaint,
-            photo_filename,
-            video_filename,
-            "Pending"
+            name, mobile, village, category, complaint,
+            photo_filename, video_filename, "Pending"
         ))
 
         complaint_id = cursor.lastrowid
-
         conn.commit()
         conn.close()
 
@@ -191,9 +166,7 @@ def save_complaint():
         })
 
     except Exception as e:
-
         print("Complaint Error:", e)
-
         return jsonify({
             "success": False,
             "message": "Complaint save nahi ho payi."
@@ -206,11 +179,8 @@ def save_complaint():
 
 @app.route("/complaint/<int:complaint_id>", methods=["POST"])
 def check_complaint(complaint_id):
-
     try:
-
         data = request.get_json(silent=True) or {}
-
         mobile = str(data.get("mobile", "")).strip()
 
         if not mobile:
@@ -220,26 +190,13 @@ def check_complaint(complaint_id):
             }), 400
 
         conn = get_db()
-
         cursor = conn.execute("""
-            SELECT
-                id,
-                name,
-                mobile,
-                village,
-                category,
-                complaint,
-                status
+            SELECT id, name, mobile, village, category, complaint, status
             FROM complaints
-            WHERE id = ?
-            AND mobile = ?
-        """, (
-            complaint_id,
-            mobile
-        ))
+            WHERE id = ? AND mobile = ?
+        """, (complaint_id, mobile))
 
         row = cursor.fetchone()
-
         conn.close()
 
         if not row:
@@ -260,9 +217,7 @@ def check_complaint(complaint_id):
         })
 
     except Exception as e:
-
         print("Status Error:", e)
-
         return jsonify({
             "success": False,
             "message": "Status check nahi ho paya."
@@ -275,45 +230,29 @@ def check_complaint(complaint_id):
 
 @app.route("/complaints", methods=["GET"])
 def get_complaints():
-
     try:
-
         conn = get_db()
-
         cursor = conn.execute("""
-            SELECT
-                id,
-                name,
-                mobile,
-                village,
-                category,
-                complaint,
-                photo,
-                video,
-                status
+            SELECT id, name, mobile, village, category, complaint,
+                   photo, video, status
             FROM complaints
             ORDER BY id DESC
         """)
 
         rows = cursor.fetchall()
-
         conn.close()
 
-        complaints = []
-
-        for row in rows:
-
-            complaints.append({
-                "id": row["id"],
-                "name": row["name"],
-                "mobile": row["mobile"],
-                "village": row["village"],
-                "category": row["category"],
-                "complaint": row["complaint"],
-                "photo": row["photo"],
-                "video": row["video"],
-                "status": row["status"]
-            })
+        complaints = [{
+            "id": row["id"],
+            "name": row["name"],
+            "mobile": row["mobile"],
+            "village": row["village"],
+            "category": row["category"],
+            "complaint": row["complaint"],
+            "photo": row["photo"],
+            "video": row["video"],
+            "status": row["status"]
+        } for row in rows]
 
         return jsonify({
             "success": True,
@@ -321,9 +260,7 @@ def get_complaints():
         })
 
     except Exception as e:
-
         print("Admin Error:", e)
-
         return jsonify({
             "success": False,
             "message": "Complaints load nahi ho payi."
@@ -336,18 +273,11 @@ def get_complaints():
 
 @app.route("/complaint/<int:complaint_id>/status", methods=["POST"])
 def update_status(complaint_id):
-
     try:
-
         data = request.get_json(silent=True) or {}
-
         status = str(data.get("status", "")).strip()
 
-        allowed_statuses = [
-            "Pending",
-            "In Progress",
-            "Resolved"
-        ]
+        allowed_statuses = ["Pending", "In Progress", "Resolved"]
 
         if status not in allowed_statuses:
             return jsonify({
@@ -356,20 +286,14 @@ def update_status(complaint_id):
             }), 400
 
         conn = get_db()
-
         cursor = conn.execute("""
             UPDATE complaints
             SET status = ?
             WHERE id = ?
-        """, (
-            status,
-            complaint_id
-        ))
+        """, (status, complaint_id))
 
         conn.commit()
-
         changed = cursor.rowcount
-
         conn.close()
 
         if changed == 0:
@@ -386,9 +310,7 @@ def update_status(complaint_id):
         })
 
     except Exception as e:
-
         print("Update Status Error:", e)
-
         return jsonify({
             "success": False,
             "message": "Status update nahi ho paya."
@@ -401,7 +323,6 @@ def update_status(complaint_id):
 
 @app.route("/media/<filename>")
 def media(filename):
-
     return send_from_directory(
         app.config["UPLOAD_FOLDER"],
         filename
@@ -413,11 +334,10 @@ def media(filename):
 # =========================
 
 if __name__ == "__main__":
-
     port = int(os.environ.get("PORT", 5000))
 
     app.run(
         host="0.0.0.0",
         port=port,
-        debug=True
+        debug=False
     )
